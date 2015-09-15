@@ -1,0 +1,6 @@
+\select@language {danish}
+\contentsline {chapter}{Indhold}{i}{section*.1}
+\contentsline {chapter}{Figurer}{i}{section*.2}
+\contentsline {chapter}{Tabeller}{i}{section*.3}
+\contentsline {appendix}{\chapternumberline {A}Appendiks}{1}{appendix.A}
+\contentsline {chapter}{Bilag}{1}{section*.4}

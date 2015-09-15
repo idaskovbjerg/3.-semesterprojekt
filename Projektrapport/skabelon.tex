@@ -1,0 +1,65 @@
+\documentclass[11pt,a4paper,danish]{memoir} 
+% Skabelon af DTU's LaTeX support gruppe, v20090423
+
+\usepackage{titlesec}
+
+\usepackage[export]{adjustbox}
+
+\usepackage[latin1]{inputenc} % Skal passe til editorens indstillinger
+\usepackage[danish]{babel} % danske overskrifter
+\usepackage[T1]{fontenc} % fonte (output)
+\usepackage{lmodern} % vektor fonte
+\usepackage{graphicx} % indsættelse af billeder
+\graphicspath{{./billeder/}} % stivej til bibliotek med figurer
+\usepackage{mathtools}% matematik
+\usepackage{array}
+\usepackage{longtable}
+\usepackage{ifthen}
+\usepackage{xifthen}
+\usepackage{mathtools} % matematik - understøtter muligheden for at bruge \eqref{}
+
+
+\usepackage[plainpages=false,pdfpagelabels,pageanchor=false]{hyperref} % aktive links
+\hypersetup{%
+  pdfauthor={<dit navn>},
+  pdftitle={<titlen>},
+  pdfsubject={<emnet>}}
+\usepackage{memhfixc}% rettelser til hyperref
+\usepackage[danish]{babel}
+
+\usepackage[top=1.25in, bottom=1.25in, left=1in, right=1in]{geometry}
+
+
+%følgende kan bruges hvis man ikke laver sin egen forside:
+\title{<titlen på opgaven>} 
+\author{<navn>\\
+        \\
+        <studienummer>
+}
+\date{\today}
+
+% \includeonly{forord,testing} % Kompiler kun de kapitler du arbejder med.
+
+\begin{document}
+\frontmatter % sidenumre som romertal
+%\maketitle  % bruges hvis man ikke har sin egen forside
+\include{forside}
+
+include{resume}
+\tableofcontents
+\listoffigures
+\listoftables
+
+\mainmatter % arabiske sidenumre
+%\include{forord}
+
+\include{testing}
+
+%\include{biblio/bib}
+
+\appendix % bogstaver som kapitelnumre
+\renewcommand{\appendixtocname}{Bilag} % Ændre navn til indholdsfortegnelse
+\addappheadtotoc % Tilføj 'Bilag' til indholdsfortegnelsen
+\include{appendiks-kode}
+\backmatter % til indeks, ordforklaring, bagside
+\end{document}
