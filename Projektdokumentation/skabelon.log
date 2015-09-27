@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.15 (MiKTeX 2.9) (preloaded format=pdflatex 2015.4.2)  27 SEP 2015 13:58
+This is pdfTeX, Version 3.14159265-2.6-1.40.15 (MiKTeX 2.9) (preloaded format=pdflatex 2015.4.2)  27 SEP 2015 22:41
 entering extended mode
 **skabelon.tex
 (skabelon.tex
@@ -1096,7 +1096,7 @@ LaTeX Info: Redefining \nameref on input line 43.
 * \@reversemarginfalse
 * (1in=72.27pt=25.4mm, 1cm=28.453pt)
 
-(forside.tex <billeder/logoAU.jpg, id=11, 134.1813pt x 39.5076pt>
+(forside.tex <billeder/logoAU.jpg, id=19, 134.1813pt x 39.5076pt>
 File: billeder/logoAU.jpg Graphic file (type jpg)
 
 <use billeder/logoAU.jpg>
@@ -1180,6 +1180,29 @@ Package babel Info: Redefining danish shorthand "|
 (babel)             in language  on input line 1.
 Package babel Info: Redefining danish shorthand "~
 (babel)             in language  on input line 1.
+Package babel Info: Redefining danish shorthand "|
+(babel)             in language  on input line 2.
+Package babel Info: Redefining danish shorthand "~
+(babel)             in language  on input line 2.
+
+Underfull \hbox (badness 10000) in paragraph at lines 13--25
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 13--25
+
+ []
+
+Package babel Info: Redefining danish shorthand "|
+(babel)             in language  on input line 25.
+Package babel Info: Redefining danish shorthand "~
+(babel)             in language  on input line 25.
+
+LaTeX Warning: `!h' float specifier changed to `!ht'.
+
+
+LaTeX Warning: `!h' float specifier changed to `!ht'.
 
 
 LaTeX Warning: `!h' float specifier changed to `!ht'.
@@ -1227,6 +1250,7 @@ Package babel Info: Redefining danish shorthand "~
 (babel)             in language  on input line 53.
  [1
 
+
 ]
 
 LaTeX Warning: Text page 2 contains only floats.
@@ -1244,22 +1268,16 @@ Package babel Info: Redefining danish shorthand "|
 Package babel Info: Redefining danish shorthand "~
 (babel)             in language  on input line 53.
 [3]
-
-LaTeX Warning: Text page 4 contains only floats.
-
 Package babel Info: Redefining danish shorthand "|
 (babel)             in language  on input line 53.
 Package babel Info: Redefining danish shorthand "~
 (babel)             in language  on input line 53.
-[4]
-
-LaTeX Warning: Text page 5 contains only floats.
-
+ [4]
 Package babel Info: Redefining danish shorthand "|
 (babel)             in language  on input line 53.
 Package babel Info: Redefining danish shorthand "~
 (babel)             in language  on input line 53.
-[5]
+ [5]
 Package babel Info: Redefining danish shorthand "|
 (babel)             in language  on input line 53.
 Package babel Info: Redefining danish shorthand "~
@@ -1272,7 +1290,7 @@ Package atveryend Info: Empty hook `AfterLastShipout' on input line 54.
 Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 54.
 Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 54.
 Package rerunfilecheck Info: File `skabelon.out' has not changed.
-(rerunfilecheck)             Checksum: 654CE1C5D5B689880C00600B46A6040B;101.
+(rerunfilecheck)             Checksum: 61349784AACB9A18DB4D609A104E8028;220.
 
 
 LaTeX Warning: There were multiply-defined labels.
@@ -1280,11 +1298,11 @@ LaTeX Warning: There were multiply-defined labels.
 Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 54.
  ) 
 Here is how much of TeX's memory you used:
- 12129 strings out of 493698
- 173077 string characters out of 3141969
- 337980 words of memory out of 3000000
- 15238 multiletter control sequences out of 15000+200000
- 38284 words of font info for 40 fonts, out of 3000000 for 9000
+ 12152 strings out of 493698
+ 173407 string characters out of 3141969
+ 343051 words of memory out of 3000000
+ 15259 multiletter control sequences out of 15000+200000
+ 44297 words of font info for 42 fonts, out of 3000000 for 9000
  1025 hyphenation exceptions out of 8191
  46i,10n,37p,296b,379s stack positions out of 5000i,500n,10000p,200000b,50000s
 {C:/Program Files (x86)/MiKTeX 2.9/fonts/enc/dvips/lm/lm-ec.enc}<C:/Program F
@@ -1293,9 +1311,9 @@ MiKTeX 2.9/fonts/type1/public/lm/lmbx12.pfb><C:/Program Files (x86)/MiKTeX 2.9/
 fonts/type1/public/lm/lmr10.pfb><C:/Program Files (x86)/MiKTeX 2.9/fonts/type1/
 public/lm/lmr12.pfb><C:/Program Files (x86)/MiKTeX 2.9/fonts/type1/public/lm/lm
 r17.pfb><C:/Program Files (x86)/MiKTeX 2.9/fonts/type1/public/lm/lmro10.pfb>
-Output written on skabelon.pdf (10 pages, 231569 bytes).
+Output written on skabelon.pdf (10 pages, 243331 bytes).
 PDF statistics:
- 94 PDF objects out of 1000 (max. 8388607)
- 18 named destinations out of 1000 (max. 500000)
- 22 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 105 PDF objects out of 1000 (max. 8388607)
+ 20 named destinations out of 1000 (max. 500000)
+ 38 words of extra memory for PDF output out of 10000 (max. 10000000)
 
