@@ -31,7 +31,7 @@ Kundens underskrift &&&&&&&&&&Leverandørens underskrift\\
    Mål: & Få kalibreret signalerne \\ \hline
    Initiering: & Startes af Sundhedsfaglig personale\\ \hline
    Aktører:& Sundhedsfaglig personale (primær), System(sekundær)\\ \hline
-   Referencer: & \\ \hline
+   Referencer: &  \\ \hline
    Samtidige forekomster: & \\\hline
    Forudsætninger: & \\ \hline
    Resultat:& Signalet er kalibreret\\ \hline
@@ -71,15 +71,15 @@ Udvidelse/undtagelser: & -\\\hline
    Mål: & Få indsendt signalerne fra patienten, startet analysen samt skiftet til hovedskærmen \\ \hline
    Initiering: & Startes af Sundhedsfaglig personale\\ \hline
    Aktører:& Sundhedsfaglig personale (primær), Patient (sekundær), System (sekundær)\\ \hline
-   Referencer: & \\ \hline
+   Referencer: & Use case 1-2 \\ \hline
    Samtidige forekomster: & Én patient pr. måling \\\hline
-   Forudsætninger: & \\ \hline
-   Resultat:& Patiens data vises i GUI\\ \hline
+   Forudsætninger: & Use case 1-2 er kørt succesfuldt \\ \hline
+   Resultat:& Patientens data vises i GUI\\ \hline
    Hovedscenarie:& 
 1. \newline
 2. \newline
 3. \newline
-4. \\\hline
+4. Kommer ind på hovedskæmen\\\hline
 Udvidelse/undtagelser: & -\\\hline
 \end{tabular}
 \end{table}
@@ -132,9 +132,9 @@ Udvidelse/undtagelser: & -\\\hline
    Mål: &  Få slået det digitale filter til og fra \\ \hline
    Initiering: & Startes af Sundhedsfaglig personale\\ \hline
    Aktører:& Sundhedsfaglig personale (primær), System (sekundær)\\ \hline
-   Referencer: & \\ \hline
+   Referencer: & Use case 3 \\ \hline
    Samtidige forekomster: & \\\hline
-   Forudsætninger: & \\ \hline
+   Forudsætninger: & Use case 3 er kørt succesfuldt\\ \hline
    Resultat:& Det digitale filter er slået til eller fra\\ \hline
    Hovedscenarie:& 
 1. Tryk på "Digitalt filter OFF" \newline
@@ -153,9 +153,9 @@ Udvidelse/undtagelser: & -\\\hline
    Mål: & Få justeret grænseværdierne for systolen op og ned \\ \hline
    Initiering: & Startes af Sundhedsfaglig personale\\ \hline
    Aktører:& Sundhedsfaglig personale (primær), System (sekundær)\\ \hline
-   Referencer: & \\ \hline
+   Referencer: & Use case 3 \\ \hline
    Samtidige forekomster: & \\\hline
-   Forudsætninger: & \\ \hline
+   Forudsætninger: & Use case 3 er kørt succesfuldt\\ \hline
    Resultat:& Grænseværdien for systolen er justeret\\ \hline
    Hovedscenarie:& 
 1. Tryk på "Systole op"\newline
@@ -174,9 +174,9 @@ Udvidelse/undtagelser: & -\\\hline
    Mål: &  Få justeret grænseværdierne for diastolen op og ned\\ \hline
    Initiering: &Startes af Sundhedsfaglig personale \\ \hline
    Aktører:& Sundhedsfaglig personale (primær), Systmet (sekundær) \\ \hline
-   Referencer: & \\ \hline
+   Referencer: & Use case 3\\ \hline
    Samtidige forekomster: & \\\hline
-   Forudsætninger: & \\ \hline
+   Forudsætninger: & Use case 3 er kørt succesfuldt\\ \hline
    Resultat:& Grænseværdien for diastolen er justeret\\ \hline
    Hovedscenarie:& 
 1. Tryk "Diastole op"\newline
@@ -195,9 +195,9 @@ Udvidelse/undtagelser: & -\\\hline
    Mål: & Få stoppet signalet og vendt tilbage til startskærmen. \\ \hline
    Initiering: & Startes af Sundhedsfaglig personale\\ \hline
    Aktører:& Sundhedsfaglig personale (primær), Systemet (sekundær) \\ \hline
-   Referencer: & \\ \hline
+   Referencer: & Use case 3\\ \hline
    Samtidige forekomster: & \\\hline
-   Forudsætninger: & \\ \hline
+   Forudsætninger: & Use case 3 er kørt succesfuldt \\ \hline
    Resultat:& Stoppet signalet og vendt tilbage til startskærmen \\ \hline
    Hovedscenarie:& 
 1. Tryk på "STOP" \newline
@@ -218,13 +218,13 @@ Udvidelse/undtagelser: & -\\\hline
    Mål: & Få startet alarmeringen ved overskridelse af grænseværdier \\ \hline
    Initiering: & Systemet starter denne Use case\\ \hline
    Aktører:& System (primær)\\ \hline
-   Referencer: & \\ \hline
+   Referencer: & Use case 3 \\ \hline
    Samtidige forekomster: & \\\hline
-   Forudsætninger: & \\ \hline
+   Forudsætninger: & Målingen i Use case 3 er kørt succesfuldt \\ \hline
    Resultat:& Alarmen starter\\ \hline
    Hovedscenarie:& 
-1. Systemet tjekker signalet systoliske og diastoliske grænseværdi\newline
-2. Grænseværdi overskrides\newline
+1. Systemet tjekker puls, systoliske og diastoliske grænseværdi og iltmætning\newline
+2. Grænseværdi er overskredet\newline
 3. Alarm starter med lyd og lys \\\hline
 Udvidelse/undtagelser: & -\\\hline
 \end{tabular}
@@ -245,7 +245,7 @@ Udvidelse/undtagelser: & -\\\hline
    Resultat:& Patientens puls er beregnet og vises i GUI\\ \hline
    Hovedscenarie:& 
 1. Systemet beregner puls\newline
-2. Systmet udskriver resultatet i GUI\\\hline
+2. Systemet udskriver resultatet i GUI\\\hline
 Udvidelse/undtagelser: & -\\\hline
 \end{tabular}
 \end{table}
@@ -259,13 +259,13 @@ Udvidelse/undtagelser: & -\\\hline
    Mål: & Få beregnet systolens værdi ud fra blodtrykskurven\\ \hline
    Initiering: & Systemet starter denne Use case\\ \hline
    Aktører:& System (primær)\\ \hline
-   Referencer: & \\ \hline
+   Referencer: & Use case 3\\ \hline
    Samtidige forekomster: & \\\hline
    Forudsætninger: & Signalet er indsendt succesfuldt i Use case 3 \\ \hline
    Resultat:& Patientens systole er beregnet og resultatet vises i GUI\\ \hline
    Hovedscenarie:& 
 1. Systemet beregner systole \newline
-2. Resultatet udskriver resultatet i GUI \\\hline
+2. Systemet udskriver resultatet i GUI \\\hline
 Udvidelse/undtagelser: & -\\\hline
 \end{tabular}
 \end{table}
@@ -279,7 +279,7 @@ Udvidelse/undtagelser: & -\\\hline
    Mål: & Få beregnet diastolens værdi ud fra blodtrykskurven \\ \hline
    Initiering: & Systemet starter denne Use case\\ \hline
    Aktører:& System (primær)\\ \hline
-   Referencer: & \\ \hline
+   Referencer: & Use case 3\\ \hline
    Samtidige forekomster: & \\\hline
    Forudsætninger: & Signalet er indsendt succesfuldt i Use case 3 \\ \hline
    Resultat:& Patientens diastole er beregnet og resultatet vises i GUI\\ \hline
@@ -299,7 +299,7 @@ Udvidelse/undtagelser: & -\\\hline
    Mål: & Få beregnet middeltryks værdi ud fra blodtrykskurven \\ \hline
    Initiering: & Systemet starter denne Use case\\ \hline
    Aktører:& System (primær)\\ \hline
-   Referencer: & \\ \hline
+   Referencer: & Use case 3\\ \hline
    Samtidige forekomster: & \\\hline
    Forudsætninger: & Signalet er indsendt succesfuldt i Use case 3 \\ \hline
    Resultat:& Patientens middeltryk er beregnet og resultatet vises i GUI\\ \hline
@@ -316,18 +316,38 @@ Udvidelse/undtagelser: & -\\\hline
 \begin{tabular}{| l | >{\raggedright\arraybackslash}p{11cm} |}
    \hline
    \textbf{Use case 15} & \textbf{Opsætning}\\ \hline
-   Mål: &  \\ \hline
+   Mål: & Få valgt port til NI-DAQ \\ \hline
    Initiering: & Sundhedsfaglig personale starter denne Use case\\ \hline
    Aktører:& Sundhedsfaglig personale (primær) \\ \hline
    Referencer: & \\ \hline
    Samtidige forekomster: & \\\hline
    Forudsætninger: & \\ \hline
-   Resultat:&\\ \hline
+   Resultat:& Port valgt\\ \hline
+   Hovedscenarie:& 
+1. Tryk på dropdown på startskærmen\newline
+2. Port vælges \\\hline
+Udvidelse/undtagelser: & -\\\hline
+\end{tabular}
+\end{table}
+
+
+
+
+\begin{table}[h!]
+\caption{Use case 16}\label{tab:tabel3}
+\begin{tabular}{| l | >{\raggedright\arraybackslash}p{11cm} |}
+   \hline
+   \textbf{Use case 16} & \textbf{Beregn iltmætning}\\ \hline
+   Mål: & Målt og beregnet iltmætningen $SpO_2$\\ \hline
+   Initiering: & Sundhedsfaglig personale starter denne Use case\\ \hline
+   Aktører:& System (primær) \\ \hline
+   Referencer: & Use case 3 \\ \hline
+   Samtidige forekomster: & \\\hline
+   Forudsætninger: & Use case 3 er kørt succesfuldt \\ \hline
+   Resultat:& Iltmætning beregnet og resultat vises i GUI\\ \hline
    Hovedscenarie:& 
 1. \newline
-2. \newline
-3. \newline
-4. \\\hline
+2. \\\hline
 Udvidelse/undtagelser: & -\\\hline
 \end{tabular}
 \end{table}
