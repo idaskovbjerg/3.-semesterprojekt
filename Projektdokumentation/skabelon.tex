@@ -5,6 +5,8 @@
 \usepackage{amsfonts}
 \usepackage[export]{adjustbox}
 
+\usepackage{float}
+
 %\usepackage[latin1]{inputenc} % Skal passe til editorens indstillinger
 \usepackage[danish]{babel} % danske overskrifter
 \usepackage[utf8]{inputenc}
@@ -19,6 +21,8 @@
 \usepackage{xifthen}
 \usepackage{mathtools} % matematik - understøtter muligheden for at bruge \eqref{}
 
+\renewcommand{\labelenumii}{\theenumii}
+\renewcommand{\theenumii}{\theenumi.\arabic{enumii}.}
 
 \usepackage[plainpages=false,pdfpagelabels,pageanchor=false]{hyperref} % aktive links
 \hypersetup{%

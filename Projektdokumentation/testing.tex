@@ -25,20 +25,28 @@ Kundens underskrift &&&&&&&&&&Leverandørens underskrift\\
 \end{table}
 \section{Indledning}
 
+\newpage
+
 \section{Systembeskrivelse}
+
+\newpage
 
 \section{Aktør-kontekst diagram}
 \begin{figure}[h!]
 \includegraphics[width =1.0\textwidth , right]{billeder/Aktorkontekst.jpg}
 \end{figure}
+
+\newpage
+
+
 \section{Use cases}
 \begin{figure}[h!]
-\includegraphics[width =1.0\textwidth , right]{billeder/UCStart}
+\includegraphics[width =0.8\textwidth , right]{billeder/UCStart}
 \end{figure}
 \begin{figure}[h!]
-\includegraphics[width =1.0\textwidth , right]{billeder/UChoved}
+\includegraphics[width =0.8\textwidth , right]{billeder/UChoved}
 \end{figure}
-\begin{table}[h!]
+\begin{table}[H]
 \caption{Use case 1}\label{tab:tabel3}
 \begin{tabular}{| l | >{\raggedright\arraybackslash}p{11cm} |}
    \hline
@@ -59,7 +67,7 @@ Udvidelse/undtagelser: & - \\\hline
 \end{table}
 
 
-\begin{table}[h!]
+\begin{table}[H]
 \caption{Use case 2}\label{tab:tabel3}
 \begin{tabular}{| l | >{\raggedright\arraybackslash}p{11cm} |}
    \hline
@@ -84,7 +92,7 @@ Udvidelse/undtagelser: & $[$ Undtagelse 1: Ingen data indhentet$]$\newline
 \end{table}
 
 
-\begin{table}[h!]
+\begin{table}[H]
 \caption{Use case 3}\label{tab:tabel3}
 \begin{tabular}{| l | >{\raggedright\arraybackslash}p{11cm} |}
    \hline
@@ -104,7 +112,7 @@ Udvidelse/undtagelser: & - \\\hline
 \end{tabular}
 \end{table}
 
-\begin{table}[h!]
+\begin{table}[H]
 \caption{Use case 4}\label{tab:tabel3}
 \begin{tabular}{| l | >{\raggedright\arraybackslash}p{11cm} |}
    \hline
@@ -129,7 +137,7 @@ Udvidelse/undtagelser: & $[$Undtagelse 1: Intet CPR koblet til data$]$\newline
 \end{tabular}
 \end{table}
 
-\begin{table}[h!]
+\begin{table}[H]
 \caption{Use case 5}\label{tab:tabel3}
 \begin{tabular}{| l | >{\raggedright\arraybackslash}p{11cm} |}
    \hline
@@ -148,7 +156,7 @@ Udvidelse/undtagelser: & -\\\hline
 \end{tabular}
 \end{table}
 
-\begin{table}[h!]
+\begin{table}[H]
 \caption{Use case 6}\label{tab:tabel3}
 \begin{tabular}{| l | >{\raggedright\arraybackslash}p{11cm} |}
    \hline
@@ -169,7 +177,7 @@ Udvidelse/undtagelser: & -\\\hline
 \end{tabular}
 \end{table}
 
-\begin{table}[h!]
+\begin{table}[H]
 \caption{Use case 7}\label{tab:tabel3}
 \begin{tabular}{| l | >{\raggedright\arraybackslash}p{11cm} |}
    \hline
@@ -190,7 +198,7 @@ Udvidelse/undtagelser: & -\\\hline
 \end{tabular}
 \end{table}
 
-\begin{table}[h!]
+\begin{table}[H]
 \caption{Use case 8}\label{tab:tabel3}
 \begin{tabular}{| l | >{\raggedright\arraybackslash}p{11cm} |}
    \hline
@@ -211,7 +219,7 @@ Udvidelse/undtagelser: & -\\\hline
 \end{tabular}
 \end{table}
 
-\begin{table}[h!]
+\begin{table}[H]
 \caption{Use case 9}\label{tab:tabel3}
 \begin{tabular}{| l | >{\raggedright\arraybackslash}p{11cm} |}
    \hline
@@ -237,7 +245,7 @@ Udvidelse/undtagelser: & $[$Udvidelse 1: Tryk på "Nej"$]$\newline
 \end{table}
 
 
-\begin{table}[h!]
+\begin{table}[H]
 \caption{Use case 10}\label{tab:tabel3}
 \begin{tabular}{| l | >{\raggedright\arraybackslash}p{11cm} |}
    \hline
@@ -263,7 +271,7 @@ Udvidelse/undtagelser: & $[$Udvidelse 1: Anden grænseværdi overskrides$]$ \new
 \end{table}
 
 
-\begin{table}[h!]
+\begin{table}[H]
 \caption{Use case 11}\label{tab:tabel3}
 \begin{tabular}{| l | >{\raggedright\arraybackslash}p{11cm} |}
    \hline
@@ -282,9 +290,70 @@ Udvidelse/undtagelser: & -\\\hline
 \end{tabular}
 \end{table}
 
+\newpage 
+\newpage 
+\newpage
+\newpage
+
 
 
 \section{Ikke-funktionelle krav}
+De ikke-funktionelle krav er opsat efter FURPS+ metoden. De er prioriteret efter MoSCoW metoden:
+\begin{itemize}
+\item \textbf{M}ust (skal være med)
+\item \textbf{S}hould (bør være med, hvis muligt)
+\item \textbf{C}ould (kunne have med, hvis det ikke går i vejen for noget andet)
+\item \textbf{W}on't/\textbf{W}ould (tager det ikke med nu, men kan komme med i fremtidige opdateringer)
+\end{itemize}
+
+\subsection{FURPS+ med MoSCoW}
+\begin{enumerate}
+\item \textbf{Functionality}
+\begin{enumerate}
+\item (\textbf{M}) Programmet skal have et digitalt filter til udglatning af blodtrykssignal
+\item (\textbf{M})Programmet skal give alarm når grænseværdier overskrides med lyd og med den overskrede grænseværdi blikende på skærmen.
+\item (\textbf{M}) Programmet skal kunne gemme blodtrykssignalet i en database.
+\end{enumerate}
+\item \textbf{Usability}
+\begin{enumerate}
+\item (\textbf{M}) Programmet skal have en "Start" knap
+\item (\textbf{S}) Programmet skal have en "Kalibrering" knap
+\item (\textbf{M}) Sundhedsfagligt personale skal kunne ændre "devicename/enhedsnavn" i dropdown
+\item (\textbf{M}) Programmet skal have en knap til at slå det digitale filter fra og til
+\item (\textbf{S}) Programmet skal have en "Gem" knap, hvilken gemmer patientens data
+\item (\textbf{M}) Programmet skal have knapper til at justere systolisk og diastolisk grænseværdi-intervaller op og ned
+\item (\textbf{M}) Teksten og graferne på GUI’en skal kunne læses fra 2 meters afstand ved synsstyrke i intervallet på +/-1
+\item (\textbf{M}) Programmet skal præsentere data på grafer på følgende måde (Se afsnit nedenfor)
+\begin{itemize}
+\item EKG vises i lysegrøn
+\item Arterietryk vises i rød
+\item Iltmætning/saturation i lyseblå
+\end{itemize}
+\item (\textbf{M}) Programmet skal præsentere data i tal på følgende måde (Se afsnit nedenfor)
+\begin{itemize}
+\item Hjertefrekvens i lysegrøn
+\ Systolisk samt diastolisk tryk i rødt, ligeledes middelblodtrykket i parentes under i rødt.
+\end{itemize}
+\end{enumerate}
+\item \textbf{Reliability}
+\begin{enumerate}
+\item (\textbf{S}) INGEN RELIABILITY KRAV ENDNU
+\end{enumerate}
+\item \textbf{Performance}
+\begin{enumerate}
+\item (\textbf{S}) Tiden der går før måling af data påbegynder / vises i grafer må max være 2 sek.
+\item (\textbf{M}) Tiden der går fra at der er trykket på Gem-knappen til at data er gemt i database må være 2 sek. med en tolerance på +/-15\%  
+\end{enumerate}
+\item \textbf{Supportability}
+\begin{enumerate}
+\item (\textbf{M}) Softwaren skal være opbygget af trelagsmodellen (Data-View-Model)
+\end{enumerate}
+\item \textbf{+ Test conditions}
+\begin{enumerate}
+\item (\textbf{M}) Der skal være adgang til en computer med Windows 7 eller 8 - computeren skal minimum have 4 GB RAM.
+\item (\textbf{M}) Der skal være adgang til en computer hvor National Instruments er installeret.
+\end{enumerate}
+\end{enumerate}
 
 \chapter{Accepttest}
 \section{Indledning}
@@ -293,7 +362,7 @@ Udvidelse/undtagelser: & -\\\hline
 \subsection{Opstilling}
 Billede indsættes - haves ikke endnu
 
-\begin{table}[h!]
+\begin{table}[H]
 \caption{Accepttest for Use case 1}\label{tab:tabel8}
 \begin{tabular}{|>{\raggedright\arraybackslash}p{2.5cm}| >{\raggedright\arraybackslash}p{2.9cm} | >{\raggedright\arraybackslash}p{2.9cm} | >{\raggedright\arraybackslash}p{2.9cm} | >{\raggedright\arraybackslash}p{2.8cm} |}
    \hline
@@ -304,7 +373,7 @@ Billede indsættes - haves ikke endnu
 
 
 
-\begin{table}[h!]
+\begin{table}[H]
 \caption{Accepttest for Use case 2}\label{tab:tabel8}
 \begin{tabular}{|>{\raggedright\arraybackslash}p{2.5cm}| >{\raggedright\arraybackslash}p{2.9cm} | >{\raggedright\arraybackslash}p{2.9cm} | >{\raggedright\arraybackslash}p{2.9cm} | >{\raggedright\arraybackslash}p{2.8cm} |}
    \hline
@@ -313,7 +382,7 @@ Billede indsættes - haves ikke endnu
 \end{tabular}
 \end{table}
 
-\begin{table}[h!]
+\begin{table}[H]
 \caption{Accepttest for Use case 3}\label{tab:tabel8}
 \begin{tabular}{|>{\raggedright\arraybackslash}p{2.5cm}| >{\raggedright\arraybackslash}p{2.9cm} | >{\raggedright\arraybackslash}p{2.9cm} | >{\raggedright\arraybackslash}p{2.9cm} | >{\raggedright\arraybackslash}p{2.8cm} |}
    \hline
@@ -322,7 +391,7 @@ Billede indsættes - haves ikke endnu
 \end{tabular}
 \end{table}
 
-\begin{table}[h!]
+\begin{table}[H]
 \caption{Accepttest for Use case 4}\label{tab:tabel8}
 \begin{tabular}{|>{\raggedright\arraybackslash}p{2.5cm}| >{\raggedright\arraybackslash}p{2.9cm} | >{\raggedright\arraybackslash}p{2.9cm} | >{\raggedright\arraybackslash}p{2.9cm} | >{\raggedright\arraybackslash}p{2.8cm} |}
    \hline
@@ -332,7 +401,7 @@ Billede indsættes - haves ikke endnu
 \end{table}
 
 
-\begin{table}[h!]
+\begin{table}[H]
 \caption{Accepttest for Use case 5}\label{tab:tabel8}
 \begin{tabular}{|>{\raggedright\arraybackslash}p{2.5cm}| >{\raggedright\arraybackslash}p{2.9cm} | >{\raggedright\arraybackslash}p{2.9cm} | >{\raggedright\arraybackslash}p{2.9cm} | >{\raggedright\arraybackslash}p{2.8cm} |}
    \hline
@@ -343,7 +412,7 @@ Billede indsættes - haves ikke endnu
 
 
 
-\begin{table}[h!]
+\begin{table}[H]
 \caption{Accepttest for Use case 6}\label{tab:tabel8}
 \begin{tabular}{|>{\raggedright\arraybackslash}p{2.5cm}| >{\raggedright\arraybackslash}p{2.9cm} | >{\raggedright\arraybackslash}p{2.9cm} | >{\raggedright\arraybackslash}p{2.9cm} | >{\raggedright\arraybackslash}p{2.8cm} |}
    \hline
@@ -354,7 +423,7 @@ Billede indsættes - haves ikke endnu
 \end{table}
 
 
-\begin{table}[h!]
+\begin{table}[H]
 \caption{Accepttest for Use case 7}\label{tab:tabel8}
 \begin{tabular}{|>{\raggedright\arraybackslash}p{2.5cm}| >{\raggedright\arraybackslash}p{2.9cm} | >{\raggedright\arraybackslash}p{2.9cm} | >{\raggedright\arraybackslash}p{2.9cm} | >{\raggedright\arraybackslash}p{2.8cm} |}
    \hline
@@ -365,7 +434,7 @@ Billede indsættes - haves ikke endnu
 \end{table}
 
 
-\begin{table}[h!]
+\begin{table}[H]
 \caption{Accepttest for Use case 8}\label{tab:tabel8}
 \begin{tabular}{|>{\raggedright\arraybackslash}p{2.5cm}| >{\raggedright\arraybackslash}p{2.9cm} | >{\raggedright\arraybackslash}p{2.9cm} | >{\raggedright\arraybackslash}p{2.9cm} | >{\raggedright\arraybackslash}p{2.8cm} |}
    \hline
@@ -375,7 +444,7 @@ Billede indsættes - haves ikke endnu
 \end{tabular}
 \end{table}
 
-\begin{table}[h!]
+\begin{table}[H]
 \caption{Accepttest for Use case 9}\label{tab:tabel8}
 \begin{tabular}{|>{\raggedright\arraybackslash}p{2.5cm}| >{\raggedright\arraybackslash}p{2.9cm} | >{\raggedright\arraybackslash}p{2.9cm} | >{\raggedright\arraybackslash}p{2.9cm} | >{\raggedright\arraybackslash}p{2.8cm} |}
    \hline
@@ -385,7 +454,7 @@ Billede indsættes - haves ikke endnu
 \end{tabular}
 \end{table}
 
-\begin{table}[h!]
+\begin{table}[H]
 \caption{Accepttest for Use case 10}\label{tab:tabel8}
 \begin{tabular}{|>{\raggedright\arraybackslash}p{2.5cm}| >{\raggedright\arraybackslash}p{2.9cm} | >{\raggedright\arraybackslash}p{2.9cm} | >{\raggedright\arraybackslash}p{2.9cm} | >{\raggedright\arraybackslash}p{2.8cm} |}
    \hline
@@ -394,7 +463,7 @@ Billede indsættes - haves ikke endnu
 \end{tabular}
 \end{table}
 
-\begin{table}[h!]
+\begin{table}[H]
 \caption{Accepttest for Use case 11}\label{tab:tabel8}
 \begin{tabular}{|>{\raggedright\arraybackslash}p{2.5cm}| >{\raggedright\arraybackslash}p{2.9cm} | >{\raggedright\arraybackslash}p{2.9cm} | >{\raggedright\arraybackslash}p{2.9cm} | >{\raggedright\arraybackslash}p{2.8cm} |}
    \hline
@@ -418,12 +487,24 @@ Billede indsættes - haves ikke endnu
    \caption{Accepttest for ikke-funktionelle krav}\label{tab:label13}
 \\ \hline   
 \textbf{Krav nr.}&\textbf{Krav} &\textbf{Test}& \textbf{Forventet resultat} & \textbf{Resultat} & \textbf{Godkendt/ kommentar}\\ \hline
-   & & & & & \\\hline
-   & & & & & \\\hline
-   & & & & & \\\hline
-   & & & & & \\\hline
-   & & & & & \\\hline
-   & & & & & \\\hline
+  1.1 & & & & & \\\hline
+  1.2 & & & & & \\\hline
+  1.3 & & & & & \\\hline
+  2.1 & & & & & \\\hline
+  2.2 & & & & & \\\hline
+  2.3 & & & & & \\\hline
+  2.4 & & & & & \\\hline
+  2.5 & & & & & \\\hline
+  2.6 & & & & & \\\hline
+  2.7 & & & & & \\\hline
+  2.8 & & & & & \\\hline
+  2.9 & & & & & \\\hline
+  3.1 & & & & & \\\hline
+  4.1 & & & & & \\\hline
+  4.2 & & & & & \\\hline
+  5.1 & & & & & \\\hline
+  6.1 & & & & & \\\hline
+  6.2 & & & & & \\\hline
 \end{longtable}
 
 \section{Godkendelses formular}
