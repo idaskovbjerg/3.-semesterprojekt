@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.15 (MiKTeX 2.9) (preloaded format=pdflatex 2015.4.2)  29 SEP 2015 22:09
+This is pdfTeX, Version 3.14159265-2.6-1.40.15 (MiKTeX 2.9) (preloaded format=pdflatex 2015.4.2)  29 SEP 2015 22:27
 entering extended mode
 **skabelon.tex
 (skabelon.tex
@@ -1328,47 +1328,47 @@ File: omslmr.fd 2009/10/30 v1.6 Font defs for Latin Modern
 LaTeX Font Info:    Font shape `OMS/lmr/m/n' in size <10.95> not available
 (Font)              Font shape `OMS/lmsy/m/n' tried instead on input line 303.
 Package babel Info: Redefining danish shorthand "|
-(babel)             in language  on input line 349.
+(babel)             in language  on input line 344.
 Package babel Info: Redefining danish shorthand "~
-(babel)             in language  on input line 349.
+(babel)             in language  on input line 344.
  [10]
 Package babel Info: Redefining danish shorthand "|
-(babel)             in language  on input line 358.
+(babel)             in language  on input line 361.
 Package babel Info: Redefining danish shorthand "~
-(babel)             in language  on input line 358.
+(babel)             in language  on input line 361.
  [11]
 Package babel Info: Redefining danish shorthand "|
-(babel)             in language  on input line 358.
+(babel)             in language  on input line 361.
 Package babel Info: Redefining danish shorthand "~
-(babel)             in language  on input line 358.
+(babel)             in language  on input line 361.
 
 [12
 
 ]
 Package babel Info: Redefining danish shorthand "|
-(babel)             in language  on input line 358.
+(babel)             in language  on input line 361.
 Package babel Info: Redefining danish shorthand "~
-(babel)             in language  on input line 358.
+(babel)             in language  on input line 361.
 Package babel Info: Redefining danish shorthand "|
-(babel)             in language  on input line 359.
+(babel)             in language  on input line 362.
 Package babel Info: Redefining danish shorthand "~
-(babel)             in language  on input line 359.
+(babel)             in language  on input line 362.
 Package babel Info: Redefining danish shorthand "|
-(babel)             in language  on input line 360.
+(babel)             in language  on input line 363.
 Package babel Info: Redefining danish shorthand "~
-(babel)             in language  on input line 360.
+(babel)             in language  on input line 363.
 
-Overfull \hbox (7.7702pt too wide) in paragraph at lines 367--372
+Overfull \hbox (7.7702pt too wide) in paragraph at lines 370--375
 [][] 
  []
 
 
-Overfull \hbox (7.7702pt too wide) in paragraph at lines 378--383
+Overfull \hbox (7.7702pt too wide) in paragraph at lines 381--386
 [][] 
  []
 
 
-Overfull \hbox (7.7702pt too wide) in paragraph at lines 387--392
+Overfull \hbox (7.7702pt too wide) in paragraph at lines 390--395
 [][] 
  []
 
@@ -1376,26 +1376,26 @@ Overfull \hbox (7.7702pt too wide) in paragraph at lines 387--392
 Underfull \vbox (badness 2846) has occurred while \output is active []
 
 Package babel Info: Redefining danish shorthand "|
-(babel)             in language  on input line 393.
+(babel)             in language  on input line 396.
 Package babel Info: Redefining danish shorthand "~
-(babel)             in language  on input line 393.
+(babel)             in language  on input line 396.
  [13]
-Overfull \hbox (7.7702pt too wide) in paragraph at lines 396--401
+Overfull \hbox (7.7702pt too wide) in paragraph at lines 399--404
 [][] 
  []
 
 
-Overfull \hbox (7.7702pt too wide) in paragraph at lines 406--411
+Overfull \hbox (7.7702pt too wide) in paragraph at lines 409--414
 [][] 
  []
 
 
-Overfull \hbox (7.7702pt too wide) in paragraph at lines 417--423
+Overfull \hbox (7.7702pt too wide) in paragraph at lines 420--426
 [][] 
  []
 
 
-Overfull \hbox (7.7702pt too wide) in paragraph at lines 428--434
+Overfull \hbox (7.7702pt too wide) in paragraph at lines 431--437
 [][] 
  []
 
@@ -1403,59 +1403,59 @@ Overfull \hbox (7.7702pt too wide) in paragraph at lines 428--434
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
 Package babel Info: Redefining danish shorthand "|
-(babel)             in language  on input line 435.
+(babel)             in language  on input line 438.
 Package babel Info: Redefining danish shorthand "~
-(babel)             in language  on input line 435.
+(babel)             in language  on input line 438.
  [14]
-Overfull \hbox (7.7702pt too wide) in paragraph at lines 439--445
+Overfull \hbox (7.7702pt too wide) in paragraph at lines 442--448
 [][] 
  []
 
 
-Overfull \hbox (7.7702pt too wide) in paragraph at lines 449--455
+Overfull \hbox (7.7702pt too wide) in paragraph at lines 452--458
 [][] 
  []
 
 
-Overfull \hbox (7.7702pt too wide) in paragraph at lines 459--464
+Overfull \hbox (7.7702pt too wide) in paragraph at lines 462--467
 [][] 
  []
 
 
-Overfull \hbox (7.7702pt too wide) in paragraph at lines 468--473
+Overfull \hbox (7.7702pt too wide) in paragraph at lines 471--476
 [][] 
  []
 
 Package babel Info: Redefining danish shorthand "|
-(babel)             in language  on input line 474.
+(babel)             in language  on input line 477.
 Package babel Info: Redefining danish shorthand "~
-(babel)             in language  on input line 474.
+(babel)             in language  on input line 477.
 [15]
 Package babel Info: Redefining danish shorthand "|
-(babel)             in language  on input line 476.
+(babel)             in language  on input line 479.
 Package babel Info: Redefining danish shorthand "~
-(babel)             in language  on input line 476.
+(babel)             in language  on input line 479.
  [16]
 Package babel Info: Redefining danish shorthand "|
-(babel)             in language  on input line 484.
+(babel)             in language  on input line 487.
 Package babel Info: Redefining danish shorthand "~
-(babel)             in language  on input line 484.
+(babel)             in language  on input line 487.
 
-Overfull \hbox (8.78922pt too wide) in alignment at lines 486--508
+Overfull \hbox (8.78922pt too wide) in alignment at lines 489--511
  [] [] [] [] [] [] 
  []
 
 Package babel Info: Redefining danish shorthand "|
-(babel)             in language  on input line 510.
+(babel)             in language  on input line 513.
 Package babel Info: Redefining danish shorthand "~
-(babel)             in language  on input line 510.
+(babel)             in language  on input line 513.
 )
-Underfull \hbox (badness 10000) in paragraph at lines 519--57
+Underfull \hbox (badness 10000) in paragraph at lines 522--57
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 519--57
+Underfull \hbox (badness 10000) in paragraph at lines 522--57
 
  []
 
@@ -1479,13 +1479,13 @@ LaTeX Warning: There were multiply-defined labels.
 Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 58.
  ) 
 Here is how much of TeX's memory you used:
- 12315 strings out of 493698
- 175606 string characters out of 3141969
+ 12318 strings out of 493698
+ 175627 string characters out of 3141969
  338779 words of memory out of 3000000
  15367 multiletter control sequences out of 15000+200000
  50294 words of font info for 44 fonts, out of 3000000 for 9000
  1025 hyphenation exceptions out of 8191
- 46i,10n,37p,313b,490s stack positions out of 5000i,500n,10000p,200000b,50000s
+ 46i,10n,37p,313b,512s stack positions out of 5000i,500n,10000p,200000b,50000s
 {C:/Program Files (x86)/MiKTeX 2.9/fonts/enc/dvips/lm/lm-mathsy.enc}{C:/Progr
 am Files (x86)/MiKTeX 2.9/fonts/enc/dvips/lm/lm-rm.enc}{C:/Program Files (x86)/
 MiKTeX 2.9/fonts/enc/dvips/lm/lm-ec.enc}<C:/Program Files (x86)/MiKTeX 2.9/font
@@ -1495,9 +1495,9 @@ lic/lm/lmbx12.pfb><C:/Program Files (x86)/MiKTeX 2.9/fonts/type1/public/lm/lmr1
 ogram Files (x86)/MiKTeX 2.9/fonts/type1/public/lm/lmr17.pfb><C:/Program Files 
 (x86)/MiKTeX 2.9/fonts/type1/public/lm/lmro10.pfb><C:/Program Files (x86)/MiKTe
 X 2.9/fonts/type1/public/lm/lmsy10.pfb>
-Output written on skabelon.pdf (21 pages, 347752 bytes).
+Output written on skabelon.pdf (21 pages, 348193 bytes).
 PDF statistics:
- 239 PDF objects out of 1000 (max. 8388607)
- 63 named destinations out of 1000 (max. 500000)
+ 242 PDF objects out of 1000 (max. 8388607)
+ 66 named destinations out of 1000 (max. 500000)
  125 words of extra memory for PDF output out of 10000 (max. 10000000)
 
