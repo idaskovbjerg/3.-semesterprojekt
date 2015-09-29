@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.15 (MiKTeX 2.9) (preloaded format=pdflatex 2015.4.2)  29 SEP 2015 15:20
+This is pdfTeX, Version 3.14159265-2.6-1.40.15 (MiKTeX 2.9) (preloaded format=pdflatex 2015.4.2)  29 SEP 2015 15:34
 entering extended mode
 **skabelon.tex
 (skabelon.tex
@@ -1195,128 +1195,163 @@ Package babel Info: Redefining danish shorthand "~
 
 ] (testing.tex
 Package babel Info: Redefining danish shorthand "|
-(babel)             in language  on input line 1.
+(babel)             in language  on input line 2.
 Package babel Info: Redefining danish shorthand "~
-(babel)             in language  on input line 1.
+(babel)             in language  on input line 2.
 Package babel Info: Redefining danish shorthand "|
-(babel)             in language  on input line 2.
+(babel)             in language  on input line 3.
 Package babel Info: Redefining danish shorthand "~
-(babel)             in language  on input line 2.
+(babel)             in language  on input line 3.
 
-Underfull \hbox (badness 10000) in paragraph at lines 13--25
+Underfull \hbox (badness 10000) in paragraph at lines 14--26
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 13--25
+Underfull \hbox (badness 10000) in paragraph at lines 14--26
 
  []
 
 Package babel Info: Redefining danish shorthand "|
-(babel)             in language  on input line 25.
+(babel)             in language  on input line 26.
 Package babel Info: Redefining danish shorthand "~
-(babel)             in language  on input line 25.
+(babel)             in language  on input line 26.
 Package babel Info: Redefining danish shorthand "|
-(babel)             in language  on input line 27.
+(babel)             in language  on input line 28.
 Package babel Info: Redefining danish shorthand "~
-(babel)             in language  on input line 27.
+(babel)             in language  on input line 28.
 Package babel Info: Redefining danish shorthand "|
-(babel)             in language  on input line 29.
+(babel)             in language  on input line 30.
 Package babel Info: Redefining danish shorthand "~
-(babel)             in language  on input line 29.
-Package babel Info: Redefining danish shorthand "|
-(babel)             in language  on input line 31.
-Package babel Info: Redefining danish shorthand "~
-(babel)             in language  on input line 31.
+(babel)             in language  on input line 30.
+<billeder/Aktorkontekst.jpg, id=87, 506.6428pt x 217.5628pt>
+File: billeder/Aktorkontekst.jpg Graphic file (type jpg)
 
-LaTeX Warning: `!h' float specifier changed to `!ht'.
-
-
-LaTeX Warning: `!h' float specifier changed to `!ht'.
-
-
-LaTeX Warning: `!h' float specifier changed to `!ht'.
-
-
-LaTeX Warning: `!h' float specifier changed to `!ht'.
-
-
-LaTeX Warning: `!h' float specifier changed to `!ht'.
-
-
-LaTeX Warning: `!h' float specifier changed to `!ht'.
-
-
-LaTeX Warning: `!h' float specifier changed to `!ht'.
-
-
-LaTeX Warning: `!h' float specifier changed to `!ht'.
-
-
-LaTeX Warning: `!h' float specifier changed to `!ht'.
-
-
-LaTeX Warning: `!h' float specifier changed to `!ht'.
+<use billeder/Aktorkontekst.jpg>
+Package pdftex.def Info: billeder/Aktorkontekst.jpg used on input line 32.
+(pdftex.def)             Requested size: 452.9679pt x 194.51997pt.
 
 
 LaTeX Warning: `!h' float specifier changed to `!ht'.
 
 Package babel Info: Redefining danish shorthand "|
-(babel)             in language  on input line 278.
+(babel)             in language  on input line 34.
 Package babel Info: Redefining danish shorthand "~
-(babel)             in language  on input line 278.
+(babel)             in language  on input line 34.
+<billeder/UCStart.png, id=88, 584.1825pt x 256.70906pt>
+File: billeder/UCStart.png Graphic file (type png)
+
+<use billeder/UCStart.png>
+Package pdftex.def Info: billeder/UCStart.png used on input line 36.
+(pdftex.def)             Requested size: 452.9679pt x 199.05713pt.
+
+
+LaTeX Warning: `!h' float specifier changed to `!ht'.
+
+<billeder/UChoved.png, id=90, 402.00188pt x 349.305pt>
+File: billeder/UChoved.png Graphic file (type png)
+
+<use billeder/UChoved.png>
+Package pdftex.def Info: billeder/UChoved.png used on input line 39.
+(pdftex.def)             Requested size: 452.9679pt x 393.59076pt.
+
+
+LaTeX Warning: `!h' float specifier changed to `!ht'.
+
+
+LaTeX Warning: `!h' float specifier changed to `!ht'.
+
+
+LaTeX Warning: `!h' float specifier changed to `!ht'.
+
+
+LaTeX Warning: `!h' float specifier changed to `!ht'.
+
+
+LaTeX Warning: `!h' float specifier changed to `!ht'.
+
+
+LaTeX Warning: `!h' float specifier changed to `!ht'.
+
+
+LaTeX Warning: `!h' float specifier changed to `!ht'.
+
+
+LaTeX Warning: `!h' float specifier changed to `!ht'.
+
+
+LaTeX Warning: `!h' float specifier changed to `!ht'.
+
+
+LaTeX Warning: `!h' float specifier changed to `!ht'.
+
+
+LaTeX Warning: `!h' float specifier changed to `!ht'.
+
+
+LaTeX Warning: `!h' float specifier changed to `!ht'.
+
 Package babel Info: Redefining danish shorthand "|
-(babel)             in language  on input line 280.
+(babel)             in language  on input line 287.
 Package babel Info: Redefining danish shorthand "~
-(babel)             in language  on input line 280.
+(babel)             in language  on input line 287.
+Package babel Info: Redefining danish shorthand "|
+(babel)             in language  on input line 289.
+Package babel Info: Redefining danish shorthand "~
+(babel)             in language  on input line 289.
 [1
 
 
 ]
 Package babel Info: Redefining danish shorthand "|
-(babel)             in language  on input line 280.
+(babel)             in language  on input line 289.
 Package babel Info: Redefining danish shorthand "~
-(babel)             in language  on input line 280.
- [2]
+(babel)             in language  on input line 289.
+ [2 <./billeder/Aktorkontekst.jpg> <./billeder/UCStart.png>]
 Package babel Info: Redefining danish shorthand "|
-(babel)             in language  on input line 280.
+(babel)             in language  on input line 289.
 Package babel Info: Redefining danish shorthand "~
-(babel)             in language  on input line 280.
- [3]
+(babel)             in language  on input line 289.
+ [3 <./billeder/UChoved.png>]
 Package babel Info: Redefining danish shorthand "|
-(babel)             in language  on input line 280.
+(babel)             in language  on input line 289.
 Package babel Info: Redefining danish shorthand "~
-(babel)             in language  on input line 280.
+(babel)             in language  on input line 289.
  [4]
 Package babel Info: Redefining danish shorthand "|
-(babel)             in language  on input line 280.
+(babel)             in language  on input line 289.
 Package babel Info: Redefining danish shorthand "~
-(babel)             in language  on input line 280.
+(babel)             in language  on input line 289.
  [5]
 Package babel Info: Redefining danish shorthand "|
-(babel)             in language  on input line 280.
+(babel)             in language  on input line 289.
 Package babel Info: Redefining danish shorthand "~
-(babel)             in language  on input line 280.
+(babel)             in language  on input line 289.
  [6]
 Package babel Info: Redefining danish shorthand "|
-(babel)             in language  on input line 280.
+(babel)             in language  on input line 289.
 Package babel Info: Redefining danish shorthand "~
-(babel)             in language  on input line 280.
+(babel)             in language  on input line 289.
+ [7]
 Package babel Info: Redefining danish shorthand "|
-(babel)             in language  on input line 281.
+(babel)             in language  on input line 289.
 Package babel Info: Redefining danish shorthand "~
-(babel)             in language  on input line 281.
+(babel)             in language  on input line 289.
+ [8]
 Package babel Info: Redefining danish shorthand "|
-(babel)             in language  on input line 282.
+(babel)             in language  on input line 289.
 Package babel Info: Redefining danish shorthand "~
-(babel)             in language  on input line 282.
+(babel)             in language  on input line 289.
+Package babel Info: Redefining danish shorthand "|
+(babel)             in language  on input line 290.
+Package babel Info: Redefining danish shorthand "~
+(babel)             in language  on input line 290.
+Package babel Info: Redefining danish shorthand "|
+(babel)             in language  on input line 291.
+Package babel Info: Redefining danish shorthand "~
+(babel)             in language  on input line 291.
 
-Overfull \hbox (7.7702pt too wide) in paragraph at lines 289--294
-[][] 
- []
-
-
-Overfull \hbox (7.7702pt too wide) in paragraph at lines 300--305
+Overfull \hbox (7.7702pt too wide) in paragraph at lines 298--303
 [][] 
  []
 
@@ -1324,9 +1359,6 @@ Overfull \hbox (7.7702pt too wide) in paragraph at lines 300--305
 Overfull \hbox (7.7702pt too wide) in paragraph at lines 309--314
 [][] 
  []
-
-
-LaTeX Warning: `!h' float specifier changed to `!ht'.
 
 
 Overfull \hbox (7.7702pt too wide) in paragraph at lines 318--323
@@ -1337,7 +1369,7 @@ Overfull \hbox (7.7702pt too wide) in paragraph at lines 318--323
 LaTeX Warning: `!h' float specifier changed to `!ht'.
 
 
-Overfull \hbox (7.7702pt too wide) in paragraph at lines 328--333
+Overfull \hbox (7.7702pt too wide) in paragraph at lines 327--332
 [][] 
  []
 
@@ -1345,7 +1377,7 @@ Overfull \hbox (7.7702pt too wide) in paragraph at lines 328--333
 LaTeX Warning: `!h' float specifier changed to `!ht'.
 
 
-Overfull \hbox (7.7702pt too wide) in paragraph at lines 339--345
+Overfull \hbox (7.7702pt too wide) in paragraph at lines 337--342
 [][] 
  []
 
@@ -1353,7 +1385,7 @@ Overfull \hbox (7.7702pt too wide) in paragraph at lines 339--345
 LaTeX Warning: `!h' float specifier changed to `!ht'.
 
 
-Overfull \hbox (7.7702pt too wide) in paragraph at lines 350--356
+Overfull \hbox (7.7702pt too wide) in paragraph at lines 348--354
 [][] 
  []
 
@@ -1361,7 +1393,7 @@ Overfull \hbox (7.7702pt too wide) in paragraph at lines 350--356
 LaTeX Warning: `!h' float specifier changed to `!ht'.
 
 
-Overfull \hbox (7.7702pt too wide) in paragraph at lines 361--367
+Overfull \hbox (7.7702pt too wide) in paragraph at lines 359--365
 [][] 
  []
 
@@ -1369,7 +1401,7 @@ Overfull \hbox (7.7702pt too wide) in paragraph at lines 361--367
 LaTeX Warning: `!h' float specifier changed to `!ht'.
 
 
-Overfull \hbox (7.7702pt too wide) in paragraph at lines 371--377
+Overfull \hbox (7.7702pt too wide) in paragraph at lines 370--376
 [][] 
  []
 
@@ -1377,7 +1409,7 @@ Overfull \hbox (7.7702pt too wide) in paragraph at lines 371--377
 LaTeX Warning: `!h' float specifier changed to `!ht'.
 
 
-Overfull \hbox (7.7702pt too wide) in paragraph at lines 381--386
+Overfull \hbox (7.7702pt too wide) in paragraph at lines 380--386
 [][] 
  []
 
@@ -1392,42 +1424,50 @@ Overfull \hbox (7.7702pt too wide) in paragraph at lines 390--395
 
 LaTeX Warning: `!h' float specifier changed to `!ht'.
 
+
+Overfull \hbox (7.7702pt too wide) in paragraph at lines 399--404
+[][] 
+ []
+
+
+LaTeX Warning: `!h' float specifier changed to `!ht'.
+
 Package babel Info: Redefining danish shorthand "|
-(babel)             in language  on input line 398.
+(babel)             in language  on input line 407.
 Package babel Info: Redefining danish shorthand "~
-(babel)             in language  on input line 398.
-[7
+(babel)             in language  on input line 407.
+[9
 
 ]
 Package babel Info: Redefining danish shorthand "|
-(babel)             in language  on input line 401.
+(babel)             in language  on input line 410.
 Package babel Info: Redefining danish shorthand "~
-(babel)             in language  on input line 401.
+(babel)             in language  on input line 410.
 
-Overfull \hbox (8.78922pt too wide) in alignment at lines 403--413
+Overfull \hbox (8.78922pt too wide) in alignment at lines 412--422
  [] [] [] [] [] [] 
  []
 
 Package babel Info: Redefining danish shorthand "|
-(babel)             in language  on input line 413.
+(babel)             in language  on input line 422.
 Package babel Info: Redefining danish shorthand "~
-(babel)             in language  on input line 413.
-[8]
+(babel)             in language  on input line 422.
+[10]
 Package babel Info: Redefining danish shorthand "|
-(babel)             in language  on input line 415.
+(babel)             in language  on input line 424.
 Package babel Info: Redefining danish shorthand "~
-(babel)             in language  on input line 415.
+(babel)             in language  on input line 424.
 
 
 LaTeX Warning: `!h' float specifier changed to `!ht'.
 
 )
-Underfull \hbox (badness 10000) in paragraph at lines 424--53
+Underfull \hbox (badness 10000) in paragraph at lines 433--53
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 424--53
+Underfull \hbox (badness 10000) in paragraph at lines 433--53
 
  []
 
@@ -1438,17 +1478,17 @@ Package babel Info: Redefining danish shorthand "|
 (babel)             in language  on input line 53.
 Package babel Info: Redefining danish shorthand "~
 (babel)             in language  on input line 53.
-[9]
+[11]
 Package babel Info: Redefining danish shorthand "|
 (babel)             in language  on input line 53.
 Package babel Info: Redefining danish shorthand "~
 (babel)             in language  on input line 53.
- [10]
+ [12]
 Package babel Info: Redefining danish shorthand "|
 (babel)             in language  on input line 53.
 Package babel Info: Redefining danish shorthand "~
 (babel)             in language  on input line 53.
- [11]
+ [13]
 \tf@toc=\write5
 Package atveryend Info: Empty hook `BeforeClearDocument' on input line 54.
 Package atveryend Info: Empty hook `AfterLastShipout' on input line 54.
@@ -1464,10 +1504,10 @@ LaTeX Warning: There were multiply-defined labels.
 Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 54.
  ) 
 Here is how much of TeX's memory you used:
- 12194 strings out of 493698
- 173916 string characters out of 3141969
- 337384 words of memory out of 3000000
- 15283 multiletter control sequences out of 15000+200000
+ 12210 strings out of 493698
+ 174280 string characters out of 3141969
+ 337385 words of memory out of 3000000
+ 15295 multiletter control sequences out of 15000+200000
  50294 words of font info for 44 fonts, out of 3000000 for 9000
  1025 hyphenation exceptions out of 8191
  46i,10n,37p,313b,440s stack positions out of 5000i,500n,10000p,200000b,50000s
@@ -1478,9 +1518,9 @@ s/type1/public/lm/lmbx12.pfb><C:/Program Files (x86)/MiKTeX 2.9/fonts/type1/pub
 lic/lm/lmr10.pfb><C:/Program Files (x86)/MiKTeX 2.9/fonts/type1/public/lm/lmr12
 .pfb><C:/Program Files (x86)/MiKTeX 2.9/fonts/type1/public/lm/lmr17.pfb><C:/Pro
 gram Files (x86)/MiKTeX 2.9/fonts/type1/public/lm/lmro10.pfb>
-Output written on skabelon.pdf (15 pages, 263558 bytes).
+Output written on skabelon.pdf (17 pages, 318834 bytes).
 PDF statistics:
- 183 PDF objects out of 1000 (max. 8388607)
+ 195 PDF objects out of 1000 (max. 8388607)
  38 named destinations out of 1000 (max. 500000)
- 110 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 125 words of extra memory for PDF output out of 10000 (max. 10000000)
 
