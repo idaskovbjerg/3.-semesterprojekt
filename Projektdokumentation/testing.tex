@@ -41,10 +41,10 @@ Kundens underskrift &&&&&&&&&&Leverandørens underskrift\\
 
 \section{Use cases}
 \begin{figure}[h!]
-\includegraphics[width =0.8\textwidth , right]{billeder/UCStart}
+\includegraphics[width =0.8\textwidth , center]{billeder/UCStart}
 \end{figure}
 \begin{figure}[h!]
-\includegraphics[width =0.8\textwidth , right]{billeder/UChoved}
+\includegraphics[width =0.8\textwidth , center]{billeder/UChoved}
 \end{figure}
 \begin{table}[H]
 \caption{Use case 1}\label{tab:tabel3}
@@ -66,43 +66,107 @@ Udvidelse/undtagelser: & - \\\hline
 \end{tabular}
 \end{table}
 
-
-\begin{table}[H]
+\begin{table}
 \caption{Use case 2}\label{tab:tabel3}
 \begin{tabular}{| l | >{\raggedright\arraybackslash}p{11cm} |}
    \hline
-   \textbf{Use case 2} & \textbf{Start måling}\\ \hline
-   Mål: & Få indsendt signalerne fra patienten, startet analysen samt skiftet til hovedskærmen \\ \hline
-   Initiering: & Startes af Sundhedsfaglig personale\\ \hline
-   Aktører:& Sundhedsfaglig personale (primær), Transducer (sekundær)\\ \hline
-   Referencer: & Use case 1 og Use case 11 \\ \hline
-   Samtidige forekomster: & Én transducer pr. måling \\\hline
-   Forudsætninger: & Blodtryksmålersystemet er tændt. Use case 11 er kørt succesfuldt. Sundhedsfaglig personale ID. er indtastet. \\ \hline
-   Resultat:& Tranducerens data vises i GUI\\ \hline
+   \textbf{Use case 2} & \textbf{Opsætning}\\ \hline
+   Mål: & Få valgt port til NI-DAQ \\ \hline
+   Initiering: & startes af Sundhedsfaglig personalee\\ \hline
+   Aktører:& Sundhedsfaglig personale (primær) \\ \hline
+   Referencer: &  -\\ \hline
+   Samtidige forekomster: & Ét blodtryksmålersystem pr. opsætning \\\hline
+   Forudsætninger: & Systemet tilsluttet en computer og tændt. \\ \hline
+   Resultat:& Port valgt\\ \hline
    Hovedscenarie:& 
-1. Tryk på "Start" på startskærm \newline
-2. Kommer ind på hovedskærmen \newline
-   $[$Undtagelse 1: Ingen data indhentet$]$\newline
-3. Systemet indhenter data \newline
-3. EKG, blodtrykskurve og iltmætningskurve præsenteres kontinuert på en graf. Puls, Systolisk, diastolisk, middeltryk og iltmætning vises som talværdier på GUI. \\\hline
-Udvidelse/undtagelser: & $[$ Undtagelse 1: Ingen data indhentet$]$\newline
-1.1 Intet data er indhentet\newline
-1.2 Use case afsluttes\\\hline
+1. Tryk på dropdown på startskærmen\newline
+2. Port vælges \\\hline
+Udvidelse/undtagelser: & -\\\hline
 \end{tabular}
 \end{table}
+
 
 
 \begin{table}[H]
 \caption{Use case 3}\label{tab:tabel3}
 \begin{tabular}{| l | >{\raggedright\arraybackslash}p{11cm} |}
    \hline
-   \textbf{Use case 3} & \textbf{Nulpunkts indstille signal}\\ \hline
+   \textbf{Use case 3} & \textbf{Log på}\\ \hline
+   Mål: & Den sundhedsfaglige få logget på "EPJ"-systemet \\ \hline
+   Initiering: & Startes af Sundhedsfaglig personale\\ \hline
+   Aktører:& Sundhedsfaglig personale (primær)\\ \hline
+   Referencer: & Use case 2 \\ \hline
+   Samtidige forekomster: & Én sundhedsfaglig pr. system \\\hline
+   Forudsætninger: & Use case 2 er kørt succesfuldt\\ \hline
+   Resultat:& Den sundhedsfaglige er logget på\\ \hline
+   Hovedscenarie:& 
+1. Indtast brugernavn og kode\newline
+2. Tryk på "Login"\newline
+   $[$Undtagelse 1: Brugernavn og/eller kode indtastet forkert$]$\\\hline
+Udvidelse/undtagelser: & $[$Undtagelse 1: Brugernavn og/eller kode indtastet forkert$]$\newline
+1.1 Besked: "Brugernavn og/eller kode indtastet forkert"\newline
+1.2 Use case 3 starter forfra \\\hline
+\end{tabular}
+\end{table}
+
+
+
+\begin{table}[H]
+\caption{Use case 4}\label{tab:tabel3}
+\begin{tabular}{| l | >{\raggedright\arraybackslash}p{11cm} |}
+   \hline
+   \textbf{Use case 4} & \textbf{Vælg patient}\\ \hline
+   Mål: & Få valgt patienten og skiftet til hovedskærmen \\ \hline
+   Initiering: & Startes af Sundhedsfaglig personale\\ \hline
+   Aktører:& Sundhedsfaglig personale (primær)\\ \hline
+   Referencer: & Use case 3 \\ \hline
+   Samtidige forekomster: & - \\\hline
+   Forudsætninger: & Use case 3 er kørt succesfuldt.\\ \hline
+   Resultat:& Patient valgt og kommet til hovedskærmen.\\ \hline
+   Hovedscenarie:& 
+1. Tryk på dropdrow på startskærm \newline
+2. Vælg patienten og dobbeltklik på denne \newline
+3. Hovedskærmen kommer frem  \\\hline
+Udvidelse/undtagelser: & - \\\hline
+\end{tabular}
+\end{table}
+
+
+
+\begin{table}[H]
+\caption{Use case 5}\label{tab:tabel3}
+\begin{tabular}{| l | >{\raggedright\arraybackslash}p{11cm} |}
+   \hline
+   \textbf{Use case 5} & \textbf{Start signal}\\ \hline
+   Mål: & Få startet målingen \\ \hline
+   Initiering: & Startes af Sundhedsfaglig personale\\ \hline
+   Aktører:& Sundhedsfaglig personale (primær), Transducer (sekundær)\\ \hline
+   Referencer: & Use case 4\\ \hline
+   Samtidige forekomster: & Én transducer pr. måling  \\\hline
+   Forudsætninger: & Use case 4 er kørt succesfuldt og transduceren er tilsluttet\\ \hline
+   Resultat:& Transducerens data vises i GUI \\ \hline
+   Hovedscenarie:& 
+1. Tryk på "Start"\newline
+2. Systemet indhenter data og starter timer\newline
+3. EKG, arterietryk og iltmætningskurve præsenteres kontinuert på en graf. Puls, systolisk, diastolisk, middeltryk og iltmætning vises som talværdier på GUI\\\hline
+Udvidelse/undtagelser: & - \\\hline
+\end{tabular}
+\end{table}
+
+
+
+
+\begin{table}[H]
+\caption{Use case 6}\label{tab:tabel3}
+\begin{tabular}{| l | >{\raggedright\arraybackslash}p{11cm} |}
+   \hline
+   \textbf{Use case 6} & \textbf{Nulpunkts indstille signal}\\ \hline
    Mål: & Få nulpunkts indstillet signalerne, sådan at signalerne ligger korrekte på deres akse. \\ \hline
    Initiering: & Startes af Sundhedsfaglig personale\\ \hline
    Aktører:& Sundhedsfaglig personale (primær)\\ \hline
-   Referencer: & Use case 2\\ \hline
+   Referencer: & Use case 5\\ \hline
    Samtidige forekomster: & -  \\\hline
-   Forudsætninger: & Use case 2 er kørt succesfuldt\\ \hline
+   Forudsætninger: & Use case 5: Start signal, er kørt succesfuldt\\ \hline
    Resultat:& Signalet er nulpunkts indstillet\\ \hline
    Hovedscenarie:& 
 1. Tryk på "Nulpunks indstilling"\newline
@@ -112,42 +176,18 @@ Udvidelse/undtagelser: & - \\\hline
 \end{tabular}
 \end{table}
 
-\begin{table}[H]
-\caption{Use case 4}\label{tab:tabel3}
-\begin{tabular}{| l | >{\raggedright\arraybackslash}p{11cm} |}
-   \hline
-   \textbf{Use case 4} & \textbf{Gem data}\\ \hline
-   Mål: &  Få gemt EKG, blodtrykskurve, iltmætningskurve, puls, systole, diastole, middeltryk og iltmætning i databasen \\ \hline
-   Initiering: & Startes af Sundhedsfaglig personale\\ \hline
-   Aktører:& Sundhedsfaglig personale (primær), Database (sekundær)\\ \hline
-   Referencer: & Use Case 2\\ \hline
-   Samtidige forekomster: & - \\\hline
-   Forudsætninger: & Use case 2 er kørt succesfuldt  \\ \hline
-   Resultat:& Patientens data er gemt i database\\ \hline
-   Hovedscenarie:& 
-1. Tryk på "Gem"\newline
-   $[$Undtagelse 1: Intet CPR koblet til data$]$\newline
-2. Systemet gemmer EKG, blodtrykskurve, iltmætningskurve, puls, systole, diastole, middeltryk og iltmætning i database\newline
-3. Besked "Data med CPR gemt" vises på GUI \\\hline
-Udvidelse/undtagelser: & $[$Undtagelse 1: Intet CPR koblet til data$]$\newline
-1.1. Indtast patientens CPR i pop-up vindue\newline
-1.2. Tryk på "Næste"\newline
-1.3. Systemet gemmer EKG, blodtrykskurve, iltmætningskurve, puls, systole, diastole, middeltryk og iltmætning i database.\newline
-1.4. Use case afsluttet \\\hline
-\end{tabular}
-\end{table}
 
 \begin{table}[H]
-\caption{Use case 5}\label{tab:tabel3}
+\caption{Use case 7}\label{tab:tabel3}
 \begin{tabular}{| l | >{\raggedright\arraybackslash}p{11cm} |}
    \hline
-   \textbf{Use case 5} & \textbf{Udsæt alarm}\\ \hline
+   \textbf{Use case 7} & \textbf{Udsæt alarm}\\ \hline
    Mål: & Få udsat alarmens lyd i et minut \\ \hline
    Initiering: & Startes af Sundhedsfaglig personale\\ \hline
    Aktører:& Sundhedsfaglig personale (primær) \\ \hline
-   Referencer: & Use case 10 \\ \hline
+   Referencer: & Use case 11 \\ \hline
    Samtidige forekomster: & \\\hline
-   Forudsætninger: & Use case 10: Alarmer, er igangsat \\ \hline
+   Forudsætninger: & Use case 11: Alarmer, er igangsat \\ \hline
    Resultat:& Alarmens lyd er stoppet et minut\\ \hline
    Hovedscenarie:& 
 1. Tryk på "Udsæt alarm"\newline
@@ -157,16 +197,16 @@ Udvidelse/undtagelser: & -\\\hline
 \end{table}
 
 \begin{table}[H]
-\caption{Use case 6}\label{tab:tabel3}
+\caption{Use case 8}\label{tab:tabel3}
 \begin{tabular}{| l | >{\raggedright\arraybackslash}p{11cm} |}
    \hline
-   \textbf{Use case 6} & \textbf{Digitalt filter}\\ \hline
+   \textbf{Use case 8} & \textbf{Digitalt filter}\\ \hline
    Mål: &  Få slået det digitale filter til eller fra \\ \hline
    Initiering: & Startes af Sundhedsfaglig personale\\ \hline
    Aktører:& Sundhedsfaglig personale (primær)\\ \hline
-   Referencer: & Use case 2 \\ \hline
+   Referencer: & Use case 5 \\ \hline
    Samtidige forekomster: & - \\\hline
-   Forudsætninger: & Use case 2 er kørt succesfuldt\\ \hline
+   Forudsætninger: & Use case 5: Start signal, er kørt succesfuldt\\ \hline
    Resultat:& Det digitale filter er slået til eller fra\\ \hline
    Hovedscenarie:& 
 1. Tryk på "Digitalt filter OFF" \newline
@@ -178,16 +218,16 @@ Udvidelse/undtagelser: & -\\\hline
 \end{table}
 
 \begin{table}[H]
-\caption{Use case 7}\label{tab:tabel3}
+\caption{Use case 9}\label{tab:tabel3}
 \begin{tabular}{| l | >{\raggedright\arraybackslash}p{11cm} |}
    \hline
-   \textbf{Use case 7} & \textbf{Juster systolens grænseværdi}\\ \hline
+   \textbf{Use case 9} & \textbf{Juster systolens grænseværdi}\\ \hline
    Mål: & Få flyttet grænseværdi intervallet for systolen op eller ned \\ \hline
    Initiering: & Startes af Sundhedsfaglig personale\\ \hline
    Aktører:& Sundhedsfaglig personale (primær)\\ \hline
-   Referencer: & Use case 2 \\ \hline
+   Referencer: & Use case 5 \\ \hline
    Samtidige forekomster: & \\\hline
-   Forudsætninger: & Use case 2 er kørt succesfuldt\\ \hline
+   Forudsætninger: & Use case 5: Start signal, er kørt succesfuldt\\ \hline
    Resultat:& Grænseværdi intervallet for systolen er justeret og intervals værdierne vises i GUI. \\ \hline
    Hovedscenarie:& 
 1. Tryk på "Systole op"\newline
@@ -199,16 +239,16 @@ Udvidelse/undtagelser: & -\\\hline
 \end{table}
 
 \begin{table}[H]
-\caption{Use case 8}\label{tab:tabel3}
+\caption{Use case 10}\label{tab:tabel3}
 \begin{tabular}{| l | >{\raggedright\arraybackslash}p{11cm} |}
    \hline
-   \textbf{Use case 8} & \textbf{Juster diastolens grænseværdi}\\ \hline
+   \textbf{Use case 10} & \textbf{Juster diastolens grænseværdi}\\ \hline
    Mål: &  Få flyttet grænseværdi intervallet for diastolen op eller ned\\ \hline
    Initiering: & Startes af Sundhedsfaglig personale \\ \hline
    Aktører: & Sundhedsfaglig personale (primær) \\ \hline
-   Referencer: & Use case 2\\ \hline
+   Referencer: & Use case 5\\ \hline
    Samtidige forekomster: & - \\\hline
-   Forudsætninger: & Use case 2 er kørt succesfuldt\\ \hline
+   Forudsætninger: & Use case 5: Start signal, er kørt succesfuldt\\ \hline
    Resultat:& Grænseværdi intervallet for diastolen er justeret og intervals værdierne vises i GUI.\\ \hline
    Hovedscenarie:& 
 1. Tryk "Diastole op"\newline
@@ -220,42 +260,16 @@ Udvidelse/undtagelser: & -\\\hline
 \end{table}
 
 \begin{table}[H]
-\caption{Use case 9}\label{tab:tabel3}
+\caption{Use case 11}\label{tab:tabel3}
 \begin{tabular}{| l | >{\raggedright\arraybackslash}p{11cm} |}
    \hline
-   \textbf{Use case 9} & \textbf{Afbryd signal}\\ \hline
-   Mål: & Få afbrudt signalet og vendt tilbage til startskærmen. \\ \hline
-   Initiering: & Startes af Sundhedsfaglig personale\\ \hline
-   Aktører:& Sundhedsfaglig personale (primær) \\ \hline
-   Referencer: & Use case 2\\ \hline
-   Samtidige forekomster: & - \\\hline
-   Forudsætninger: & Use case 2 er kørt succesfuldt \\ \hline
-   Resultat:& Afbrudt signalet og vendt tilbage til startskærmen \\ \hline
-   Hovedscenarie:& 
-1. Tryk på "Afbryd" \newline
-2. Pop-up vindue kommer op: "Er du sikker"\newline
-3. Tryk på "Ja"\newline
-   $[$Udvidelse 1: Tryk på "Nej"$]$\newline
-5. Startkærmen kommer frem og ny måling kan foretages\\\hline
-Udvidelse/undtagelser: & $[$Udvidelse 1: Tryk på "Nej"$]$\newline
-1.1 Tryk "Nej"\newline
-1.2 Kommer tilbage til hovedskærmen\newline
-1.3 Use case afsluttet\\\hline
-\end{tabular}
-\end{table}
-
-
-\begin{table}[H]
-\caption{Use case 10}\label{tab:tabel3}
-\begin{tabular}{| l | >{\raggedright\arraybackslash}p{11cm} |}
-   \hline
-   \textbf{Use case 10} & \textbf{Alarmer}\\ \hline
+   \textbf{Use case 11} & \textbf{Alarmer}\\ \hline
    Mål: & Få startet alarmeringen ved overskridelse af grænseværdi \\ \hline
    Initiering: & Systemet starter denne Use case\\ \hline
    Aktører:& Sundhedsfaglig personale (sekundær)\\ \hline
-   Referencer: & Use case 2 \\ \hline
+   Referencer: & Use case 5 \\ \hline
    Samtidige forekomster: & - \\\hline
-   Forudsætninger: & Målingen i Use case 2 er kørt succesfuldt \\ \hline
+   Forudsætninger: & Målingen i Use case 5: Start signal, er kørt succesfuldt \\ \hline
    Resultat:& Alarmen starter\\ \hline
    Hovedscenarie:& 
 1. Grænseværdi overskrides \newline
@@ -270,25 +284,56 @@ Udvidelse/undtagelser: & $[$Udvidelse 1: Anden grænseværdi overskrides$]$ \new
 \end{tabular}
 \end{table}
 
-
 \begin{table}[H]
-\caption{Use case 11}\label{tab:tabel3}
+\caption{Use case 12}\label{tab:tabel3}
 \begin{tabular}{| l | >{\raggedright\arraybackslash}p{11cm} |}
    \hline
-   \textbf{Use case 15} & \textbf{Opsætning}\\ \hline
-   Mål: & Få valgt port til NI-DAQ \\ \hline
-   Initiering: & startes af Sundhedsfaglig personalee\\ \hline
-   Aktører:& Sundhedsfaglig personale (primær) \\ \hline
-   Referencer: &  -\\ \hline
-   Samtidige forekomster: & Ét blodtryksmålersystem pr. opsætning \\\hline
-   Forudsætninger: & Tilsluttet en computer. \\ \hline
-   Resultat:& Port valgt\\ \hline
+   \textbf{Use case 12} & \textbf{Stop signal}\\ \hline
+   Mål: &  Få stoppet signalet\\ \hline
+   Initiering: & Startes af Sundhedsfaglig personale \\ \hline
+   Aktører: & Sundhedsfaglig personale (primær) \\ \hline
+   Referencer: & Use case 5\\ \hline
+   Samtidige forekomster: & - \\\hline
+   Forudsætninger: & Use case 5: Start signal, er kørt succesfuldt\\ \hline
+   Resultat:& Signalet er stoppet.\\ \hline
    Hovedscenarie:& 
-1. Tryk på dropdown på startskærmen\newline
-2. Port vælges \\\hline
+1. Tryk "Stop"\newline
+2. Signalet og timer stopper.\\\hline
 Udvidelse/undtagelser: & -\\\hline
 \end{tabular}
 \end{table}
+
+
+\begin{table}[H]
+\caption{Use case 13}\label{tab:tabel3}
+\begin{tabular}{| l | >{\raggedright\arraybackslash}p{11cm} |}
+   \hline
+   \textbf{Use case 13} & \textbf{Afbryd signal}\\ \hline
+   Mål: & Få vendt tilbage til startskærmen. \\ \hline
+   Initiering: & Startes af Sundhedsfaglig personale\\ \hline
+   Aktører:& Sundhedsfaglig personale (primær) \\ \hline
+   Referencer: & Use case 12\\ \hline
+   Samtidige forekomster: & - \\\hline
+   Forudsætninger: & Use case 12: Stop signal, er kørt succesfuldt \\ \hline
+   Resultat:& Vendt tilbage til startskærmen \\ \hline
+   Hovedscenarie:& 
+1. Tryk på "Afbryd" \newline
+2. Pop-up vindue kommer op: "Er du sikker"\newline
+3. Tryk på "Ja"\newline
+   $[$Udvidelse 1: Tryk på "Nej"$]$\newline
+5. Startkærmen kommer frem og ny måling kan foretages\\\hline
+Udvidelse/undtagelser: & $[$Udvidelse 1: Tryk på "Nej"$]$\newline
+1.1 Tryk "Nej"\newline
+1.2 Kommer tilbage til hovedskærmen\newline
+1.3 Use case afsluttet\\\hline
+\end{tabular}
+\end{table}
+
+
+
+
+
+%\begin{table}[H]
 
 \newpage 
 \newpage 
@@ -316,15 +361,18 @@ De ikke-funktionelle krav er opsat efter FURPS+ metoden. De er prioriteret efter
 \end{enumerate}
 \item \textbf{Usability}
 \begin{enumerate}
-\item (\textbf{M}) Programmet skal have en "Start" knap på startskærmen
+\item (\textbf{S}) Programmet skal have to window forms: startskærm, der fungerer som  EPJ systemet og hovedskærm, der fungerer som selve blodtryksmåleren
+\item (\textbf{M}) Programmet skal have en "Login" knap på startskærmen
 \item (\textbf{S}) Programmet skal have en "Kalibrering" knap på startskærmen
-\item (\textbf{M}) Programmet skal have en "Nulpunkts indstilling" knap på hovedskærmen
 \item (\textbf{M}) Sundhedsfagligt personale skal kunne ændre "devicename/enhedsnavn" i dropdown på startskærmen
+\item (\textbf{S}) Programmet skal indeholde en dropdown, hvor patienten kan vælges, på startskærmen
+\item (\textbf{M}) Programmet skal have en "Nulpunkts indstilling" knap på hovedskærmen
 \item (\textbf{M}) Programmet skal have en knap til at slå det digitale filter fra og til på hovedskærmen
-\item (\textbf{S}) Programmet skal have en "Gem" knap, hvilken gemmer patientens data, på hovedskærmen
 \item (\textbf{M}) Programmet skal have knapper til at justere systolisk og diastolisk grænseværdi-intervaller op og ned, på hovedskærmen
 \item (\textbf{M}) Programmet skal have en "Udsæt alarm" knap på hovedskærmen
-\item (\textbf{M}) Programmet skal have en "Afbryd" knap på hovedskærmen
+\item (\textbf{M}) Programmet skal have en "Tænd" knap på hovedskærmen.
+\item (\textbf{M}) Programmet skal have en "Sluk" knap på hovedskærmen
+\item (\textbf{M}) Programmet skal have en "Afbryd" knap på hovedskærmen.
 \item (\textbf{M}) Teksten og graferne på GUI’en skal kunne læses fra 2 meters afstand ved synsstyrke i intervallet på +/-1
 \item (\textbf{M}) Programmet skal præsentere data på grafer på følgende måde (Se afsnit nedenfor)
 \begin{itemize}
@@ -337,6 +385,12 @@ De ikke-funktionelle krav er opsat efter FURPS+ metoden. De er prioriteret efter
 \item Hjertefrekvens i lysegrøn
 \ Systolisk samt diastolisk tryk i rødt, ligeledes middelblodtrykket i parentes under i rødt.
 \end{itemize}
+\begin{figure}[h!]
+\includegraphics[width =0.5\textwidth , left]{billeder/skitseStart}
+\end{figure}
+\begin{figure}[h!]
+\includegraphics[width =1.0\textwidth , left]{billeder/skitseHoved}
+\end{figure}
 \end{enumerate}
 \item \textbf{Reliability}
 \begin{enumerate}
