@@ -6,11 +6,11 @@
 \contentsline {section}{\numberline {1.3}Systembeskrivelse}{2}{section.1.3}
 \contentsline {section}{\numberline {1.4}Akt\IeC {\o }r-kontekst diagram}{3}{section.1.4}
 \contentsline {section}{\numberline {1.5}Use cases}{4}{section.1.5}
-\contentsline {section}{\numberline {1.6}Ikke-funktionelle krav}{10}{section.1.6}
-\contentsline {subsection}{FURPS+ med MoSCoW}{10}{subsection*.2}
-\contentsline {chapter}{\chapternumberline {2}Accepttest}{13}{chapter.2}
-\contentsline {section}{\numberline {2.1}Indledning}{13}{section.2.1}
-\contentsline {section}{\numberline {2.2}Accepttest for funktionelle krav}{13}{section.2.2}
-\contentsline {subsection}{Opstilling}{13}{subsection*.3}
-\contentsline {section}{\numberline {2.3}Accepttest for ikke-funktionelle krav}{17}{section.2.3}
-\contentsline {section}{\numberline {2.4}Godkendelses formular}{17}{section.2.4}
+\contentsline {section}{\numberline {1.6}Ikke-funktionelle krav}{11}{section.1.6}
+\contentsline {subsection}{FURPS+ med MoSCoW}{11}{subsection*.2}
+\contentsline {chapter}{\chapternumberline {2}Accepttest}{15}{chapter.2}
+\contentsline {section}{\numberline {2.1}Indledning}{15}{section.2.1}
+\contentsline {section}{\numberline {2.2}Accepttest for funktionelle krav}{15}{section.2.2}
+\contentsline {subsection}{Opstilling}{15}{subsection*.3}
+\contentsline {section}{\numberline {2.3}Accepttest for ikke-funktionelle krav}{20}{section.2.3}
+\contentsline {section}{\numberline {2.4}Godkendelses formular}{23}{section.2.4}

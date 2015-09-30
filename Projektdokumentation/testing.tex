@@ -33,7 +33,7 @@ Kundens underskrift &&&&&&&&&&Leverandørens underskrift\\
 
 \section{Aktør-kontekst diagram}
 \begin{figure}[h!]
-\includegraphics[width =1.0\textwidth , right]{billeder/Aktorkontekst.jpg}
+\includegraphics[width =0.8\textwidth , left]{billeder/Aktorkontekst.jpg}
 \end{figure}
 
 \newpage
@@ -41,11 +41,12 @@ Kundens underskrift &&&&&&&&&&Leverandørens underskrift\\
 
 \section{Use cases}
 \begin{figure}[h!]
-\includegraphics[width =0.8\textwidth , center]{billeder/UCStart}
+\includegraphics[width =0.7\textwidth , center]{billeder/UCStart}
 \end{figure}
 \begin{figure}[h!]
 \includegraphics[width =0.8\textwidth , center]{billeder/UChoved}
 \end{figure}
+\newpage
 \begin{table}[H]
 \caption{Use case 1}\label{tab:tabel3}
 \begin{tabular}{| l | >{\raggedright\arraybackslash}p{11cm} |}
@@ -66,7 +67,7 @@ Udvidelse/undtagelser: & - \\\hline
 \end{tabular}
 \end{table}
 
-\begin{table}
+\begin{table}[H]
 \caption{Use case 2}\label{tab:tabel3}
 \begin{tabular}{| l | >{\raggedright\arraybackslash}p{11cm} |}
    \hline
@@ -79,7 +80,7 @@ Udvidelse/undtagelser: & - \\\hline
    Forudsætninger: & Systemet tilsluttet en computer og tændt. \\ \hline
    Resultat:& Port valgt\\ \hline
    Hovedscenarie:& 
-1. Tryk på dropdown på startskærmen\newline
+1. Tryk på opsætnings dropdown på startskærmen\newline
 2. Port vælges \\\hline
 Udvidelse/undtagelser: & -\\\hline
 \end{tabular}
@@ -97,7 +98,7 @@ Udvidelse/undtagelser: & -\\\hline
    Aktører:& Sundhedsfaglig personale (primær)\\ \hline
    Referencer: & Use case 2 \\ \hline
    Samtidige forekomster: & Én sundhedsfaglig pr. system \\\hline
-   Forudsætninger: & Use case 2 er kørt succesfuldt\\ \hline
+   Forudsætninger: & Use case 2: Opsætning, er kørt succesfuldt\\ \hline
    Resultat:& Den sundhedsfaglige er logget på\\ \hline
    Hovedscenarie:& 
 1. Indtast brugernavn og kode\newline
@@ -121,7 +122,7 @@ Udvidelse/undtagelser: & $[$Undtagelse 1: Brugernavn og/eller kode indtastet for
    Aktører:& Sundhedsfaglig personale (primær)\\ \hline
    Referencer: & Use case 3 \\ \hline
    Samtidige forekomster: & - \\\hline
-   Forudsætninger: & Use case 3 er kørt succesfuldt.\\ \hline
+   Forudsætninger: & Use case 3: Log på, er kørt succesfuldt.\\ \hline
    Resultat:& Patient valgt og kommet til hovedskærmen.\\ \hline
    Hovedscenarie:& 
 1. Tryk på dropdrow på startskærm \newline
@@ -143,17 +144,15 @@ Udvidelse/undtagelser: & - \\\hline
    Aktører:& Sundhedsfaglig personale (primær), Transducer (sekundær)\\ \hline
    Referencer: & Use case 4\\ \hline
    Samtidige forekomster: & Én transducer pr. måling  \\\hline
-   Forudsætninger: & Use case 4 er kørt succesfuldt og transduceren er tilsluttet\\ \hline
+   Forudsætninger: & Use case 4: Vælg patient, er kørt succesfuldt og transduceren er tilsluttet\\ \hline
    Resultat:& Transducerens data vises i GUI \\ \hline
    Hovedscenarie:& 
 1. Tryk på "Start"\newline
 2. Systemet indhenter data og starter timer\newline
-3. EKG, arterietryk og iltmætningskurve præsenteres kontinuert på en graf. Puls, systolisk, diastolisk, middeltryk og iltmætning vises som talværdier på GUI\\\hline
+3. EKG, arterietryk og iltmætningskurve præsenteres kontinuert på hver sin graf. Puls, systole, diastole, middeltryk og iltmætning vises som talværdier på GUI\\\hline
 Udvidelse/undtagelser: & - \\\hline
 \end{tabular}
 \end{table}
-
-
 
 
 \begin{table}[H]
@@ -252,9 +251,9 @@ Udvidelse/undtagelser: & -\\\hline
    Resultat:& Grænseværdi intervallet for diastolen er justeret og intervals værdierne vises i GUI.\\ \hline
    Hovedscenarie:& 
 1. Tryk "Diastole op"\newline
-2. Diastolens grænseværdi ændres 2.5mmHg op og intervellet vises i GUI\newline
+2. Diastolens grænseværdi ændres 2.5mmHg op og intervallet vises i GUI\newline
 3. Tryk "Diastole ned"\newline
-4. Diastolens grænseværdi ændres 2.5mmHg ned og intervellet vises i GUI\\\hline
+4. Diastolens grænseværdi ændres 2.5mmHg ned og intervallet vises i GUI\\\hline
 Udvidelse/undtagelser: & -\\\hline
 \end{tabular}
 \end{table}
@@ -273,8 +272,7 @@ Udvidelse/undtagelser: & -\\\hline
    Resultat:& Alarmen starter\\ \hline
    Hovedscenarie:& 
 1. Grænseværdi overskrides \newline
-2. Grænseværdi er overskredet\newline
-3. Alarm starter med lyd og tallet som har overskredet grænseværdien blinker.\newline
+2. Alarm starter med lyd og tallet, hvis grænseværdi er overskredet, blinker.\newline
     $[$Udvidelse 1: Anden grænseværdi overskrides$]$ 
 \\\hline
 Udvidelse/undtagelser: & $[$Udvidelse 1: Anden grænseværdi overskrides$]$ \newline
@@ -318,7 +316,7 @@ Udvidelse/undtagelser: & -\\\hline
    Resultat:& Vendt tilbage til startskærmen \\ \hline
    Hovedscenarie:& 
 1. Tryk på "Afbryd" \newline
-2. Pop-up vindue kommer op: "Er du sikker"\newline
+2. Pop-up vindue kommer op: "Er du sikker?"\newline
 3. Tryk på "Ja"\newline
    $[$Udvidelse 1: Tryk på "Nej"$]$\newline
 5. Startkærmen kommer frem og ny måling kan foretages\\\hline
@@ -329,11 +327,6 @@ Udvidelse/undtagelser: & $[$Udvidelse 1: Tryk på "Nej"$]$\newline
 \end{tabular}
 \end{table}
 
-
-
-
-
-%\begin{table}[H]
 
 \newpage 
 \newpage 
@@ -356,12 +349,12 @@ De ikke-funktionelle krav er opsat efter FURPS+ metoden. De er prioriteret efter
 \item \textbf{Functionality}
 \begin{enumerate}
 \item (\textbf{M}) Programmet skal have et digitalt filter til udglatning af blodtrykssignal
-\item (\textbf{M})Programmet skal give alarm når grænseværdier overskrides med lyd og med den overskrede grænseværdi blikende på skærmen.
+\item (\textbf{M})Programmet skal give alarm når grænseværdier overskrides med lyd og hvor den overskredede grænseværdi blinker på skærmen.
 \item (\textbf{M}) Programmet skal kunne gemme blodtrykssignalet i en database.
 \end{enumerate}
 \item \textbf{Usability}
 \begin{enumerate}
-\item (\textbf{S}) Programmet skal have to window forms: startskærm, der fungerer som  EPJ systemet og hovedskærm, der fungerer som selve blodtryksmåleren
+\item (\textbf{S}) Programmet skal have to window forms: startskærm, der fungerer som  EPJ systemet og hovedskærm, hvilken fungerer som selve blodtryksmåleren
 \item (\textbf{M}) Programmet skal have en "Login" knap på startskærmen
 \item (\textbf{S}) Programmet skal have en "Kalibrering" knap på startskærmen
 \item (\textbf{M}) Sundhedsfagligt personale skal kunne ændre "devicename/enhedsnavn" i dropdown på startskærmen
@@ -373,7 +366,8 @@ De ikke-funktionelle krav er opsat efter FURPS+ metoden. De er prioriteret efter
 \item (\textbf{M}) Programmet skal have en "Tænd" knap på hovedskærmen.
 \item (\textbf{M}) Programmet skal have en "Sluk" knap på hovedskærmen
 \item (\textbf{M}) Programmet skal have en "Afbryd" knap på hovedskærmen.
-\item (\textbf{M}) Teksten og graferne på GUI’en skal kunne læses fra 2 meters afstand ved synsstyrke i intervallet på +/-1
+\item (\textbf{M}) Teksten på startskærmen skal kunne læses fra 2 meters afstand ved synsstyrke i intervallet på +/-1
+\item (\textbf{M}) Teksten og graferne på hovedskærmen skal kunne læses fra 2 meters afstand ved synsstyrke i intervallet på +/-1 
 \item (\textbf{M}) Programmet skal præsentere data på grafer på følgende måde (Se afsnit nedenfor)
 \begin{itemize}
 \item EKG vises i lysegrøn
@@ -386,10 +380,12 @@ De ikke-funktionelle krav er opsat efter FURPS+ metoden. De er prioriteret efter
 \ Systolisk samt diastolisk tryk i rødt, ligeledes middelblodtrykket i parentes under i rødt.
 \end{itemize}
 \begin{figure}[h!]
-\includegraphics[width =0.5\textwidth , left]{billeder/skitseStart}
+\includegraphics[width =0.5\textwidth , center]{billeder/skitseStart}
+\caption{Skitse af startskærmen, hvilken repræsenterer EPJ systemet}
 \end{figure}
 \begin{figure}[h!]
-\includegraphics[width =1.0\textwidth , left]{billeder/skitseHoved}
+\includegraphics[width =1.0\textwidth , center]{billeder/skitseHoved}
+\caption{Skitse af hovedskærmen, hvilken repræsenterer en blodtryksmåler}
 \end{figure}
 \end{enumerate}
 \item \textbf{Reliability}
@@ -399,15 +395,15 @@ De ikke-funktionelle krav er opsat efter FURPS+ metoden. De er prioriteret efter
 \item \textbf{Performance}
 \begin{enumerate}
 \item (\textbf{S}) Tiden der går før måling af data påbegynder / vises i grafer må max være 2 sek.
-\item (\textbf{M}) Tiden der går fra at der er trykket på Gem-knappen til at data er gemt i database må være 2 sek. med en tolerance på +/-15\%  
+\item (\textbf{M}) Tiden der går fra at data er analyseret til at data er gemt i database må være 2 sek. med en tolerance på +/-15\%  
 \end{enumerate}
 \item \textbf{Supportability}
 \begin{enumerate}
-\item (\textbf{M}) Softwaren skal være opbygget af trelagsmodellen (Data-View-Model)
+\item (\textbf{M}) Softwaren skal være opbygget efter trelagsmodellen (Data-View-Model)
 \end{enumerate}
 \item \textbf{+ Test conditions}
 \begin{enumerate}
-\item (\textbf{M}) Der skal være adgang til en computer med Windows 7 eller 8 - computeren skal minimum have 4 GB RAM.
+\item (\textbf{M}) Der skal være adgang til en computer med Windows 7, 8 eller 10 - computeren skal minimum have 4 GB RAM.
 \item (\textbf{M}) Der skal være adgang til en computer hvor National Instruments er installeret.
 \end{enumerate}
 \end{enumerate}
@@ -423,19 +419,18 @@ Billede indsættes - haves ikke endnu
 \caption{Accepttest for Use case 1}\label{tab:tabel8}
 \begin{tabular}{|>{\raggedright\arraybackslash}p{2.5cm}| >{\raggedright\arraybackslash}p{2.9cm} | >{\raggedright\arraybackslash}p{2.9cm} | >{\raggedright\arraybackslash}p{2.9cm} | >{\raggedright\arraybackslash}p{2.8cm} |}
    \hline
-   \textbf{Use case 1: Kalibrer apparatur} &\textbf{Test}& \textbf{Forventet resultat} & \textbf{Visuelt resultat} & \textbf{Godkendt/ kommentar}\\ \hline
-   Normalforløb:& Tryk på "Kalibrering" &Systemet er kalibreret & besked "Kalibreringen er fuldendt" &\\\hline
+   \textbf{Use case 1: Kalibrer apparat} &\textbf{Test}& \textbf{Prekondition} & \textbf{Forventet resultat} & \textbf{Godkendt/ kommentar}\\ \hline
+   Normalforløb:& Tryk på "Kalibrering" & Blodtryksmåleren er tændt og tilsluttet kalibreringsudstyret. & Systemet er kalibreret og besked "Kalibreringen er fuldendt" vises på GUI & IKKE TESTBAR\\\hline
 \end{tabular}
 \end{table}
-
-
 
 \begin{table}[H]
 \caption{Accepttest for Use case 2}\label{tab:tabel8}
 \begin{tabular}{|>{\raggedright\arraybackslash}p{2.5cm}| >{\raggedright\arraybackslash}p{2.9cm} | >{\raggedright\arraybackslash}p{2.9cm} | >{\raggedright\arraybackslash}p{2.9cm} | >{\raggedright\arraybackslash}p{2.8cm} |}
    \hline
-   \textbf{Use case 2: Start måling } &\textbf{Test}& \textbf{Forventet resultat} & \textbf{Visuelt resultat} & \textbf{Godkendt/ kommentar}\\ \hline
-   Normalforløb:& Tryk på "Start" & EKG, Blodtrykskurve og iltmætningskurver vises kontinuert på en graf. \newline Puls, systolisk, diastolisk, middeltryk og iltmætnings vises som talværdier på GUI & Tal og grafer vises på GUI &\\\hline
+   \textbf{Use case 2: Opsætning} &\textbf{Test}& \textbf{Prekondition} & \textbf{Forventet resultat} & \textbf{Godkendt/ kommentar}\\ \hline
+   Normalforløb:& Tryk på opsætningens dropdown  & Systemet er tilsluttet en computer og er tændt & Liste med porte kommer frem. & \\\hline
+   &Port vælges & Systemet er tilsluttet en computer og er tændt & Port valgt &\\\hline
 \end{tabular}
 \end{table}
 
@@ -443,17 +438,20 @@ Billede indsættes - haves ikke endnu
 \caption{Accepttest for Use case 3}\label{tab:tabel8}
 \begin{tabular}{|>{\raggedright\arraybackslash}p{2.5cm}| >{\raggedright\arraybackslash}p{2.9cm} | >{\raggedright\arraybackslash}p{2.9cm} | >{\raggedright\arraybackslash}p{2.9cm} | >{\raggedright\arraybackslash}p{2.8cm} |}
    \hline
-   \textbf{Use case 3: Nulpunkts indstille signal } &\textbf{Test}& \textbf{Forventet resultat} & \textbf{Visuelt resultat} & \textbf{Godkendt/ kommentar}\\ \hline
-   Normalforløb:& Tryk på "Nulpunkts indstilling" & Blodtrykskurven nulpunkts indstilles & Besked " Nulpunkts indstilling er fuldendt" &\\\hline
+   \textbf{Use case 3: Log på} &\textbf{Test}& \textbf{Prekondition} & \textbf{Forventet resultat} & \textbf{Godkendt/ kommentar}\\ \hline
+   Normalforløb:& Indtast brugernavn og kode & Port valgt & Systemet er kalibreret og besked "Kalibreringen er fuldendt" vises på GUI & \\\hline
+   &Tryk "Login" & Port valgt & Den sundhedsfaglige er logget på &\\\hline
 \end{tabular}
 \end{table}
+
 
 \begin{table}[H]
 \caption{Accepttest for Use case 4}\label{tab:tabel8}
 \begin{tabular}{|>{\raggedright\arraybackslash}p{2.5cm}| >{\raggedright\arraybackslash}p{2.9cm} | >{\raggedright\arraybackslash}p{2.9cm} | >{\raggedright\arraybackslash}p{2.9cm} | >{\raggedright\arraybackslash}p{2.8cm} |}
    \hline
-   \textbf{Use case 4: Gem data } &\textbf{Test}& \textbf{Forventet resultat} & \textbf{Visuelt resultat} & \textbf{Godkendt/ kommentar}\\ \hline
-   Normalforløb:& Tryk på "Gem" & Data gemmes i database & Besked "Data med CPR gemt"&\\\hline
+   \textbf{Use case 4: Vælg patient} &\textbf{Test}& \textbf{Prekondition} & \textbf{Forventet resultat} & \textbf{Godkendt/ kommentar}\\ \hline
+   Normalforløb:& Tryk på patient dropdown & Den sundhedsfaglige er logget på & Liste med patienter kommer frem  & \\\hline
+   & Vælg patienten og dobbeltklik på denne & Den sundhedsfaglige er logget på & Hovedskærmen kommer frem &\\\hline
 \end{tabular}
 \end{table}
 
@@ -462,20 +460,17 @@ Billede indsættes - haves ikke endnu
 \caption{Accepttest for Use case 5}\label{tab:tabel8}
 \begin{tabular}{|>{\raggedright\arraybackslash}p{2.5cm}| >{\raggedright\arraybackslash}p{2.9cm} | >{\raggedright\arraybackslash}p{2.9cm} | >{\raggedright\arraybackslash}p{2.9cm} | >{\raggedright\arraybackslash}p{2.8cm} |}
    \hline
-   \textbf{Use case 5: Udsæt alarm } &\textbf{Test}& \textbf{Forventet resultat} & \textbf{Visuelt resultat} & \textbf{Godkendt/ kommentar}\\ \hline
-   Normalforløb:& Tryk "Udsæt alarm" & Alarmens lyd stopper & Den overskredede værdi blinker &\\\hline
+   \textbf{Use case 5: Start signal} &\textbf{Test}& \textbf{Prekondition} & \textbf{Forventet resultat} & \textbf{Godkendt/ kommentar}\\ \hline
+   Normalforløb:& Tryk på "Start"& Patient valgt & Systemet indhenter data og starter timer. EKG, arterietryk og iltmætningskurve præsenteres kontinuert på hver sin graf. Puls, systole, diastole, middeltryk og iltmætning vises som talværdier på GUI & \\\hline
 \end{tabular}
 \end{table}
-
-
 
 \begin{table}[H]
 \caption{Accepttest for Use case 6}\label{tab:tabel8}
 \begin{tabular}{|>{\raggedright\arraybackslash}p{2.5cm}| >{\raggedright\arraybackslash}p{2.9cm} | >{\raggedright\arraybackslash}p{2.9cm} | >{\raggedright\arraybackslash}p{2.9cm} | >{\raggedright\arraybackslash}p{2.8cm} |}
    \hline
-   \textbf{Use case 6: Digitalt filter } &\textbf{Test}& \textbf{Forventet resultat} & \textbf{Visuelt resultat} & \textbf{Godkendt/ kommentar}\\ \hline
-   Normalforløb:& Tryk på "Digitalt filter OFF" & Det digitale filter er slået fra & Data er ufiltreret og knappen ændrer navn &\\\hline
-   &Tryk på "Digitalt filter ON" &Det digitale filter er slået til &Data er filtreret og knappen ændrer navn. &\\\hline
+   \textbf{Use case 6: Nulpunkts indstille signal } &\textbf{Test}& \textbf{Prekondition} & \textbf{Forventet resultat} & \textbf{Godkendt/ kommentar}\\ \hline
+   Normalforløb:& Tryk på "Nulpunkts indstilling" & Signalet er startet & Besked " Nulpunkts indstilling er fuldendt" vises på GUI &\\\hline
 \end{tabular}
 \end{table}
 
@@ -484,30 +479,29 @@ Billede indsættes - haves ikke endnu
 \caption{Accepttest for Use case 7}\label{tab:tabel8}
 \begin{tabular}{|>{\raggedright\arraybackslash}p{2.5cm}| >{\raggedright\arraybackslash}p{2.9cm} | >{\raggedright\arraybackslash}p{2.9cm} | >{\raggedright\arraybackslash}p{2.9cm} | >{\raggedright\arraybackslash}p{2.8cm} |}
    \hline
-   \textbf{Use case 7: Juster systolens grænseværdi } &\textbf{Test}& \textbf{Forventet resultat} & \textbf{Visuelt resultat} & \textbf{Godkendt/ kommentar}\\ \hline
-   Normalforløb:& Tryk på "Systole op"& Grænseværdien ændres 2.5mmHg op & Talværdierne ændrer sig på GUI &\\\hline
-   &Tryk på "Systole ned" & Grænseværdien ændres 2.5 mmHg ned & Talværdierne ændrer sig på GUI & \\\hline
+   \textbf{Use case 7: Udsæt alarm } &\textbf{Test}& \textbf{Prekondition} & \textbf{Forventet resultat} & \textbf{Godkendt/ kommentar}\\ \hline
+   Normalforløb:& Tryk på "Udsæt alarm" & Alarmering er startet & Systemet stopper alarmens lyd i et minut &\\\hline
 \end{tabular}
 \end{table}
-
 
 \begin{table}[H]
 \caption{Accepttest for Use case 8}\label{tab:tabel8}
 \begin{tabular}{|>{\raggedright\arraybackslash}p{2.5cm}| >{\raggedright\arraybackslash}p{2.9cm} | >{\raggedright\arraybackslash}p{2.9cm} | >{\raggedright\arraybackslash}p{2.9cm} | >{\raggedright\arraybackslash}p{2.8cm} |}
    \hline
-   \textbf{Use case 8: Juster diastolens grænseværdi } &\textbf{Test}& \textbf{Forventet resultat} & \textbf{Visuelt resultat} & \textbf{Godkendt/ kommentar}\\ \hline
-   Normalforløb:&Tryk på "Diastole op"  & Grænseværdien ændres 2.5mmHg op & Talværdierne ændrer sig på GUI &\\\hline
-   &Tryk på "Diastole ned" & Grænseværdien ændres 2.5 mmHg ned & Talværdierne ændrer sig på GUI &\\\hline
+   \textbf{Use case 8: Digitalt filter } &\textbf{Test}& \textbf{Prekondition} & \textbf{Forventet resultat} & \textbf{Godkendt/ kommentar}\\ \hline
+   Normalforløb:& Tryk på "Digitalt filter OFF" & Signalet er startet & Systemet slår det digitale filter fra. Data er ufiltreret og knappen ændrer navn &\\\hline
+   &Tryk på "Digitalt filter ON" & Signalet er startet & Systemet slår det digitale filter til. Data er filtreret og knappen ændrer navn. &\\\hline
 \end{tabular}
 \end{table}
+
 
 \begin{table}[H]
 \caption{Accepttest for Use case 9}\label{tab:tabel8}
 \begin{tabular}{|>{\raggedright\arraybackslash}p{2.5cm}| >{\raggedright\arraybackslash}p{2.9cm} | >{\raggedright\arraybackslash}p{2.9cm} | >{\raggedright\arraybackslash}p{2.9cm} | >{\raggedright\arraybackslash}p{2.8cm} |}
    \hline
-   \textbf{Use case 9: Afbryd signalet } &\textbf{Test}& \textbf{Forventet resultat} & \textbf{Visuelt resultat} & \textbf{Godkendt/ kommentar}\\ \hline
-   Normalforløb:& Tryk "Afbryd" & Pop-up vindue dukker op & Pop-up skærm: "Er du sikker?" &\\\hline
-   &Tryk "Ja"&Tilbage til startskærmen& Startskærmen kommer frem&\\\hline
+   \textbf{Use case 9: Juster systolens grænseværdi } &\textbf{Test}& \textbf{Prekondition} & \textbf{Forventet resultat} & \textbf{Godkendt/ kommentar}\\ \hline
+   Normalforløb:& Tryk på "Systole op"& Signalet er startet & Grænseværdien ændres 2.5 mmHg op og intervellet vises i GUI &\\\hline
+   &Tryk på "Systole ned" & Signalet er startet & Grænseværdien ændres 2.5 mmHg ned og intervallet vises i GUI & \\\hline
 \end{tabular}
 \end{table}
 
@@ -515,8 +509,9 @@ Billede indsættes - haves ikke endnu
 \caption{Accepttest for Use case 10}\label{tab:tabel8}
 \begin{tabular}{|>{\raggedright\arraybackslash}p{2.5cm}| >{\raggedright\arraybackslash}p{2.9cm} | >{\raggedright\arraybackslash}p{2.9cm} | >{\raggedright\arraybackslash}p{2.9cm} | >{\raggedright\arraybackslash}p{2.8cm} |}
    \hline
-   \textbf{Use case 10: Alarmer } &\textbf{Test}& \textbf{Forventet resultat} & \textbf{Visuelt resultat} & \textbf{Godkendt/ kommentar}\\ \hline
-   Normalforløb:& Grænseværdi overskrides& Alarmen starter med lyd og talværdien som har overskredet grænseværdien blinker & Tal blinker &\\\hline
+   \textbf{Use case 10: Juster diastolens grænseværdi } &\textbf{Test}& \textbf{Prekondition} & \textbf{Forventet resultat} & \textbf{Godkendt/ kommentar}\\ \hline
+   Normalforløb:& Tryk på "Diastole op"& Signalet er startet & Grænseværdien ændres 2.5 mmHg op og intervellet vises i GUI &\\\hline
+   &Tryk på "Diastole ned" & Signalet er startet & Grænseværdien ændres 2.5 mmHg ned og intervallet vises i GUI & \\\hline
 \end{tabular}
 \end{table}
 
@@ -524,13 +519,31 @@ Billede indsættes - haves ikke endnu
 \caption{Accepttest for Use case 11}\label{tab:tabel8}
 \begin{tabular}{|>{\raggedright\arraybackslash}p{2.5cm}| >{\raggedright\arraybackslash}p{2.9cm} | >{\raggedright\arraybackslash}p{2.9cm} | >{\raggedright\arraybackslash}p{2.9cm} | >{\raggedright\arraybackslash}p{2.8cm} |}
    \hline
-   \textbf{Use case 11: Opsætning } &\textbf{Test}& \textbf{Forventet resultat} & \textbf{Visuelt resultat} & \textbf{Godkendt/ kommentar}\\ \hline
-   Normalforløb:& Tryk på dropdown og vælg port & Port vælges & Port valgt &\\\hline
+   \textbf{Use case 11: Alarmer } &\textbf{Test}& \textbf{Prekondition} & \textbf{Forventet resultat} & \textbf{Godkendt/ kommentar}\\ \hline
+   Normalforløb:& Grænseværdi overskrides& Signalet er startet & Alarm starter med lyd og tallet, hvis grænseværdi er overskredet, blinker &\\\hline
+\end{tabular}
+\end{table}
+
+\begin{table}[H]
+\caption{Accepttest for Use case 12}\label{tab:tabel8}
+\begin{tabular}{|>{\raggedright\arraybackslash}p{2.5cm}| >{\raggedright\arraybackslash}p{2.9cm} | >{\raggedright\arraybackslash}p{2.9cm} | >{\raggedright\arraybackslash}p{2.9cm} | >{\raggedright\arraybackslash}p{2.8cm} |}
+   \hline
+   \textbf{Use case 12: Stop signal } &\textbf{Test}& \textbf{Prekondition} & \textbf{Forventet resultat} & \textbf{Godkendt/ kommentar}\\ \hline
+   Normalforløb:& Tryk på "Stop" & Signalet er startet & Signalet og timer stopper &\\\hline
+\end{tabular}
+\end{table}
+
+\begin{table}[H]
+\caption{Accepttest for Use case 13}\label{tab:tabel8}
+\begin{tabular}{|>{\raggedright\arraybackslash}p{2.5cm}| >{\raggedright\arraybackslash}p{2.9cm} | >{\raggedright\arraybackslash}p{2.9cm} | >{\raggedright\arraybackslash}p{2.9cm} | >{\raggedright\arraybackslash}p{2.8cm} |}
+   \hline
+   \textbf{Use case 13: Afbryd signal } &\textbf{Test}& \textbf{Prekondition} & \textbf{Forventet resultat} & \textbf{Godkendt/ kommentar}\\ \hline
+   Normalforløb:& Tryk "Afbryd" & Signalet er stoppet & Pop-up vindue kommer op: "Er du sikker?" &\\\hline
+   &Tryk "Ja"&Signalet er stoppet& Startskærmen kommer frem og ny måling kan foretages &\\\hline
 \end{tabular}
 \end{table}
 
 
-\newpage
 
 \newpage
 
@@ -544,24 +557,31 @@ Billede indsættes - haves ikke endnu
    \caption{Accepttest for ikke-funktionelle krav}\label{tab:label13}
 \\ \hline   
 \textbf{Krav nr.}&\textbf{Krav} &\textbf{Test}& \textbf{Forventet resultat} & \textbf{Resultat} & \textbf{Godkendt/ kommentar}\\ \hline
-  1.1 & & & & & \\\hline
-  1.2 & & & & & \\\hline
-  1.3 & & & & & \\\hline
-  2.1 & & & & & \\\hline
-  2.2 & & & & & \\\hline
-  2.3 & & & & & \\\hline
-  2.4 & & & & & \\\hline
-  2.5 & & & & & \\\hline
-  2.6 & & & & & \\\hline
-  2.7 & & & & & \\\hline
-  2.8 & & & & & \\\hline
-  2.9 & & & & & \\\hline
-  3.1 & & & & & \\\hline
-  4.1 & & & & & \\\hline
-  4.2 & & & & & \\\hline
-  5.1 & & & & & \\\hline
-  6.1 & & & & & \\\hline
-  6.2 & & & & & \\\hline
+  1.1 & Programmet skal have et digitalt filter til udglatning af blodtrykssignal & & & & \\\hline
+  1.2 & Programmet skal give alarm når grænseværdier overskrides med lyd og hvor den overskredede grænse værdi blinker på skærmen. & & & & \\\hline
+  1.3 & Programmet skal kunne gemme blodtrykssignalet i en database & & & & \\\hline\hline
+  2.1 & Programmet skal have to window form: startskærm,der fungerer som EPJ systemet, og hovedskærm, hvilken fungerer som selve blodtryksmåleren & & & & \\\hline
+  2.2 & Programmet skal have en "Login" knap på startskærmen & & & & \\\hline
+  2.3 & Programmet skal have ne "Kalibrering" knap på startskærmen & & & & \\\hline
+  2.4 &Sundhedsfaglig personale skal kunne ændre "device/enhedsnavn" i dropdown på startskærm & & & & \\\hline
+  2.5 & Programmet skal indeholde en dropdown, hvor patienten kan vælges på startskærmen & & & & \\\hline
+  2.6 & Programmet skal have en "Nulpunkts indstilling" knap på hovedskærmen & & & & \\\hline
+  2.7 & Programmet skal have en knap, til at slå det digitale filter fra og til, på hovedskærmen & & & & \\\hline
+  2.8 & Programmet skal have knapper, til at justere systolisk og diastolisk grænseværdiintervaller op og ned, på hovedskærmen & & & & \\\hline
+  2.9 & Programmet skal have en "Udsæt alarm" knap på hovedskærmen & & & & \\\hline
+  2.10 & Programmet skal have en "Tænd" knap på hovedskærmen & & & & \\\hline
+  2.11 & Programmet skal have en "Sluk" knap på hovedskærmen & & & & \\\hline
+  2.12 & Programmet skal have en "Afbryd" knap på hovedskærmen & & & & \\\hline
+  2.13 & Teksten på startskærmen skal kunne aflæs fra 1 meters afstand med en synsstyrke i intervallet +/-1 & & & & \\\hline
+  2.14 & Teksten og graferne på hovedskærmen skal kunne læses fra 2 meters afstand ved synsstyrke i intervellet på +/-1 & & & & \\\hline
+  2.15 & Programmet skal præsentere grafer efter standard & & & & \\\hline
+  2.16 & Programmet skal præsentere data i tal efter standard & & & & \\\hline\hline
+  3.1 & Ingen krav endnu & & & & \\\hline\hline
+  4.1 & Tiden der går før målingen af data påbegynder/vises i grafer må maksimalt være 2.0 sek. & & & & \\\hline
+  4.2 & Tiden der går fra at data er analyseret til at data er gemt i database må være 2.0 sek. med en tolerance på +/- 15\% & & & & \\\hline\hline
+  5.1 & Softwaren skal være opbygget efter trelagsmodellen & & & & \\\hline\hline
+  6.1 & Der skal være adgang til en computer med Windows 7, 8 eller 10 - computeren skal minimum have 4 GB RAM & & & & \\\hline
+  6.2 & Der skal være adgang til en computer hvor National Instruments er installeret & & & & \\\hline
 \end{longtable}
 
 \section{Godkendelses formular}
