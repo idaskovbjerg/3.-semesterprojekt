@@ -33,8 +33,46 @@ Kundens underskrift &&&&&&&&&&Leverandørens underskrift\\
 
 \section{Aktør-kontekst diagram}
 \begin{figure}[h!]
-\includegraphics[width =0.8\textwidth , left]{billeder/Aktorkontekst.jpg}
+\includegraphics[width =0.65\textwidth , left]{billeder/Aktorkontekst.jpg}
 \end{figure}
+
+\begin{table}[h!]
+\begin{tabular}{| >{\raggedright\arraybackslash}p{3cm} | >{\raggedright\arraybackslash}p{12cm} |}
+   \hline
+   Navn: & Sundhedsfaglig personale\\ \hline
+   Type: & Primær aktør \\ \hline
+   Beskrivelse: & Det sundhedsfaglige personale er aktøren der påsætter måleudstyret på patienten, samt starter målingen. Det er plejeren der interagerer med systemet og dermed har tilgang til de viste målinger i en GUI.\\ \hline
+\end{tabular}
+\end{table}
+
+
+\begin{table}[h!]
+\begin{tabular}{| >{\raggedright\arraybackslash}p{3cm} | >{\raggedright\arraybackslash}p{12cm} |}
+   \hline
+   Navn: & Transducer\\ \hline
+   Type: & Sekundær aktør \\ \hline
+   Beskrivelse: & Transduceren er kilden til måleresultaterne, og dermed fungerer som patienten. Måleresultater opnås ved, at disse data sendes ind i systemet igennem hardwaren.\\ \hline
+\end{tabular}
+\end{table}
+
+\begin{table}[h!]
+\begin{tabular}{| >{\raggedright\arraybackslash}p{3cm} | >{\raggedright\arraybackslash}p{12cm} |}
+   \hline
+   Navn: & Database\\ \hline
+   Type: & Sekundær aktør \\ \hline
+   Beskrivelse: & Database er der, hvori analyseresultaterne der opnås ved målingerne i systemet samt signalerne bliver gemt. Disse data er grafer for EKG, artiertryk, iltmætnings, samt talværdier for puls, systole, diastole, middeltryk og iltmætningen.\\ \hline
+\end{tabular}
+\end{table}
+
+\begin{table}[h!]
+\begin{tabular}{| >{\raggedright\arraybackslash}p{3cm} | >{\raggedright\arraybackslash}p{12cm} |}
+   \hline
+   Navn: & Servicemedarbejder\\ \hline
+   Type: & Primær aktør \\ \hline
+   Beskrivelse: & Servicemedarbejderen er aktøreren der igangsætter og foretager kalibreringen.\\ \hline
+\end{tabular}
+\end{table}
+
 
 \newpage
 
@@ -44,7 +82,7 @@ Kundens underskrift &&&&&&&&&&Leverandørens underskrift\\
 \includegraphics[width =0.7\textwidth , center]{billeder/UCStart}
 \end{figure}
 \begin{figure}[h!]
-\includegraphics[width =0.8\textwidth , center]{billeder/UChoved}
+\includegraphics[width =0.7\textwidth , center]{billeder/UChoved}
 \end{figure}
 \newpage
 \begin{table}[H]
@@ -141,7 +179,7 @@ Udvidelse/undtagelser: & - \\\hline
    \textbf{Use case 5} & \textbf{Start signal}\\ \hline
    Mål: & Få startet målingen \\ \hline
    Initiering: & Startes af Sundhedsfaglig personale\\ \hline
-   Aktører:& Sundhedsfaglig personale (primær), Transducer (sekundær)\\ \hline
+   Aktører:& Sundhedsfaglig personale (primær), Transducer (sekundær), Database (sekundær) \\ \hline
    Referencer: & Use case 4\\ \hline
    Samtidige forekomster: & Én transducer pr. måling  \\\hline
    Forudsætninger: & Use case 4: Vælg patient, er kørt succesfuldt og transduceren er tilsluttet\\ \hline
