@@ -557,29 +557,29 @@ Billede indsættes - haves ikke endnu
    \caption{Accepttest for ikke-funktionelle krav}\label{tab:label13}
 \\ \hline   
 \textbf{Krav nr.}&\textbf{Krav} &\textbf{Test}& \textbf{Forventet resultat} & \textbf{Resultat} & \textbf{Godkendt/ kommentar}\\ \hline
-  1.1 & Programmet skal have et digitalt filter til udglatning af blodtrykssignal & & & & \\\hline
-  1.2 & Programmet skal give alarm når grænseværdier overskrides med lyd og hvor den overskredede grænse værdi blinker på skærmen. & & & & \\\hline
-  1.3 & Programmet skal kunne gemme blodtrykssignalet i en database & & & & \\\hline\hline
-  2.1 & Programmet skal have to window form: startskærm,der fungerer som EPJ systemet, og hovedskærm, hvilken fungerer som selve blodtryksmåleren & & & & \\\hline
-  2.2 & Programmet skal have en "Login" knap på startskærmen & & & & \\\hline
-  2.3 & Programmet skal have ne "Kalibrering" knap på startskærmen & & & & \\\hline
-  2.4 &Sundhedsfaglig personale skal kunne ændre "device/enhedsnavn" i dropdown på startskærm & & & & \\\hline
-  2.5 & Programmet skal indeholde en dropdown, hvor patienten kan vælges på startskærmen & & & & \\\hline
-  2.6 & Programmet skal have en "Nulpunkts indstilling" knap på hovedskærmen & & & & \\\hline
-  2.7 & Programmet skal have en knap, til at slå det digitale filter fra og til, på hovedskærmen & & & & \\\hline
-  2.8 & Programmet skal have knapper, til at justere systolisk og diastolisk grænseværdiintervaller op og ned, på hovedskærmen & & & & \\\hline
-  2.9 & Programmet skal have en "Udsæt alarm" knap på hovedskærmen & & & & \\\hline
-  2.10 & Programmet skal have en "Tænd" knap på hovedskærmen & & & & \\\hline
-  2.11 & Programmet skal have en "Sluk" knap på hovedskærmen & & & & \\\hline
-  2.12 & Programmet skal have en "Afbryd" knap på hovedskærmen & & & & \\\hline
-  2.13 & Teksten på startskærmen skal kunne aflæs fra 1 meters afstand med en synsstyrke i intervallet +/-1 & & & & \\\hline
-  2.14 & Teksten og graferne på hovedskærmen skal kunne læses fra 2 meters afstand ved synsstyrke i intervellet på +/-1 & & & & \\\hline
-  2.15 & Programmet skal præsentere grafer efter standard & & & & \\\hline
-  2.16 & Programmet skal præsentere data i tal efter standard & & & & \\\hline\hline
+  1.1 & Programmet skal have et digitalt filter til udglatning af blodtrykssignal & Tænd det digitale filter og tjek udglatningen & Signalet bliver mindre "råt"(udglattet) & & \\\hline
+  1.2 & Programmet skal give alarm når grænseværdier overskrides med lyd og hvor den overskredede grænse værdi blinker på skærmen. & Overskrid en grænseværdi og tjek alarmering & Alarmen starter& & \\\hline
+  1.3 & Programmet skal kunne gemme blodtrykssignalet i en database & Indsend signal og gå ind i databasen og se værdier & Der ligger værdier i databasen & & \\\hline\hline
+  2.1 & Programmet skal have to window form: startskærm,der fungerer som EPJ systemet, og hovedskærm, hvilken fungerer som selve blodtryksmåleren & Start program og tjek dette & Der er to window forms & & \\\hline
+  2.2 & Programmet skal have en "Login" knap på startskærmen & Start program og tjek startskærm & Startskærmen har en "Login" knap & & \\\hline
+  2.3 & Programmet skal have en "Kalibrering" knap på startskærmen & Start program og tjek startskærm & Startskærmen har en "Kalibrering" knap & & \\\hline
+  2.4 &Sundhedsfaglig personale skal kunne ændre "device/enhedsnavn" i dropdown på startskærm & Start program og tjek startskærm & Der er en opsætnings dropdown på startskærmen & & \\\hline
+  2.5 & Programmet skal indeholde en dropdown, hvor patienten kan vælges på startskærmen & Start program og tjek startskærm & Startskærmen har en dropdown med patienter & & \\\hline
+  2.6 & Programmet skal have en "Nulpunkts indstilling" knap på hovedskærmen & Start program og tjek hovedskærm & Der er en "Nulpunkts indstilling" knap på hovedskærmen & & \\\hline
+  2.7 & Programmet skal have en knap, til at slå det digitale filter fra og til, på hovedskærmen & Start program og tjek hovedskærm & Der er en "Digital filter" knap på hovedskærmen & & \\\hline
+  2.8 & Programmet skal have knapper, til at justere systolisk og diastolisk grænseværdiintervaller op og ned, på hovedskærmen & Start program og tjek hovedskærm & Der er ialt fire knapper, som justerer grænseværdierne på hovedskærmen & & \\\hline
+  2.9 & Programmet skal have en "Udsæt alarm" knap på hovedskærmen & Start program og tjek hovedskærm & Der er en "Udsæt alarm" på hovedskærmen & & \\\hline
+  2.10 & Programmet skal have en "Tænd" knap på hovedskærmen & Start program og tjek hovedskærm & Hovedskærmen har en "Tænd" kanp& & \\\hline
+  2.11 & Programmet skal have en "Sluk" knap på hovedskærmen & Tjek hovedskærm & Hovedskærmen har en "Sluk" knap & & \\\hline
+  2.12 & Programmet skal have en "Afbryd" knap på hovedskærmen & Start program og tjek hovedskærm & Der er en "Afbryd" knap på hovedskærmen & & \\\hline
+  2.13 & Teksten på startskærmen skal kunne aflæs fra 1 meters afstand med en synsstyrke i intervallet +/-1 & 10 personer med synsstyrke i intervallet +/-1 skal teste startskærmen  & Alle 10 personer kan læse teksten tydeligt & & \\\hline
+  2.14 & Teksten og graferne på hovedskærmen skal kunne læses fra 2 meters afstand ved synsstyrke i intervellet på +/-1 & 10 personer med synsstyrke i intervallet +/-1 skal teste hovedskærmen & Alle 10 personer kan læse grafer og teksten på hovedskærmen & & \\\hline
+  2.15 & Programmet skal præsentere grafer efter standard & Start program og tjek farver & farverne på grafen er efter standard & & \\\hline
+  2.16 & Programmet skal præsentere data i tal efter standard & Start program og tjek at talværdiernes farve er efter standard & Talværdiernes farve er efter standard & & \\\hline\hline
   3.1 & Ingen krav endnu & & & & \\\hline\hline
-  4.1 & Tiden der går før målingen af data påbegynder/vises i grafer må maksimalt være 2.0 sek. & & & & \\\hline
-  4.2 & Tiden der går fra at data er analyseret til at data er gemt i database må være 2.0 sek. med en tolerance på +/- 15\% & & & & \\\hline\hline
-  5.1 & Softwaren skal være opbygget efter trelagsmodellen & & & & \\\hline\hline
+  4.1 & Tiden der går før målingen af data påbegynder/vises i grafer må maksimalt være 2.0 sek. & Stopur igangsættes samtidig med at signalet tændes & Stopuret viser 2 sek. eller mindre & & \\\hline
+  4.2 & Tiden der går fra at data er analyseret til at data er gemt i database må være 2.0 sek. med en tolerance på +/- 15\% & - & & & \\\hline\hline
+  5.1 & Softwaren skal være opbygget efter trelagsmodellen & Se programopbygningen & Softwaren er opbygget efter trelagsmodellen & & \\\hline\hline
   6.1 & Der skal være adgang til en computer med Windows 7, 8 eller 10 - computeren skal minimum have 4 GB RAM & & & & \\\hline
   6.2 & Der skal være adgang til en computer hvor National Instruments er installeret & & & & \\\hline
 \end{longtable}
