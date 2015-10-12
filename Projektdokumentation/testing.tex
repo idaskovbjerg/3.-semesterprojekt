@@ -1,3 +1,4 @@
+\chapter{Indledning}
 \chapter{Kravspecifikation}
 \section{Godkendelsesformular}
 \begin{table}[h!]
@@ -23,7 +24,7 @@ Kundens underskrift &&&&&&&&&&Leverandørens underskrift\\
 \end{tabular}
 \end{table}
 \section{Indledning}
-
+Denne kravsspecifikation er blevet uadarbejdet åå baggrund af krav fra kunden, samt hvad leverandøren finder muligt. Kravsspecifikationens formål er at specificere de krav de er til produktet.
 \newpage
 
 \section{Systembeskrivelse}
@@ -33,7 +34,10 @@ Kundens underskrift &&&&&&&&&&Leverandørens underskrift\\
 \section{Aktør-kontekst diagram}
 \begin{figure}[h!]
 \includegraphics[width =0.65\textwidth , left]{billeder/Aktorkontekst.jpg}
+\caption{\textbf{Aktør-kontekst diagram}}
 \end{figure}
+
+Af dette diagram ses de interagerende aktører: \textit{Sundhedsfaglig personale}, \textit{Transducer}, \textit{EPJ database}, \textit{Login database} og \textit{Servicemedarbejder}.\\ Herunder er der en detaljeret beskrivelse af hver aktør.
 
 \begin{table}[h!]
 \begin{tabular}{| >{\raggedright\arraybackslash}p{3cm} | >{\raggedright\arraybackslash}p{12cm} |}
@@ -90,10 +94,19 @@ Kundens underskrift &&&&&&&&&&Leverandørens underskrift\\
 \section{Use cases}
 \begin{figure}[h!]
 \includegraphics[width =0.7\textwidth , center]{billeder/UCStart}
+\caption{\textbf{Use case diagram for startskærmen}}
 \end{figure}
 \begin{figure}[h!]
 \includegraphics[width =0.7\textwidth , center]{billeder/UChoved}
+\caption{\textbf{Use case diagram for hovedskærmen}}
 \end{figure}
+Af disse to Use case diagrammer ses de 13 Use cases der er for systemet. Det er her valgt at opdele disse Use cases i to Use case diagrammer, idet der haves to brugergrænseflader hhv.; startskærm og hovedskærm. Startskærmen fungere som brugergrænsefladen, hvor det sundhedsfaglige personale kan logge på, hente patienten og dermed komme videre til hovedskærmen. Hovedskærmen fungerer som selve blodtryksmålersystemets brugerflade, det er herfra at det sundhedsfaglige personale kan igangsætte en måling, aflæse de ønskede værdier, stoppe en måling, afbryde evt. igangsatte alarmer og logge af igen, hvorefter startskærmen kommer frem igen. Det er disse brugergrænseflader som det sundhedsfaglige personale kan initiere med. Brugergrænseflade forkortes til GUI (Graphical User Interface)\\
+De 13 Use cases er: Kalibrér apparat, Opsætning, Log på, Vælg patient, Start måling, Nulpunkts juster signal, Slå digitalt filtet til/fra, Juster diastolens grænseværdi, Juster systolens grænseværdi, Alarmér, Udsæt alarm, Stop måling og Log ud. Hver enkel af disse Use cases beskrives detaljeret herunder i et fully-dressed Use case skema\\
+\\
+"Signalets vej" og opbygning beskrives\\\\
+
+
+
 \newpage
 \begin{table}[H]
 \caption{Use case 1}\label{tab:tabel3}
@@ -459,11 +472,22 @@ De ikke-funktionelle krav er opsat efter FURPS+ metoden. De er prioriteret efter
 \item (\textbf{M}) Der skal være adgang til en computer hvor National Instruments er installeret.
 \end{enumerate}
 \end{enumerate}
-
+\chapter{Arkitektur}
+\section{Hardware design}
+\subsection{Implementering}
+\subsection{Modultest}
+\section{Software design}
+\subsection{Implementering}
+\subsection{Unittest}
+\section{Integrationstest}
 \chapter{Accepttest}
 \section{Indledning}
-\section{Accepttest for funktionelle krav}
+Accepttestene skal vise om kravene der er opstillet for blodtryksmålersystmet lever op til de standarder der er sat op for at produktet aktivt kan indgå i en hverdag på afdelingen.\\
+Accepttestene er er opfølgning af kravsspecifikationen, hvilket sikre at alle krav er overholdt og dermed opnået.\\\\
+Kort beskrivelse hvordan data indhentes\\\\
+Når der i feltet Godkendt er et flueben, betyder det at testen er godkendt. Hvis der er et flueben i parenteser, betyder det at den er delvis godkendt. \\
 
+\section{Accepttest for funktionelle krav}
 \subsection{Opstilling}
 Billede indsættes - haves ikke endnu
 
