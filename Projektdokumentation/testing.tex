@@ -44,7 +44,7 @@ Af dette diagram ses de interagerende aktører: \textit{Sundhedsfaglig personale
    \hline
    Navn: & Sundhedsfaglig personale\\ \hline
    Type: & Primær aktør \\ \hline
-   Beskrivelse: & Det sundhedsfaglige personale er aktøren der påsætter måleudstyret på transduceren, samt starter målingen. Det er det sundhedsfaglige personale, der interagerer med systemet og dermed har tilgang til de viste målinger i en GUI.\\ \hline
+   Beskrivelse: & Det sundhedsfaglige personale er aktøren der påsætter måleudstyret på transduceren, samt starter målingen. Det er det sundhedsfaglige personale, der interagerer med systemet og dermed har tilgang til de viste målinger på brugergrænse skærmene (startskærm og hovedskærm).\\ \hline
 \end{tabular}
 \end{table}
 
@@ -100,7 +100,7 @@ Af dette diagram ses de interagerende aktører: \textit{Sundhedsfaglig personale
 \includegraphics[width =0.7\textwidth , center]{billeder/UChoved}
 \caption{\textbf{Use case diagram for hovedskærmen}}
 \end{figure}
-Af disse to Use case diagrammer ses de 13 Use cases der er for systemet. Det er her valgt at opdele disse Use cases i to Use case diagrammer, idet der haves to brugergrænseflader hhv.; startskærm og hovedskærm. Startskærmen fungere som brugergrænsefladen, hvor det sundhedsfaglige personale kan logge på, hente patienten og dermed komme videre til hovedskærmen. Hovedskærmen fungerer som selve blodtryksmålersystemets brugerflade, det er herfra at det sundhedsfaglige personale kan igangsætte en måling, aflæse de ønskede værdier, stoppe en måling, afbryde evt. igangsatte alarmer og logge af igen, hvorefter startskærmen kommer frem igen. Det er disse brugergrænseflader som det sundhedsfaglige personale kan initiere med. Brugergrænseflade forkortes til GUI (Graphical User Interface)\\
+Af disse to Use case diagrammer ses de 13 Use cases der er for systemet. Det er her valgt at opdele disse Use cases i to Use case diagrammer, idet der haves to brugergrænseflader hhv.; startskærm og hovedskærm. Startskærmen fungerer som brugergrænsefladen, hvor det sundhedsfaglige personale kan logge på, hente patienten og dermed komme videre til hovedskærmen. Hovedskærmen fungerer som selve blodtryksmålersystemets brugerflade, det er herfra at det sundhedsfaglige personale kan igangsætte en måling, aflæse de ønskede værdier, stoppe en måling, afbryde evt. igangsatte alarmer og logge af igen, hvorefter startskærmen kommer frem igen. Det er disse brugergrænseflader som det sundhedsfaglige personale kan initiere med. \\
 De 13 Use cases er: Kalibrér apparat, Opsætning, Log på, Vælg patient, Start måling, Nulpunkts juster signal, Slå digitalt filtet til/fra, Juster diastolens grænseværdi, Juster systolens grænseværdi, Alarmér, Udsæt alarm, Stop måling og Log ud. Hver enkel af disse Use cases beskrives detaljeret herunder i et fully-dressed Use case skema\\
 \\
 "Signalets vej" og opbygning beskrives\\\\
@@ -123,7 +123,7 @@ De 13 Use cases er: Kalibrér apparat, Opsætning, Log på, Vælg patient, Start
    Hovedscenarie:& 
 1. Tryk på "Kalibrering"\newline
 2. Systemet starter kalibreringen\newline
-3. Besked: "Kalibreringen er fuldendt" vises på GUI\\\hline
+3. Besked: "Kalibreringen er fuldendt" vises på startskærmen\\\hline
 Udvidelse/undtagelser: & - \\\hline
 \end{tabular}
 \end{table}
@@ -141,8 +141,8 @@ Udvidelse/undtagelser: & - \\\hline
    Forudsætninger: & Systemet tilsluttet en computer og tændt. \\ \hline
    Resultat:& Port valgt\\ \hline
    Hovedscenarie:& 
-1. Tryk på opsætnings dropdown på startskærmen\newline
-2. Port vælges \\\hline
+1. Sundhedsfagligt personale trykker på opsætnings dropdown på startskærmen\newline
+2. Sundhedsfaglig personale vælger port \\\hline
 Udvidelse/undtagelser: & -\\\hline
 \end{tabular}
 \end{table}
@@ -156,16 +156,16 @@ Udvidelse/undtagelser: & -\\\hline
    \textbf{Use case 3} & \textbf{Log på}\\ \hline
    Mål: & Den sundhedsfaglige få logget ind i systemet, således det vides hvem der benytter dette. \\ \hline
    Initiering: & Startes af Sundhedsfaglig personale\\ \hline
-   Aktører:& Sundhedsfaglig personale (primær), Login database (sekundær)\\ \hline
+   Aktører:& Sundhedsfaglig personale (primær), Personale database (sekundær), EPJ database(sekundær)\\ \hline
    Referencer: & Use case 2 \\ \hline
    Samtidige forekomster: & Én sundhedsfaglig pr. system \\\hline
    Forudsætninger: & Use case 2: Opsætning, er kørt succesfuldt\\ \hline
-   Resultat:& Den sundhedsfaglige er logget på og besked: "Logget på" vises på GUI\\ \hline
+   Resultat:& Den sundhedsfaglige er logget på og besked: "Logget på" vises på startskærmen\\ \hline
    Hovedscenarie:& 
-1. Indtast brugernavn og kode\newline
-2. Tryk på "Login"\newline
+1. Sundhedsfaglig person indtaster brugernavn og kode på startskærmen\newline
+2. Trykker på "Login"\newline
    $[$Undtagelse 1: Brugernavn og/eller kode indtastet forkert$]$\newline
-3. Besked: "Logget på" vises.  \\\hline
+3. Besked: "Logget på" vises på startskærmen.  \\\hline
 Udvidelse/undtagelser: & $[$Undtagelse 1: Brugernavn og/eller kode indtastet forkert$]$\newline
 1.1 Besked: "Brugernavn og/eller kode indtastet forkert"\newline
 1.2 Use case 3 starter forfra \\\hline
@@ -181,15 +181,15 @@ Udvidelse/undtagelser: & $[$Undtagelse 1: Brugernavn og/eller kode indtastet for
    \textbf{Use case 4} & \textbf{Vælg patient}\\ \hline
    Mål: & Få valgt patienten og skiftet til hovedskærmen \\ \hline
    Initiering: & Startes af Sundhedsfaglig personale\\ \hline
-   Aktører:& Sundhedsfaglig personale (primær)\\ \hline
+   Aktører:& Sundhedsfaglig personale (primær), EPJ database (sekundær)\\ \hline
    Referencer: & Use case 3 \\ \hline
    Samtidige forekomster: & - \\\hline
    Forudsætninger: & Use case 3: Log på, er kørt succesfuldt.\\ \hline
    Resultat:& Patient valgt og kommet til hovedskærmen.\\ \hline
    Hovedscenarie:& 
-1. Tryk på patient dropdown på startskærm \newline
+1. Sundhedsfaglig person trykker på patient dropdown på startskærm \newline
 2. Liste med patienter kommer frem\newline
-3. Marker patienten og dobbeltklik på denne \newline
+3. Den ønskede patient vælges \newline
 3. Nyt vindue kommer frem: Hovedskærmen \\\hline
 Udvidelse/undtagelser: & - \\\hline
 \end{tabular}
@@ -208,11 +208,11 @@ Udvidelse/undtagelser: & - \\\hline
    Referencer: & Use case 4\\ \hline
    Samtidige forekomster: & Én transducer pr. måling  \\\hline
    Forudsætninger: & Use case 4: Vælg patient, er kørt succesfuldt og transduceren er tilsluttet\\ \hline
-   Resultat:& Transducerens data vises i GUI \\ \hline
+   Resultat:& Transducerens data vises på hovedskærmen \\ \hline
    Hovedscenarie:& 
-1. Tryk på "Tænd"\newline
-2. Systemet indhenter data og starter timer\newline
-3. EKG, arterietryk og iltmætningskurve præsenteres kontinuert på hver sin graf. Puls, systole, diastole, middeltryk og iltmætning vises som talværdier på GUI. Data gemmes automatisk kontinuert i EPJ database.\\\hline
+1. Sundhedsfaglig person trykker på "Tænd"\newline
+2. Systemet indhenter data fra transduceren og starter timeren på hovedskærmen\newline
+3. EKG, arterietryk og iltmætningskurve præsenteres kontinuert på hver sin graf. Puls, systole, diastole, middeltryk og iltmætning vises som talværdier på hovedskærmn. Data gemmes automatisk kontinuert i EPJ database.\\\hline
 Udvidelse/undtagelser: & - \\\hline
 \end{tabular}
 \end{table}
@@ -231,9 +231,9 @@ Udvidelse/undtagelser: & - \\\hline
    Forudsætninger: & Use case 5: Start signal, er kørt succesfuldt\\ \hline
    Resultat:& Signalet er nulpunkts indstillet\\ \hline
    Hovedscenarie:& 
-1. Tryk på "Nulpunks justering"\newline
+1. Sundhedsfaglig person trykker på "Nulpunks justering"\newline
 2. Systemet starter nulpunkts justeringen\newline
-3. Besked "Nulpunkts justeringen er fuldent" vises på GUI\\\hline
+3. Besked "Nulpunkts justeringen er fuldent" vises på hovedskærmen\\\hline
 Udvidelse/undtagelser: & - \\\hline
 \end{tabular}
 \end{table}
@@ -254,7 +254,7 @@ Udvidelse/undtagelser: & - \\\hline
    Forudsætninger: & Use case 5: Start signal, er kørt succesfuldt\\ \hline
    Resultat:& Det digitale filter er slået til eller fra\\ \hline
    Hovedscenarie:& 
-1. Tryk på "Digitalt filter OFF" \newline
+1. Sundhedsfaglig person trykker på "Digitalt filter OFF" \newline
 2. Systemet slår det digitale filter fra\newline
 3. Tryk på "Digitalt filter ON"\newline
 4. Systemet slår det digitale filter til\\\hline
@@ -273,12 +273,12 @@ Udvidelse/undtagelser: & -\\\hline
    Referencer: & Use case 5 \\ \hline
    Samtidige forekomster: & \\\hline
    Forudsætninger: & Use case 5: Start signal, er kørt succesfuldt\\ \hline
-   Resultat:& Grænseværdi intervallet for systolen er justeret og intervals værdierne vises i GUI. \\ \hline
+   Resultat:& Grænseværdi intervallet for systolen er justeret og intervals værdierne vises på hovedskærmen. \\ \hline
    Hovedscenarie:& 
-1. Tryk på "Systole op"\newline
-2. Grænseværdien ændres 2.5mmHg op og intervallet vises i GUI\newline
+1. Sundhedsfaglig person trykker på "Systole op"\newline
+2. Grænseværdien ændres 2.5mmHg op og intervallet vises på hovedskærmen\newline
 3. Tryk på "Systole ned"\newline
-4. Grænseværdien ændres 2.5mmHg ned og intervallet vises i GUI\\\hline
+4. Grænseværdien ændres 2.5mmHg ned og intervallet vises på hovedskærmen\\\hline
 Udvidelse/undtagelser: & -\\\hline
 \end{tabular}
 \end{table}
@@ -294,12 +294,12 @@ Udvidelse/undtagelser: & -\\\hline
    Referencer: & Use case 5\\ \hline
    Samtidige forekomster: & - \\\hline
    Forudsætninger: & Use case 5: Start signal, er kørt succesfuldt\\ \hline
-   Resultat:& Grænseværdi intervallet for diastolen er justeret og intervals værdierne vises i GUI.\\ \hline
+   Resultat:& Grænseværdi intervallet for diastolen er justeret og intervals værdierne vises på hovedskærmen.\\ \hline
    Hovedscenarie:& 
-1. Tryk "Diastole op"\newline
-2. Diastolens grænseværdi ændres 2.5mmHg op og intervallet vises i GUI\newline
+1. Sundhedsfaglig person trykker "Diastole op"\newline
+2. Diastolens grænseværdi ændres 2.5mmHg op og intervallet vises på hovedskærmen\newline
 3. Tryk "Diastole ned"\newline
-4. Diastolens grænseværdi ændres 2.5mmHg ned og intervallet vises i GUI\\\hline
+4. Diastolens grænseværdi ændres 2.5mmHg ned og intervallet vises  på hovedskærmen\\\hline
 Udvidelse/undtagelser: & -\\\hline
 \end{tabular}
 \end{table}
@@ -341,7 +341,7 @@ Udvidelse/undtagelser: & $[$Udvidelse 1: Anden grænseværdi overskrides$]$ \new
    Forudsætninger: & Use case 11: Alarmer, er igangsat \\ \hline
    Resultat:& Alarmens lyd er stoppet et minut\\ \hline
    Hovedscenarie:& 
-1. Tryk på "Udsæt alarm"\newline
+1. Sundhedsfaglig person trykker på "Udsæt alarm"\newline
 2. Systemet stopper alarmens lyd i et minut \\\hline
 Udvidelse/undtagelser: & -\\\hline
 \end{tabular}
@@ -360,7 +360,7 @@ Udvidelse/undtagelser: & -\\\hline
    Forudsætninger: & Use case 5: Start signal, er kørt succesfuldt\\ \hline
    Resultat:& Signalet er stoppet.\\ \hline
    Hovedscenarie:& 
-1. Tryk på "Sluk"\newline
+1. Sundhedsfaglig person trykker på "Sluk"\newline
 2. Målingen, signalet og timer stopper.\\\hline
 Udvidelse/undtagelser: & -\\\hline
 \end{tabular}
@@ -380,7 +380,7 @@ Udvidelse/undtagelser: & -\\\hline
    Forudsætninger: & Use case 12: Stop signal, er kørt succesfuldt \\ \hline
    Resultat:& Vendt tilbage til startskærmen og ny sundhedsfaglig person kan logge på \\ \hline
    Hovedscenarie:& 
-1. Tryk på "Log ud" \newline
+1. Sundhedsfaglig person trykker på "Log ud" \newline
 2. Pop-up vindue kommer op: "Er du sikker?"\newline
 3. Tryk på "Ja"\newline
    $[$Udvidelse 1: Tryk på "Nej"$]$\newline
@@ -496,7 +496,7 @@ Billede indsættes - haves ikke endnu
 \begin{tabular}{|>{\raggedright\arraybackslash}p{2.5cm}| >{\raggedright\arraybackslash}p{2.9cm} | >{\raggedright\arraybackslash}p{2.9cm} | >{\raggedright\arraybackslash}p{2.9cm} | >{\raggedright\arraybackslash}p{2.8cm} |}
    \hline
    \textbf{Use case 1: Kalibrer apparat} &\textbf{Test}& \textbf{Prækondition} & \textbf{Forventet resultat} & \textbf{Godkendt/ kommentar}\\ \hline
-   Normalforløb:& Tryk på "Kalibrering" & Blodtryksmåleren er tændt og tilsluttet kalibreringsudstyret. & Systemet er kalibreret og besked "Kalibreringen er fuldendt" vises på GUI & IKKE TESTBAR\\\hline
+   Normalforløb:& Tryk på "Kalibrering" & Blodtryksmåleren er tændt og tilsluttet kalibreringsudstyret. & Systemet er kalibreret og besked "Kalibreringen er fuldendt" vises på startskærmen & IKKE TESTBAR\\\hline
 \end{tabular}
 \end{table}
 
@@ -553,7 +553,7 @@ Billede indsættes - haves ikke endnu
 \begin{tabular}{|>{\raggedright\arraybackslash}p{2.5cm}| >{\raggedright\arraybackslash}p{2.9cm} | >{\raggedright\arraybackslash}p{2.9cm} | >{\raggedright\arraybackslash}p{2.9cm} | >{\raggedright\arraybackslash}p{2.8cm} |}
    \hline
    \textbf{Use case 5: Start signal} &\textbf{Test}& \textbf{Prækondition} & \textbf{Forventet resultat} & \textbf{Godkendt/ kommentar}\\ \hline
-   Normalforløb:& Tryk på "Tænd"& Patient valgt og transduceren er tilsluttet & Systemet indhenter data og starter timer. EKG, arterietryk og iltmætningskurve præsenteres kontinuert på hver sin graf. Puls, systole, diastole, middeltryk og iltmætning vises som talværdier på GUI. Data gemmes automatisk kontinuert i EPJ database & \\\hline
+   Normalforløb:& Tryk på "Tænd"& Patient valgt og transduceren er tilsluttet & Systemet indhenter data og starter timer. EKG, arterietryk og iltmætningskurve præsenteres kontinuert på hver sin graf. Puls, systole, diastole, middeltryk og iltmætning vises som talværdier på hovedskærmen. Data gemmes automatisk kontinuert i EPJ database & \\\hline
 \end{tabular}
 \end{table}
 
@@ -562,7 +562,7 @@ Billede indsættes - haves ikke endnu
 \begin{tabular}{|>{\raggedright\arraybackslash}p{2.5cm}| >{\raggedright\arraybackslash}p{2.9cm} | >{\raggedright\arraybackslash}p{2.9cm} | >{\raggedright\arraybackslash}p{2.9cm} | >{\raggedright\arraybackslash}p{2.8cm} |}
    \hline
    \textbf{Use case 6: Nulpunkts juster signal } &\textbf{Test}& \textbf{Prækondition} & \textbf{Forventet resultat} & \textbf{Godkendt/ kommentar}\\ \hline
-   Normalforløb:& Tryk på "Nulpunkts justering" & Signalet er startet og kører & Systemet starter nulpunkts justeringen. Besked " Nulpunkts justering er fuldendt" vises på GUI &\\\hline
+   Normalforløb:& Tryk på "Nulpunkts justering" & Signalet er startet og kører & Systemet starter nulpunkts justeringen. Besked " Nulpunkts justering er fuldendt" vises på hovedskærmen &\\\hline
 \end{tabular}
 \end{table}
 
@@ -584,8 +584,8 @@ Billede indsættes - haves ikke endnu
 \begin{tabular}{|>{\raggedright\arraybackslash}p{2.5cm}| >{\raggedright\arraybackslash}p{2.9cm} | >{\raggedright\arraybackslash}p{2.9cm} | >{\raggedright\arraybackslash}p{2.9cm} | >{\raggedright\arraybackslash}p{2.8cm} |}
    \hline
    \textbf{Use case 8: Juster systolens grænseværdi } &\textbf{Test}& \textbf{Prækondition} & \textbf{Forventet resultat} & \textbf{Godkendt/ kommentar}\\ \hline
-   Normalforløb:& Tryk på "Systole op"& Signalet er startet & Grænseværdien ændres 2.5 mmHg op og intervallet vises i GUI &\\\hline
-   &Tryk på "Systole ned" & Signalet er startet & Grænseværdien ændres 2.5 mmHg ned og intervallet vises i GUI & \\\hline
+   Normalforløb:& Tryk på "Systole op"& Signalet er startet & Grænseværdien ændres 2.5 mmHg op og intervallet vises på hovedskærmen &\\\hline
+   &Tryk på "Systole ned" & Signalet er startet & Grænseværdien ændres 2.5 mmHg ned og intervallet vises på hovedskærmen & \\\hline
 \end{tabular}
 \end{table}
 
@@ -594,8 +594,8 @@ Billede indsættes - haves ikke endnu
 \begin{tabular}{|>{\raggedright\arraybackslash}p{2.5cm}| >{\raggedright\arraybackslash}p{2.9cm} | >{\raggedright\arraybackslash}p{2.9cm} | >{\raggedright\arraybackslash}p{2.9cm} | >{\raggedright\arraybackslash}p{2.8cm} |}
    \hline
    \textbf{Use case 9: Juster diastolens grænseværdi } &\textbf{Test}& \textbf{Prækondition} & \textbf{Forventet resultat} & \textbf{Godkendt/ kommentar}\\ \hline
-   Normalforløb:& Tryk på "Diastole op"& Signalet er startet & Grænseværdien ændres 2.5 mmHg op og intervallet vises i GUI &\\\hline
-   &Tryk på "Diastole ned" & Signalet er startet & Grænseværdien ændres 2.5 mmHg ned og intervallet vises i GUI & \\\hline
+   Normalforløb:& Tryk på "Diastole op"& Signalet er startet & Grænseværdien ændres 2.5 mmHg op og intervallet vises på hovedskærmen &\\\hline
+   &Tryk på "Diastole ned" & Signalet er startet & Grænseværdien ændres 2.5 mmHg ned og intervallet vises på hovedskærmen & \\\hline
 \end{tabular}
 \end{table}
 
