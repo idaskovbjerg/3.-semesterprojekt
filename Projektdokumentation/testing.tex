@@ -121,7 +121,7 @@ De 13 Use cases er: Kalibrér apparat, Opsætning, Log på, Vælg patient, Start
    Forudsætninger: & Blodtryksmålersystemet er tændt og tilsluttet kalibreringsudstyret.\\ \hline
    Resultat:& Apparatet er kalibreret\\ \hline
    Hovedscenarie:& 
-1. Tryk på "Kalibrering"\newline
+1. Servicemedarbejder trykker på "Kalibrering"\newline
 2. Systemet starter kalibreringen\newline
 3. Besked: "Kalibreringen er fuldendt" vises på startskærmen\\\hline
 Udvidelse/undtagelser: & - \\\hline
@@ -141,7 +141,7 @@ Udvidelse/undtagelser: & - \\\hline
    Forudsætninger: & Systemet tilsluttet en computer og tændt. \\ \hline
    Resultat:& Port valgt\\ \hline
    Hovedscenarie:& 
-1. Sundhedsfagligt personale trykker på opsætnings dropdown på startskærmen\newline
+1. Sundhedsfaglig personale trykker på opsætnings dropdown på startskærmen\newline
 2. Sundhedsfaglig personale vælger port \\\hline
 Udvidelse/undtagelser: & -\\\hline
 \end{tabular}
@@ -153,244 +153,109 @@ Udvidelse/undtagelser: & -\\\hline
 \caption{Use case 3}\label{tab:tabel3}
 \begin{tabular}{| l | >{\raggedright\arraybackslash}p{11cm} |}
    \hline
-   \textbf{Use case 3} & \textbf{Log på}\\ \hline
-   Mål: & Den sundhedsfaglige få logget ind i systemet, således det vides hvem der benytter dette. \\ \hline
+   \textbf{Use case 3} & \textbf{Foretag måling}\\ \hline
+   Mål: & Den valgte patients målinger foretages\\ \hline
    Initiering: & Startes af Sundhedsfaglig personale\\ \hline
-   Aktører:& Sundhedsfaglig personale (primær), Personale database (sekundær), EPJ database(sekundær)\\ \hline
+   Aktører:& Sundhedsfaglig personale (primær), Personale database (sekundær), EPJ database(sekundær), Transducer (sekundær)\\ \hline
    Referencer: & Use case 2 \\ \hline
-   Samtidige forekomster: & Én sundhedsfaglig pr. system \\\hline
+   Samtidige forekomster: & Én sundhedsfaglig person og én transducer pr. system \\\hline
    Forudsætninger: & Use case 2: Opsætning, er kørt succesfuldt\\ \hline
-   Resultat:& Den sundhedsfaglige er logget på og besked: "Logget på" vises på startskærmen\\ \hline
+   Resultat:& Målingerne for den valgte patient er foretaget\\ \hline
    Hovedscenarie:& 
-1. Sundhedsfaglig person indtaster brugernavn og kode på startskærmen\newline
-2. Trykker på "Login"\newline
-   $[$Undtagelse 1: Brugernavn og/eller kode indtastet forkert$]$\newline
-3. Besked: "Logget på" vises på startskærmen.  \\\hline
+1. Sundhedsfaglig personale indtaster brugernavn og kode på startskærmen\newline
+2. Sundhedsfaglig personale trykker på "Login"\newline
+   \textit{$[$Undtagelse 1: Brugernavn og/eller kode indtastet forkert$]$}\newline
+3. Besked: "Logget på" vises på startskærmen.  \newline
+4. Sundhedsfaglig persoalen trykker på patient dropdown på startskærm \newline
+5. Liste med patienter kommer frem\newline
+6. Den ønskede patient vælges \newline
+7. Nyt vindue kommer frem: Hovedskærmen\newline
+8. Sundhedsfaglig personale trykker på "Tænd"\newline
+9. Systemet indhenter data fra transduceren og starter timeren på hovedskærmen\newline
+10. EKG, arterietryk og iltmætningskurve præsenteres kontinuert på hver sin graf. Puls, systole, diastole, middeltryk og iltmætning vises som talværdier på hovedskærmn. Data gemmes automatisk kontinuert i EPJ database. \newline
+\textit{$[$Udvidelse 1: Slå digitalt filter til/fra$]$}\newline
+\textit{$[$Udvidelse 2: Juster systolens/diastolens grænseværdi$]$}\newline
+11. Sundhedsfaglig personale trykker på "Nulpunks justering"\newline
+12. Systemet starter nulpunkts justeringen\newline
+13. Besked "Nulpunkts justeringen er fuldent" vises på hovedskærmen
+\\\hline
 Udvidelse/undtagelser: & $[$Undtagelse 1: Brugernavn og/eller kode indtastet forkert$]$\newline
 1.1 Besked: "Brugernavn og/eller kode indtastet forkert"\newline
-1.2 Use case 3 starter forfra \\\hline
+1.2 Use case 3 starter forfra \newline\newline
+$[$Udvidelse 1: Slå digitalt filter til/fra$]$\newline 
+1.1 Sundhedsfaglig personale trykker på "Digitalt filter OFF" \newline
+1.2 Systemet slår det digitale filter fra\newline
+1.3 Sundhedsfaglig personale trykker på "Digitalt filter ON"\newline
+1.4 Systemet slår det digitale filter til\newline\newline
+$[$Udvidelse 2: Juster systolens/diastolens grænseværdi$]$\newline
+2.1 Sundhedsfaglig personale trykker på "Systole op"/"Diastole op"\newline
+2.2 Grænseværdien ændres 2.5mmHg op og intervallet vises på hovedskærmen\newline
+2.3 Sundhedsfaglig personale trykker på "Systole ned"/"Diastole ned"\newline
+2.4 Grænseværdien ændres 2.5mmHg ned og intervallet vises på hovedskærmen
+\\\hline
 \end{tabular}
 \end{table}
-
 
 
 \begin{table}[H]
 \caption{Use case 4}\label{tab:tabel3}
 \begin{tabular}{| l | >{\raggedright\arraybackslash}p{11cm} |}
    \hline
-   \textbf{Use case 4} & \textbf{Vælg patient}\\ \hline
-   Mål: & Få valgt patienten og skiftet til hovedskærmen \\ \hline
-   Initiering: & Startes af Sundhedsfaglig personale\\ \hline
-   Aktører:& Sundhedsfaglig personale (primær), EPJ database (sekundær)\\ \hline
+   \textbf{Use case 4} & \textbf{Alarmér}\\ \hline
+   Mål: & Få startet alarmeringen ved overskridelse af grænseværdi \\ \hline
+   Initiering: & Systemet starter denne Use case\\ \hline
+   Aktører:& Sundhedsfaglig personale (sekundær)\\ \hline
    Referencer: & Use case 3 \\ \hline
    Samtidige forekomster: & - \\\hline
-   Forudsætninger: & Use case 3: Log på, er kørt succesfuldt.\\ \hline
-   Resultat:& Patient valgt og kommet til hovedskærmen.\\ \hline
+   Forudsætninger: & Målingen i Use case 3: Foretag måling, er kørt succesfuldt \\ \hline
+   Resultat:& Alarmen starter\\ \hline
    Hovedscenarie:& 
-1. Sundhedsfaglig person trykker på patient dropdown på startskærm \newline
-2. Liste med patienter kommer frem\newline
-3. Den ønskede patient vælges \newline
-3. Nyt vindue kommer frem: Hovedskærmen \\\hline
-Udvidelse/undtagelser: & - \\\hline
+1. Grænseværdi overskrides \newline
+2. Alarm starter med lyd og tallet, hvis grænseværdi er overskredet, blinker.\newline
+    \textit{$[$Udvidelse 1: Anden grænseværdi overskrides$]$} \newline
+    \textit{$[$Udvidelse 2: Udsæt alarm$]$ }
+\\\hline
+Udvidelse/undtagelser: & $[$Udvidelse 1: Anden grænseværdi overskrides$]$ \newline
+1.1. Endnu en grænseværdi overskrides\newline
+1.2. Lyden fra første alarm fortsætter. Det nye tal som har overskredet grænseværdien blinker ligeledes.\newline
+1.3 Use case afsluttet.\newline\newline
+$[$Udvidelse 2: Udsæt alarm$]$\newline
+2.1 Sundhedsfaglig person trykker på "Udsæt alarm"\newline
+2.2 Systemet stopper alarmens lyd i et minut
+\\\hline
 \end{tabular}
 \end{table}
-
 
 
 \begin{table}[H]
 \caption{Use case 5}\label{tab:tabel3}
 \begin{tabular}{| l | >{\raggedright\arraybackslash}p{11cm} |}
    \hline
-   \textbf{Use case 5} & \textbf{Start måling}\\ \hline
-   Mål: & Få startet målingen \\ \hline
-   Initiering: & Startes af Sundhedsfaglig personale\\ \hline
-   Aktører:& Sundhedsfaglig personale (primær), Transducer (sekundær), EPJ database (sekundær) \\ \hline
-   Referencer: & Use case 4\\ \hline
-   Samtidige forekomster: & Én transducer pr. måling  \\\hline
-   Forudsætninger: & Use case 4: Vælg patient, er kørt succesfuldt og transduceren er tilsluttet\\ \hline
-   Resultat:& Transducerens data vises på hovedskærmen \\ \hline
-   Hovedscenarie:& 
-1. Sundhedsfaglig person trykker på "Tænd"\newline
-2. Systemet indhenter data fra transduceren og starter timeren på hovedskærmen\newline
-3. EKG, arterietryk og iltmætningskurve præsenteres kontinuert på hver sin graf. Puls, systole, diastole, middeltryk og iltmætning vises som talværdier på hovedskærmn. Data gemmes automatisk kontinuert i EPJ database.\\\hline
-Udvidelse/undtagelser: & - \\\hline
-\end{tabular}
-\end{table}
-
-
-\begin{table}[H]
-\caption{Use case 6}\label{tab:tabel3}
-\begin{tabular}{| l | >{\raggedright\arraybackslash}p{11cm} |}
-   \hline
-   \textbf{Use case 6} & \textbf{Nulpunkts juster signal}\\ \hline
-   Mål: & Få nulpunkts justeret signalerne, sådan at signalerne ligger korrekte på deres akse. \\ \hline
-   Initiering: & Startes af Sundhedsfaglig personale\\ \hline
-   Aktører:& Sundhedsfaglig personale (primær)\\ \hline
-   Referencer: & Use case 5\\ \hline
-   Samtidige forekomster: & -  \\\hline
-   Forudsætninger: & Use case 5: Start signal, er kørt succesfuldt\\ \hline
-   Resultat:& Signalet er nulpunkts indstillet\\ \hline
-   Hovedscenarie:& 
-1. Sundhedsfaglig person trykker på "Nulpunks justering"\newline
-2. Systemet starter nulpunkts justeringen\newline
-3. Besked "Nulpunkts justeringen er fuldent" vises på hovedskærmen\\\hline
-Udvidelse/undtagelser: & - \\\hline
-\end{tabular}
-\end{table}
-
-
-
-
-\begin{table}[H]
-\caption{Use case 7}\label{tab:tabel3}
-\begin{tabular}{| l | >{\raggedright\arraybackslash}p{11cm} |}
-   \hline
-   \textbf{Use case 7} & \textbf{Slå digitalt filter til/fra}\\ \hline
-   Mål: &  Få slået det digitale filter til eller fra \\ \hline
-   Initiering: & Startes af Sundhedsfaglig personale\\ \hline
-   Aktører:& Sundhedsfaglig personale (primær)\\ \hline
-   Referencer: & Use case 5 \\ \hline
-   Samtidige forekomster: & - \\\hline
-   Forudsætninger: & Use case 5: Start signal, er kørt succesfuldt\\ \hline
-   Resultat:& Det digitale filter er slået til eller fra\\ \hline
-   Hovedscenarie:& 
-1. Sundhedsfaglig person trykker på "Digitalt filter OFF" \newline
-2. Systemet slår det digitale filter fra\newline
-3. Tryk på "Digitalt filter ON"\newline
-4. Systemet slår det digitale filter til\\\hline
-Udvidelse/undtagelser: & -\\\hline
-\end{tabular}
-\end{table}
-
-\begin{table}[H]
-\caption{Use case 8}\label{tab:tabel3}
-\begin{tabular}{| l | >{\raggedright\arraybackslash}p{11cm} |}
-   \hline
-   \textbf{Use case 8} & \textbf{Juster systolens grænseværdi}\\ \hline
-   Mål: & Få flyttet grænseværdi intervallet for systolen op eller ned \\ \hline
-   Initiering: & Startes af Sundhedsfaglig personale\\ \hline
-   Aktører:& Sundhedsfaglig personale (primær)\\ \hline
-   Referencer: & Use case 5 \\ \hline
-   Samtidige forekomster: & \\\hline
-   Forudsætninger: & Use case 5: Start signal, er kørt succesfuldt\\ \hline
-   Resultat:& Grænseværdi intervallet for systolen er justeret og intervals værdierne vises på hovedskærmen. \\ \hline
-   Hovedscenarie:& 
-1. Sundhedsfaglig person trykker på "Systole op"\newline
-2. Grænseværdien ændres 2.5mmHg op og intervallet vises på hovedskærmen\newline
-3. Tryk på "Systole ned"\newline
-4. Grænseværdien ændres 2.5mmHg ned og intervallet vises på hovedskærmen\\\hline
-Udvidelse/undtagelser: & -\\\hline
-\end{tabular}
-\end{table}
-
-\begin{table}[H]
-\caption{Use case 9}\label{tab:tabel3}
-\begin{tabular}{| l | >{\raggedright\arraybackslash}p{11cm} |}
-   \hline
-   \textbf{Use case 9} & \textbf{Juster diastolens grænseværdi}\\ \hline
-   Mål: &  Få flyttet grænseværdi intervallet for diastolen op eller ned\\ \hline
+   \textbf{Use case 5} & \textbf{Stop måling}\\ \hline
+   Mål: &  Få stoppet målingen og logget\\ \hline
    Initiering: & Startes af Sundhedsfaglig personale \\ \hline
    Aktører: & Sundhedsfaglig personale (primær) \\ \hline
-   Referencer: & Use case 5\\ \hline
+   Referencer: & Use case 3\\ \hline
    Samtidige forekomster: & - \\\hline
-   Forudsætninger: & Use case 5: Start signal, er kørt succesfuldt\\ \hline
-   Resultat:& Grænseværdi intervallet for diastolen er justeret og intervals værdierne vises på hovedskærmen.\\ \hline
+   Forudsætninger: & Use case 3: Foretag måling, er kørt succesfuldt\\ \hline
+   Resultat:& Signalet er stoppet, sundhedsfaglig personale er logget ud og vendt tilbage til startskærm.\\ \hline
    Hovedscenarie:& 
-1. Sundhedsfaglig person trykker "Diastole op"\newline
-2. Diastolens grænseværdi ændres 2.5mmHg op og intervallet vises på hovedskærmen\newline
-3. Tryk "Diastole ned"\newline
-4. Diastolens grænseværdi ændres 2.5mmHg ned og intervallet vises  på hovedskærmen\\\hline
-Udvidelse/undtagelser: & -\\\hline
-\end{tabular}
-\end{table}
-
-\begin{table}[H]
-\caption{Use case 10}\label{tab:tabel3}
-\begin{tabular}{| l | >{\raggedright\arraybackslash}p{11cm} |}
-   \hline
-   \textbf{Use case 10} & \textbf{Alarmér}\\ \hline
-   Mål: & Få startet alarmeringen ved overskridelse af grænseværdi \\ \hline
-   Initiering: & Systemet starter denne Use case\\ \hline
-   Aktører:& Sundhedsfaglig personale (sekundær)\\ \hline
-   Referencer: & Use case 5 \\ \hline
-   Samtidige forekomster: & - \\\hline
-   Forudsætninger: & Målingen i Use case 5: Start signal, er kørt succesfuldt \\ \hline
-   Resultat:& Alarmen starter\\ \hline
-   Hovedscenarie:& 
-1. Grænseværdi overskrides \newline
-2. Alarm starter med lyd og tallet, hvis grænseværdi er overskredet, blinker.\newline
-    $[$Udvidelse 1: Anden grænseværdi overskrides$]$ 
-\\\hline
-Udvidelse/undtagelser: & $[$Udvidelse 1: Anden grænseværdi overskrides$]$ \newline
-1.1. Endnu en grænseværdi overskrides\newline
-1.2. Lyden fra første alarm fortsætter. Det nye tal som har overskredet grænseværdien blinker ligeledes.\newline
-1.3 Use case afsluttet.\\\hline
-\end{tabular}
-\end{table}
-
-\begin{table}[H]
-\caption{Use case 11}\label{tab:tabel3}
-\begin{tabular}{| l | >{\raggedright\arraybackslash}p{11cm} |}
-   \hline
-   \textbf{Use case 11} & \textbf{Udsæt alarm}\\ \hline
-   Mål: & Få udsat alarmens lyd i et minut \\ \hline
-   Initiering: & Startes af Sundhedsfaglig personale\\ \hline
-   Aktører:& Sundhedsfaglig personale (primær) \\ \hline
-   Referencer: & Use case 11 \\ \hline
-   Samtidige forekomster: & \\\hline
-   Forudsætninger: & Use case 11: Alarmer, er igangsat \\ \hline
-   Resultat:& Alarmens lyd er stoppet et minut\\ \hline
-   Hovedscenarie:& 
-1. Sundhedsfaglig person trykker på "Udsæt alarm"\newline
-2. Systemet stopper alarmens lyd i et minut \\\hline
-Udvidelse/undtagelser: & -\\\hline
-\end{tabular}
-\end{table}
-
-\begin{table}[H]
-\caption{Use case 12}\label{tab:tabel3}
-\begin{tabular}{| l | >{\raggedright\arraybackslash}p{11cm} |}
-   \hline
-   \textbf{Use case 12} & \textbf{Stop måling}\\ \hline
-   Mål: &  Få stoppet målingen og signalet\\ \hline
-   Initiering: & Startes af Sundhedsfaglig personale \\ \hline
-   Aktører: & Sundhedsfaglig personale (primær) \\ \hline
-   Referencer: & Use case 5\\ \hline
-   Samtidige forekomster: & - \\\hline
-   Forudsætninger: & Use case 5: Start signal, er kørt succesfuldt\\ \hline
-   Resultat:& Signalet er stoppet.\\ \hline
-   Hovedscenarie:& 
-1. Sundhedsfaglig person trykker på "Sluk"\newline
-2. Målingen, signalet og timer stopper.\\\hline
-Udvidelse/undtagelser: & -\\\hline
-\end{tabular}
-\end{table}
-
-
-\begin{table}[H]
-\caption{Use case 13}\label{tab:tabel3}
-\begin{tabular}{| l | >{\raggedright\arraybackslash}p{11cm} |}
-   \hline
-   \textbf{Use case 13} & \textbf{Log ud}\\ \hline
-   Mål: & Få vendt tilbage til startskærmen og logget den sundhedsfaglige af. \\ \hline
-   Initiering: & Startes af Sundhedsfaglig personale\\ \hline
-   Aktører:& Sundhedsfaglig personale (primær) \\ \hline
-   Referencer: & Use case 12\\ \hline
-   Samtidige forekomster: & - \\\hline
-   Forudsætninger: & Use case 12: Stop signal, er kørt succesfuldt \\ \hline
-   Resultat:& Vendt tilbage til startskærmen og ny sundhedsfaglig person kan logge på \\ \hline
-   Hovedscenarie:& 
-1. Sundhedsfaglig person trykker på "Log ud" \newline
-2. Pop-up vindue kommer op: "Er du sikker?"\newline
-3. Tryk på "Ja"\newline
-   $[$Udvidelse 1: Tryk på "Nej"$]$\newline
-5. Startkærmen kommer frem og ny måling kan foretages\\\hline
+1. Sundhedsfaglig personale trykker på "Sluk"\newline
+2. Målingen og timeren på hovedskærmen stopper.\newline 
+3. Sundhedsfaglig personale trykker på "Log ud" \newline
+4. Pop-up vindue kommer op: "Er du sikker?"\newline
+5. Sundhedsfaglig personale trykker på "Ja"\newline
+   \textit{$[$Udvidelse 1: Tryk på "Nej"$]$}\newline
+6. Startkærmen kommer frem og ny måling kan foretages\\\hline
 Udvidelse/undtagelser: & $[$Udvidelse 1: Tryk på "Nej"$]$\newline
-1.1 Tryk "Nej"\newline
+1.1 Sundhedsfaglig personale trykker "Nej"\newline
 1.2 Kommer tilbage til hovedskærmen\newline
 1.3 Use case afsluttet\\\hline
+Udvidelse/undtagelser: & -\\\hline
 \end{tabular}
 \end{table}
+
+
 
 
 \newpage 

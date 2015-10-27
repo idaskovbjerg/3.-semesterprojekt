@@ -7,19 +7,19 @@
 \contentsline {section}{\numberline {2.3}Systembeskrivelse}{4}{section.2.3}
 \contentsline {section}{\numberline {2.4}Akt\IeC {\o }r-kontekst diagram}{5}{section.2.4}
 \contentsline {section}{\numberline {2.5}Use cases}{6}{section.2.5}
-\contentsline {section}{\numberline {2.6}Ikke-funktionelle krav}{15}{section.2.6}
-\contentsline {subsection}{FURPS+ med MoSCoW}{15}{subsection*.2}
-\contentsline {chapter}{\chapternumberline {3}Arkitektur}{19}{chapter.3}
-\contentsline {section}{\numberline {3.1}Hardware design}{19}{section.3.1}
-\contentsline {subsection}{Implementering}{19}{subsection*.3}
-\contentsline {subsection}{Modultest}{19}{subsection*.4}
-\contentsline {section}{\numberline {3.2}Software design}{19}{section.3.2}
-\contentsline {subsection}{Implementering}{19}{subsection*.5}
-\contentsline {subsection}{Unittest}{19}{subsection*.6}
-\contentsline {section}{\numberline {3.3}Integrationstest}{19}{section.3.3}
-\contentsline {chapter}{\chapternumberline {4}Accepttest}{21}{chapter.4}
-\contentsline {section}{\numberline {4.1}Indledning}{21}{section.4.1}
-\contentsline {section}{\numberline {4.2}Accepttest for funktionelle krav}{21}{section.4.2}
-\contentsline {subsection}{Opstilling}{21}{subsection*.7}
-\contentsline {section}{\numberline {4.3}Accepttest for ikke-funktionelle krav}{27}{section.4.3}
-\contentsline {section}{\numberline {4.4}Godkendelses formular}{30}{section.4.4}
+\contentsline {section}{\numberline {2.6}Ikke-funktionelle krav}{11}{section.2.6}
+\contentsline {subsection}{FURPS+ med MoSCoW}{11}{subsection*.2}
+\contentsline {chapter}{\chapternumberline {3}Arkitektur}{15}{chapter.3}
+\contentsline {section}{\numberline {3.1}Hardware design}{15}{section.3.1}
+\contentsline {subsection}{Implementering}{15}{subsection*.3}
+\contentsline {subsection}{Modultest}{15}{subsection*.4}
+\contentsline {section}{\numberline {3.2}Software design}{15}{section.3.2}
+\contentsline {subsection}{Implementering}{15}{subsection*.5}
+\contentsline {subsection}{Unittest}{15}{subsection*.6}
+\contentsline {section}{\numberline {3.3}Integrationstest}{15}{section.3.3}
+\contentsline {chapter}{\chapternumberline {4}Accepttest}{17}{chapter.4}
+\contentsline {section}{\numberline {4.1}Indledning}{17}{section.4.1}
+\contentsline {section}{\numberline {4.2}Accepttest for funktionelle krav}{17}{section.4.2}
+\contentsline {subsection}{Opstilling}{17}{subsection*.7}
+\contentsline {section}{\numberline {4.3}Accepttest for ikke-funktionelle krav}{23}{section.4.3}
+\contentsline {section}{\numberline {4.4}Godkendelses formular}{26}{section.4.4}
