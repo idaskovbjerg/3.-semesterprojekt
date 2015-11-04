@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.15 (MiKTeX 2.9) (preloaded format=pdflatex 2015.4.2)  19 OCT 2015 09:29
+This is pdfTeX, Version 3.14159265-2.6-1.40.15 (MiKTeX 2.9) (preloaded format=pdflatex 2015.4.2)  4 NOV 2015 23:01
 entering extended mode
 **testing.tex
 (testing.tex
@@ -35,14 +35,31 @@ Missing character: There is no n in font nullfont!
 Missing character: There is no i in font nullfont!
 Missing character: There is no n in font nullfont!
 Missing character: There is no g in font nullfont!
+
+Overfull \hbox (20.0pt too wide) in paragraph at lines 1--2
+[] 
+ []
+
 ! Undefined control sequence.
-l.2 \chapter
+l.3 \chapter
             {Kravspecifikation}
 The control sequence at the end of the top line
 of your error message was never \def'ed. If you have
 misspelled it (e.g., `\hobx'), type `I' and the correct
 spelling (e.g., `I\hbox'). Otherwise just continue,
 and I'll forget about whatever was undefined.
+
+
+! LaTeX Error: Missing \begin{document}.
+
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.3 \chapter{K
+              ravspecifikation}
+You're in trouble here.  Try typing  <return>  to proceed.
+If that doesn't work, type  X <return>  to quit.
 
 Missing character: There is no K in font nullfont!
 Missing character: There is no r in font nullfont!
@@ -62,7 +79,7 @@ Missing character: There is no i in font nullfont!
 Missing character: There is no o in font nullfont!
 Missing character: There is no n in font nullfont!
 ! Undefined control sequence.
-l.3 \section
+l.4 \section
             {Godkendelsesformular}
 The control sequence at the end of the top line
 of your error message was never \def'ed. If you have
@@ -97,7 +114,7 @@ See the LaTeX manual or LaTeX Companion for explanation.
 Type  H <return>  for immediate help.
  ...                                              
                                                   
-l.4 \begin{table}
+l.5 \begin{table}
                  [h!]
 Your command was ignored.
 Type  I <command> <return>  to replace it with another command,
@@ -108,13 +125,13 @@ Missing character: There is no h in font nullfont!
 Missing character: There is no ! in font nullfont!
 Missing character: There is no ] in font nullfont!
 LaTeX Font Info:    External font `cmex10' loaded for size
-(Font)              <7> on input line 6.
+(Font)              <7> on input line 7.
 LaTeX Font Info:    External font `cmex10' loaded for size
-(Font)              <5> on input line 6.
+(Font)              <5> on input line 7.
 ! Use of \@array doesn't match its definition.
 \@ifnextchar ... \reserved@d =#1\def \reserved@a {
                                                   #2}\def \reserved@b {#3}\f...
-l.6 ... | >{\raggedright\arraybackslash}p{12cm} |}
+l.7 ... | >{\raggedright\arraybackslash}p{12cm} |}
                                                   
 If you say, e.g., `\def\a1{...}', then you must always
 put `1' after `\a', since control sequence names are
@@ -124,7 +141,7 @@ followed by the required stuff, so I'm ignoring it.
 ! Argument of \@firstoftwo has an extra }.
 <inserted text> 
                 \par 
-l.6 ... | >{\raggedright\arraybackslash}p{12cm} |}
+l.7 ... | >{\raggedright\arraybackslash}p{12cm} |}
                                                   
 I've run across a `}' that doesn't seem to match anything.
 For example, `\def\a#1{...}' and `\a}' would produce
@@ -137,7 +154,7 @@ Runaway argument?
 ! Paragraph ended before \@firstoftwo was complete.
 <to be read again> 
                    \par 
-l.6 ... | >{\raggedright\arraybackslash}p{12cm} |}
+l.7 ... | >{\raggedright\arraybackslash}p{12cm} |}
                                                   
 I suspect you've forgotten a `}', causing me to apply this
 control sequence to too much text. How can we recover?
@@ -146,7 +163,7 @@ My plan is to forget the whole thing and hope for the best.
 ! Use of \@array doesn't match its definition.
 \@xexpast #1*#2#3#4\@@ ->\edef \reserved@a {
                                             #1}\@tempcnta #2\relax \ifnum \@...
-l.6 ... | >{\raggedright\arraybackslash}p{12cm} |}
+l.7 ... | >{\raggedright\arraybackslash}p{12cm} |}
                                                   
 If you say, e.g., `\def\a1{...}', then you must always
 put `1' after `\a', since control sequence names are
@@ -156,7 +173,7 @@ followed by the required stuff, so I'm ignoring it.
 ! Use of \@array doesn't match its definition.
 \@ifnextchar ... \reserved@d =#1\def \reserved@a {
                                                   #2}\def \reserved@b {#3}\f...
-l.6 ... | >{\raggedright\arraybackslash}p{12cm} |}
+l.7 ... | >{\raggedright\arraybackslash}p{12cm} |}
                                                   
 If you say, e.g., `\def\a1{...}', then you must always
 put `1' after `\a', since control sequence names are
@@ -166,7 +183,7 @@ followed by the required stuff, so I'm ignoring it.
 ! Use of \@argtabularcr doesn't match its definition.
 \@ifnextchar ...eserved@d =#1\def \reserved@a {#2}
                                                   \def \reserved@b {#3}\futu...
-l.6 ... | >{\raggedright\arraybackslash}p{12cm} |}
+l.7 ... | >{\raggedright\arraybackslash}p{12cm} |}
                                                   
 If you say, e.g., `\def\a1{...}', then you must always
 put `1' after `\a', since control sequence names are
@@ -176,7 +193,7 @@ followed by the required stuff, so I'm ignoring it.
 ! Use of \@array doesn't match its definition.
 \@xexpast #1*#2#3#4\@@ ->\edef \reserved@a {
                                             #1}\@tempcnta #2\relax \ifnum \@...
-l.6 ... | >{\raggedright\arraybackslash}p{12cm} |}
+l.7 ... | >{\raggedright\arraybackslash}p{12cm} |}
                                                   
 If you say, e.g., `\def\a1{...}', then you must always
 put `1' after `\a', since control sequence names are
@@ -188,7 +205,7 @@ Runaway argument?
 ! Paragraph ended before \reserved@b was complete.
 <to be read again> 
                    \par 
-l.6 ... | >{\raggedright\arraybackslash}p{12cm} |}
+l.7 ... | >{\raggedright\arraybackslash}p{12cm} |}
                                                   
 I suspect you've forgotten a `}', causing me to apply this
 control sequence to too much text. How can we recover?
@@ -197,7 +214,7 @@ My plan is to forget the whole thing and hope for the best.
 ! Undefined control sequence.
 \reserved@a ...@unexpandable@protect \let \@sharp 
                                                   \relax \let \@startpbox \r...
-l.6 ... | >{\raggedright\arraybackslash}p{12cm} |}
+l.7 ... | >{\raggedright\arraybackslash}p{12cm} |}
                                                   
 The control sequence at the end of the top line
 of your error message was never \def'ed. If you have
@@ -208,7 +225,7 @@ and I'll forget about whatever was undefined.
 ! Missing number, treated as zero.
 <to be read again> 
                    \relax 
-l.6 ... | >{\raggedright\arraybackslash}p{12cm} |}
+l.7 ... | >{\raggedright\arraybackslash}p{12cm} |}
                                                   
 A number should have been here; I inserted `0'.
 (If you can't figure out why I needed to see a number,
@@ -217,7 +234,7 @@ look up `weird error' in the index to The TeXbook.)
 ! Illegal unit of measure (pt inserted).
 <to be read again> 
                    \relax 
-l.6 ... | >{\raggedright\arraybackslash}p{12cm} |}
+l.7 ... | >{\raggedright\arraybackslash}p{12cm} |}
                                                   
 Dimensions can be in units of em, ex, in, pt, pc,
 cm, mm, dd, cc, nd, nc, bp, or sp; but yours is a new one!
@@ -227,7 +244,7 @@ delete the erroneous units; e.g., type `2' to delete
 two letters. (See Chapter 27 of The TeXbook.)
 
 )
-! Incomplete \iffalse; all text was ignored after line 6.
+! Incomplete \iffalse; all text was ignored after line 7.
 <inserted text> 
                 \fi 
 <*> testing.tex
@@ -249,5 +266,5 @@ Here is how much of TeX's memory you used:
  3436 multiletter control sequences out of 15000+200000
  3640 words of font info for 14 fonts, out of 3000000 for 9000
  1025 hyphenation exceptions out of 8191
- 19i,4n,30p,821b,74s stack positions out of 5000i,500n,10000p,200000b,50000s
+ 19i,4n,30p,805b,74s stack positions out of 5000i,500n,10000p,200000b,50000s
 !  ==> Fatal error occurred, no output PDF file produced!

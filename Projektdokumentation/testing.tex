@@ -92,7 +92,7 @@ Af dette diagram ses de interagerende aktører: \textit{Sundhedsfaglig personale
 
 \section{Use cases}
 \begin{figure}[h!]
-\includegraphics[width =0.7\textwidth , center]{billeder/UCStart}
+\includegraphics[width =0.7\textwidth , center]{billeder/UCdiagram}
 \caption{\textbf{Use case diagram}}
 \end{figure}
 
@@ -105,8 +105,6 @@ Systemet gør det muligt at hente data fra transduceren. Her går data fra trans
 "Signalets vej" og opbygning beskrives\\\\
 
 
-
-\newpage
 \begin{table}[H]
 \caption{Use case 1}\label{tab:tabel3}
 \begin{tabular}{| l | >{\raggedright\arraybackslash}p{11cm} |}
@@ -314,33 +312,44 @@ Systemarkitektur er udviklingsrammen for den videre udvikling af design og imple
 \subsection{Implementering}
 \subsection{Modultest}
 \section{Software design}
+I dette afsnit beskrives softwaredesign på baggrund af systembeskrivelse og kravspecifikationen. DEnne beskrivelse opnås ved at der benyttes relevante diagrammer og modeller, hvilke kan beskrive softwaren. Overvejelser og valg, der er blevet gjort, i forbindelse med design og implementering af softwaren, vil i dette afsnit blive præsenteret.
+\subsection{Problemidentifikation}
+Først skal der klarlægges hvilke klasser som systemet skal bestå af, hvilket er det første skridt i processen. For at kunne identificere disse klasse udarbejdes en domænemodel, hvilken har sit udgangspunkt i Use cases. Det er i de konceptuelle klasser fra Use cases som indeholder den information som systemet skal holde styr på. Derfor findes de konceptuelle klasser i Use cases og disse indføres i domænemodellen som klasser. Domænemodellen opstilles derfor for at finde frem til hvad problemet er i softwaren i forhold til, hvad der skal holdes styr på.
+\begin{figure}[h!]
+\includegraphics[width =1.0\textwidth , center]{billeder/DM}
+\caption{\textbf{Domænemodel for blodtryksmålersystemet.}}
+\end{figure}
+Denne domænemodel viser det sundhedsfaglige personales interaktion med systemet, samt hvilke handlinger der startes af denne interaktion. Det sundhedsfaglige personale udfører en handling, der medfører, at en række processer igangsættes i systemet. Disse processer sørger at hente data fra transduceren og EKG patient, for at starte beregningen af puls, systolisk, diastolisk og middeltryks værdierne, samt sørger for at disse data bliver gemt i en database.
+\\
+\subsubsection{Klasseidentifikation}
+Ud fra domænemodellen kan en applikationsmodel opstilles. Denne model tager afsæt i domænemodellens
+klasser. Dette betyder derfor at denne model således også tager udgangspunkt i alle Use cases.
+\begin{figure}[h!]
+\includegraphics[width =1.0\textwidth , center]{billeder/appModel}
+\caption{\textbf{Sekvensdiagram for blodtryksmålersystemet. Denne viser adfærden for Use case 1 }}
+\end{figure}
+\subsubsection{Metodeidentifikation}
+\begin{figure}[h!]
+\includegraphics[width =1.0\textwidth , center]{billeder/sdUC1}
+\caption{\textbf{Sekvensdiagram for blodtryksmålersystemet. Denne viser adfærden for Use case 1 }}
+\end{figure}
+
+\begin{figure}[h!]
+\includegraphics[width =1.0\textwidth , center]{billeder/sdUC2}
+\caption{\textbf{Sekvensdiagram for blodtryksmålersystemet. Denne viser adfærden for Use case 2}}
+\end{figure}
+
+\begin{figure}[h!]
+\includegraphics[width =1.0\textwidth , center]{billeder/sdUC3}
+\caption{\textbf{Sekvensdiagram for blodtryksmålersystemet. Denne viser adfærden for Use case 3}}
+\end{figure}
+
+\begin{figure}[h!]
+\includegraphics[width =1.0\textwidth , center]{billeder/sdUC4}
+\caption{\textbf{Sekvensdiagram for blodtryksmålersystemet. Denne viser adfærden for Use case 4}}
+\end{figure}
+
 \subsection{Implementering}
-%\begin{figure}[h!]
-%\includegraphics[width =1.0\textwidth , center]{billeder/DM}
-%\caption{\textbf{Domænemodel for blodtryksmålersystemet.}}
-%\end{figure}
-
-%\begin{figure}[h!]
-%\includegraphics[width =1.0\textwidth , center]{billeder/sekvensUC1}
-%\caption{\textbf{Sekvensdiagram for blodtryksmålersystemet. Denne viser adfærden for Use case 1 }}
-%\end{figure}
-
-%\begin{figure}[h!]
-%\includegraphics[width =1.0\textwidth , center]{billeder/sekvensUC2}
-%\caption{\textbf{Sekvensdiagram for blodtryksmålersystemet. Denne viser %adfærden for Use case 2}}
-%\end{figure}
-
-%\begin{figure}[h!]
-%\includegraphics[width =1.0\textwidth , center]{billeder/sekvensUC3}
-%\caption{\textbf{Sekvensdiagram for blodtryksmålersystemet. Denne viser adfærden for Use case 3}}
-%\end{figure}
-
-%\begin{figure}[h!]
-%\includegraphics[width =1.0\textwidth , center]{billeder/sekvensUC4}
-%\caption{\textbf{Sekvensdiagram for blodtryksmålersystemet. Denne viser adfærden for Use case 4}}
-%\end{figure}
-
-
 \subsection{Unittest}
 \section{Integrationstest}
 
@@ -349,8 +358,7 @@ Systemarkitektur er udviklingsrammen for den videre udvikling af design og imple
 \section{Indledning}
 Accepttestene skal vise om kravene der er opstillet for blodtryksmålersystmet lever op til de standarder der er sat op for at produktet aktivt kan indgå i en hverdag på afdelingen.\\
 Accepttestene er er opfølgning af kravsspecifikationen, hvilket sikre at alle krav er overholdt og dermed opnået.\\\\
-Kort beskrivelse hvordan data indhentes\\\\
-Når der i feltet Godkendt er et flueben, betyder det at testen er godkendt. Hvis der er et flueben i parenteser, betyder det at den er delvis godkendt. \\
+Når der i feltet Godkendt er skrevet initialer for den der har udført testen, samt datoen for testens udførelse, betyder det at testen er godkendt.  \\
 
 \section{Accepttest for funktionelle krav}
 \subsection{Opstilling}
@@ -543,3 +551,8 @@ Undtagelse 1: Tryk på "Nej" &Tryk "Nej" & Signalet og målingen er stoppet & Ko
 Kundens underskrift &&&&&&&&&&Leverandørens underskrift\\
 \end{tabular}
 \end{table}
+
+\chapter{Referencer}
+\subsubsection{Bøger}
+\subsubsection{Internetsider}
+\subsubsection{Dokumenter}
