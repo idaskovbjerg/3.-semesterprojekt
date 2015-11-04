@@ -1,4 +1,5 @@
 \chapter{Indledning}
+
 \chapter{Kravspecifikation}
 \section{Godkendelsesformular}
 \begin{table}[h!]
@@ -24,11 +25,11 @@ Kundens underskrift &&&&&&&&&&Leverandørens underskrift\\
 \end{tabular}
 \end{table}
 \section{Indledning}
-Denne kravsspecifikation er blevet uadarbejdet åå baggrund af krav fra kunden, samt hvad leverandøren finder muligt. Kravsspecifikationens formål er at specificere de krav de er til produktet.
+Denne kravspecifikation er blevet udarbejdet på baggrund af krav fra kunden, samt hvad leverandøren finder muligt. Kravspecifikationens formål er at specificere de krav der er til produktet.
 \newpage
 
 \section{Systembeskrivelse}
-
+Blodtryksmålersystemet ønskes at kunne måle blodtryk, EKG og iltmætning for en patient. Ud fra blodtrykket findes systolisk, diastolisk og middeltryks værdier, dette gøres ved at finde den maksimale værdi (systole), den minimale værdi (diastole) og det bestemte intergrale (middeltrykket) af blodtrykskurven. Ud fra EKG-signalet kan pulsen bestemmes, dette gøres ved at bestemme antallet af R-takker på et minut. 
 \newpage
 
 \section{Aktør-kontekst diagram}
@@ -44,7 +45,7 @@ Af dette diagram ses de interagerende aktører: \textit{Sundhedsfaglig personale
    \hline
    Navn: & Sundhedsfaglig personale\\ \hline
    Type: & Primær aktør \\ \hline
-   Beskrivelse: & Det sundhedsfaglige personale er aktøren der påsætter måleudstyret på transduceren, samt starter målingen. Det er det sundhedsfaglige personale, der interagerer med systemet og dermed har tilgang til de viste målinger på brugergrænse fladerne (startskærm og hovedskærm).\\ \hline
+   Beskrivelse: & Det sundhedsfaglige personale er aktøren, der sætter måleudstyret til transduceren, samt starter målingen. Det er det sundhedsfaglige personale, der interagerer med systemet og dermed har tilgang til de viste målinger på brugergrænsefladerne (startskærm og hovedskærm).\\ \hline
 \end{tabular}
 \end{table}
 
@@ -74,7 +75,7 @@ Af dette diagram ses de interagerende aktører: \textit{Sundhedsfaglig personale
    \hline
    Navn: & EPJ database\\ \hline
    Type: & Sekundær aktør \\ \hline
-   Beskrivelse: & EPJ database er den database, hvor patient data ligger, samt der hvori analyseresultaterne der opnås ved målingerne i systemet samt signalerne bliver gemt. Disse data er grafer for EKG, arterietryk, iltmætnings, samt talværdier for puls, systole, diastole, middeltryk og iltmætningen.\\ \hline
+   Beskrivelse: & EPJ database er den database, hvor patientdata ligger, samt der hvori analyseresultaterne, der opnås ved målingerne i systemet, samt signalerne bliver gemt. Disse data er grafer for EKG, arterietryk, iltmætnings, samt talværdier for puls, systole, diastole, middeltryk og iltmætningen.\\ \hline
 \end{tabular}
 \end{table}
 
@@ -95,8 +96,12 @@ Af dette diagram ses de interagerende aktører: \textit{Sundhedsfaglig personale
 \caption{\textbf{Use case diagram}}
 \end{figure}
 
-De fem Use cases er: Kalibrér apparat, Opsætning, Foretag måling, Alarmér og Stop måling. Hver enkel af disse Use cases beskrives detaljeret herunder i et fully-dressed Use case skema\\
+De fem Use cases er: \textit{Kalibrér apparat}, \textit{Opsætning}, \textit{Foretag måling}, \textit{Alarmér} og \textit{Stop måling}. Hver enkel af disse Use cases beskrives detaljeret herunder i et fully-dressed Use case skema\\
+Systemet består af en computer med programkode, en NI-DAQ og en Analog Discovery. Derudover har vi hardware, hvilket består af et lavpasfilter, en forstærker og en transducer.
 \\
+Systemet gør det muligt at hente data fra transduceren. Her går data fra transduceren igennem forstærkeren, hvilken der bliver forsynet af spænding fra Analog Discovery, som er forsynet af spænding fra computeren. Fra forstærkeren gør signalet videre til lavpasfilteret og derefter ind i NI-DAQ, som så sender dataen videre til computeren. 
+\\ 
+
 "Signalets vej" og opbygning beskrives\\\\
 
 
@@ -115,77 +120,47 @@ De fem Use cases er: Kalibrér apparat, Opsætning, Foretag måling, Alarmér og
    Forudsætninger: & Blodtryksmålersystemet er tændt og tilsluttet kalibreringsudstyret.\\ \hline
    Resultat:& Apparatet er kalibreret\\ \hline
    Hovedscenarie:& 
-1. Servicemedarbejder trykker på "Kalibrering"\newline
-2. Systemet starter kalibreringen\newline
-3. Besked: "Kalibreringen er fuldendt" vises på startskærmen\\\hline
+1. Servicemedarbejder foretager kalibreringen, hvilken systemet starter.\\\hline
 Udvidelse/undtagelser: & - \\\hline
 \end{tabular}
 \end{table}
+
 
 \begin{table}[H]
 \caption{Use case 2}\label{tab:tabel3}
 \begin{tabular}{| l | >{\raggedright\arraybackslash}p{11cm} |}
    \hline
-   \textbf{Use case 2} & \textbf{Opsætning}\\ \hline
-   Mål: & Få valgt port til NI-DAQ \\ \hline
-   Initiering: & Startes af Sundhedsfaglig personale\\ \hline
-   Aktører:& Sundhedsfaglig personale (primær) \\ \hline
-   Referencer: &  -\\ \hline
-   Samtidige forekomster: & Ét blodtryksmålersystem pr. opsætning \\\hline
-   Forudsætninger: & Systemet tilsluttet en computer og tændt. \\ \hline
-   Resultat:& Port valgt\\ \hline
-   Hovedscenarie:& 
-1. Sundhedsfaglig personale trykker på opsætnings dropdown på startskærmen\newline
-2. Sundhedsfaglig personale vælger port \\\hline
-Udvidelse/undtagelser: & -\\\hline
-\end{tabular}
-\end{table}
-
-
-
-\begin{table}[H]
-\caption{Use case 3}\label{tab:tabel3}
-\begin{tabular}{| l | >{\raggedright\arraybackslash}p{11cm} |}
-   \hline
-   \textbf{Use case 3} & \textbf{Foretag måling}\\ \hline
+   \textbf{Use case 2} & \textbf{Foretag måling}\\ \hline
    Mål: & Den valgte patients målinger foretages\\ \hline
    Initiering: & Startes af Sundhedsfaglig personale\\ \hline
    Aktører:& Sundhedsfaglig personale (primær), Personale database (sekundær), EPJ database(sekundær), Transducer (sekundær)\\ \hline
    Referencer: & Use case 2 \\ \hline
    Samtidige forekomster: & Én sundhedsfaglig person og én transducer pr. system \\\hline
-   Forudsætninger: & Use case 2: Opsætning, er kørt succesfuldt. VPN, Personale database og EPJ databasen er tilsluttet korrekt\\ \hline
+   Forudsætninger: & VPN, Personale database og EPJ databasen er tilsluttet korrekt\\ \hline
    Resultat:& Målingerne for den valgte patient er foretaget\\ \hline
    Hovedscenarie:& 
-1. Sundhedsfaglig personale indtaster brugernavn og kode på startskærmen\newline
-2. Sundhedsfaglig personale trykker på "Login"\newline
+1. Sundhedsfaglig personale logger på ved at indtaste brugernavn og kode. \newline
    \textit{$[$Undtagelse 1: Brugernavn og/eller kode indtastet forkert$]$}\newline
-3. Besked: "Logget på" vises på startskærmen.  \newline
-4. Sundhedsfaglig personale trykker på patient dropdown på startskærm \newline
-5. Liste med patienter kommer frem\newline
-6. Den ønskede patient vælges \newline
-7. Nyt vindue kommer frem: Hovedskærmen\newline
-8. Sundhedsfaglig personale trykker på "Tænd"\newline
-9. Systemet indhenter data fra transduceren og starter timeren på hovedskærmen\newline
-10. EKG, arterietryk og iltmætningskurve præsenteres kontinuert på hver sin graf. Puls, systole, diastole, middeltryk og iltmætning vises som talværdier på hovedskærmn. Data gemmes automatisk kontinuert i EPJ database. \newline
+2. Besked: "Logget på" vises  \newline
+3. Liste med patienter kommer frem\newline
+4. Den ønskede patient vælges \newline
+5. Sundhedsfaglig personale starter målingen \newline
+6. Systemet indhenter data fra transduceren og måler tiden for hvor lang tiden målingen foretages\newline
+7. EKG og arterietryk præsenteres kontinuert på hver sin graf. Puls, systole, diastole og middeltryk vises som talværdier. Data gemmes automatisk kontinuert i EPJ database. \newline
 \textit{$[$Udvidelse 1: Slå digitalt filter til/fra$]$}\newline
 \textit{$[$Udvidelse 2: Juster systolens/diastolens grænseværdi$]$}\newline
-11. Sundhedsfaglig personale trykker på "Nulpunks justering"\newline
-12. Systemet starter nulpunkts justeringen\newline
-13. Besked "Nulpunkts justeringen er fuldent" vises på hovedskærmen
-\\\hline
+8. Sundhedsfaglig personale trykker på "Nulpunks justering"\newline
+9. Systemet starter nulpunkts justeringen og giver besked: "Nulpunkts justeringen er fuldent" \\\hline
 Udvidelse/undtagelser: & $[$Undtagelse 1: Brugernavn og/eller kode indtastet forkert$]$\newline
 1.1 Besked: "Brugernavn og/eller kode indtastet forkert"\newline
 1.2 Use case 3 starter forfra \newline\newline
 $[$Udvidelse 1: Slå digitalt filter til/fra$]$\newline 
-1.1 Sundhedsfaglig personale trykker på "Digitalt filter OFF" \newline
+1.1 Sundhedsfaglig personale vælger "Digitalt filter OFF" \newline
 1.2 Systemet slår det digitale filter fra\newline
-1.3 Sundhedsfaglig personale trykker på "Digitalt filter ON"\newline
+1.3 Sundhedsfaglig personale vælger "Digitalt filter ON"\newline
 1.4 Systemet slår det digitale filter til\newline\newline
 $[$Udvidelse 2: Juster systolens/diastolens grænseværdi$]$\newline
-2.1 Sundhedsfaglig personale trykker på "Systole op"/"Diastole op"\newline
-2.2 Grænseværdien ændres 2.5mmHg op og intervallet vises på hovedskærmen\newline
-2.3 Sundhedsfaglig personale trykker på "Systole ned"/"Diastole ned"\newline
-2.4 Grænseværdien ændres 2.5mmHg ned og intervallet vises på hovedskærmen
+2.1 Sundhedsfaglig personale justerer grænseværdierne for systole og/eller diastole.
 \\\hline
 \end{tabular}
 \end{table}
@@ -195,13 +170,13 @@ $[$Udvidelse 2: Juster systolens/diastolens grænseværdi$]$\newline
 \caption{Use case 4}\label{tab:tabel3}
 \begin{tabular}{| l | >{\raggedright\arraybackslash}p{11cm} |}
    \hline
-   \textbf{Use case 4} & \textbf{Alarmér}\\ \hline
+   \textbf{Use case 3} & \textbf{Alarmér}\\ \hline
    Mål: & Få startet alarmeringen ved overskridelse af grænseværdi \\ \hline
    Initiering: & Systemet starter denne Use case\\ \hline
    Aktører:& Sundhedsfaglig personale (sekundær)\\ \hline
    Referencer: & Use case 3 \\ \hline
    Samtidige forekomster: & - \\\hline
-   Forudsætninger: & Målingen i Use case 3: Foretag måling, er kørt succesfuldt \\ \hline
+   Forudsætninger: & Målingen i Use case 2: Foretag måling, er kørt succesfuldt \\ \hline
    Resultat:& Alarmen starter\\ \hline
    Hovedscenarie:& 
 1. Grænseværdi overskrides \newline
@@ -214,7 +189,7 @@ Udvidelse/undtagelser: & $[$Udvidelse 1: Anden grænseværdi overskrides$]$ \new
 1.2. Lyden fra første alarm fortsætter. Det nye tal som har overskredet grænseværdien blinker ligeledes.\newline
 1.3 Use case afsluttet.\newline\newline
 $[$Udvidelse 2: Udsæt alarm$]$\newline
-2.1 Sundhedsfaglig person trykker på "Udsæt alarm"\newline
+2.1 Sundhedsfaglig person udsætter alarm\newline
 2.2 Systemet stopper alarmens lyd i et minut
 \\\hline
 \end{tabular}
@@ -222,33 +197,24 @@ $[$Udvidelse 2: Udsæt alarm$]$\newline
 
 
 \begin{table}[H]
-\caption{Use case 5}\label{tab:tabel3}
+\caption{Use case 4}\label{tab:tabel3}
 \begin{tabular}{| l | >{\raggedright\arraybackslash}p{11cm} |}
    \hline
-   \textbf{Use case 5} & \textbf{Stop måling}\\ \hline
+   \textbf{Use case 4} & \textbf{Stop måling}\\ \hline
    Mål: &  Få stoppet målingen og logget\\ \hline
    Initiering: & Startes af Sundhedsfaglig personale \\ \hline
    Aktører: & Sundhedsfaglig personale (primær) \\ \hline
-   Referencer: & Use case 3\\ \hline
+   Referencer: & Use case 2\\ \hline
    Samtidige forekomster: & - \\\hline
-   Forudsætninger: & Use case 3: Foretag måling, er kørt succesfuldt\\ \hline
+   Forudsætninger: & Use case 2: Foretag måling, er kørt succesfuldt\\ \hline
    Resultat:& Signalet er stoppet, sundhedsfaglig personale er logget ud og vendt tilbage til startskærm.\\ \hline
    Hovedscenarie:& 
-1. Sundhedsfaglig personale trykker på "Sluk"\newline
-2. Målingen og timeren på hovedskærmen stopper.\newline 
-3. Sundhedsfaglig personale trykker på "Log ud" \newline
-4. Pop-up vindue kommer op: "Er du sikker?"\newline
-5. Sundhedsfaglig personale trykker på "Ja"\newline
-   \textit{$[$Undtagelse 1: Tryk på "Nej"$]$}\newline
-6. Startkærmen kommer frem og ny måling kan foretages\\\hline
-Udvidelse/undtagelser: & $[$undtagelse 1: Tryk på "Nej"$]$\newline
-1.1 Sundhedsfaglig personale trykker "Nej"\newline
-1.2 Kommer tilbage til hovedskærmen\newline
-1.3 Use case afsluttet\\\hline
+1. Sundhedsfaglig personale stopper måling\newline
+2. Systemet stopper målingen.\newline 
+3. Sundhedsfaglig personale logger ud \\\hline
 Udvidelse/undtagelser: & -\\\hline
 \end{tabular}
 \end{table}
-
 
 
 
@@ -319,7 +285,8 @@ De ikke-funktionelle krav er opsat efter FURPS+ metoden. De er prioriteret efter
 \item \textbf{Performance}
 \begin{enumerate}
 \item (\textbf{S}) Tiden der går før måling af data påbegynder / vises i grafer må maksimalt være 2 sek.
-\item (\textbf{M}) Tiden der går fra at data, herunder puls, diastolisk tryk, systolisk tryk, middeltryk og iltmætning, er analyseret til at data'en er gemt i EPJ database må være 2 sek. med en tolerance på +/-15\%  
+\item (\textbf{M}) Tiden der går fra at data, herunder puls, diastolisk tryk, systolisk tryk, middeltryk og iltmætning, er analyseret til at data'en er gemt i EPJ database må være 2 sek. med en tolerance på +/-15\% 
+\item (\textbf{S}) Ved justering af grænseværdi for systole og diastole ændres grænseværdien 2.5mmHg op eller ned.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                               
 \end{enumerate}
 \item \textbf{Supportability}
 \begin{enumerate}
@@ -331,14 +298,53 @@ De ikke-funktionelle krav er opsat efter FURPS+ metoden. De er prioriteret efter
 \item (\textbf{M}) Der skal være adgang til en computer hvor National Instruments er installeret.
 \end{enumerate}
 \end{enumerate}
-\chapter{Arkitektur}
+\chapter{Arkitektur og design}
+Følgende beskriver arkitekturen for systemet herunder både hardware og software. 
+Systemarkitektur er udviklingsrammen for den videre udvikling af design og implementering. Der vil igennem dette afsnit startes med at se systemet overordnet og hvorefter der arbejdes ned gennem systemet i mindre brudstykker. Der benyttes diagrammer for at kunne specificere og klarlægge systemkravene. Disse diagrammer beskrives desuden i tekst.
 \section{Hardware design}
+%\begin{figure}[h!]
+%\includegraphics[width =1.0\textwidth , center]{billeder/BDD}
+%\caption{\textbf{Block definition diagram. Dette diagram viser hardware delene i systemet, samt sammenhængen mellem disse.}}
+%\end{figure}
+%\begin{figure}[h!]
+%\includegraphics[width =1.0\textwidth , center]{billeder/IBD}
+%\caption{\textbf{Internal block diagram. Dette diagram viser signalerne imellem blokkene.}}
+%\end{figure}
+
 \subsection{Implementering}
 \subsection{Modultest}
 \section{Software design}
 \subsection{Implementering}
+%\begin{figure}[h!]
+%\includegraphics[width =1.0\textwidth , center]{billeder/DM}
+%\caption{\textbf{Domænemodel for blodtryksmålersystemet.}}
+%\end{figure}
+
+%\begin{figure}[h!]
+%\includegraphics[width =1.0\textwidth , center]{billeder/sekvensUC1}
+%\caption{\textbf{Sekvensdiagram for blodtryksmålersystemet. Denne viser adfærden for Use case 1 }}
+%\end{figure}
+
+%\begin{figure}[h!]
+%\includegraphics[width =1.0\textwidth , center]{billeder/sekvensUC2}
+%\caption{\textbf{Sekvensdiagram for blodtryksmålersystemet. Denne viser %adfærden for Use case 2}}
+%\end{figure}
+
+%\begin{figure}[h!]
+%\includegraphics[width =1.0\textwidth , center]{billeder/sekvensUC3}
+%\caption{\textbf{Sekvensdiagram for blodtryksmålersystemet. Denne viser adfærden for Use case 3}}
+%\end{figure}
+
+%\begin{figure}[h!]
+%\includegraphics[width =1.0\textwidth , center]{billeder/sekvensUC4}
+%\caption{\textbf{Sekvensdiagram for blodtryksmålersystemet. Denne viser adfærden for Use case 4}}
+%\end{figure}
+
+
 \subsection{Unittest}
 \section{Integrationstest}
+
+
 \chapter{Accepttest}
 \section{Indledning}
 Accepttestene skal vise om kravene der er opstillet for blodtryksmålersystmet lever op til de standarder der er sat op for at produktet aktivt kan indgå i en hverdag på afdelingen.\\
