@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.15 (MiKTeX 2.9) (preloaded format=pdflatex 2015.4.2)  5 NOV 2015 00:17
+This is pdfTeX, Version 3.14159265-2.6-1.40.15 (MiKTeX 2.9) (preloaded format=pdflatex 2015.4.2)  5 NOV 2015 11:20
 entering extended mode
 **skabelon.tex
 (skabelon.tex
@@ -1246,12 +1246,12 @@ Package babel Info: Redefining danish shorthand "|
 Package babel Info: Redefining danish shorthand "~
 (babel)             in language  on input line 93.
 
-<billeder/UCdiagram.jpg, id=127, 364.36125pt x 285.31593pt>
+<billeder/UCdiagram.jpg, id=127, 364.36125pt x 262.73157pt>
 File: billeder/UCdiagram.jpg Graphic file (type jpg)
 
 <use billeder/UCdiagram.jpg>
 Package pdftex.def Info: billeder/UCdiagram.jpg used on input line 95.
-(pdftex.def)             Requested size: 317.07614pt x 248.29686pt.
+(pdftex.def)             Requested size: 317.07614pt x 228.64276pt.
 
 Underfull \hbox (badness 10000) in paragraph at lines 99--104
 
@@ -1268,9 +1268,9 @@ Underfull \hbox (badness 10000) in paragraph at lines 105--106
  []
 
 Package babel Info: Redefining danish shorthand "|
-(babel)             in language  on input line 124.
+(babel)             in language  on input line 125.
 Package babel Info: Redefining danish shorthand "~
-(babel)             in language  on input line 124.
+(babel)             in language  on input line 125.
 [5 <./billeder/UCdiagram.jpg>]
 Package babel Info: Redefining danish shorthand "|
 (babel)             in language  on input line 165.
@@ -1344,11 +1344,11 @@ Package babel Info: Redefining danish shorthand "|
 (babel)             in language  on input line 314.
 Package babel Info: Redefining danish shorthand "~
 (babel)             in language  on input line 314.
- <billeder/DM.jpg, id=195, 783.67781pt x 542.025pt>
+ <billeder/DM.jpg, id=195, 782.925pt x 541.27219pt>
 File: billeder/DM.jpg Graphic file (type jpg)
  <use billeder/DM.jpg>
 Package pdftex.def Info: billeder/DM.jpg used on input line 319.
-(pdftex.def)             Requested size: 452.9679pt x 313.29953pt.
+(pdftex.def)             Requested size: 452.9679pt x 313.16173pt.
 
 Underfull \hbox (badness 10000) in paragraph at lines 317--324
 
@@ -1630,10 +1630,10 @@ LaTeX Warning: There were multiply-defined labels.
 Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 59.
  ) 
 Here is how much of TeX's memory you used:
- 12402 strings out of 493698
- 177036 string characters out of 3141969
- 350683 words of memory out of 3000000
- 15418 multiletter control sequences out of 15000+200000
+ 12400 strings out of 493698
+ 177008 string characters out of 3141969
+ 351683 words of memory out of 3000000
+ 15416 multiletter control sequences out of 15000+200000
  54557 words of font info for 45 fonts, out of 3000000 for 9000
  1025 hyphenation exceptions out of 8191
  46i,10n,37p,824b,578s stack positions out of 5000i,500n,10000p,200000b,50000s
@@ -1647,7 +1647,7 @@ ogram Files (x86)/MiKTeX 2.9/fonts/type1/public/lm/lmr17.pfb><C:/Program Files
 (x86)/MiKTeX 2.9/fonts/type1/public/lm/lmri10.pfb><C:/Program Files (x86)/MiKTe
 X 2.9/fonts/type1/public/lm/lmro10.pfb><C:/Program Files (x86)/MiKTeX 2.9/fonts
 /type1/public/lm/lmsy10.pfb>
-Output written on skabelon.pdf (29 pages, 804204 bytes).
+Output written on skabelon.pdf (29 pages, 805083 bytes).
 PDF statistics:
  331 PDF objects out of 1000 (max. 8388607)
  90 named destinations out of 1000 (max. 500000)

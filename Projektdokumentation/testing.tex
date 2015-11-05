@@ -34,11 +34,11 @@ Blodtryksmålersystemet ønskes at kunne måle blodtryk, EKG og iltmætning for 
 
 \section{Aktør-kontekst diagram}
 \begin{figure}[h!]
-\includegraphics[width =0.65\textwidth , left]{billeder/Aktorkontekst.jpg}
+\includegraphics[width =0.65\textwidth , center]{billeder/Aktorkontekst.jpg}
 \caption{\textbf{Aktør-kontekst diagram}}
 \end{figure}
 
-Af dette diagram ses de interagerende aktører: \textit{Sundhedsfaglig personale}, \textit{Transducer}, \textit{EPJ database}, \textit{Login database} og \textit{Servicemedarbejder}.\\ Herunder er der en detaljeret beskrivelse af hver aktør.
+Af dette diagram ses de interagerende aktører: \textit{Sundhedsfaglig personale}, \textit{Transducer}, \textit{EPJ database}, \textit{Personale database} og \textit{Servicemedarbejder}.\\ Herunder er der en detaljeret beskrivelse af hver aktør.
 
 \begin{table}[h!]
 \begin{tabular}{| >{\raggedright\arraybackslash}p{3cm} | >{\raggedright\arraybackslash}p{12cm} |}
@@ -63,9 +63,9 @@ Af dette diagram ses de interagerende aktører: \textit{Sundhedsfaglig personale
 \begin{table}[h!]
 \begin{tabular}{| >{\raggedright\arraybackslash}p{3cm} | >{\raggedright\arraybackslash}p{12cm} |}
    \hline
-   Navn: & Login database\\ \hline
+   Navn: & Personale database\\ \hline
    Type: & Sekundær aktør \\ \hline
-   Beskrivelse: & Login database er der, hvori det sundhedsfaglige personales login informationer obevares, hvilket benyttes til at tilgå systemet. \\ \hline
+   Beskrivelse: & Personale database er der, hvori det sundhedsfaglige personales login informationer obevares, hvilket benyttes til at tilgå systemet. \\ \hline
 \end{tabular}
 \end{table}
 
@@ -96,7 +96,7 @@ Af dette diagram ses de interagerende aktører: \textit{Sundhedsfaglig personale
 \caption{\textbf{Use case diagram}}
 \end{figure}
 
-De fem Use cases er: \textit{Kalibrér apparat}, \textit{Opsætning}, \textit{Foretag måling}, \textit{Alarmér} og \textit{Stop måling}. Hver enkel af disse Use cases beskrives detaljeret herunder i et fully-dressed Use case skema\\
+De fire Use cases er: \textit{Kalibrér apparat}, \textit{Foretag måling}, \textit{Alarmér} og \textit{Stop måling}. Hver enkel af disse Use cases beskrives detaljeret herunder i et fully-dressed Use case skema\\
 Systemet består af en computer med programkode, en NI-DAQ og en Analog Discovery. Derudover har vi hardware, hvilket består af et lavpasfilter, en forstærker og en transducer.
 \\
 Systemet gør det muligt at hente data fra transduceren. Her går data fra transduceren igennem forstærkeren, hvilken der bliver forsynet af spænding fra Analog Discovery, som er forsynet af spænding fra computeren. Fra forstærkeren gør signalet videre til lavpasfilteret og derefter ind i NI-DAQ, som så sender dataen videre til computeren. 
@@ -503,7 +503,7 @@ Undtagelse 1: Tryk på "Nej" &Tryk "Nej" & Signalet og målingen er stoppet & Ko
    \caption{Accepttest for ikke-funktionelle krav}\label{tab:label13}
 \\ \hline   
 \textbf{Krav nr.}&\textbf{Krav} &\textbf{Test}& \textbf{Forventet resultat} & \textbf{Resultat} & \textbf{Godkendt/ kommentar}\\ \hline
-  1.1 & Programmet skal have et digitalt filter til udglatning af blodtrykssignal & Tænd det digitale filter og tjek udglatningen & Signalet bliver mindre "råt"(udglattet) & & \\\hline
+  1.1 & Programmet skal have et digitalt filter til udglatning af blodtrykssignal & Send to frekvenser ind (XX Hz og ZZ Hz) & Den ene (XX Hz) af de indsendte frekvenser er blevet fjernet & & \\\hline
   1.2 & Programmet skal give alarm når grænseværdier overskrides med lyd og hvor den overskredede grænse værdi blinker på skærmen. & Overskrid en grænseværdi og tjek alarmering & Alarmen starter& & \\\hline
   1.3 & Programmet skal kunne gemme blodtrykssignalet i en database & Indsend signal og gå ind i databasen og se værdier & Der ligger værdier i databasen & & \\\hline\hline
   2.1 & Programmet skal have to window form: startskærm,der fungerer som EPJ systemet, og hovedskærm, hvilken fungerer som selve blodtryksmåleren & Start program og tjek dette & Der er to window forms & & \\\hline
