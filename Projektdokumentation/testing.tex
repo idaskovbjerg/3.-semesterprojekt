@@ -327,7 +327,7 @@ Ud fra domænemodellen kan en applikationsmodel opstilles. Denne model tager afs
 klasser. Dette betyder derfor at denne model således også tager udgangspunkt i alle Use cases.
 \begin{figure}[h!]
 \includegraphics[width =1.0\textwidth , center]{billeder/appModel}
-\caption{\textbf{Sekvensdiagram for blodtryksmålersystemet. Denne viser adfærden for Use case 1 }}
+\caption{\textbf{Applikationsmodel for blodtryksmålersystemet.}}
 \end{figure}
 \subsubsection{Metodeidentifikation}
 \begin{figure}[h!]
@@ -378,17 +378,7 @@ Billede indsættes - haves ikke endnu
 \caption{Accepttest for Use case 2}\label{tab:tabel8}
 \begin{tabular}{|>{\raggedright\arraybackslash}p{2.5cm}| >{\raggedright\arraybackslash}p{2.9cm} | >{\raggedright\arraybackslash}p{2.9cm} | >{\raggedright\arraybackslash}p{2.9cm} | >{\raggedright\arraybackslash}p{2.8cm} |}
    \hline
-   \textbf{Use case 2: Opsætning} &\textbf{Test}& \textbf{Prækondition} & \textbf{Forventet resultat} & \textbf{Godkendt/ kommentar}\\ \hline
-   Normalforløb:& Tryk på opsætningens dropdown på startskærmen & Systemet er tilsluttet en computer og er tændt & Liste med porte kommer frem. & \\\hline
-   &Vælg port & Systemet er tilsluttet en computer og er tændt & Port er valgt &\\\hline
-\end{tabular}
-\end{table}
-
-\begin{table}[H]
-\caption{Accepttest for Use case 3}\label{tab:tabel8}
-\begin{tabular}{|>{\raggedright\arraybackslash}p{2.5cm}| >{\raggedright\arraybackslash}p{2.9cm} | >{\raggedright\arraybackslash}p{2.9cm} | >{\raggedright\arraybackslash}p{2.9cm} | >{\raggedright\arraybackslash}p{2.8cm} |}
-   \hline
-   \textbf{Use case 3: Foretag måling} &\textbf{Test}& \textbf{Prækondition} & \textbf{Forventet resultat} & \textbf{Godkendt/ kommentar}\\ \hline
+   \textbf{Use case 2: Foretag måling} &\textbf{Test}& \textbf{Prækondition} & \textbf{Forventet resultat} & \textbf{Godkendt/ kommentar}\\ \hline
    Normalforløb:& Indtast brugernavn "anpe" og kode "1234" & Port valgt. VPN, Personale database og EPJ database er tilsluttet korrekt & Korrekt indtastning fuldendt & \\\hline
    &Tryk "Login" & Port valgt. VPN, Personale database og EPJ database er tilsluttet korrekt & Besked: "Logget på" og den sundhedsfaglige er dermed logget på &\\\hline
    &Tryk på patient dropdown på startskærm & En sundhedsfaglig er logget på & Liste med patienter kommer frem  & \\\hline
@@ -401,10 +391,10 @@ Billede indsættes - haves ikke endnu
 
 
 \begin{table}[H]
-\caption{Accepttest for Use case 3}\label{tab:tabel8}
+\caption{Accepttest for Use case 2}\label{tab:tabel8}
 \begin{tabular}{|>{\raggedright\arraybackslash}p{2.5cm}| >{\raggedright\arraybackslash}p{2.9cm} | >{\raggedright\arraybackslash}p{2.9cm} | >{\raggedright\arraybackslash}p{2.9cm} | >{\raggedright\arraybackslash}p{2.8cm} |}
    \hline
-   \textbf{Use case 3: Foretag måling} &\textbf{Test}& \textbf{Prækondition} & \textbf{Forventet resultat} & \textbf{Godkendt/ kommentar}\\ \hline
+   \textbf{Use case 2: Foretag måling} &\textbf{Test}& \textbf{Prækondition} & \textbf{Forventet resultat} & \textbf{Godkendt/ kommentar}\\ \hline
    Undtagelse 1: Brugernavn og/eller kode indtastet forkert & Indtast brugernavn "efgh" og kode "1234"& Port valgt. VPN, Personale database og EPJ database er tilsluttet korrekt & Forkert kombinition indtastet &  \\\hline
    &Tryk "Login" & Port valgt. VPN, Personale database og EPJ database er tilsluttet korrekt. & Besked: "Brugernavn og/eller kode indtastet forkert" &\\\hline
 \end{tabular}
@@ -413,10 +403,10 @@ Billede indsættes - haves ikke endnu
 
 
 \begin{table}[H]
-\caption{Accepttest for Use case 3}\label{tab:tabel8}
+\caption{Accepttest for Use case 2}\label{tab:tabel8}
 \begin{tabular}{|>{\raggedright\arraybackslash}p{2.5cm}| >{\raggedright\arraybackslash}p{2.9cm} | >{\raggedright\arraybackslash}p{2.9cm} | >{\raggedright\arraybackslash}p{2.9cm} | >{\raggedright\arraybackslash}p{2.8cm} |}
    \hline
-   \textbf{Use case 3: Foretag måling} &\textbf{Test}& \textbf{Prækondition} & \textbf{Forventet resultat} & \textbf{Godkendt/ kommentar}\\ \hline
+   \textbf{Use case 2: Foretag måling} &\textbf{Test}& \textbf{Prækondition} & \textbf{Forventet resultat} & \textbf{Godkendt/ kommentar}\\ \hline
    Udvidelse 1: Slå digitalt filter til/fra:& Tryk på "Digitalt filter OFF" & Signalet er startet & Systemet slår det digitale filter fra. Grafen ses at være ufiltreret(råt) og knappen ændrer navn. &\\\hline
    &Tryk på "Digitalt filter ON" & Signalet er startet & Systemet slår det digitale filter til. Grafen ses at være filtreret og knappen ændrer navn. &\\\hline
 \end{tabular}
@@ -424,10 +414,10 @@ Billede indsættes - haves ikke endnu
 
 
 \begin{table}[H]
-\caption{Accepttest for Use case 3}\label{tab:tabel8}
+\caption{Accepttest for Use case 2}\label{tab:tabel8}
 \begin{tabular}{|>{\raggedright\arraybackslash}p{2.5cm}| >{\raggedright\arraybackslash}p{2.9cm} | >{\raggedright\arraybackslash}p{2.9cm} | >{\raggedright\arraybackslash}p{2.9cm} | >{\raggedright\arraybackslash}p{2.8cm} |}
    \hline
-   \textbf{Use case 3: Foretag måling } &\textbf{Test}& \textbf{Prækondition} & \textbf{Forventet resultat} & \textbf{Godkendt/ kommentar}\\ \hline
+   \textbf{Use case 2: Foretag måling } &\textbf{Test}& \textbf{Prækondition} & \textbf{Forventet resultat} & \textbf{Godkendt/ kommentar}\\ \hline
    Udvidelse 2: Juster systolens/diastolens grænseværdi& Tryk på "Systole op"/"Diastole op"& Signalet er startet & Grænseværdien ændres 2.5 mmHg op og intervallet vises på hovedskærmen &\\\hline
    &Tryk på "Systole ned"/"Diastole ned" & Signalet er startet & Grænseværdien ændres 2.5 mmHg ned og intervallet vises på hovedskærmen & \\\hline
 \end{tabular}
@@ -436,10 +426,10 @@ Billede indsættes - haves ikke endnu
 
 
 \begin{table}[H]
-\caption{Accepttest for Use case 4}\label{tab:tabel8}
+\caption{Accepttest for Use case 3}\label{tab:tabel8}
 \begin{tabular}{|>{\raggedright\arraybackslash}p{2.5cm}| >{\raggedright\arraybackslash}p{2.9cm} | >{\raggedright\arraybackslash}p{2.9cm} | >{\raggedright\arraybackslash}p{2.9cm} | >{\raggedright\arraybackslash}p{2.8cm} |}
    \hline
-   \textbf{Use case 4: Alarmér } &\textbf{Test}& \textbf{Prækondition} & \textbf{Forventet resultat} & \textbf{Godkendt/ kommentar}\\ \hline
+   \textbf{Use case 3: Alarmér } &\textbf{Test}& \textbf{Prækondition} & \textbf{Forventet resultat} & \textbf{Godkendt/ kommentar}\\ \hline
    Normalforløb:& Grænseværdi overskrides& Signalet er startet & Alarm starter med lyd og tallet, hvis grænseværdi er overskredet, blinker &\\\hline
 \end{tabular}
 \end{table}
@@ -447,10 +437,10 @@ Billede indsættes - haves ikke endnu
 
 
 \begin{table}[H]
-\caption{Accepttest for Use case 4}\label{tab:tabel8}
+\caption{Accepttest for Use case 3}\label{tab:tabel8}
 \begin{tabular}{|>{\raggedright\arraybackslash}p{2.5cm}| >{\raggedright\arraybackslash}p{2.9cm} | >{\raggedright\arraybackslash}p{2.9cm} | >{\raggedright\arraybackslash}p{2.9cm} | >{\raggedright\arraybackslash}p{2.8cm} |}
    \hline
-   \textbf{Use case 4: Alarmér } &\textbf{Test}& \textbf{Prækondition} & \textbf{Forventet resultat} & \textbf{Godkendt/ kommentar}\\ \hline
+   \textbf{Use case 3: Alarmér } &\textbf{Test}& \textbf{Prækondition} & \textbf{Forventet resultat} & \textbf{Godkendt/ kommentar}\\ \hline
    Udvidelse 1: Anden grænseværdi overskrides & Endnu en grænseværdi overskrides & Signalet er er startet og en alarm er startet & Lyd fra første alarm fortsætter og det nye tallet som har overskredet grænseværdien blinker ligeledes &\\\hline
 \end{tabular}
 \end{table}
@@ -458,10 +448,10 @@ Billede indsættes - haves ikke endnu
 
 
 \begin{table}[H]
-\caption{Accepttest for Use case 4}\label{tab:tabel8}
+\caption{Accepttest for Use case 3}\label{tab:tabel8}
 \begin{tabular}{|>{\raggedright\arraybackslash}p{2.5cm}| >{\raggedright\arraybackslash}p{2.9cm} | >{\raggedright\arraybackslash}p{2.9cm} | >{\raggedright\arraybackslash}p{2.9cm} | >{\raggedright\arraybackslash}p{2.8cm} |}
    \hline
-   \textbf{Use case 4: Alarmér } &\textbf{Test}& \textbf{Prækondition} & \textbf{Forventet resultat} & \textbf{Godkendt/ kommentar}\\ \hline
+   \textbf{Use case 3: Alarmér } &\textbf{Test}& \textbf{Prækondition} & \textbf{Forventet resultat} & \textbf{Godkendt/ kommentar}\\ \hline
    Udvidelse 2: Udsæt alarm & Tryk på "Udsæt alarm" & Alarmering er startet & Systemet stopper alarmens lyd i et minut &\\\hline
 \end{tabular}
 \end{table}
@@ -470,10 +460,10 @@ Billede indsættes - haves ikke endnu
 
 
 \begin{table}[H]
-\caption{Accepttest for Use case 5}\label{tab:tabel8}
+\caption{Accepttest for Use case 4}\label{tab:tabel8}
 \begin{tabular}{|>{\raggedright\arraybackslash}p{2.5cm}| >{\raggedright\arraybackslash}p{2.9cm} | >{\raggedright\arraybackslash}p{2.9cm} | >{\raggedright\arraybackslash}p{2.9cm} | >{\raggedright\arraybackslash}p{2.8cm} |}
    \hline
-   \textbf{Use case 5: Stop måling } &\textbf{Test}& \textbf{Prækondition} & \textbf{Forventet resultat} & \textbf{Godkendt/ kommentar}\\ \hline
+   \textbf{Use case 4: Stop måling } &\textbf{Test}& \textbf{Prækondition} & \textbf{Forventet resultat} & \textbf{Godkendt/ kommentar}\\ \hline
    Normalforløb:& Tryk på "Sluk" & Målingen er foretaget & Målingen, signalet og timer på hovedskærmen stopper &\\\hline
    & Tryk på "Log ud" & Signalet er stoppet & Pop-up vindue kommer op: "Er du sikker?" &\\\hline
    &Tryk "Ja"&Signalet og målingen er stoppet& Startskærmen kommer frem og ny måling kan foretages &\\\hline
@@ -482,10 +472,10 @@ Billede indsættes - haves ikke endnu
 
 
 \begin{table}[H]
-\caption{Accepttest for Use case 5}\label{tab:tabel8}
+\caption{Accepttest for Use case 4}\label{tab:tabel8}
 \begin{tabular}{|>{\raggedright\arraybackslash}p{2.5cm}| >{\raggedright\arraybackslash}p{2.9cm} | >{\raggedright\arraybackslash}p{2.9cm} | >{\raggedright\arraybackslash}p{2.9cm} | >{\raggedright\arraybackslash}p{2.8cm} |}
    \hline
-   \textbf{Use case 5: Stop måling } &\textbf{Test}& \textbf{Prækondition} & \textbf{Forventet resultat} & \textbf{Godkendt/ kommentar}\\ \hline
+   \textbf{Use case 4: Stop måling } &\textbf{Test}& \textbf{Prækondition} & \textbf{Forventet resultat} & \textbf{Godkendt/ kommentar}\\ \hline
 Undtagelse 1: Tryk på "Nej" &Tryk "Nej" & Signalet og målingen er stoppet & Kommer tilbage til hovedskærmen &\\\hline
 \end{tabular}
 \end{table}
