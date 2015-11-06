@@ -370,7 +370,7 @@ Billede indsættes - haves ikke endnu
 \begin{tabular}{|>{\raggedright\arraybackslash}p{2.5cm}| >{\raggedright\arraybackslash}p{2.9cm} | >{\raggedright\arraybackslash}p{2.9cm} | >{\raggedright\arraybackslash}p{2.9cm} | >{\raggedright\arraybackslash}p{2.8cm} |}
    \hline
    \textbf{Use case 1: Kalibrer apparat} &\textbf{Test}& \textbf{Prækondition} & \textbf{Forventet resultat} & \textbf{Godkendt/ kommentar}\\ \hline
-   Normalforløb:& Tryk på "Kalibrering" & Blodtryksmåleren er tændt og tilsluttet kalibreringsudstyret. & Systemet er kalibreret og besked: "Kalibreringen er fuldendt" vises på startskærmen & IKKE TESTBAR\\\hline
+   Normalforløb:& Tryk på "Kalibrering" & Blodtryksmåleren er tændt og tilsluttet kalibreringsudstyret. & Apparat er kalibreret og besked: "Kalibreringen er fuldendt" vises på startskærmen & IKKE TESTBAR\\\hline
 \end{tabular}
 \end{table}
 
@@ -395,7 +395,7 @@ Billede indsættes - haves ikke endnu
 \begin{tabular}{|>{\raggedright\arraybackslash}p{2.5cm}| >{\raggedright\arraybackslash}p{2.9cm} | >{\raggedright\arraybackslash}p{2.9cm} | >{\raggedright\arraybackslash}p{2.9cm} | >{\raggedright\arraybackslash}p{2.8cm} |}
    \hline
    \textbf{Use case 2: Foretag måling} &\textbf{Test}& \textbf{Prækondition} & \textbf{Forventet resultat} & \textbf{Godkendt/ kommentar}\\ \hline
-   Undtagelse 1: Brugernavn og/eller kode indtastet forkert & Indtast brugernavn "efgh" og kode "1234"& Port valgt. VPN, Personale database og EPJ database er tilsluttet korrekt & Forkert kombinition indtastet &  \\\hline
+   Undtagelse 1: Brugernavn og/eller kode indtastet forkert & Indtast brugernavn "efgh" og kode "1234"& Port valgt. VPN, Personale database og EPJ database er tilsluttet korrekt & Forkert kombination indtastet &  \\\hline
    &Tryk "Login" & Port valgt. VPN, Personale database og EPJ database er tilsluttet korrekt. & Besked: "Brugernavn og/eller kode indtastet forkert" &\\\hline
 \end{tabular}
 \end{table}
@@ -407,8 +407,8 @@ Billede indsættes - haves ikke endnu
 \begin{tabular}{|>{\raggedright\arraybackslash}p{2.5cm}| >{\raggedright\arraybackslash}p{2.9cm} | >{\raggedright\arraybackslash}p{2.9cm} | >{\raggedright\arraybackslash}p{2.9cm} | >{\raggedright\arraybackslash}p{2.8cm} |}
    \hline
    \textbf{Use case 2: Foretag måling} &\textbf{Test}& \textbf{Prækondition} & \textbf{Forventet resultat} & \textbf{Godkendt/ kommentar}\\ \hline
-   Udvidelse 1: Slå digitalt filter til/fra:& Tryk på "Digitalt filter OFF" & Signalet er startet & Systemet slår det digitale filter fra. Grafen ses at være ufiltreret(råt) og knappen ændrer navn. &\\\hline
-   &Tryk på "Digitalt filter ON" & Signalet er startet & Systemet slår det digitale filter til. Grafen ses at være filtreret og knappen ændrer navn. &\\\hline
+   Udvidelse 1: Slå digitalt filter til/fra:& Tryk på "Digitalt filter OFF" & Signalet er startet & Systemet slår det digitale filter fra. De to signaler (XX Hz og YY Hz) er indsendt og knappen ændrer navn. &\\\hline
+   &Tryk på "Digitalt filter ON" & Signalet er startet & Systemet slår det digitale filter til. Den ene (XX Hz) af de indsendte signaler er blevet fjernet og knappen ændrer navn. &\\\hline
 \end{tabular}
 \end{table}
 
