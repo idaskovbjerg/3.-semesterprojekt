@@ -1,0 +1,59 @@
+\documentclass[11pt,a4paper,danish,oneside]{memoir} 
+% Skabelon af DTU's LaTeX support gruppe, v20090423
+
+\usepackage{titlesec}
+\usepackage{amsfonts}
+\usepackage[export]{adjustbox}
+
+\usepackage{float}
+
+%\usepackage[latin1]{inputenc} % Skal passe til editorens indstillinger
+\usepackage[danish]{babel} % danske overskrifter
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc} % fonte (output)
+\usepackage{lmodern} % vektor fonte
+\usepackage{graphicx} % indsættelse af billeder
+\graphicspath{{./billeder/}} % stivej til bibliotek med figurer
+\usepackage{mathtools}% matematik
+\usepackage{array}
+\usepackage{longtable}
+\usepackage{ifthen}
+\usepackage{xifthen}
+\usepackage{mathtools} % matematik - understøtter muligheden for at bruge \eqref{}
+
+\renewcommand{\labelenumii}{\theenumii}
+\renewcommand{\theenumii}{\theenumi.\arabic{enumii}.}
+
+\usepackage[plainpages=false,pdfpagelabels,pageanchor=false]{hyperref} % aktive links
+\hypersetup{%
+  pdfauthor={<dit navn>},
+  pdftitle={<titlen>},
+  pdfsubject={<emnet>}}
+\usepackage{memhfixc}% rettelser til hyperref
+\usepackage[danish]{babel}
+
+\usepackage[top=1.25in, bottom=1.25in, left=1in, right=1in]{geometry}
+
+%følgende kan bruges hvis man ikke laver sin egen forside:
+\title{<titlen på opgaven>} 
+\author{<navn>\\
+        \\
+        <studienummer>
+}
+\date{\today}
+
+% \includeonly{forord,testing} % Kompiler kun de kapitler du arbejder med.
+
+\begin{document}
+\frontmatter % sidenumre som romertal
+%\maketitle  % bruges hvis man ikke har sin egen forside
+\include{forside}
+%\include{resume}
+\tableofcontents
+
+\mainmatter % arabiske sidenumre
+%\include{forord}
+
+\include{testing}
+
+\end{document}
