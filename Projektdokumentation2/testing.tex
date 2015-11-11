@@ -118,8 +118,8 @@ Systemet gør det muligt at hente data fra transduceren. Her går data fra trans
    Forudsætninger: & Blodtryksmålersystemet er tændt og tilsluttet kalibreringsudstyret.\\ \hline
    Resultat:& Apparatet er kalibreret\\ \hline
    Hovedscenarie:& 
-1. Servicemedarbejder starter kalibreringen. \newline
-2. Systemet foretager kalibrering. \\\hline
+1. Servicemedarbejder starter kalibreringen\newline
+2. Systemet foretager kalibreringen.\\\hline
 Udvidelse/undtagelser: & - \\\hline
 \end{tabular}
 \end{table}
@@ -132,7 +132,7 @@ Udvidelse/undtagelser: & - \\\hline
    \textbf{Use case 2} & \textbf{Foretag måling}\\ \hline
    Mål: & Den valgte patients målinger foretages\\ \hline
    Initiering: & Startes af Sundhedsfaglig personale\\ \hline
-   Aktører:& Sundhedsfaglig personale (primær), Personale database (sekundær), EPJ database(sekundær), Transducer (sekundær)\\ \hline
+   Aktører:& Sundhedsfaglig personale (primær), Personale database (sekundær), EPJ database(sekundær), Transducer (sekundær), EKG patient (sekundær)\\ \hline
    Referencer: & Use case 2 \\ \hline
    Samtidige forekomster: & Én sundhedsfaglig person og én transducer pr. system \\\hline
    Forudsætninger: & VPN, Personale database og EPJ databasen er tilsluttet korrekt\\ \hline
@@ -202,7 +202,7 @@ $[$Udvidelse 2: Udsæt alarm$]$\newline
    \textbf{Use case 4} & \textbf{Stop måling}\\ \hline
    Mål: &  Få stoppet målingen og logget\\ \hline
    Initiering: & Startes af Sundhedsfaglig personale \\ \hline
-   Aktører: & Sundhedsfaglig personale (primær) & Transducer (sekund�r) \\ \hline
+   Aktører: & Sundhedsfaglig personale (primær) \\ \hline
    Referencer: & Use case 2\\ \hline
    Samtidige forekomster: & - \\\hline
    Forudsætninger: & Use case 2: Foretag måling, er kørt succesfuldt\\ \hline
@@ -301,58 +301,75 @@ De ikke-funktionelle krav er opsat efter FURPS+ metoden. De er prioriteret efter
 Følgende beskriver arkitekturen for systemet herunder både hardware og software. 
 Systemarkitektur er udviklingsrammen for den videre udvikling af design og implementering. Der vil igennem dette afsnit startes med at se systemet overordnet og hvorefter der arbejdes ned gennem systemet i mindre brudstykker. Der benyttes diagrammer for at kunne specificere og klarlægge systemkravene. Disse diagrammer beskrives desuden i tekst.
 \section{Hardware design}
-%\begin{figure}[h!]
-%\includegraphics[width =1.0\textwidth , center]{billeder/BDD}
-%\caption{\textbf{Block definition diagram. Dette diagram viser hardware delene i systemet, samt sammenhængen mellem disse.}}
-%\end{figure}
-%\begin{figure}[h!]
-%\includegraphics[width =1.0\textwidth , center]{billeder/IBD}
-%\caption{\textbf{Internal block diagram. Dette diagram viser signalerne imellem blokkene.}}
-%\end{figure}
-
 \subsection{Implementering}
+\subsubsection{Block definition diagram}
+På ovenstående figur bliver systemets hardware illustreret i et BDD. Her ses at systemet har  seks hardware blokke: Computer, transducer, NI-DAQ, lavpas filter, forstærker og en strømforsyning. 
+\begin{figure}[H]
+\includegraphics[width =1.0\textwidth , center]{billeder/BDD}
+\caption{\textbf{Block definition diagram. Dette diagram viser hardware delene i systemet, samt sammenhængen mellem disse.}}
+\end{figure}
+\subsubsection{Internal block definition}
+\begin{itemize}
+\item Strømforsyningen forsyner forstærkeren og transduceren med 9V
+\item Transduceren omdanner tryksignalet fra kateteret til et strømsignal i ZZ mV tilbage til forstærkeren.
+\item Forstærkeren forstærker signalet til lavpas filteret.
+\item Lavpas filteret dæmper de høje frekvenser og sender signalet til NI-DAQ
+\item Ni-DAQs formål er, at omdanne signalet fra et analogt signal til et digitalt signal.
+\item Computerens funktion er at få vist blodtryksignalet på en brugergrænseflade, vha. Visual Studio. 
+\end{itemize}
+\begin{figure}[H]
+\includegraphics[width =1.0\textwidth , center]{billeder/IBD}
+\caption{\textbf{Internal block diagram. Dette diagram viser signalerne imellem blokkene.}}
+\end{figure}
+
 \subsection{Modultest}
 \section{Software design}
-I dette afsnit beskrives softwaredesign på baggrund af systembeskrivelse og kravspecifikationen. DEnne beskrivelse opnås ved at der benyttes relevante diagrammer og modeller, hvilke kan beskrive softwaren. Overvejelser og valg, der er blevet gjort, i forbindelse med design og implementering af softwaren, vil i dette afsnit blive præsenteret.
+I dette afsnit beskrives softwaredesign på baggrund af systembeskrivelse og kravspecifikationen. Denne beskrivelse opnås ved at der benyttes relevante diagrammer og modeller, hvilke kan beskrive softwaren. Overvejelser og valg, der er blevet gjort, i forbindelse med design og implementering af softwaren, vil i dette afsnit blive præsenteret.
 \subsection{Problemidentifikation}
+\subsubsection{Domænemodel}
 Først skal der klarlægges hvilke klasser som systemet skal bestå af, hvilket er det første skridt i processen. For at kunne identificere disse klasse udarbejdes en domænemodel, hvilken har sit udgangspunkt i Use cases. Det er i de konceptuelle klasser fra Use cases som indeholder den information som systemet skal holde styr på. Derfor findes de konceptuelle klasser i Use cases og disse indføres i domænemodellen som klasser. Domænemodellen opstilles derfor for at finde frem til hvad problemet er i softwaren i forhold til, hvad der skal holdes styr på.
-\begin{figure}[h!]
+\begin{figure}[H]
 \includegraphics[width =1.0\textwidth , center]{billeder/DM}
 \caption{\textbf{Domænemodel for blodtryksmålersystemet.}}
 \end{figure}
 Denne domænemodel viser det sundhedsfaglige personales interaktion med systemet, samt hvilke handlinger der startes af denne interaktion. Det sundhedsfaglige personale udfører en handling, der medfører, at en række processer igangsættes i systemet. Disse processer sørger at hente data fra transduceren og EKG patient, for at starte beregningen af puls, systolisk, diastolisk og middeltryks værdierne, samt sørger for at disse data bliver gemt i en database.
-\\
-\subsubsection{Klasseidentifikation}
-Ud fra domænemodellen kan en applikationsmodel opstilles. Denne model tager afsæt i domænemodellens
-klasser. Dette betyder derfor at denne model således også tager udgangspunkt i alle Use cases.
-\begin{figure}[h!]
+\newpage
+\subsection{Klasseidentifikation}
+\subsubsection{Applikationsmodel}
+Ud fra domænemodellen kan en applikationsmodel opstilles. Denne model tager afsæt i domænemodellens klasser. Dette betyder derfor at denne model således også tager udgangspunkt i alle Use cases.\\
+Modellen bruges til at bestemme de interargerende klasser i blodtryksmålersystemet.\\
+\begin{figure}[H]
 \includegraphics[width =1.0\textwidth , center]{billeder/appModel}
 \caption{\textbf{Applikationsmodel for blodtryksmålersystemet.}}
 \end{figure}
-\textbf{Sekvens diagram}\\
-Nedenfor er vist sekvensdiagrammer for systemet. Der er lavet sekvens diagrammer for alle uce case. Vores uce cases er henholdsvis UC1: Kalibr�r system, UC2 Foretag m�ling, UC3 Alarm�r og UC4 Stop m�ling. Sekvens diagrammet er et interaktionsdiagram, som viser hvorledes processerne forl�ber i forhold til hinanden. \\
-\subsubsection{Metodeidentifikation}
-\begin{figure}[h!]
+\subsection{Metodeidentifikation}
+\subsubsection{Sekvensdiagrammer}
+Nedenfor er vist sekvensdiagrammer for systemet. Der er lavet sekvens diagrammer for alle uce case. Vores uce cases er henholdsvis UC1: Kalibrér system, UC2 Foretag måling, UC3 Alarmér og UC4 Stop måling. Sekvens diagrammet er et interaktionsdiagram, som viser hvorledes processerne forløber i forhold til hinanden. \\
+\begin{figure}[H]
 \includegraphics[width =1.0\textwidth , center]{billeder/sdUC1}
 \caption{\textbf{Sekvensdiagram for blodtryksmålersystemet. Denne viser adfærden for Use case 1 }}
 \end{figure}
-I sekvens diagrammet for UC1 interagerer servicemedarbejder med blodtryksm�lersystemet. Her er det servicemedarbejderen som starter kalibreringen og blodtryksm�lersystemet som foretager kalibreringen. 
-\begin{figure}[h!]
+I sekvens diagrammet for UC1 interagerer servicemedarbejder med blodtryksmålersystemet. Her er det servicemedarbejderen som starter kalibreringen og blodtryksmålersystemet som foretager kalibreringen igennem lagene og klassen Kalibrering.\\\\ 
+\begin{figure}[H]
 \includegraphics[width =1.0\textwidth , center]{billeder/sdUC2}
-\caption{\textbf{Sekvensdiagram for blodtryksmålersystemet. Denne viser adfærden for Use case 2}}
+\caption{\textbf{Sekvensdiagram for blodtryksmålersystemet. Denne viser adfærden for Use case 2 del 1}}
 \end{figure}
-I sekvensdiagrammet for UC2
-\begin{figure}[h!]
+\begin{figure}[H]
+\includegraphics[width =1.0\textwidth , center]{billeder/sdUC2_2}
+\caption{\textbf{Sekvensdiagram for blodtryksmålersystemet. Denne viser adfærden for Use case 2 del 2}}
+\end{figure}
+I sekvens diagrammet for UC2 ønsker sundhedsfaglig personale at foretage måling, dette gøres ved at sundhedsfaglig personale interagerer med blodtryksmålersystemet. For at målingen forløber foregår den videre interaktion via blodtryksmålersystemet og de klasser, som indgår i Use casen. Transducer, EKG patient, EPJ database og Personale database henter sine data i datalaget. I dette sekvens diagram ses det altså, at den sundhedsfaglige personales interaktion med blodtryksmålersystemet igangsætter processer, som medfører at blodtryksmålingen forløber. Det ses også, at vores præsentations lag, som er vores blodtryksmålersystem, kommunikerer med logik lag og vores logik lag kommunikerer med datalag, altså er trelagsmodellen opfyldt. \\\\
+\begin{figure}[H]
 \includegraphics[width =1.0\textwidth , center]{billeder/sdUC3}
 \caption{\textbf{Sekvensdiagram for blodtryksmålersystemet. Denne viser adfærden for Use case 3}}
 \end{figure}
-I sekvens diagrammet for UC3 
-
-\begin{figure}[h!]
+I dette sekvens diagram for UC3 tjekker logik laget hvorvidt grænseværdier er overskredet eller ej. Hvis en grænseværdi overskrides starter alarmeringen. I denne Use case har sundhedsfaglig personale mulighed for at udsætte alarmen, dette sker ved en interaktion mellem sundhedsfaglig personale og blodtryksmålersystemet.\\\\ 
+\begin{figure}[H]
 \includegraphics[width =1.0\textwidth , center]{billeder/sdUC4}
 \caption{\textbf{Sekvensdiagram for blodtryksmålersystemet. Denne viser adfærden for Use case 4}}
 \end{figure}
-I sekvensdiagrammet f�r UC4 
+I sekvens diagrammet for UC 4 ønsker sundhedsfaglig personale, at stoppe målingen. Dette gøres ved, at sundhedsfaglig personale interagerer med blodtryksmålersystemet. Denne interaktion medfører en videre kommunikation mellem logik lag og data lag, som medfører at data ikke længere hentes fra transduceren. Når blodtryksmålingen er afsluttet vises det som besked til sundhedsfaglig personale. 
+
 \subsection{Implementering}
 \subsection{Unittest}
 \section{Integrationstest}
@@ -373,9 +390,11 @@ Billede indsættes - haves ikke endnu
 \begin{tabular}{|>{\raggedright\arraybackslash}p{2.5cm}| >{\raggedright\arraybackslash}p{2.9cm} | >{\raggedright\arraybackslash}p{2.9cm} | >{\raggedright\arraybackslash}p{2.9cm} | >{\raggedright\arraybackslash}p{2.8cm} |}
    \hline
    \textbf{Use case 1: Kalibrer apparat} &\textbf{Test}& \textbf{Prækondition} & \textbf{Forventet resultat} & \textbf{Godkendt/ kommentar}\\ \hline
-   Normalforløb:& Tryk på "Kalibrering" & Blodtryksmåleren er tændt og tilsluttet kalibreringsudstyret. & Apparat er kalibreret og besked: "Kalibreringen er fuldendt" vises på startskærmen & IKKE TESTBAR\\\hline
+   Normalforløb:& Tryk på "Kalibrering" & Blodtryksmåleren er tændt og tilsluttet kalibreringsudstyret. & Systemet er kalibreret og besked: "Kalibreringen er fuldendt" vises på startskærmen & IKKE TESTBAR\\\hline
 \end{tabular}
 \end{table}
+
+
 
 \begin{table}[H]
 \caption{Accepttest for Use case 2}\label{tab:tabel8}
@@ -398,7 +417,7 @@ Billede indsættes - haves ikke endnu
 \begin{tabular}{|>{\raggedright\arraybackslash}p{2.5cm}| >{\raggedright\arraybackslash}p{2.9cm} | >{\raggedright\arraybackslash}p{2.9cm} | >{\raggedright\arraybackslash}p{2.9cm} | >{\raggedright\arraybackslash}p{2.8cm} |}
    \hline
    \textbf{Use case 2: Foretag måling} &\textbf{Test}& \textbf{Prækondition} & \textbf{Forventet resultat} & \textbf{Godkendt/ kommentar}\\ \hline
-   Undtagelse 1: Brugernavn og/eller kode indtastet forkert & Indtast brugernavn "efgh" og kode "1234"& Port valgt. VPN, Personale database og EPJ database er tilsluttet korrekt & Forkert kombination indtastet &  \\\hline
+   Undtagelse 1: Brugernavn og/eller kode indtastet forkert & Indtast brugernavn "efgh" og kode "1234"& Port valgt. VPN, Personale database og EPJ database er tilsluttet korrekt & Forkert kombinition indtastet &  \\\hline
    &Tryk "Login" & Port valgt. VPN, Personale database og EPJ database er tilsluttet korrekt. & Besked: "Brugernavn og/eller kode indtastet forkert" &\\\hline
 \end{tabular}
 \end{table}
@@ -410,8 +429,8 @@ Billede indsættes - haves ikke endnu
 \begin{tabular}{|>{\raggedright\arraybackslash}p{2.5cm}| >{\raggedright\arraybackslash}p{2.9cm} | >{\raggedright\arraybackslash}p{2.9cm} | >{\raggedright\arraybackslash}p{2.9cm} | >{\raggedright\arraybackslash}p{2.8cm} |}
    \hline
    \textbf{Use case 2: Foretag måling} &\textbf{Test}& \textbf{Prækondition} & \textbf{Forventet resultat} & \textbf{Godkendt/ kommentar}\\ \hline
-   Udvidelse 1: Slå digitalt filter til/fra:& Tryk på "Digitalt filter OFF" & Signalet er startet & Systemet slår det digitale filter fra. De to signaler (XX Hz og YY Hz) er indsendt og knappen ændrer navn. &\\\hline
-   &Tryk på "Digitalt filter ON" & Signalet er startet & Systemet slår det digitale filter til. Den ene (XX Hz) af de indsendte signaler er blevet fjernet og knappen ændrer navn. &\\\hline
+   Udvidelse 1: Slå digitalt filter til/fra:& Tryk på "Digitalt filter OFF" & Signalet er startet & Systemet slår det digitale filter fra. De to signaler (XX Hz og YY Hz) er indsendt og knappen ændrer navn &\\\hline
+   &Tryk på "Digitalt filter ON" & Signalet er startet & Systemet slår det digitale filter til. Den ene (XX Hz) af de indsendt signaler er blevet fjernet og knappen ændre navn. &\\\hline
 \end{tabular}
 \end{table}
 
