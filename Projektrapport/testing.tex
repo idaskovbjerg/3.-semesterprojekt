@@ -3,12 +3,17 @@
 Formål
 Produktet
 Use cases
+
+
+
 \chapter{Projektformulering og afgrænsning}
 Hvad vil vi
 Hvad skal produktet kunne
 Løsning
 Fremtiden
 Deltager; Fulde navn og initialer
+
+
 \chapter{Hjertet}
 Beskrivelse af hjertet
 Blodtryk
@@ -18,39 +23,83 @@ middeltryk
 EKG
 puls
 Statistik?
+
+
+
 \chapter{Systembeskrivelse}
 
+
+
 \chapter{Krav}
-Indledende beskrivelse til krav
-Use case diagram
+Hvilke krav der stilles til produktet udarbejdes i en kravspecifikation. Denne kravspecifikation består af en række Use cases. Disse Use cases beskriver interaktionen mellem aktørerne og systemet. Use casene har til formål at specificere, hvilke krav der stilles til produktet. Kravene opstilles ud fra hvad kunden ønsker samt hvad leverandøren finder muligt at realisere. \\ \\
+Der er nogle obligatoriske krav til produktet, der skal opfyldes. Disse krav er bl.a at systemet skal kunne kalibrere blodtrykssignalet og foretage en nulpunkts justering. Desuden skal blodtrykssignalet vises kontinuerligt, hvilket betyder, at signalet skal vises grafisk samtidigt med at det bliver hentet/indsendt fra hardwaren. Disse målte data skal efter de er blevet behandlet gemmes i en database.\\
+Et af de obligatoriske krav er desuden at der skal være et digitalt filter der kan tilgås når programmet kører. Dette filter skal både kunne slås til og fra. Dette filter skal sørge for at signalet haves i to forskellige modes; et diagnose mode, hvor signalet er råt med alle udsving, og et monitor mode, hvor signalet er filtreret og afrundet.\\\\
+Foruden disse obligatoriske krav er det valgt, at det skal være muligt starte og stoppe målingen. Når målingen er startet skal det være muligt at kunne justere grænseværdierne for systolen og diastolen, så disse værdier kan tilpasses. Når signalets værdier så kommer over grænseværdien, skal en alarmering begynde. Denne alarm skal kunne udsættes i et minut, dog kun alarmens lyd, så værdien blinker fortsat, så det stadig er tydeligt hvilken grænseværdi der er overskredet.\\
+Systemet består af en computer med en programkode, en NI-DAQ, et lavpas filter, en forstærker, en transducer og en væskesøjle.
+Systemet gør det muligt at få arterietrykket sendt ind i systemet igennem hardwaren. Arterietrykke dannes i denne prototype af en væskesøjle, som levere et tryk til en transducer, herefter sender transduceren signalet videre til hardwaren, hvor et lavpasfilter, filtrerer signalet, hvorefter en forstærker forstærker signalet. Dette signal sendes derefter igennem NI-DAQ ind i systemet, som derefter behandler og analyserer signalet.\\
+Den fulde beskrivelse af de udarbejdede Use cases (fully dressed Use case skema) findes i dokumentationen.
+\begin{figure}[H]
+\includegraphics[width =0.7\textwidth , center]{billeder/UseCaseDiagram}
+\caption{Use Case diagram. Dette diagram viser aktørernes interaktion med systemet.}
+\end{figure}
 \section{Aktørbeskrivelse}
-Ud fra use case diagrammet aktørerne:
-Sundhedsfaglig personale
-- Beskrivelse
-Transducer
-- Beskrivelse
-EKG-patient?
-- Beskrivelse
-Servicemedarbejder
-- Beskrivelse
-EPJ-database
-- Beskrivelse
-Login-database
-- Beskrivelse
+Ud fra use case diagrammet ses de seks aktører; \textit{Sundhedsfaglig personale}, \textit{Transducer}, \textit{EKG patient}, \textit{EPJ database}, \textit{Personale database} og \textit{Servicemedarbejder}. Det er disse aktører der interagerer med systemet.
+\subsection{Sundhedsfaglig personale}
+Det er det sundhedsfaglige personale der er den aktør der påsætter måleudstyret på patienten. I dette tilfælde vil patienten være en transducer, hvilken er tilsluttet en væskesøjle. Det sundhedsfaglige personale er desuden den aktør der interagere med systemet; logger på og foretager en måling. Det sundhedsfaglige personale har dermed tilgang til de viste målinger på brugergrænsefladerne; startskærm og hovedskærm
+\subsection{Transducer}
+Transduceren er i projektet den aktør der agere som patienten, denne består af en væskesøjle der er påsat en tryktransducer. Væskesøjlen levere et tryk i mmHg videre til tryktransduceren, og dette signal, der virker som arterietrykket, sendes videre i hardwaren, som behandler signalet. Derfor er denne aktør kilden til måleresultaterne for systole, diastole og middeltryk. 
+\subsection{EKG-patient}
+EKG patienten er den aktør som er kilden til EKG-kurven, idet vi ikke har en rigtig patient, hvorfra både EKG og blodtryk kan fås fra. Idet det er fra denne aktør at EKG-kurven findes er det fra denne aktør, pulsen kan bestemmes.\\
+Værdierne for denne aktør hentes fra PhysioBank ATM.
+\subsection{Servicemedarbejder}
+Denne aktør, Servicemedarbejder, er den aktør, der står for at foretage kalibreringen. Dette gør Servicemedarbejderen ved at påsætte systemet til kalibrerings systemet, og indtaster de værdier for tryk (mmHg) og spænding (Volt), som måles ved tre forskellige målepunkter på en væskesøjle, hvorefter en kalibreringsværdi findes af systemet.
+\subsection{EPJ database}
+EPJ databasen, er databasen, hvori patientdata ligger samt den database hvori grafer og måleresultaterne, der bestemmes ved analysen, bliver gemt. Måleresultaterne er systole, diastole, middeltryk og pulsen.
+Graferne for EKG-signalet og arteriekurven gemmes som tallister. Denne EPJ database skal simulere den database der fungerer på sygehusene i virkeligheden. Denne database kobler patienterne i denne database sammen med en sundhedsfaglig fra Personale databasen.
+\subsection{Personale database}
+Det sundhedsfaglige personales login informationer ligger i Personale databasen. Det er derfor denne database der indeholder informationer om det Sundhedsfaglige personale og dermed de informationer der benyttes til at tilgå systemet.
 \section{Use case beskrivelse}
-Use case diagrammet viser ligeledes de 4 Use cases der er for systemet: Kalibrér apparat, Foretag måling, Alamér og Stop måling. Disse Use cases er en beskrivelse af hvad systmet skal kunne og dermed beskriver de interaktionen mellem aktørene og systemet.
+Use case diagrammet viser ligeledes de 4 Use cases der er for systemet: Kalibrér apparat, Foretag måling, Alamér og Stop måling. Disse Use cases er en beskrivelse af hvad systmet skal kunne og dermed beskriver de interaktioner der sker mellem aktørerne og systemet.
 \\
-Use case 1: Kalibrér apparat
-- Beskrivelse
-Use case 2: Foretag måling
-- Beskrivelse
-Use case 3: Alarmér
-- Beskrivelse
-Use case 4: Stop måling
-- Beskrivelse
+\subsection{Use case 1: Kalibrér apparat}
+Service medarbejderen skal i denne Use case foretage en kalibrering. Dette gøres ved at have tre målepunkter på en væskesøjle. PÅ disse punkter måles spændingen (volt) og trykket (mmHg). Disse indtastes af Servicemedarbejderen ind i systemet igennem brugergrænsefladen; startskærmen. Herefter beregner systemet en kalibrerings værdi. Denne værdi bruges på arteriekurven (blodtrykskurven), for at få den kalibrede graf.
+\subsection{Use case 2: Foretag måling}
+Denne Use case styrer målingerne af graferne der indhentes. For at dette kan gøres skal det Sundhedsfaglige personale først logge på systemet. Dette gør denne aktør ved at indtaste sit brugernavn og sin adgangskode på brugergrænsefladen; startskærmen. Når den sundhedsfaglige på logget på henter systemet de tilknyttede patienter, hvorefter det Sundhedsfaglige personale kan vælge den ønskede patient. Når Patienten er blevet valgt startes hovedskærmen, hvilken repræsenterer en blodtryksmålers brugergrænseflade. Her kan den Sundhedsfaglige starte målingen. Når dette gøres henter systemet arteriekurven og EKG-signalet. Dette bruges derefter af systemet til at beregne hhv. systole, diastole, middeltryk og puls. Systemet viser graferne kontinuerligt på hver sin graf og systole, diastole, middeltryk og puls vises som talværdier. Samtidig gemmer systemet automatisk kontinuerligt disse data i EPJ databasen. \\
+Det vil være muligt for det Sundhedsfaglige personale at slå det digitale filter fra og til. Filteret er fra start slået til.\\
+DEt er også muligt for det Sundhedsfaglige personale at justere grænseværdierne for systolen og diastolen, dette gøres for at indstille grænseværdierne mere individuelt for hver patient.\\
+For at sikre at graferne der er hentet ligger rigtigt på graferne, kan det Sundhedsfaglige personale nulpunkts justere systemet, sådan at graferne kommer til at ligge rigtigt på akserne.
+\subsection{Use case 3: Alarmér}
+Alarmen startes af systemet, når en af grænseværdierne overskrides. Dette gør at grænseværdien der er overskredet blinker og at der starter en alarm lyd. Når alarmen kan endnu en grænse værdi overskrides, hvis dette sker begynder denne grænseværdi ligeledes at blinke, men der sker ikke noget med alarmlyden, denne fortsætter fra tidligere. \\
+Det vil her være muligt for det Sundhedsfaglige af udsætte alarmen. Dette gøres ved at trykke på knappen, hvorefter at systemet stopper alarmens lyd i et minut, efter dette minut starter alarmens lyd igen. Grænseværdien/grænseværdierne der er overskredet fortsætter med at blinke indtil forholdene er normaliseret, altså indtil grænseværdien ikke længere er overskredet.
+\subsection{Use case 4: Stop måling}
+Det Sundhedsfaglige personale skal også stoppe målingen. Dette gøres ved at det Sundhedsfaglige personale interagere med hovedskærmen. Herefter vil det være muligt for det Sundhedsfaglige personale at logge 
 \section{Ikke-funktionelle krav beskrivelse}
-Furps+
-MoSCoW
+Ikke funktionelle krav er opsat efter FURPS+ metoden. Kravene er herefter blevet prioriteret efter MoSCoW.
+\subsection{FURPS+}
+\textbf{Functionality}\\
+Funktionalitet er det brugeren ønsker sig. Dette omfatter også sikkerhedsrelaterede behov.\\\\
+\textbf{Usability}\\
+Hvor effektiv er produktet, set fra forbrugerens side, dette er det aspekt brugervenlighed ser på. Er produktet nemt at bruge. Hvordan bruges produktet; er der nogen brugergrænseflader.\\\\
+\textbf{Reliability}\\
+Pålidelighed tager sig af aspekter som, hvor længe er det maksimalt at systemet må være nede. Er der fejl der kan forudses. Hvor præcist kan resultaterne vises. Er produktet let at vedligeholde; kan delene i produktet skiftes let.\\\\
+\textbf{Performance}\\
+Præstationen for produktet, handler om hvor hurtigt produktet er om at starte op og hvor hurtigt svartiden er. Hvor stor må svartiden maksimalt være. \\\\
+\textbf{S}uportability\\
+Produktets support fortæller, om det er muligt at teste på produktet, om det er muligt at udvide produktet, installere og konfigurere produktet. Desuden om produktet er kompatibelt.\\\\
+\textbf{+}\\
+Nogle yderligere behov som kunden kan have, disse yderligere behov beskrives under +. Hvilke begrænsninger er det ved designet. Er der nogle krav for brugergrænsefladerne. Er der nogle fysiske eller implementerings krav. Er der dele der kan genbruges, herunder hele systemer eller dele af dem.\\
+\url{http://agileinaflash.blogspot.dk/2009/04/furps.html}
+
+\subsection{MoSCoW}
+\textbf{Must}\\
+De krav der bliver markeret som et must er de krav som produktet skal have. Altså det produktet skal have/indeholde.\\\\
+\textbf{Should}\\
+De krav der markeres som et should krav, er de krav til produktet der burde være med. Altså er det hvad produktet bør indeholde\\\\
+\textbf{Could}\\
+Kravene kan også markeres som could. Disse krav er de krav der kunne være gode at have med, men som ikke bliver prioriteret. Så det er kun, hvis man kan nu at få det med, at de skal være der.\\\\
+\textbf{Would/Won't}\\
+Det er ikke alle krav der skrives, der skal være gældende for produktet, disse krav markeres som would/won't. Det er altså disse krav som man ikke tager med eller de krav som ville være sjove at have med, men ikke har en betydning for produktet, men er en tilføjelse eller udvidelse. Det er disse krav der danner rammen for fremtidigt og videregående arbejde med projektet.\\\\
+
 Kravene
 - Beskrivelse
 \chapter{Projektbeskrivelse}
@@ -94,6 +143,10 @@ SysML
 	\subsection{Software design}
 	Kort indledning
 	\section{Design, implementering og test}
+	PUSH
+	Observer/subject
+	QUEUE
+	
 	
 	
 	
