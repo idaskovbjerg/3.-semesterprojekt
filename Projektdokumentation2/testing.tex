@@ -25,11 +25,11 @@ Kundens underskrift &&&&&&&&&&Leverandørens underskrift\\
 \end{tabular}
 \end{table}
 \section{Indledning}
-Denne kravspecifikation er blevet udarbejdet på baggrund af krav fra kunden, samt hvad leverandøren finder muligt. Kravspecifikationens formål er at specificere de krav der er til produktet. 
+Denne kravspecifikation er blevet udarbejdet på baggrund af krav fra kunden, samt hvad leverandøren finder muligt. Kravspecifikationens formål er at specificere de krav, der er til produktet. 
 \newpage
 
 \section{Systembeskrivelse}
-Blodtryksmålersystemet ønskes at kunne måle blodtryk, EKG og iltmætning for en patient. Ud fra blodtrykket findes systolisk, diastolisk og middeltryks værdier, dette gøres ved at finde den maksimale værdi (systole), den minimale værdi (diastole) og det bestemte integrale (middeltrykket) af blodtrykskurven. Ud fra EKG-signalet kan pulsen bestemmes, dette gøres ved at bestemme antallet af R-takker på et minut. 
+Blodtryksmålersystemet ønskes at kunne måle blodtryk, EKG og iltmætning for en patient. Ud fra blodtrykket findes systolisk, diastolisk og middeltryks værdier, dette gøres ved at finde den maksimale værdi (systole) og den minimale værdi (diastole) for blodtrykskurven. Ud fra disse to værdier bestemmes middeltrykket, ved formlen: $middel = 1/3 \cdot systole + 2/3 \cdot diastole$. Ud fra EKG-signalet kan pulsen bestemmes, dette gøres ved at bestemme antallet af R-takker på et minut. 
 \newpage
 
 \section{Aktør-kontekst diagram}
@@ -84,7 +84,7 @@ Af dette diagram ses de interagerende aktører: \textit{Sundhedsfaglig personale
    \hline
    Navn: & EPJ database\\ \hline
    Type: & Sekundær aktør \\ \hline
-   Beskrivelse: & EPJ database er den database, hvor patientdata ligger, samt der hvori analyseresultaterne, der opnås ved målingerne i systemet, samt signalerne bliver gemt. Disse data er grafer for EKG, arterietryk, iltmætnings, samt talværdier for puls, systole, diastole, middeltryk og iltmætningen. Denne EPJ database skal simulere den database der fungere på sygehusene i virkeligheden.\\ \hline
+   Beskrivelse: & EPJ database er den database, hvor patientdata ligger, samt der hvori analyseresultaterne, der opnås ved målingerne i systemet, samt signalerne bliver gemt. Disse data er grafer for EKG, arterietryk, samt talværdier for puls, systole, diastole og middeltryk. Denne EPJ database skal simulere den database der fungere på sygehusene i virkeligheden.\\ \hline
 \end{tabular}
 \end{table}
 
@@ -131,8 +131,8 @@ Programmet skal have to skærme; en startskærm, der fungerer som  EPJ systemet 
    Forudsætninger: & Blodtryksmålersystemet er tændt og tilsluttet kalibreringsudstyret.\\ \hline
    Resultat:& Apparatet er kalibreret\\ \hline
    Hovedscenarie:& 
-1. Servicemedarbejder starter kalibreringen\newline
-2. Systemet foretager kalibreringen.\\\hline
+1. Servicemedarbejder foretager kalibreringen, ved at indtaste spændingen og trykket for de tre målepunkter.\newline
+2. Systemet beregner kalibreringsværdien.\\\hline
 Udvidelse/undtagelser: & - \\\hline
 \end{tabular}
 \end{table}

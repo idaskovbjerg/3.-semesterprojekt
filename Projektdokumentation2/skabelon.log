@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.15 (MiKTeX 2.9) (preloaded format=pdflatex 2015.4.2)  11 NOV 2015 14:56
+This is pdfTeX, Version 3.14159265-2.6-1.40.15 (MiKTeX 2.9) (preloaded format=pdflatex 2015.4.2)  18 NOV 2015 12:57
 entering extended mode
 **skabelon.tex
 (skabelon.tex
@@ -1220,7 +1220,7 @@ Package babel Info: Redefining danish shorthand "|
 (babel)             in language  on input line 35.
 Package babel Info: Redefining danish shorthand "~
 (babel)             in language  on input line 35.
- <billeder/Aktorkontekst.jpg, id=121, 344.03531pt x 335.00156pt>
+ <billeder/Aktorkontekst.jpg, id=124, 344.03531pt x 335.00156pt>
 File: billeder/Aktorkontekst.jpg Graphic file (type jpg)
 
 <use billeder/Aktorkontekst.jpg>
@@ -1249,7 +1249,7 @@ Package babel Info: Redefining danish shorthand "|
 Package babel Info: Redefining danish shorthand "~
 (babel)             in language  on input line 103.
 
-<billeder/UseCaseDiagram.jpg, id=127, 364.36125pt x 307.90031pt>
+<billeder/UseCaseDiagram.jpg, id=130, 364.36125pt x 307.90031pt>
 File: billeder/UseCaseDiagram.jpg Graphic file (type jpg)
 
 <use billeder/UseCaseDiagram.jpg>
@@ -1698,15 +1698,15 @@ Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 59.
 Here is how much of TeX's memory you used:
  12435 strings out of 493698
  177616 string characters out of 3141969
- 351684 words of memory out of 3000000
+ 351680 words of memory out of 3000000
  15436 multiletter control sequences out of 15000+200000
  54557 words of font info for 45 fonts, out of 3000000 for 9000
  1025 hyphenation exceptions out of 8191
  46i,11n,37p,825b,557s stack positions out of 5000i,500n,10000p,200000b,50000s
 {C:/Program Files (x86)/MiKTeX 2.9/fonts/enc/dvips/lm/lm-mathsy.enc}{C:/Progr
-am Files (x86)/MiKTeX 2.9/fonts/enc/dvips/lm/lm-mathit.enc}{C:/Program Files (x
-86)/MiKTeX 2.9/fonts/enc/dvips/lm/lm-rm.enc}{C:/Program Files (x86)/MiKTeX 2.9/
-fonts/enc/dvips/lm/lm-ec.enc}<C:/Program Files (x86)/MiKTeX 2.9/fonts/type1/pub
+am Files (x86)/MiKTeX 2.9/fonts/enc/dvips/lm/lm-ec.enc}{C:/Program Files (x86)/
+MiKTeX 2.9/fonts/enc/dvips/lm/lm-rm.enc}{C:/Program Files (x86)/MiKTeX 2.9/font
+s/enc/dvips/lm/lm-mathit.enc}<C:/Program Files (x86)/MiKTeX 2.9/fonts/type1/pub
 lic/lm/lmbx10.pfb><C:/Program Files (x86)/MiKTeX 2.9/fonts/type1/public/lm/lmbx
 12.pfb><C:/Program Files (x86)/MiKTeX 2.9/fonts/type1/public/lm/lmmi10.pfb><C:/
 Program Files (x86)/MiKTeX 2.9/fonts/type1/public/lm/lmr10.pfb><C:/Program File
@@ -1715,7 +1715,7 @@ eX 2.9/fonts/type1/public/lm/lmr17.pfb><C:/Program Files (x86)/MiKTeX 2.9/fonts
 /type1/public/lm/lmri10.pfb><C:/Program Files (x86)/MiKTeX 2.9/fonts/type1/publ
 ic/lm/lmro10.pfb><C:/Program Files (x86)/MiKTeX 2.9/fonts/type1/public/lm/lmsy1
 0.pfb><C:/Program Files (x86)/MiKTeX 2.9/fonts/type1/public/lm/lmsy8.pfb>
-Output written on skabelon.pdf (33 pages, 1267882 bytes).
+Output written on skabelon.pdf (33 pages, 1269458 bytes).
 PDF statistics:
  370 PDF objects out of 1000 (max. 8388607)
  101 named destinations out of 1000 (max. 500000)
