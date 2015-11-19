@@ -34,9 +34,9 @@
 \contentsline {section}{\numberline {6.5}Design, implementering og test}{11}{section.6.5}
 \contentsline {section}{\numberline {6.6}Resultater og diskussion}{11}{section.6.6}
 \contentsline {section}{\numberline {6.7}Udviklingsv\IeC {\ae }rkt\IeC {\o }jer}{11}{section.6.7}
-\contentsline {subsection}{Microsoft VIsio 2010}{11}{subsection*.20}
+\contentsline {subsection}{Microsoft Visio 2010}{11}{subsection*.20}
 \contentsline {subsection}{Visual Studio 2013}{11}{subsection*.21}
-\contentsline {subsection}{Analog Discovery fra Digilent and Analog Devices}{11}{subsection*.22}
+\contentsline {subsection}{Hardware program??}{11}{subsection*.22}
 \contentsline {subsection}{NI-DAQmx}{11}{subsection*.23}
 \contentsline {section}{\numberline {6.8}Opn\IeC {\r a}ede erfaringer}{11}{section.6.8}
 \contentsline {section}{\numberline {6.9}Fremtidigt arbejde}{11}{section.6.9}
