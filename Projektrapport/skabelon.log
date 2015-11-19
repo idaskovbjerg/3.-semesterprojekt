@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.15 (MiKTeX 2.9) (preloaded format=pdflatex 2015.4.2)  19 NOV 2015 07:49
+This is pdfTeX, Version 3.14159265-2.6-1.40.15 (MiKTeX 2.9) (preloaded format=pdflatex 2015.4.2)  19 NOV 2015 13:52
 entering extended mode
 **skabelon.tex
 (skabelon.tex
@@ -1330,39 +1330,44 @@ Package babel Info: Redefining danish shorthand "|
 Package babel Info: Redefining danish shorthand "~
 (babel)             in language  on input line 152.
 Package babel Info: Redefining danish shorthand "|
-(babel)             in language  on input line 158.
+(babel)             in language  on input line 164.
 Package babel Info: Redefining danish shorthand "~
-(babel)             in language  on input line 158.
+(babel)             in language  on input line 164.
 Package babel Info: Redefining danish shorthand "|
-(babel)             in language  on input line 167.
+(babel)             in language  on input line 173.
 Package babel Info: Redefining danish shorthand "~
-(babel)             in language  on input line 167.
-Package babel Info: Redefining danish shorthand "|
-(babel)             in language  on input line 172.
-Package babel Info: Redefining danish shorthand "~
-(babel)             in language  on input line 172.
+(babel)             in language  on input line 173.
  [11]
 Package babel Info: Redefining danish shorthand "|
-(babel)             in language  on input line 172.
+(babel)             in language  on input line 173.
 Package babel Info: Redefining danish shorthand "~
-(babel)             in language  on input line 172.
+(babel)             in language  on input line 173.
 Package babel Info: Redefining danish shorthand "|
-(babel)             in language  on input line 176.
+(babel)             in language  on input line 178.
 Package babel Info: Redefining danish shorthand "~
-(babel)             in language  on input line 176.
- [12
+(babel)             in language  on input line 178.
+ [12]
+Package babel Info: Redefining danish shorthand "|
+(babel)             in language  on input line 178.
+Package babel Info: Redefining danish shorthand "~
+(babel)             in language  on input line 178.
+Package babel Info: Redefining danish shorthand "|
+(babel)             in language  on input line 182.
+Package babel Info: Redefining danish shorthand "~
+(babel)             in language  on input line 182.
+ [13
 
 ]
 Package babel Info: Redefining danish shorthand "|
-(babel)             in language  on input line 176.
+(babel)             in language  on input line 182.
 Package babel Info: Redefining danish shorthand "~
-(babel)             in language  on input line 176.
+(babel)             in language  on input line 182.
 )
 Package babel Info: Redefining danish shorthand "|
 (babel)             in language  on input line 62.
 Package babel Info: Redefining danish shorthand "~
 (babel)             in language  on input line 62.
- [13
+ [14
 
 ]
 Package babel Info: Redefining danish shorthand "|
@@ -1372,7 +1377,8 @@ Package babel Info: Redefining danish shorthand "~
 \tf@toc=\write5
 Package atveryend Info: Empty hook `BeforeClearDocument' on input line 71.
 Package atveryend Info: Empty hook `AfterLastShipout' on input line 71.
- (skabelon.aux (forside.aux) (resume.aux) (testing.aux))
+ (skabelon.aux (forside.aux) (resume.aux)
+(testing.aux))
 Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 71.
 Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 71.
 Package rerunfilecheck Info: File `skabelon.out' has not changed.
@@ -1380,8 +1386,8 @@ Package rerunfilecheck Info: File `skabelon.out' has not changed.
 Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 71.
  ) 
 Here is how much of TeX's memory you used:
- 12305 strings out of 493698
- 175622 string characters out of 3141969
+ 12306 strings out of 493698
+ 175636 string characters out of 3141969
  314229 words of memory out of 3000000
  15367 multiletter control sequences out of 15000+200000
  54876 words of font info for 46 fonts, out of 3000000 for 9000
@@ -1395,9 +1401,9 @@ public/lm/lmr12.pfb><C:/Program Files (x86)/MiKTeX 2.9/fonts/type1/public/lm/lm
 r17.pfb><C:/Program Files (x86)/MiKTeX 2.9/fonts/type1/public/lm/lmri10.pfb><C:
 /Program Files (x86)/MiKTeX 2.9/fonts/type1/public/lm/lmro10.pfb><C:/Program Fi
 les (x86)/MiKTeX 2.9/fonts/type1/public/lm/lmtt10.pfb>
-Output written on skabelon.pdf (16 pages, 340786 bytes).
+Output written on skabelon.pdf (17 pages, 342729 bytes).
 PDF statistics:
- 233 PDF objects out of 1000 (max. 8388607)
- 45 named destinations out of 1000 (max. 500000)
+ 237 PDF objects out of 1000 (max. 8388607)
+ 46 named destinations out of 1000 (max. 500000)
  179 words of extra memory for PDF output out of 10000 (max. 10000000)
 
