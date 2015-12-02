@@ -394,6 +394,22 @@ I dette sekvens diagram for Use case 3 tjekker logik laget hvorvidt grænseværd
 I sekvens diagrammet for Use case 4 ønsker sundhedsfaglig personale, at stoppe målingen. Dette gøres ved, at sundhedsfaglig personale interagerer med blodtryksmålersystemet. Denne interaktion medfører en videre kommunikation mellem logik lag og data lag, som medfører at data ikke længere hentes fra transduceren. Når blodtryksmålingen er afsluttet vises det som besked til sundhedsfaglig personale. 
 
 \subsection{Implementering}
+Under implementeringen af produktet er der opstået nogle vanskeligheder, som der har skullet tages hensyn til. Der blev f.eks. i første omgang udarbejdet en idé om at have en brugergrænseflade, som startskærm, hvor det kunne vælges hvorpå målingen blev foretaget. På startskærmen skulle det desuden være muligt at kalibrere systemet og foretage nulpunkts justering. Stederne hvor målingerne skulle foretages blev identificeret til at skulle være 4 målesteder; hovedet, hjertet, armen og benet. Efter det var valgt hvor målingen skulle foretages, skulle man komme videre til en anden skærm, hvor selve målingen skulle foretages. Denne idé viste sig dog ikke at være brugbar ude i den virkelige verden, hvilket fik os til at gå væk fra denne. Grunden til at denne idé ikke ville kunne bruges i virkeligheden ved en invasiv blodtryksmåling, var at det var tænkt som en idé til måling på diabetes patienter, men ved denne patientgruppe er det ikke hensigtsmæssigt at lave hun i karrene på bl.a. benene, da blodtrykket her vil være lavt og helingen af det hul der bliver lavet i benet derfor ikke vil kunne foregå optimalt og man derfor kan risikere infektioner. \\
+\begin{figure}[H]
+\includegraphics[width =0.5\textwidth , center]{billeder/SkitseStartGammel}
+\caption{\textbf{Idé til projekt}}
+\end{figure}
+Herefter blev idéen, et produkt der ligner noget der fungere i dagligdagen på hospitalerne, udarbejdet. Denne idé blev udarbejdet efter et besøg på Herning Sygehus. Her blev det muligt at se hvordan produktet virker i virkeligheden, og dermed se hvordan produktet benyttes.\\
+Ved denne idé blev en startskærm, som skal simulere EPJ-systemet, udarbejdet. EPJ-systemet er der, hvor det sundhedsfaglige personale kan tilgå patientens data, og dermed se hvilket behandling patienten evt. har været igennem før. Denne startskærm der er udarbejdet, er blot den del hvor det sundhedsfaglige personale logger på, samt vælger patient. Dermed er det ikke muligt at tilgå tidligere behandlinger osv. som det er i virkeligheden. Det blev desuden klart at nulpunktsjusteringen, hvilken der hertil var placeret på startskærmen, skulle flyttes ind på hovedskærmen, altså skærmen, hvor selve målingen foretages, idet der er nødt til at være data for at nulpunkts justeringen kan foretages. Kalibreringen skal dog stadig foretages inden data sendes ind i systemet. Kalibreringen foretages med en væskesøjle, hvor der er tre punkter hvorpå der måles en spænding. Ud fra det tryk der leveres af væskesøjlen samt den målte spænding, kan en hældningskoefficient bestemmes. Ud fra alle disse faktorer kunne grundstrukturen, til hvordan startskærmen og hovedskærmen skulle se ud, dannes.
+\begin{figure}[H]
+\includegraphics[width =0.5\textwidth , center]{billeder/SkitseStartNy}
+\caption{\textbf{Idé til projekt}}
+\end{figure}
+\begin{figure}[H]
+\includegraphics[width =0.8\textwidth , center]{billeder/SkitseHovedNy}
+\caption{\textbf{Idé til projekt}}
+\end{figure}
+
 \subsection{Unittest}
 \section{Integrationstest}
 

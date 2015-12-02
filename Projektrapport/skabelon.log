@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.15 (MiKTeX 2.9) (preloaded format=pdflatex 2015.4.2)  19 NOV 2015 13:52
+This is pdfTeX, Version 3.14159265-2.6-1.40.15 (MiKTeX 2.9) (preloaded format=pdflatex 2015.4.2)  2 DEC 2015 13:43
 entering extended mode
 **skabelon.tex
 (skabelon.tex
@@ -1388,7 +1388,7 @@ Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 71.
 Here is how much of TeX's memory you used:
  12306 strings out of 493698
  175636 string characters out of 3141969
- 314229 words of memory out of 3000000
+ 314228 words of memory out of 3000000
  15367 multiletter control sequences out of 15000+200000
  54876 words of font info for 46 fonts, out of 3000000 for 9000
  1025 hyphenation exceptions out of 8191
@@ -1401,7 +1401,7 @@ public/lm/lmr12.pfb><C:/Program Files (x86)/MiKTeX 2.9/fonts/type1/public/lm/lm
 r17.pfb><C:/Program Files (x86)/MiKTeX 2.9/fonts/type1/public/lm/lmri10.pfb><C:
 /Program Files (x86)/MiKTeX 2.9/fonts/type1/public/lm/lmro10.pfb><C:/Program Fi
 les (x86)/MiKTeX 2.9/fonts/type1/public/lm/lmtt10.pfb>
-Output written on skabelon.pdf (17 pages, 342729 bytes).
+Output written on skabelon.pdf (17 pages, 342731 bytes).
 PDF statistics:
  237 PDF objects out of 1000 (max. 8388607)
  46 named destinations out of 1000 (max. 500000)
