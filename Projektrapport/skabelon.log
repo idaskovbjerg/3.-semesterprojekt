@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.15 (MiKTeX 2.9) (preloaded format=pdflatex 2015.4.2)  2 DEC 2015 13:43
+This is pdfTeX, Version 3.14159265-2.6-1.40.15 (MiKTeX 2.9) (preloaded format=pdflatex 2015.4.2)  3 DEC 2015 22:05
 entering extended mode
 **skabelon.tex
 (skabelon.tex
@@ -1298,76 +1298,105 @@ Package babel Info: Redefining danish shorthand "|
 (babel)             in language  on input line 103.
 Package babel Info: Redefining danish shorthand "~
 (babel)             in language  on input line 103.
+ <billeder/ASEmodellen.jpg, id=170, 995.21812pt x 560.8453pt>
+File: billeder/ASEmodellen.jpg Graphic file (type jpg)
+
+<use billeder/ASEmodellen.jpg>
+Package pdftex.def Info: billeder/ASEmodellen.jpg used on input line 108.
+(pdftex.def)             Requested size: 452.9679pt x 255.27058pt.
 Package babel Info: Redefining danish shorthand "|
-(babel)             in language  on input line 117.
+(babel)             in language  on input line 112.
 Package babel Info: Redefining danish shorthand "~
-(babel)             in language  on input line 117.
-Package babel Info: Redefining danish shorthand "|
-(babel)             in language  on input line 131.
-Package babel Info: Redefining danish shorthand "~
-(babel)             in language  on input line 131.
-Package babel Info: Redefining danish shorthand "|
-(babel)             in language  on input line 134.
-Package babel Info: Redefining danish shorthand "~
-(babel)             in language  on input line 134.
-Package babel Info: Redefining danish shorthand "|
-(babel)             in language  on input line 142.
-Package babel Info: Redefining danish shorthand "~
-(babel)             in language  on input line 142.
+(babel)             in language  on input line 112.
  [10
 
-]
+ <./billeder/ASEmodellen.jpg>]
+<billeder/Vmodel.jpg, id=177, 679.78969pt x 475.02469pt>
+File: billeder/Vmodel.jpg Graphic file (type jpg)
+
+<use billeder/Vmodel.jpg>
+Package pdftex.def Info: billeder/Vmodel.jpg used on input line 115.
+(pdftex.def)             Requested size: 317.07614pt x 221.56552pt.
+
+<billeder/Vandfald.jpg, id=178, 336.65775pt x 330.63525pt>
+File: billeder/Vandfald.jpg Graphic file (type jpg)
+
+<use billeder/Vandfald.jpg>
+Package pdftex.def Info: billeder/Vandfald.jpg used on input line 122.
+(pdftex.def)             Requested size: 226.48395pt x 222.43259pt.
 Package babel Info: Redefining danish shorthand "|
-(babel)             in language  on input line 142.
+(babel)             in language  on input line 125.
 Package babel Info: Redefining danish shorthand "~
-(babel)             in language  on input line 142.
+(babel)             in language  on input line 125.
+ [11 <./billeder/Vmodel.jpg>]
 Package babel Info: Redefining danish shorthand "|
-(babel)             in language  on input line 150.
+(babel)             in language  on input line 132.
 Package babel Info: Redefining danish shorthand "~
-(babel)             in language  on input line 150.
+(babel)             in language  on input line 132.
 Package babel Info: Redefining danish shorthand "|
-(babel)             in language  on input line 152.
+(babel)             in language  on input line 146.
 Package babel Info: Redefining danish shorthand "~
-(babel)             in language  on input line 152.
+(babel)             in language  on input line 146.
 Package babel Info: Redefining danish shorthand "|
-(babel)             in language  on input line 164.
+(babel)             in language  on input line 149.
 Package babel Info: Redefining danish shorthand "~
-(babel)             in language  on input line 164.
+(babel)             in language  on input line 149.
 Package babel Info: Redefining danish shorthand "|
-(babel)             in language  on input line 173.
+(babel)             in language  on input line 157.
 Package babel Info: Redefining danish shorthand "~
-(babel)             in language  on input line 173.
- [11]
+(babel)             in language  on input line 157.
 Package babel Info: Redefining danish shorthand "|
-(babel)             in language  on input line 173.
+(babel)             in language  on input line 165.
 Package babel Info: Redefining danish shorthand "~
-(babel)             in language  on input line 173.
+(babel)             in language  on input line 165.
+ [12 <./billeder/Vandfald.jpg>]
 Package babel Info: Redefining danish shorthand "|
-(babel)             in language  on input line 178.
+(babel)             in language  on input line 165.
 Package babel Info: Redefining danish shorthand "~
-(babel)             in language  on input line 178.
- [12]
+(babel)             in language  on input line 165.
 Package babel Info: Redefining danish shorthand "|
-(babel)             in language  on input line 178.
+(babel)             in language  on input line 167.
 Package babel Info: Redefining danish shorthand "~
-(babel)             in language  on input line 178.
+(babel)             in language  on input line 167.
 Package babel Info: Redefining danish shorthand "|
-(babel)             in language  on input line 182.
+(babel)             in language  on input line 179.
 Package babel Info: Redefining danish shorthand "~
-(babel)             in language  on input line 182.
- [13
+(babel)             in language  on input line 179.
+Package babel Info: Redefining danish shorthand "|
+(babel)             in language  on input line 188.
+Package babel Info: Redefining danish shorthand "~
+(babel)             in language  on input line 188.
+Package babel Info: Redefining danish shorthand "|
+(babel)             in language  on input line 193.
+Package babel Info: Redefining danish shorthand "~
+(babel)             in language  on input line 193.
+ [13]
+Package babel Info: Redefining danish shorthand "|
+(babel)             in language  on input line 193.
+Package babel Info: Redefining danish shorthand "~
+(babel)             in language  on input line 193.
+ [14]
+Package babel Info: Redefining danish shorthand "|
+(babel)             in language  on input line 193.
+Package babel Info: Redefining danish shorthand "~
+(babel)             in language  on input line 193.
+Package babel Info: Redefining danish shorthand "|
+(babel)             in language  on input line 197.
+Package babel Info: Redefining danish shorthand "~
+(babel)             in language  on input line 197.
+ [15
 
 ]
 Package babel Info: Redefining danish shorthand "|
-(babel)             in language  on input line 182.
+(babel)             in language  on input line 197.
 Package babel Info: Redefining danish shorthand "~
-(babel)             in language  on input line 182.
+(babel)             in language  on input line 197.
 )
 Package babel Info: Redefining danish shorthand "|
 (babel)             in language  on input line 62.
 Package babel Info: Redefining danish shorthand "~
 (babel)             in language  on input line 62.
- [14
+ [16
 
 ]
 Package babel Info: Redefining danish shorthand "|
@@ -1386,13 +1415,13 @@ Package rerunfilecheck Info: File `skabelon.out' has not changed.
 Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 71.
  ) 
 Here is how much of TeX's memory you used:
- 12306 strings out of 493698
- 175636 string characters out of 3141969
+ 12324 strings out of 493698
+ 176016 string characters out of 3141969
  314228 words of memory out of 3000000
- 15367 multiletter control sequences out of 15000+200000
+ 15379 multiletter control sequences out of 15000+200000
  54876 words of font info for 46 fonts, out of 3000000 for 9000
  1025 hyphenation exceptions out of 8191
- 46i,10n,37p,978b,378s stack positions out of 5000i,500n,10000p,200000b,50000s
+ 46i,11n,37p,978b,378s stack positions out of 5000i,500n,10000p,200000b,50000s
 {C:/Program Files (x86)/MiKTeX 2.9/fonts/enc/dvips/lm/lm-ec.enc}<C:/Program F
 iles (x86)/MiKTeX 2.9/fonts/type1/public/lm/lmbx10.pfb><C:/Program Files (x86)/
 MiKTeX 2.9/fonts/type1/public/lm/lmbx12.pfb><C:/Program Files (x86)/MiKTeX 2.9/
@@ -1401,9 +1430,9 @@ public/lm/lmr12.pfb><C:/Program Files (x86)/MiKTeX 2.9/fonts/type1/public/lm/lm
 r17.pfb><C:/Program Files (x86)/MiKTeX 2.9/fonts/type1/public/lm/lmri10.pfb><C:
 /Program Files (x86)/MiKTeX 2.9/fonts/type1/public/lm/lmro10.pfb><C:/Program Fi
 les (x86)/MiKTeX 2.9/fonts/type1/public/lm/lmtt10.pfb>
-Output written on skabelon.pdf (17 pages, 342731 bytes).
+Output written on skabelon.pdf (19 pages, 499496 bytes).
 PDF statistics:
- 237 PDF objects out of 1000 (max. 8388607)
- 46 named destinations out of 1000 (max. 500000)
- 179 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 251 PDF objects out of 1000 (max. 8388607)
+ 49 named destinations out of 1000 (max. 500000)
+ 194 words of extra memory for PDF output out of 10000 (max. 10000000)
 

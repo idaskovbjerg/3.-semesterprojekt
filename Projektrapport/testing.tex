@@ -103,11 +103,26 @@ Det er ikke alle krav der skrives, der skal være gældende for produktet, disse
 \section{Projektgennemførelse}
 Modellerne
 \subsection{ASE-modellen}
-- Beskrivelse
+Til udviklingen af dette produkt er der primært benyttet ASE-modellen. Modellen ses herunder. ASE-modellen er en udviklingsmodel, der er udarbejdet af Aarhus Ingeniørhøjskole. Denne model er en mellemvægtig semi-iterativ udviklingsproces, hvilken drives ud fra Use cases. Projektudviklerne fastlægger først en projektformulering, hvorfra en kravspecifikation kan udarbejdes, hvilke indeholder kravene fra kunden. Systemarkitekturen fastlægges ud fra kravspecifikationen, for derefter at designe og implementere de enkelte hardware og software dele hver for sig i iterationer. Til sidst fører dette til en accepttest, hvilken gennemføres, så der opstår een enighed mellem projektudviklerne og kunden.
+\begin{figure}[H]
+\includegraphics[width =1.0\textwidth , center]{billeder/ASEmodellen}
+\caption{ASE-modellen.}
+\end{figure} 
+Kravspecifikationen bliver specificeret som en række Use cases ud fra problemformuleringen. Use cases benyttes til at beskrive aktørernes interaktion med systemet. Sammen med de ikke-funktionelle krav opnås der med Use casene et overblik over hvilke krav der stilles til systemets funktionalitet. Systemets design bestemmes igennem hardware og software design og implementering, herefter kan en accepttest udarbejdes. Ved udførelsen af accepttesten tjekkes det at kravene er opnået.
 \subsection{V-modellen}
-- Beskrivelse
+V-modellen en model som er faseopdelt udviklingsmodel. Denne model beskriver udviklingsfaserne og testfaserne i et projekt sideløbende. V-modellem er blevet benyttet sideløbende med ASE-modellen. Specifikationen af test foregår parallelt med udviklingen af selve systemet i V-modellen. Fordelen ved denne model er at testene sker på forskellige niveauer, hvilket sikre at udviklede delsystemer virker som ønsket. Det vigtige her er at en fase er færdiggjort, inden den næste fase påbegyndes. 
+\begin{figure}[H]
+\includegraphics[width =0.7\textwidth , center]{billeder/Vmodel}
+\caption{V-modellen.}
+\end{figure} 
+Ud fra modellen ses det at den første fase er udviklingen af kravspecifikationen. Her udarbejdes der en tilhørende accepttest, denne test gør det muligt at tjekke om systemet til sidst lever op til de opstillede krav. Den næste fase er herefter systemarkitektur, her udvikles den tilhørende test, denne test undersøger integrationen mellem de implementerede moduler. De sidste to fase af udviklingsfasen er design og implementering af systemets enkelte moduler, her udføres enhedstesten løbende af de implementerede moduler.
 \subsection{Vandfaldsmodellen}
-- Beskrivelse
+Vandfaldsmodellen er en model der bruges til udvikling af software, hvor softwareudviklingen betragtes som værende konstant løbende nedad. Her kan udviklingen af et modul i en ny fase først påbegyndes når den foranliggende fase er afsluttet. Denne model et i projektet benyttet til udviklingen af softwarearkitekturen. 
+\begin{figure}[H]
+\includegraphics[width =0.5\textwidth , center]{billeder/Vandfald}
+\caption{Vandfalds modellen.}
+\end{figure} 
+Disse tre modeller; ASE-modellen, V-modellen og vandfalds-modellen arbejder alle i en kronologisk logisk rækkefølge. Modellerne er benyttet i et omfang, hvor de har kunnet supplere hinanden. ASE-modellen giver det store overblik, mens V-modellen sikre udarbejdelsen af de nødvendige tests. Vandfaldsmodellen er den proces, hvilken der er arbejdet ud fra i alle projektets facetter.   
 \subsection{Projektstyring}
 Tidsplan
 Opdeling
