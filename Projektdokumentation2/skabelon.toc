@@ -17,12 +17,12 @@
 \contentsline {subsection}{Modultest}{14}{subsection*.6}
 \contentsline {section}{\numberline {3.2}Software design}{14}{section.3.2}
 \contentsline {subsection}{Problemidentifikation}{14}{subsection*.7}
-\contentsline {subsubsection}{Dom\IeC {\ae }nemodel}{14}{subsubsection*.8}
-\contentsline {subsection}{Klasseidentifikation}{16}{subsection*.9}
-\contentsline {subsubsection}{Applikationsmodel}{16}{subsubsection*.10}
-\contentsline {subsection}{Metodeidentifikation}{16}{subsection*.11}
-\contentsline {subsubsection}{Sekvensdiagrammer}{16}{subsubsection*.12}
-\contentsline {subsection}{Implementering}{22}{subsection*.13}
+\contentsline {subsubsection}{Dom\IeC {\ae }nemodel}{16}{subsubsection*.8}
+\contentsline {subsection}{Klasseidentifikation}{18}{subsection*.9}
+\contentsline {subsubsection}{Applikationsmodel}{18}{subsubsection*.10}
+\contentsline {subsection}{Metodeidentifikation}{18}{subsection*.11}
+\contentsline {subsubsection}{Sekvensdiagrammer}{18}{subsubsection*.12}
+\contentsline {subsection}{Implementering}{24}{subsection*.13}
 \contentsline {subsection}{Unittest}{24}{subsection*.14}
 \contentsline {section}{\numberline {3.3}Integrationstest}{24}{section.3.3}
 \contentsline {chapter}{\chapternumberline {4}Accepttest}{25}{chapter.4}

@@ -119,7 +119,7 @@ Når programmet startes skal computeren have VPN-forbindelse til "ASE IHA VPN", 
 Programmet skal have to skærme; en startskærm, der fungerer som EPJ systemet, og en hovedskærm, der fungerer som selve blodtryksmålerens grænseflade.
 
 \begin{table}[H]
-\caption{Use case 1}\label{tab:tabel3}
+\caption{Use case 1}\label{tab:tabel4}
 \begin{tabular}{| l | >{\raggedright\arraybackslash}p{11cm} |}
    \hline
    \textbf{Use case 1} & \textbf{Kalibrér apparat}\\ \hline
@@ -131,7 +131,7 @@ Programmet skal have to skærme; en startskærm, der fungerer som EPJ systemet, 
    Forudsætninger: & Blodtryksmålersystemet er tændt og tilsluttet kalibreringsudstyret.\\ \hline
    Resultat:& Apparatet er kalibreret\\ \hline
    Hovedscenarie:& 
-1. Servicemedarbejder foretager kalibreringen, ved at indtaste spændingen og trykket for de tre målepunkter fra væskesøjlen.\newline
+1. Servicemedarbejder foretager kalibreringen, ved at indtaste spændingen og trykket for målepunktet fra væskesøjlen.\newline
 2. Systemet beregner kalibreringsværdien.\\\hline
 Udvidelse/undtagelser: & - \\\hline
 \end{tabular}
@@ -139,7 +139,7 @@ Udvidelse/undtagelser: & - \\\hline
 
 
 \begin{table}[H]
-\caption{Use case 2}\label{tab:tabel3}
+\caption{Use case 2}\label{tab:tabel5}
 \begin{tabular}{| l | >{\raggedright\arraybackslash}p{11cm} |}
    \hline
    \textbf{Use case 2} & \textbf{Foretag måling}\\ \hline
@@ -179,7 +179,7 @@ $[$Udvidelse 2: Juster systolens/diastolens grænseværdi$]$\newline
 
 
 \begin{table}[H]
-\caption{Use case 3}\label{tab:tabel3}
+\caption{Use case 3}\label{tab:tabel6}
 \begin{tabular}{| l | >{\raggedright\arraybackslash}p{11cm} |}
    \hline
    \textbf{Use case 3} & \textbf{Alarmér}\\ \hline
@@ -210,7 +210,7 @@ $[$Udvidelse 2: Udsæt alarm$]$\newline
 
 
 \begin{table}[H]
-\caption{Use case 4}\label{tab:tabel3}
+\caption{Use case 4}\label{tab:tabel7}
 \begin{tabular}{| l | >{\raggedright\arraybackslash}p{11cm} |}
    \hline
    \textbf{Use case 4} & \textbf{Stop måling}\\ \hline
@@ -264,7 +264,7 @@ De ikke-funktionelle krav er opsat efter FURPS+ metoden. De er prioriteret efter
 \item \textbf{Functionality}
 \begin{enumerate}
 \item (\textbf{M}) Programmet skal have et digitalt filter til udglatning af blodtrykssignal.
-\item (\textbf{M})Programmet skal give alarm, når grænseværdier for blodtrykket overskrides, med lyd og hvor den overskredes grænseværdi skifter farve til hvid.
+\item (\textbf{S})Programmet skal give alarm, når grænseværdier for blodtrykket overskrides, med lyd og hvor den overskredes grænseværdi skifter farve til hvid.
 \item (\textbf{M}) Programmet skal kunne gemme blodtrykssignalet i en database.
 \end{enumerate}
 \item \textbf{Usability}
@@ -319,7 +319,7 @@ De ikke-funktionelle krav er opsat efter FURPS+ metoden. De er prioriteret efter
 \end{enumerate}
 \item \textbf{Supportability}
 \begin{enumerate}
-\item (\textbf{M}) Programmet skal skrives i Csharp kode
+\item (\textbf{M}) Programmet skal skrives i C\# kode
 \item (\textbf{M}) Softwaren skal være opbygget efter trelagsmodellen (Data-View-Model)
 \item (\textbf{S}) I softwaren benyttes Observer/Subject mønsteret.
 \item (\textbf{S}) I softwaren benyttes PUSH mønsteret
@@ -360,6 +360,23 @@ Ud fra BDD kan et IBD diagram udarbejdes. IBD diagrammet viser koblingen mellem 
 \section{Software design}
 I dette afsnit beskrives softwaredesign på baggrund af systembeskrivelsen og kravspecifikationen. Denne beskrivelse opnås ved at der benyttes relevante diagrammer og modeller, hvilke kan bruges til at beskrive softwaren. Overvejelser og valg, der er blevet gjort, i forbindelse med design og implementering af softwaren, vil i dette afsnit blive præsenteret.
 \subsection{Problemidentifikation}
+Ved identifikationen af produktet, og herunder hvad dette skal kunne, er der opstået nogle vanskeligheder, som der har skullet tages hensyn til. Der blev f.eks. i første omgang udarbejdet en idé om at have en brugergrænseflade, som startskærm, hvor det kunne vælges hvorpå målingen skulle foretages. På startskærmen skulle det desuden være muligt at kalibrere systemet og foretage nulpunkts justeringen. Stederne hvor målingerne skulle foretages blev identificeret til at skulle være tre målesteder; hjertet, armen og benet. Efter stedet var valgt, hvor målingen skulle foretages, skulle man komme videre til en anden skærm, hvor selve målingen skulle foretages. Denne idé viste sig dog ikke at være brugbar i praksis, hvilket fik os til at gå væk fra denne. Grunden til at denne idé ikke ville kunne bruges i praksis, ved en invasiv blodtryksmåling, var at denne idé var tænkt som et produkt til måling på diabetes patienter, men ved denne patientgruppe er det ikke hensigtsmæssigt at lave hul i karrene på bl.a. benene, da blodtrykket her vil være lavt og helingen af det hul, der bliver lavet i benet, derfor ikke vil kunne foregå optimalt og der vil være risiko for infektioner. \\
+\begin{figure}[H]
+\includegraphics[width =0.5\textwidth , center]{billeder/SkitseStartGammel}
+\caption{\textbf{Idé til projekt}}
+\end{figure}
+Herefter blev idéen ændret til et produkt, der ligner noget der fungerer i dagligdagen på hospitalerne. Denne idé blev udarbejdet efter et besøg på Herning Sygehus. Her blev det muligt at se hvordan en blodtryksmåler virker i virkeligheden, og dermed se hvordan disse blodtryksmålere benyttes.\\
+Ved denne idé blev en startskærm, som skal simulere EPJ-systemet, udarbejdet. EPJ-systemet er der, hvor det sundhedsfaglige personale kan tilgå patientens data, og dermed evt. se hvilket behandling patienten har været igennem før. Startskærm der her er udarbejdet, er blot en prototype af dette og derfor er det kun den del hvor det sundhedsfaglige personale logger på, samt vælger patient, der er blevet implementeret. Dermed er det ikke muligt at tilgå tidligere behandlinger osv. som det er i virkeligheden. Det blev desuden klart at nulpunkts justeringen, hvilken der hertil var placeret på startskærmen, skulle flyttes ind på hovedskærmen, altså skærmen, hvor selve målingen foretages. Dette skulle den idet der skal være data for at nulpunkts justeringen kan foretages. Kalibreringen skal dog stadig foretages inden data sendes ind i systemet, og er dermed stadig placeret på startskærmen. Kalibreringen foretages med en væskesøjle, hvor der er tre punkter, som fører til at en spænding kan aflæses. Ud fra det tryk der leveres af væskesøjlen samt den målte spænding, kan en hældningskoefficient bestemmes, hvilken systemet skal gemme til at regne på alle data.\\
+Ud fra alle disse faktorer kan grundstrukturen, til hvordan startskærmen og hovedskærmen skal se ud, dannes.
+\begin{figure}[H]
+\includegraphics[width =0.5\textwidth , center]{billeder/SkitseStartNy}
+\caption{\textbf{Startskærmen, hvilken fungerer som EPJ-systemet}}
+\end{figure}
+\begin{figure}[H]
+\includegraphics[width =0.8\textwidth , center]{billeder/SkitseHovedNy}
+\caption{\textbf{Hovedskærmen, hvilken fungerer som blodtryksmålerens grænseflade}}
+\end{figure}
+
 \subsubsection{Domænemodel}
 Først skal der klarlægges hvilke klasser som systemet skal bestå af, hvilket er det første skridt i processen. For at kunne identificere disse klasse udarbejdes en domænemodel, hvilken har sit udgangspunkt i Use cases. Det er i de konceptuelle klasser fra Use cases som indeholder den information som systemet skal holde styr på. Derfor findes de konceptuelle klasser i Use cases og disse indføres i domænemodellen som klasser. Domænemodellen opstilles derfor for at finde frem til hvad problemet er i softwaren i forhold til, hvad der skal holdes styr på.
 \begin{figure}[H]
@@ -410,22 +427,7 @@ I dette sekvens diagram for Use case 3 tjekker logiklaget hvorvidt grænseværdi
 I sekvens diagrammet for Use case 4 ønsker sundhedsfaglig personale, at stoppe målingen. Dette gøres ved, at sundhedsfaglig personale interagerer med blodtryksmålersystemet i præsentationslaget. Denne interaktion medfører en videre kommunikation mellem logiklaget og datalaget, som medfører at data ikke længere hentes fra transduceren. Når blodtryksmålingen er afsluttet vises det som besked til det sundhedsfaglig personale. 
 
 \subsection{Implementering}
-Under implementeringen af produktet er der opstået nogle vanskeligheder, som der har skullet tages hensyn til. Der blev f.eks. i første omgang udarbejdet en idé om at have en brugergrænseflade, som startskærm, hvor det kunne vælges hvorpå målingen skulle foretages. På startskærmen skulle det desuden være muligt at kalibrere systemet og foretage nulpunkts justeringen. Stederne hvor målingerne skulle foretages blev identificeret til at skulle være 3 målesteder; hjertet, armen og benet. Efter stedet var valgt, hvor målingen skulle foretages, skulle man komme videre til en anden skærm, hvor selve målingen skulle foretages. Denne idé viste sig dog ikke at være brugbar i praksis, hvilket fik os til at gå væk fra denne. Grunden til at denne idé ikke ville kunne bruges i praksis, ved en invasiv blodtryksmåling, var at denne idé var tænkt som et produkt til måling på diabetes patienter, men ved denne patientgruppe er det ikke hensigtsmæssigt at lave hul i karrene på bl.a. benene, da blodtrykket her vil være lavt og helingen af det hul, der bliver lavet i benet, derfor ikke vil kunne foregå optimalt og der vil være risiko for infektioner. \\
-\begin{figure}[H]
-\includegraphics[width =0.5\textwidth , center]{billeder/SkitseStartGammel}
-\caption{\textbf{Idé til projekt}}
-\end{figure}
-Herefter blev idéen ændret til et produkt, der ligner noget der fungerer i dagligdagen på hospitalerne. Denne idé blev udarbejdet efter et besøg på Herning Sygehus. Her blev det muligt at se hvordan en blodtryksmåler virker i virkeligheden, og dermed se hvordan disse blodtryksmålere benyttes.\\
-Ved denne idé blev en startskærm, som skal simulere EPJ-systemet, udarbejdet. EPJ-systemet er der, hvor det sundhedsfaglige personale kan tilgå patientens data, og dermed evt. se hvilket behandling patienten har været igennem før. Startskærm der her er udarbejdet, er blot en prototype af dette og derfor er det kun den del hvor det sundhedsfaglige personale logger på, samt vælger patient, der er blevet implementeret. Dermed er det ikke muligt at tilgå tidligere behandlinger osv. som det er i virkeligheden. Det blev desuden klart at nulpunkts justeringen, hvilken der hertil var placeret på startskærmen, skulle flyttes ind på hovedskærmen, altså skærmen, hvor selve målingen foretages. Dette skulle den idet der skal være data for at nulpunkts justeringen kan foretages. Kalibreringen skal dog stadig foretages inden data sendes ind i systemet, og er dermed stadig placeret på startskærmen. Kalibreringen foretages med en væskesøjle, hvor der er tre punkter, som fører til at en spænding kan aflæses. Ud fra det tryk der leveres af væskesøjlen samt den målte spænding, kan en hældningskoefficient bestemmes, hvilken systemet skal gemme til at regne på alle data.\\
-Ud fra alle disse faktorer kan grundstrukturen, til hvordan startskærmen og hovedskærmen skal se ud, dannes.
-\begin{figure}[H]
-\includegraphics[width =0.5\textwidth , center]{billeder/SkitseStartNy}
-\caption{\textbf{Startskærmen, hvilken fungerer som EPJ-systemet}}
-\end{figure}
-\begin{figure}[H]
-\includegraphics[width =0.8\textwidth , center]{billeder/SkitseHovedNy}
-\caption{\textbf{Hovedskærmen, hvilken fungerer som blodtryksmålerens grænseflade}}
-\end{figure}
+
 
 Baggrund for:
 Nulpunktsjustering 
@@ -438,6 +440,7 @@ Acceptering af tidspres: EKG: kan ikke nås
 
 
 \subsection{Unittest}
+
 \section{Integrationstest}
 
 
@@ -456,15 +459,15 @@ Billede indsættes - haves ikke endnu
 \begin{tabular}{|>{\raggedright\arraybackslash}p{2.5cm}| >{\raggedright\arraybackslash}p{2.9cm} | >{\raggedright\arraybackslash}p{2.9cm} | >{\raggedright\arraybackslash}p{2.9cm} | >{\raggedright\arraybackslash}p{2.8cm} |}
    \hline
    \textbf{Use case 1: Kalibrer apparat} &\textbf{Test}& \textbf{Prækondition} & \textbf{Forventet resultat} & \textbf{Godkendt/ kommentar}\\ \hline
-   Normalforløb:& Vælg hvilken af de tre punkter kalibreringen udføreres på. & Blodtryksmålersystemet er tændt og tilsluttet, og tilsluttet kalibreringsudstyret (Analog Discovery og Waveforms). & Værdien for tryk i mmHg for målepunktet vises på GUI & \\hline
-   &Indtast den aflæste værdi fra Waveforms og tryk på "Kalibrering" & Blodtryksmålersystemet er tændt og tilsluttet, og tilsluttet kalibreringsudstyret (Analog Discovery og Waveforms) og målepunkt valgt. & Systemet er kalibreret resultatet af beregningen vises på startskærmen & IKKE TESTBAR\\\hline
+   Normalforløb: & Indtast den aflæste værdi for spændingen fra waveforms, og aflæs trykket fra vandsøjlens skema fro et af målepunkterne fra vandsøjlen. & Blodtryksmålersystemet er tændt, tilsluttet og startet, og tilsluttet kalibreringsudstyret (Analog Discovery og Waveforms). & Værdierne er indtastet korrekt. & \\\hline
+   & Tryk på "Kalibrering" & Blodtryksmålersystemet er tændt og tilsluttet, og tilsluttet kalibreringsudstyret (Analog Discovery og Waveforms) og værdierne indtastet. & Systemet er kalibreret, resultatet af beregningen vises på startskærmen & IKKE TESTBAR\\\hline
 \end{tabular}
 \end{table}
 
 
 
 \begin{table}[H]
-\caption{Accepttest for Use case 2}\label{tab:tabel8}
+\caption{Accepttest for Use case 2}\label{tab:tabel9}
 \begin{tabular}{|>{\raggedright\arraybackslash}p{2.5cm}| >{\raggedright\arraybackslash}p{2.9cm} | >{\raggedright\arraybackslash}p{2.9cm} | >{\raggedright\arraybackslash}p{2.9cm} | >{\raggedright\arraybackslash}p{2.8cm} |}
    \hline
    \textbf{Use case 2: Foretag måling} &\textbf{Test}& \textbf{Prækondition} & \textbf{Forventet resultat} & \textbf{Godkendt/ kommentar}\\ \hline
@@ -480,7 +483,7 @@ Billede indsættes - haves ikke endnu
 
 
 \begin{table}[H]
-\caption{Accepttest for Use case 2}\label{tab:tabel8}
+\caption{Accepttest for Use case 2}\label{tab:tabel10}
 \begin{tabular}{|>{\raggedright\arraybackslash}p{2.5cm}| >{\raggedright\arraybackslash}p{2.9cm} | >{\raggedright\arraybackslash}p{2.9cm} | >{\raggedright\arraybackslash}p{2.9cm} | >{\raggedright\arraybackslash}p{2.8cm} |}
    \hline
    \textbf{Use case 2: Foretag måling} &\textbf{Test}& \textbf{Prækondition} & \textbf{Forventet resultat} & \textbf{Godkendt/ kommentar}\\ \hline
@@ -492,7 +495,7 @@ Billede indsættes - haves ikke endnu
 
 
 \begin{table}[H]
-\caption{Accepttest for Use case 2}\label{tab:tabel8}
+\caption{Accepttest for Use case 2}\label{tab:tabel11}
 \begin{tabular}{|>{\raggedright\arraybackslash}p{2.5cm}| >{\raggedright\arraybackslash}p{2.9cm} | >{\raggedright\arraybackslash}p{2.9cm} | >{\raggedright\arraybackslash}p{2.9cm} | >{\raggedright\arraybackslash}p{2.8cm} |}
    \hline
    \textbf{Use case 2: Foretag måling} &\textbf{Test}& \textbf{Prækondition} & \textbf{Forventet resultat} & \textbf{Godkendt/ kommentar}\\ \hline
@@ -503,7 +506,7 @@ Billede indsættes - haves ikke endnu
 
 
 \begin{table}[H]
-\caption{Accepttest for Use case 2}\label{tab:tabel8}
+\caption{Accepttest for Use case 2}\label{tab:tabel12}
 \begin{tabular}{|>{\raggedright\arraybackslash}p{2.5cm}| >{\raggedright\arraybackslash}p{2.9cm} | >{\raggedright\arraybackslash}p{2.9cm} | >{\raggedright\arraybackslash}p{2.9cm} | >{\raggedright\arraybackslash}p{2.8cm} |}
    \hline
    \textbf{Use case 2: Foretag måling } &\textbf{Test}& \textbf{Prækondition} & \textbf{Forventet resultat} & \textbf{Godkendt/ kommentar}\\ \hline
@@ -515,7 +518,7 @@ Billede indsættes - haves ikke endnu
 
 
 \begin{table}[H]
-\caption{Accepttest for Use case 3}\label{tab:tabel8}
+\caption{Accepttest for Use case 3}\label{tab:tabel13}
 \begin{tabular}{|>{\raggedright\arraybackslash}p{2.5cm}| >{\raggedright\arraybackslash}p{2.9cm} | >{\raggedright\arraybackslash}p{2.9cm} | >{\raggedright\arraybackslash}p{2.9cm} | >{\raggedright\arraybackslash}p{2.8cm} |}
    \hline
    \textbf{Use case 3: Alarmér } &\textbf{Test}& \textbf{Prækondition} & \textbf{Forventet resultat} & \textbf{Godkendt/ kommentar}\\ \hline
@@ -527,7 +530,7 @@ Billede indsættes - haves ikke endnu
 
 
 \begin{table}[H]
-\caption{Accepttest for Use case 3}\label{tab:tabel8}
+\caption{Accepttest for Use case 3}\label{tab:tabel14}
 \begin{tabular}{|>{\raggedright\arraybackslash}p{2.5cm}| >{\raggedright\arraybackslash}p{2.9cm} | >{\raggedright\arraybackslash}p{2.9cm} | >{\raggedright\arraybackslash}p{2.9cm} | >{\raggedright\arraybackslash}p{2.8cm} |}
    \hline
    \textbf{Use case 3: Alarmér } &\textbf{Test}& \textbf{Prækondition} & \textbf{Forventet resultat} & \textbf{Godkendt/ kommentar}\\ \hline
@@ -538,7 +541,7 @@ Billede indsættes - haves ikke endnu
 
 
 \begin{table}[H]
-\caption{Accepttest for Use case 3}\label{tab:tabel8}
+\caption{Accepttest for Use case 3}\label{tab:tabel15}
 \begin{tabular}{|>{\raggedright\arraybackslash}p{2.5cm}| >{\raggedright\arraybackslash}p{2.9cm} | >{\raggedright\arraybackslash}p{2.9cm} | >{\raggedright\arraybackslash}p{2.9cm} | >{\raggedright\arraybackslash}p{2.8cm} |}
    \hline
    \textbf{Use case 3: Alarmér } &\textbf{Test}& \textbf{Prækondition} & \textbf{Forventet resultat} & \textbf{Godkendt/ kommentar}\\ \hline
@@ -550,7 +553,7 @@ Billede indsættes - haves ikke endnu
 
 
 \begin{table}[H]
-\caption{Accepttest for Use case 4}\label{tab:tabel8}
+\caption{Accepttest for Use case 4}\label{tab:tabel16}
 \begin{tabular}{|>{\raggedright\arraybackslash}p{2.5cm}| >{\raggedright\arraybackslash}p{2.9cm} | >{\raggedright\arraybackslash}p{2.9cm} | >{\raggedright\arraybackslash}p{2.9cm} | >{\raggedright\arraybackslash}p{2.8cm} |}
    \hline
    \textbf{Use case 4: Stop måling } &\textbf{Test}& \textbf{Prækondition} & \textbf{Forventet resultat} & \textbf{Godkendt/ kommentar}\\ \hline
@@ -562,7 +565,7 @@ Billede indsættes - haves ikke endnu
 
 
 \begin{table}[H]
-\caption{Accepttest for Use case 4}\label{tab:tabel8}
+\caption{Accepttest for Use case 4}\label{tab:tabel17}
 \begin{tabular}{|>{\raggedright\arraybackslash}p{2.5cm}| >{\raggedright\arraybackslash}p{2.9cm} | >{\raggedright\arraybackslash}p{2.9cm} | >{\raggedright\arraybackslash}p{2.9cm} | >{\raggedright\arraybackslash}p{2.8cm} |}
    \hline
    \textbf{Use case 4: Stop måling } &\textbf{Test}& \textbf{Prækondition} & \textbf{Forventet resultat} & \textbf{Godkendt/ kommentar}\\ \hline
@@ -580,7 +583,7 @@ Undtagelse 1: Tryk på "Nej" &Tryk "Nej" & Signalet og målingen er stoppet & Ko
 \section{Accepttest for ikke-funktionelle krav}
 
 \begin{longtable}{|>{\raggedright\arraybackslash}p{1.1cm}| >{\raggedright\arraybackslash}p{2.7cm} | >{\raggedright\arraybackslash}p{2.7cm} | >{\raggedright\arraybackslash}p{2.7cm} | >{\raggedright\arraybackslash}p{2.2cm} |>{\raggedright\arraybackslash}p{2.2cm}|}
-   \caption{Accepttest for ikke-funktionelle krav}\label{tab:label13}
+   \caption{Accepttest for ikke-funktionelle krav}\label{tab:label18}
 \\ \hline   
 \textbf{Krav nr.}&\textbf{Krav} &\textbf{Test}& \textbf{Forventet resultat} & \textbf{Resultat} & \textbf{Godkendt/ kommentar}\\ \hline
   1.1 & Programmet skal have et digitalt filter til udglatning af blodtrykssignal & Send to frekvenser ind (XX Hz og ZZ Hz) & Den ene (XX Hz) af de indsendte frekvenser er blevet fjernet & & \\\hline
@@ -608,7 +611,7 @@ Undtagelse 1: Tryk på "Nej" &Tryk "Nej" & Signalet og målingen er stoppet & Ko
   3.1 & Ingen krav endnu & & & & \\\hline\hline
   4.1 & Tiden der går før målingen af data påbegynder/vises i grafer må maksimalt være 2.0 sek. & Stopur igangsættes samtidig med at signalet tændes & Stopuret viser 2 sek. eller mindre & & \\\hline
   4.2 & Tiden der går fra at data er analyseret til at data er gemt i database må være 2.0 sek. med en tolerance på +/- 15\% & - & - & & \\\hline\hline
-  5.1 & Programmet skrives i Csharp kode. & Tjek programmet & Programmet er skrevet i Csharp & & \\\hline
+  5.1 & Programmet skrives i C\# kode. & Tjek programmet & Programmet er skrevet i C\# & & \\\hline
   5.2 & Softwaren skal være opbygget efter trelagsmodellen & Se programopbygningen & Softwaren er opbygget efter trelagsmodellen & & \\\hline
   5.3 & I softwaren benyttes Observer/Subject mønsteret & Tjek programmet og tjek observer/subject klasser & Observer og subject klasser/mønsteret benyttes & & \\\hline
   5.4 & I softwaren benyttes PUSH mønsteret & Tjek programmet & Det ses at programmet er opbygget efter PUSH mønsteret. & &  \\\hline \hline
@@ -618,7 +621,7 @@ Undtagelse 1: Tryk på "Nej" &Tryk "Nej" & Signalet og målingen er stoppet & Ko
 
 \section{Godkendelses formular}
 \begin{table}[h!]
-\label{tab:tabel14}
+\label{tab:tabel19}
 \begin{tabular}{| l | >{\raggedright\arraybackslash}p{12cm} |}
    \hline
    \textbf{Dato for test} &\\ \hline
