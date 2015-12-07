@@ -115,7 +115,7 @@ Systemet gør det muligt at hente data fra transduceren. Her går data fra trans
 "Signalets vej" og opbygning beskrives\\\\
 
 Det digitale filter er pr. default slået til når systemet startes, dog vil det være muligt at slå dette filter fra under målingen.\\
-Når programmet startes skal computeren have VPN-forbindelse til "ASE IHA VPN", desuden skal der være en forbindelse til $"webhotel10.F15ST2ITS2201404669.db_{-}owner"$, da det er herunder de to databaser; Personale database og EPJ database ligger.\\\\
+Når programmet startes skal computeren have VPN-forbindelse til "ASE IHA VPN", desuden skal der være en forbindelse til $"webhotel10.F15ST2ITS2201404669.db_{-}owner"$(Personaledatabasen) og $"webhotel10.F15ST2ITS2201405838.db_{-}owner"$ (EPJ database).\\\\
 Programmet skal have to skærme; en startskærm, der fungerer som EPJ systemet, og en hovedskærm, der fungerer som selve blodtryksmålerens grænseflade.
 
 \begin{table}[H]
@@ -358,16 +358,16 @@ Ud fra BDD kan et IBD diagram udarbejdes. IBD diagrammet viser koblingen mellem 
 
 \subsection{Modultest}
 \section{Software design}
-I dette afsnit beskrives softwaredesign på baggrund af systembeskrivelsen og kravspecifikationen. Denne beskrivelse opnås ved at der benyttes relevante diagrammer og modeller, hvilke kan bruges til at beskrive softwaren. Overvejelser og valg, der er blevet gjort, i forbindelse med design og implementering af softwaren, vil i dette afsnit blive præsenteret.
+I dette afsnit beskrives softwaredesign på baggrund af systembeskrivelsen og kravspecifikationen. Denne beskrivelse opnås ved, at der benyttes relevante diagrammer og modeller, hvilke kan bruges til at beskrive softwaren. Overvejelser og valg, der er blevet gjort i forbindelse med design og implementering af softwaren, vil i dette afsnit blive præsenteret.
 \subsection{Problemidentifikation}
-Ved identifikationen af produktet, og herunder hvad dette skal kunne, er der opstået nogle vanskeligheder, som der har skullet tages hensyn til. Der blev f.eks. i første omgang udarbejdet en idé om at have en brugergrænseflade, som startskærm, hvor det kunne vælges hvorpå målingen skulle foretages. På startskærmen skulle det desuden være muligt at kalibrere systemet og foretage nulpunkts justeringen. Stederne hvor målingerne skulle foretages blev identificeret til at skulle være tre målesteder; hjertet, armen og benet. Efter stedet var valgt, hvor målingen skulle foretages, skulle man komme videre til en anden skærm, hvor selve målingen skulle foretages. Denne idé viste sig dog ikke at være brugbar i praksis, hvilket fik os til at gå væk fra denne. Grunden til at denne idé ikke ville kunne bruges i praksis, ved en invasiv blodtryksmåling, var at denne idé var tænkt som et produkt til måling på diabetes patienter, men ved denne patientgruppe er det ikke hensigtsmæssigt at lave hul i karrene på bl.a. benene, da blodtrykket her vil være lavt og helingen af det hul, der bliver lavet i benet, derfor ikke vil kunne foregå optimalt og der vil være risiko for infektioner. \\
+Ved identifikationen af produktet, og herunder hvad dette skal kunne, er der opstået nogle vanskeligheder, som der har skullet tages hensyn til. I første omgang blev der udarbejdet en idé, om at have en startskærm, hvor det kunne vælges hvorpå målingen skulle foretages. På startskærmen skulle det desuden være muligt at kalibrere systemet og foretage nulpunkts justeringen. Stederne hvor målingerne skulle foretages blev identificeret til at skulle være tre målesteder; hjertet, armen og benet. Efter målestedet var valgt, skulle man komme videre til en anden skærm, hvor selve målingen skulle foretages. Idé med denne startskærm viste sig dog ikke at være brugbar i praksis, hvilket fik os til at gå væk fra denne. Grunden til at denne idé ikke ville kunne bruges i praksis, ved en invasiv blodtryksmåling, var at denne idé var tænkt som et produkt til måling af blodtrykket på diabetes patienternes underekstremiteter. Herefter ville værdierne kunne sammenlignes, og situationen vurderes for patienten. Men ved denne patientgruppe er det dog ikke hensigtsmæssigt at lave invasiv blodtryksmåling på underekstremiteterne, da blodtrykket her vil være lavt. Ved invasiv blodtryksmålingen laves der hul på karrene og helingen af dette hul vil ikke kunne foregå optimalt og der vil være risiko for infektioner. \\
 \begin{figure}[H]
 \includegraphics[width =0.5\textwidth , center]{billeder/SkitseStartGammel}
-\caption{\textbf{Idé til projekt}}
+\caption{\textbf{Idé til projekt. Startskærmen hvor det vil være muligt at vælge målested.}}
 \end{figure}
-Herefter blev idéen ændret til et produkt, der ligner noget der fungerer i dagligdagen på hospitalerne. Denne idé blev udarbejdet efter et besøg på Herning Sygehus. Her blev det muligt at se hvordan en blodtryksmåler virker i virkeligheden, og dermed se hvordan disse blodtryksmålere benyttes.\\
-Ved denne idé blev en startskærm, som skal simulere EPJ-systemet, udarbejdet. EPJ-systemet er der, hvor det sundhedsfaglige personale kan tilgå patientens data, og dermed evt. se hvilket behandling patienten har været igennem før. Startskærm der her er udarbejdet, er blot en prototype af dette og derfor er det kun den del hvor det sundhedsfaglige personale logger på, samt vælger patient, der er blevet implementeret. Dermed er det ikke muligt at tilgå tidligere behandlinger osv. som det er i virkeligheden. Det blev desuden klart at nulpunkts justeringen, hvilken der hertil var placeret på startskærmen, skulle flyttes ind på hovedskærmen, altså skærmen, hvor selve målingen foretages. Dette skulle den idet der skal være data for at nulpunkts justeringen kan foretages. Kalibreringen skal dog stadig foretages inden data sendes ind i systemet, og er dermed stadig placeret på startskærmen. Kalibreringen foretages med en væskesøjle, hvor der er tre punkter, som fører til at en spænding kan aflæses. Ud fra det tryk der leveres af væskesøjlen samt den målte spænding, kan en hældningskoefficient bestemmes, hvilken systemet skal gemme til at regne på alle data.\\
-Ud fra alle disse faktorer kan grundstrukturen, til hvordan startskærmen og hovedskærmen skal se ud, dannes.
+Herefter blev idéen ændret til et produkt, der ligner det der fungerer i dagligdagen på hospitalerne. Denne idé blev udarbejdet efter et besøg på Herning Sygehus, hvor et møde med anæstesi sygeplejerske Charlotte Høj blev afholdt. Her blev det muligt at se et scenarie med en blodtryksmåling. Ved scenariet loggede Charlotte Høj først ind på EPJ computeren, hvorefter selve blodtryksmålingen kunne foretages fra en anden skærm.\\
+Ud fra denne idé blev en startskærm, som skal simulere EPJ-systemet (EPJ computeren), udarbejdet. EPJ-systemet er der, hvor det sundhedsfaglige personale kan tilgå patientens data, og dermed evt. se hvilket behandling patienten har været igennem før. Startskærmen der her er udarbejdet, er blot en prototype af dette og derfor er det kun den del, hvor det sundhedsfaglige personale logger på, samt vælger patient, der er blevet implementeret. Dermed er det ikke muligt at tilgå tidligere behandlinger osv. Desuden blev nulpunkts justeringen, hvilken hertil var placeret på startskærmen, flyttet ind på hovedskærmen, altså skærmen, hvor selve målingen foretages. Dette blev denne, da der var en antagelse om at der skulle sendes et signal igennem systemet før denne kunne foretages. Dog er det senere blevet klart at dette ikke er aktuelt, idet denne sagtens kan udføres før ved denne prototype. Kalibreringen foretages med en væskesøjle, hvor der er tre punkter, som fører til at en spænding kan aflæses. Ud fra det tryk der leveres af væskesøjlen samt den målte spænding, kan en hældningskoefficient bestemmes, hvilken systemet skal gemme til at regne på alle data.\\
+Ud fra alle disse faktorer kan grundstrukturen, til hvordan startskærmen og hovedskærmen skal se ud, dannes:
 \begin{figure}[H]
 \includegraphics[width =0.5\textwidth , center]{billeder/SkitseStartNy}
 \caption{\textbf{Startskærmen, hvilken fungerer som EPJ-systemet}}
@@ -393,7 +393,33 @@ Modellen bruges til at bestemme de interagerende klasser i blodtryksmålersystem
 \includegraphics[width =1.0\textwidth , center]{billeder/appModel}
 \caption{\textbf{Applikationsmodel for blodtryksmålersystemet.}}
 \end{figure}
-Ud fra denne model ses klasserne og databaserne der skal implementeres i softwaren, samt interaktionen mellem disse. Altså hvordan klasserne må tale sammen på kryds og tværs. Så idet at det vides at tre-lagsmodellen skal benyttes, kan disse klasser ligges ind i det tilhørende lag. Databaserne vil blive tilgået fra datalaget, domæneklasserne ligger i logiklaget og i præsentationslaget vil startskærmen og hovedskærmen ligge hvorfra de vil blive præsenteret for det sundhedsfaglige personale.
+Ud fra denne model ses klasserne og databaserne der skal implementeres i softwaren, samt interaktionen mellem disse. Altså hvordan klasserne må tale sammen på kryds og tværs. Så idet at det vides at tre-lagsmodellen skal benyttes, kan disse klasser ligges ind i det tilhørende lag. Databaserne vil blive tilgået fra datalaget, domæneklasserne ligger i logiklaget og i præsentationslaget vil startskærmen og hovedskærmen ligge hvorfra de vil blive præsenteret for det sundhedsfaglige personale.\\
+\\
+Trelags modellen er en software model, der gør det muligt at inddele ens software kode op i tre lag. De tre lag er præsentationslaget, logiklaget og datalaget. \\
+Fordelen ved at kunne dele softwaren op på denne måde, er at man kan rette i de forskellige lag, uden at det får indflydelse i de andre lag. Man kan herved implementere nye klasser og deres funktioner, og bare henvise til dem i de andre lag. Hvert lag har deres egen funktionalitet og ansvar.\\
+Præsentationslaget er det øverste lag i trelags modellen, og kan kun snakke sammen med logiklaget. I præsentationslaget må der ikke laves nogen form for beregninger, disse skal komme fra logiklaget. Med andre ord fungerer præsentationslaget, kun til at præsenter data på en brugergrænseflade. Præsentationslaget er også det eneste lag, som brugeren kommer til at integrerer med.\\
+Logiklaget er det midterste lag, og er et bindeled mellem præsentationslaget og datalaget. I logiklaget forgår alt behandling af data fra præsentationslaget og datalaget. Det betyder at alle algoritmer skal ligge i logiklaget. \\
+Datalaget er det nederste lag, og indhenter data eller gemmer data. Der kan indlæses data fra en fil, eller et måleapparat eller en database. Datalaget kan gemme data fra logiklaget i en fil eller database. \\
+I trelagsmodellen kan man skabe et flydende bindeled, der kan snakke sammen med alle lagene, dette kaldes for en DTO. En DTO står for data transfer object, og transporter objekter imellem alle lagene, og kan derved tilgås af alle lagene. \\
+\\
+I dette projekt er trelagsmodellen blevet opfyldt ved at der er oprettet en solution der hedder PulsMaalerSystem, under denne solution ligger der fire projekter; PulsMaalerSystem, PulsMaalerSystem.Logiklag, PulsMaalerSystem.Datalag og PulsMaalerSystem.DTOlag. Opdeling af softwarekoden i trelagsmodel kan ses på figuren nedenfor. 
+\begin{figure}[H]
+\includegraphics[width =1.0\textwidth , center]{billeder/Trelagsmodel}
+\caption{\textbf{Trelagsmodellen. Her ses hvor de forskellige klasser ligger i der forskellige lag.}}
+\end{figure}
+Det første projekt PulsMaalerSystem fungerer som præsentationslaget og består af to Windows forms, StartGUI og HovedGUI. Begge forms sender informationer ned til logiklaget og henter data, som blodtryksværdier, og viser det på en graf. \\
+Det andet projekt PulsMaalerSystem.Logiklag er logiklaget i projektet. I dette logiklag, er der implementeret seks klasser under: Blodtryk, Kalibrering, Digitaltfilter, Nulpunkts$_{-}$justering og EKG, Logiklag.
+Klassen Blodtryk tager sig af at udregne systolen, diastolen og middeltrykket med algoritmer ud fra blodtrykket. \\
+Kalibrerings klassen sørger for at kalibrer blodtrykssignalet med en kalibreringsværdi der kan indtastes i præsentationslaget.
+Digitaltfilter klassen implementer et glidende middelværdisfilter, der sørger for at udglatte blodtrykssignalet.\\
+Nulpunkts$_{-}$justering klassen sørger for at sætte signalet baseline ved 0 V. 
+EKG klassen skulle have sørget for at finde R-takker og udregne pulsen. Grundet tidspres har det ikke været muligt at implementer EKG i projektet. Der er dog gjort klar til det med denne klasse. \\\\
+Logiklags klassen binder alle de andre klasser sammen, ved at hente data nede fra datalaget til klasserne og sende metoderne med videre til præsentationslaget.\\
+\\
+Det tredje projekt PulsMaalerSystem.Datalag består af to klasser: DAQ og datalag. 
+DAQ klassen sørger for at hente data op fra DAQ’en. Datalag klassen sørger for at hente informationer om patienten og personalet i databassen. Datalag klassen sørger også for at gemme blodtrykket for patienten løbende i en database. \\
+ \\
+Det sidste projekt PulsMaalerSystem.DTOlag består af tre klasser: GrænseværdiDTO, IObserver, ISubject og KalibreringsDTO. GrænseværdiDTO klassen indeholder set og get metoder for grænseværdien, og sender grænseværdierne med i metode. IObserver kigger ned på subjectet, hvor klassen ISubject. KalibreringsDTO klassen har set og get metoder til volt og tryk, og en metode til at sende disse videre.
 \subsection{Metodeidentifikation}
 \subsubsection{Sekvensdiagrammer}
 Nedenfor er vist sekvensdiagrammer for systemet. Der er lavet sekvens diagrammer for alle Use case. Vores Use cases er henholdsvis Use case 1: Kalibrér system, Use case 2: Foretag måling, Use case 3: Alarmér og Use case 4: Stop måling. Sekvens diagrammet er et interaktionsdiagram, som viser hvorledes processerne forløber i forhold til hinanden. Ud fra sekvensdiagrammerne kan det altså ses hvornår og hvordan de forskellige dele i systemet forløber og interagerer. \\
@@ -427,18 +453,57 @@ I dette sekvens diagram for Use case 3 tjekker logiklaget hvorvidt grænseværdi
 I sekvens diagrammet for Use case 4 ønsker sundhedsfaglig personale, at stoppe målingen. Dette gøres ved, at sundhedsfaglig personale interagerer med blodtryksmålersystemet i præsentationslaget. Denne interaktion medfører en videre kommunikation mellem logiklaget og datalaget, som medfører at data ikke længere hentes fra transduceren. Når blodtryksmålingen er afsluttet vises det som besked til det sundhedsfaglig personale. 
 
 \subsection{Implementering}
-
-
-Baggrund for:
-Nulpunktsjustering 
-Kalibrering 
-Digitalt filter
-Beregning af Systole og diastole - middeltryk
-
-Acceptering af tidspres: EKG: kan ikke nås
-
-
-
+Kalibreringen er blevet implementeret sådan at der indtastes en værdi for trykket som vandsøjlen leverer i mmHg og en værdi for spændingen i volt, hvilken kan aflæses fra waveforms eller måles vha. et multimeter. Disse to værdier bliver herefter sendt ned i software klassen Kalibrering, hvor en kalibreringsværdi/omsætningsværdi kan udregnes ved formlen:
+\begin{align}
+X\left[\dfrac{mmHg}{V}\right]=\dfrac{pressure \left[mmHg\right]}{voltage \left[V\right]}
+\end{align}
+Den værdi der her udregnes benyttes herefter til at omregne den spænding i volt, der indsendes i systemet, til tryk i mmHg. 
+\begin{align}
+voltage \left[V\right]\cdot X\left[\dfrac{mmHg}{V}\right] = pressure \left[mmHg\right]
+\end{align}
+Hermed ganges kalibreringsværdien på samtlige værdier i den liste af data der kommer fra DAQ'en (Blodtryksværdiliste). \\
+\\
+Nulpunktsjusteringen foregår ved at transduceren er tilsluttet og måler det atmosfæriske tryk, denne værdi skal herefter trækkes fra samtlige værdier for blodtrykket fra DAQ'en. Denne værdi skal derfor trækkes fra inden kalibreringsværdien ganges på. Måden hvormed nulpunktsjusteringen foregår på, er ved at transduceren er tilsluttet og vha. waveforms kan det atmosfæriske tryk aflæses, denne værdi aflæses som en spænding. Denne værdi indtastes på hovedskærmen, hvorefter nulpunktsjusteringen kan startes. Systemet går herefter ind i klassen Nulpunkts$_{-}$justering, hvor følgende formel bruges til at beregne den værdi der skal benyttes videre:
+\begin{align}
+V_{zero} \left[V\right]=V_{read}\left[V\right]-pressure \left[V\right] 
+\end{align}
+Det er denne værdi der herefter bliver kalibreret, for derefter at kunne blive vist som en graf for blodtrykket i mmHg.\\
+\\
+Det digitale filter der er blevet implementeret i projektet er af typen et glidende middelværdi filter. I et glidende middelværdi filter, lægges der et vindue oven på ens talværdi, i dette vindue tager man gennemsnittet af alle værdien. \cite{digifilter} Vinduet er her betegnelsen for et bestemt tidsinterval. \\
+I projektet er der valgt længden ti på vinduet, det betyder at for hver tiende tal i vores blodtrykliste, bliver der udregnet gennemsnittet af. Herefter rykker vinduet sig til højre og udregner for de næste ti tal i blodtrykslisten. Blodtrykslisten er listen af blodtryksværdier, der bliver indlæst af DAQ’en. 
+\begin{figure}[H]
+\includegraphics[width =0.5\textwidth , center]{billeder/RammeDigi}
+\caption{\textbf{Digital filter ramme. Denne viser hvordan rammen bestemmer gennemsnittet og rykker én hver gang.}}
+\end{figure}
+Længden af vinduet på ti er valgt, da der bliver vist ti tal fra blodtrykslisten på en graf på brugergrænsefladen. 
+Glidende middelværdifilter kan beskrives med formlen:
+\begin{align}
+y\left[n\right] = \dfrac{1}{M}\cdot \sum_{k=0}^{M}x\left[n-k\right],\\ b_{k}=\dfrac{1}{M}
+\end{align}
+$M$ er de forgående samples for signalet, $n$ er de nuværende værdier af blodtrykket og $k$ er koefficienterne. 
+Filteret udglatter signalets høje peak værdier, da filteret er et lavpasfilter.
+\\
+\\
+Algoritmerne for udregning af systole, diastole og middeltryk er alle implementeret i klassen Blodtryk. \\
+Systolen er toppunkterne i blodtryksdataene. Dette kræver dog at man skrive en kort algoritme, så man kan holde styr på hvor langt man er kommet i blodtrykslisten og hvor mange systole værdier der er fundet.\\
+Der er valgt at lave en baseline, som er den grænseværdi der skal overskrides, inden man tjekker efter for toppunkter.  Grænseværdien baseline er sat til 100, da den normale værdi for systolen ligger omkring 120 mmHg.  \\\\
+Algoritmen BeregnSystole starter med en for lykke, hvor man har en tæller "i", der starter fra nul og tæller op til længden af blodtrykslisten. Inden i for lykken er der en if lykke, som tjekker om indeks "i" i blodtrykslisten er større end den baseline der er sat. Hvis indeks "i" i blodtrykslisten er større end baseline, vides der at grafen er på vej opad. Herved sættes der en ny basline, som er lig med værdien for indeks "i" i blodtrykslisten.  Der bliver lagt én til værdien baselineoverskredet.\\\\ 
+Hvis indeks "i" i blodtrykslisten er mindre end baseline og baslineoverskredet er større end 1, vides der at grafen for blodtrykslisten falder. Når blodtrykslisten falder vides der at den forgående indeks i blodtrykslisten er topppunktet. Der bliver gemt det forgående indeks i blodtrykslisen i en liste der hedder toppunkter. Listen af toppunkterlisten med værdier, er derfor listen af systole værdierne. Baselineoverskredet sættes lig nul, samtidig med at baselinen sættes lig default værdien, der var 100 mmHg. Algoritmen returnerer en liste af toppunkter.\\\\
+Diastolen er minimumspunkterne i blodtrykslisten. For at finde minimumspunkterne i listen, er der implementeret en algoritme kaldet BeregnDiastole, som finder minimumspunkterne og gemmer dem i en liste.\\
+Algoritmen er opbygget på samme måde som med BeregnSystole, med en lille ændring af at algoritmen skal finde minimumspunkter i stedet for toppunkter.\\
+Der sættes en baseline værdi, der er den værdi der skal tjekkes for om indekset i blodtrykslisten er mindre ind. Default værdien for baseline er sat 90 mmHg, for at være sikker på at indekset i blodtrykslisten finder sig neden for denne værdi.\\\\
+ Algoritmen BeregnDiastole starter med en for lykke, hvor man har en tæller "i", der starter fra nul og tæller op til længden af blodtrykslisten. Inden i for lykken er der en if lykke, som tjekker om indeks "i" i blodtrykslisten er mindre end den baseline der sat. Hvis indeks "i" i blodtrykslisten er mindre end baseline, vides der at grafen er på vej opad. Herved sættes der en ny basline, som er lig med værdien for indeks "i" i blodtrykslisten.  Der bliver lagt én til værdien baselineoverskredet. \\\\
+Hvis indeks "i" i blodtrykslisten er større end baseline og baslineoverskredet er større end 1, vides der at grafen for blodtrykslisten stiger. Når blodtrykslisten stiger vides der at den forgående indeks i blodtrykslisten er minimumspunkter. Der bliver gemt det forgående indeks i blodtrykslisen i en liste der hedder minimumspunkter. Listen af minimumspunkter med værdier, er derfor listen af diastole værdierne. Baselineoverskredet sættes lig nul, samtidig med at baselinen sættes lig default værdien, der var 90 mmHg.\\\\
+Algortimen til udregning af middeltrykket, udregner middeltrykket med \cite{blodtrykwiki} formlen:
+\begin{align}
+Middeltryk = \dfrac{2}{3}\cdot Diastoliske tryk + \dfrac{1}{3} \cdot Systoliske tryk
+\end{align}
+Algoritmen middeltryk starter med en for lykke med en tæller "i", der starter fra nul og tæller op til og med længden af blodtrykslisten. Inde i for lykken udregnes ligningen for middeltrykket for indeks "i", med systolelisten for indeks "i" og diastolelisten for indeks "i". Det udregnede middeltryk gemmes i en liste kaldet middeltrykliste. 
+\\
+\\
+Implementeringen af EKG-signalet er i dette projekt ikke sket. Dette er ikke implementeret, da der ikke har været tid til dette. Hvis der dog havde været tid til dette, ville Semesterprojekt 2: EKG diagnostik, været blevet benyttet til at få grundstrukturen til at se hvordan denne implementering skulle foregå.\\
+\\
+Desuden blev iltsaturation ikke implementeret. Dermed bliver iltmætningen ikke vist for patienten. Dette er ikke blevet implementeret på grund af flere faktorer: Der er ikke nok tid, der er ikke den fornødne viden til at få implementeret dette og der haves ikke de nødvendige materialer.
 \subsection{Unittest}
 
 \section{Integrationstest}
@@ -453,7 +518,7 @@ Når der i feltet Godkendt er skrevet initialer for den der har udført testen, 
 \section{Accepttest for funktionelle krav}
 \subsection{Opstilling}
 Billede indsættes - haves ikke endnu
-
+\\
 \begin{table}[H]
 \caption{Accepttest for Use case 1}\label{tab:tabel8}
 \begin{tabular}{|>{\raggedright\arraybackslash}p{2.5cm}| >{\raggedright\arraybackslash}p{2.9cm} | >{\raggedright\arraybackslash}p{2.9cm} | >{\raggedright\arraybackslash}p{2.9cm} | >{\raggedright\arraybackslash}p{2.8cm} |}
@@ -463,9 +528,7 @@ Billede indsættes - haves ikke endnu
    & Tryk på "Kalibrering" & Blodtryksmålersystemet er tændt og tilsluttet, og tilsluttet kalibreringsudstyret (Analog Discovery og Waveforms) og værdierne indtastet. & Systemet er kalibreret, resultatet af beregningen vises på startskærmen & IKKE TESTBAR\\\hline
 \end{tabular}
 \end{table}
-
-
-
+Det forudsættes for følgende Use cases (Use case 2, 3 og 4) at systemet er tilsluttet korrekt, port til DAQ er bestemt, at der er en VPN-forbindelse til "ASE IHA VPN", desuden skal der være en forbindelse til $"webhotel10.F15ST2ITS2201404669.db_{-}owner"$(Personaledatabasen) og $"webhotel10.F15ST2ITS2201405838.db_{-}owner"$ (EPJ database).
 \begin{table}[H]
 \caption{Accepttest for Use case 2}\label{tab:tabel9}
 \begin{tabular}{|>{\raggedright\arraybackslash}p{2.5cm}| >{\raggedright\arraybackslash}p{2.9cm} | >{\raggedright\arraybackslash}p{2.9cm} | >{\raggedright\arraybackslash}p{2.9cm} | >{\raggedright\arraybackslash}p{2.8cm} |}
@@ -640,8 +703,3 @@ Undtagelse 1: Tryk på "Nej" &Tryk "Nej" & Signalet og målingen er stoppet & Ko
 Kundens underskrift &&&&&&&&&&Leverandørens underskrift\\
 \end{tabular}
 \end{table}
-
-\chapter{Referencer}
-\subsubsection{Bøger}
-\subsubsection{Internetsider}
-\subsubsection{Dokumenter}
