@@ -1,12 +1,33 @@
 \chapter{Indledning}
-Årsag
-Formål
-Produktet
-Use cases
-
-
-
+Vi har i dette projekt arbejdet med design og udvikling af et blodtryks målesystem. Ideen bag vores system blev udtænkt og udarbejdet med viden om en blodtryksmåler på en operationsstue på Herning Sygehus. Vores opstillede krav samt design til systemet, blev derfor lavet ud fra de oplysninger vi fik af en sygeplejerske\footnote{Anæstesi sygeplejerske Charlotte Høj, Herning Sygehus} på Herning Sygehus. Vi ønskede altså at lave et blodtryksmålersystem, som er så virkelighedsnært som muligt. Det design og de funktionaliteter vi efterstræbte at få opfyldt i vores projekt var derfor EKG, systoliske samt diastoliske blodtryk og iltmætning i blodet. Dette ønskede vi at få implementeret og hermed få grafer og værdier vist på en brugergrænseflade, som lever op til de standarder der ses på operationsstuer i dag. \\
+\\
+Baggrunden for dette projekt er, at man i klinisk praksis har behov for kontinuert at observerer patientens blodtryk. Det er i særdeleshed på intensiv afdelinger og operationsstuer, at man ønsker at lave invasiv blodtryksmåling. Ved invasiv blodtryksmåling kan man monitorere patientens fysiske tilstand under eksempelvis operation. Blodtrykket kan give en identifikation af blødning, smerter og hvor dybt patienten sover under narkosen. Denne overvågning giver det sundhedsfaglige personale en ekstra tryghed og sikkerhed om patientens tilstand under operation. \\
+\\
+Denne projekt rapport vil give en kort beskrivelse af vores samlede system samt krav hertil. Der vil være en udspecificeret projektbeskrivelse, som vil give et indblik i vores vej frem til det endelige resultat, og som også vil beskrive både de til- og fravalg vi har måttet tage, for at nå frem til netop det system vi ønskede at realiserer og præsenterer. Der har i den forbindelse været nogle ideer og ønsker, som ikke har været realistiske og tidsmæssigt mulige at opfylde og vil derfor være beskrevet i fremtidigt arbejde. Slutteligt vil derfor være en samlet konklusion på projektarbejdet.
 \chapter{Projektformulering og afgrænsning}
+\section{Oversigt over projektdeltagere og hovedansvarsområder}
+Vi har i dette projekt valgt at dele projektets deltagerer op i to grupper med hver deres hovedansvarsområder. En som har beskæftiget sig med hardware og en som har beskæftiget sig med software. Derudover valgte vi i starten af forløbet at udvælge en projektleder, hvis opgaver bestod i at lave dagsorden for hvert møde, sørge for at deadlines blev overholdt, træffe endelige beslutninger og holde et overordnet overblik over projektet. Vi valgte også en procesleder hvis opgaver bestod i opgavestyring, godt arbejdsmiljø i gruppen og planlægning af projektforløbet. \\
+\\
+Under projektforløbet valgte vi at ændre denne rollefordeling, idet den generelle arbejdsfordeling samt arbejdsindsats i gruppen ikke fungerede optimalt. Vi valgte, at kun et gruppemedlem skulle varetage rollen som projektleder og procesleder, men at opgaver herunder kunne uddelegeres hvis nødvendigt. Denne leder blev i fællesskab valgt og baggrunden for dette valg var, at vi ønskede en leder som både havde viden og indflydelse på hardware og software, samt kunne træde i kræft hvis gruppearbejdet og deltagernes indsat ikke opfyldte den forventningsafstemning, som står skrevet i vores samarbejdskontrakt. \\\\
+\begin{tabular}{| l | l |} \hline
+\textbf{Hardware} & \textbf{Software}\\\hline
+Brian Hansen & Ida Mark Skovbjerg \\\hline 
+Mohamed Hussein Mohamed & Mette Østergård Knudsen \\\hline
+Khaled Edwan & Line Skov Larsen  \\\hline 
+\end{tabular}
+\\
+\begin{tabular}{| l | l |} \hline
+\textbf{Fulde navn} & \textbf{Initialer}\\\hline
+Ida Mark Skovbjerg & IMS \\\hline 
+Line Skov Larsen & LL \\\hline
+Mette Østergård Knudsen & MK  \\\hline 
+Brian Hansen & BH \\\hline
+Mohamed Hussein Mohamed & MM \\\hline 
+Khaled Edwan & KE \\\hline
+\end{tabular}
+
+
+
 Hvad vil vi
 Hvad skal produktet kunne
 Løsning
@@ -15,14 +36,6 @@ Deltager; Fulde navn og initialer
 
 
 \chapter{Hjertet}
-Beskrivelse af hjertet
-Blodtryk
-systole 
-diastole 
-middeltryk
-EKG
-puls
-Statistik?
 
 
 
@@ -62,7 +75,7 @@ Det sundhedsfaglige personales login informationer ligger i Personale databasen.
 Use case diagrammet viser ligeledes de 4 Use cases der er for systemet: Kalibrér apparat, Foretag måling, Alamér og Stop måling. Disse Use cases er en beskrivelse af hvad systmet skal kunne og dermed beskriver de interaktioner der sker mellem aktørerne og systemet.
 \\
 \subsection{Use case 1: Kalibrér apparat}
-Service medarbejderen skal i denne Use case foretage en kalibrering. Dette gøres ved at have tre målepunkter på en væskesøjle. PÅ disse punkter måles spændingen (volt) og trykket (mmHg). Disse indtastes af Servicemedarbejderen ind i systemet igennem brugergrænsefladen; startskærmen. Herefter beregner systemet en kalibrerings værdi. Denne værdi bruges på arteriekurven (blodtrykskurven), for at få den kalibrede graf.
+Servicemedarbejderen skal i denne Use case foretage en kalibrering. Dette gøres ved at der er tre målepunkter på en væskesøjle, hvor en af disse vælges. På disse punkter måles spændingen (volt) og trykket (mmHg) aflæses fra væskesøjlen. Disse indtastes af Servicemedarbejderen ind i systemet igennem brugergrænsefladen; startskærmen. Herefter beregner systemet en kalibrerings værdi. Denne værdi bruges til at omskrive de indlæste værdier til en blodtrykskurve i mmHg.
 \subsection{Use case 2: Foretag måling}
 Denne Use case styrer målingerne af graferne der indhentes. For at dette kan gøres skal det Sundhedsfaglige personale først logge på systemet. Dette gør denne aktør ved at indtaste sit brugernavn og sin adgangskode på brugergrænsefladen; startskærmen. Når den sundhedsfaglige på logget på henter systemet de tilknyttede patienter, hvorefter det Sundhedsfaglige personale kan vælge den ønskede patient. Når Patienten er blevet valgt startes hovedskærmen, hvilken repræsenterer en blodtryksmålers brugergrænseflade. Her kan den Sundhedsfaglige starte målingen. Når dette gøres henter systemet arteriekurven og EKG-signalet. Dette bruges derefter af systemet til at beregne hhv. systole, diastole, middeltryk og puls. Systemet viser graferne kontinuerligt på hver sin graf og systole, diastole, middeltryk og puls vises som talværdier. Samtidig gemmer systemet automatisk kontinuerligt disse data i EPJ databasen. \\
 Det vil være muligt for det Sundhedsfaglige personale at slå det digitale filter fra og til. Filteret er fra start slået til.\\
