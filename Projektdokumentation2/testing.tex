@@ -192,14 +192,14 @@ $[$Udvidelse 2: Juster systolens/diastolens grænseværdi$]$\newline
    Resultat:& Alarmen starter\\ \hline
    Hovedscenarie:& 
 1. Grænseværdi overskrides \newline
-2. Alarm starter med lyd og tallet, hvis grænseværdi er overskredet skifter farve til hvid.\newline
+2. Alarmering starter.\newline
     \textit{$[$Udvidelse 1: Anden grænseværdi overskrides$]$} \newline
     \textit{$[$Udvidelse 2: Udsæt alarm$]$ }\newline
 3. Alarmen stopper når grænseværdien ikke længere er overskredet.
 \\\hline
 Udvidelse/undtagelser: & $[$Udvidelse 1: Anden grænseværdi overskrides$]$ \newline
 1.1. Endnu en grænseværdi overskrides\newline
-1.2. Lyden fra første alarm fortsætter. Det nye tal som har overskredet grænseværdien skifter ligeledes farve til hvid.\newline
+1.2. Første alarm fortsætter, og den nye alarmering igangsætter.\newline
 1.3 Use case afsluttet.\newline\newline
 $[$Udvidelse 2: Udsæt alarm$]$\newline
 2.1 Sundhedsfaglig person udsætter alarm\newline
@@ -264,7 +264,7 @@ De ikke-funktionelle krav er opsat efter FURPS+ metoden. De er prioriteret efter
 \item \textbf{Functionality}
 \begin{enumerate}
 \item (\textbf{M}) Programmet skal have et digitalt filter til udglatning af blodtrykssignal.
-\item (\textbf{S})Programmet skal give alarm, når grænseværdier for blodtrykket overskrides, med lyd og hvor den overskredes grænseværdi skifter farve til hvid.
+\item (\textbf{S})Programmet skal give alarm, når grænseværdier for blodtrykket overskrides, med lyd og "Udsæt alarm" knappen blinker skiftevis mellem rød og hvid.
 \item (\textbf{M}) Programmet skal kunne gemme blodtrykssignalet i en database.
 \end{enumerate}
 \item \textbf{Usability}
@@ -585,7 +585,7 @@ Det forudsættes for følgende Use cases (Use case 2, 3 og 4) at systemet er til
 \begin{tabular}{|>{\raggedright\arraybackslash}p{2.5cm}| >{\raggedright\arraybackslash}p{2.9cm} | >{\raggedright\arraybackslash}p{2.9cm} | >{\raggedright\arraybackslash}p{2.9cm} | >{\raggedright\arraybackslash}p{2.8cm} |}
    \hline
    \textbf{Use case 3: Alarmér } &\textbf{Test}& \textbf{Prækondition} & \textbf{Forventet resultat} & \textbf{Godkendt/ kommentar}\\ \hline
-   Normalforløb:& Grænseværdi overskrides& Signalet er startet & Alarm starter med lyd og tallet, hvis grænseværdi er overskredet, ændrer farve til hvid &\\\hline
+   Normalforløb:& Grænseværdi overskrides& Signalet er startet & Alarm starter med lyd og "Udsæt alarm" knappen blinker skiftevis mellem rød og hvid &\\\hline
    & Grænseværdien er ikke overskredet mere & Alarmen igangsat & Alarm lyden stopper og tallet skifter farve tilbage til rød. & \\\hline
 \end{tabular}
 \end{table}
@@ -597,7 +597,7 @@ Det forudsættes for følgende Use cases (Use case 2, 3 og 4) at systemet er til
 \begin{tabular}{|>{\raggedright\arraybackslash}p{2.5cm}| >{\raggedright\arraybackslash}p{2.9cm} | >{\raggedright\arraybackslash}p{2.9cm} | >{\raggedright\arraybackslash}p{2.9cm} | >{\raggedright\arraybackslash}p{2.8cm} |}
    \hline
    \textbf{Use case 3: Alarmér } &\textbf{Test}& \textbf{Prækondition} & \textbf{Forventet resultat} & \textbf{Godkendt/ kommentar}\\ \hline
-   Udvidelse 1: Anden grænseværdi overskrides & Endnu en grænseværdi overskrides & Signalet er er startet og en alarm er startet & Lyd fra første alarm fortsætter og det nye tallet som har overskredet grænseværdien skifter ligeledes farve til hvid &\\\hline
+   Udvidelse 1: Anden grænseværdi overskrides & Endnu en grænseværdi overskrides & Signalet er er startet og en alarm er startet & Lyd fra første alarm fortsætter. &\\\hline
 \end{tabular}
 \end{table}
 
@@ -608,7 +608,7 @@ Det forudsættes for følgende Use cases (Use case 2, 3 og 4) at systemet er til
 \begin{tabular}{|>{\raggedright\arraybackslash}p{2.5cm}| >{\raggedright\arraybackslash}p{2.9cm} | >{\raggedright\arraybackslash}p{2.9cm} | >{\raggedright\arraybackslash}p{2.9cm} | >{\raggedright\arraybackslash}p{2.8cm} |}
    \hline
    \textbf{Use case 3: Alarmér } &\textbf{Test}& \textbf{Prækondition} & \textbf{Forventet resultat} & \textbf{Godkendt/ kommentar}\\ \hline
-   Udvidelse 2: Udsæt alarm & Tryk på "Udsæt alarm" & Alarmering er startet & Systemet stopper alarmens lyd i et minut, tallet er forsat skiftet til farven hvid &\\\hline
+   Udvidelse 2: Udsæt alarm & Tryk på "Udsæt alarm" knappen & Alarmering er startet & Systemet stopper alarmens lyd i et minut, Udsæt alarm knappen fortsætter med at blinke skiftevis rød og hvid indtil alarmen ikke længere er overskredet.  &\\\hline
 \end{tabular}
 \end{table}
 
@@ -650,7 +650,7 @@ Undtagelse 1: Tryk på "Nej" &Tryk "Nej" & Signalet og målingen er stoppet & Ko
 \\ \hline   
 \textbf{Krav nr.}&\textbf{Krav} &\textbf{Test}& \textbf{Forventet resultat} & \textbf{Resultat} & \textbf{Godkendt/ kommentar}\\ \hline
   1.1 & Programmet skal have et digitalt filter til udglatning af blodtrykssignal & Send to frekvenser ind (XX Hz og ZZ Hz) & Den ene (XX Hz) af de indsendte frekvenser er blevet fjernet & & \\\hline
-  1.2 & Programmet skal give alarm når grænseværdier overskrides med lyd og hvor den overskredede grænse værdi skifter farve til hvid på skærmen. & Overskrid en grænseværdi og tjek alarmering & Alarmen starter& & \\\hline
+  1.2 & Programmet skal give alarm når grænseværdier overskrides med lyd og Udsæt alarm knappen skal blinke skiftevis rød og hvid. & Overskrid en grænseværdi og tjek alarmering & Alarmen starter& & \\\hline
   1.3 & Programmet skal kunne gemme blodtrykssignalet i en database & Indsend signal og gå ind i databasen og se værdier & Der ligger værdier i databasen & & \\\hline\hline
   2.1 & Programmet skal have to window form: startskærm, der fungerer som EPJ systemet, og hovedskærm, som fungerer som selve blodtryksmåleren & Start program og tjek dette & Der er to window forms & & \\\hline
   2.2 & Programmet skal have en "Login" knap på startskærmen & Start program og tjek startskærm & Startskærmen har en "Login" knap & & \\\hline
