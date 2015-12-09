@@ -28,25 +28,29 @@
 \contentsline {subsection}{Vandfaldsmodellen}{12}{subsection*.16}
 \contentsline {subsection}{Projektstyring}{13}{subsection*.17}
 \contentsline {section}{\numberline {6.2}Metode}{13}{section.6.2}
-\contentsline {section}{\numberline {6.3}Specifikation og analyse}{13}{section.6.3}
-\contentsline {section}{\numberline {6.4}Arkitektur}{13}{section.6.4}
-\contentsline {subsection}{Hardware design}{13}{subsection*.18}
-\contentsline {subsection}{Software design}{13}{subsection*.19}
+\contentsline {section}{\numberline {6.3}Specifikation og analyse}{14}{section.6.3}
+\contentsline {section}{\numberline {6.4}Arkitektur}{14}{section.6.4}
+\contentsline {subsection}{Hardware design}{14}{subsection*.18}
+\contentsline {subsection}{Software design}{14}{subsection*.19}
 \contentsline {section}{\numberline {6.5}Design, implementering og test}{14}{section.6.5}
-\contentsline {section}{\numberline {6.6}Resultater og diskussion}{14}{section.6.6}
-\contentsline {section}{\numberline {6.7}Udviklingsv\IeC {\ae }rkt\IeC {\o }jer}{14}{section.6.7}
-\contentsline {subsection}{Microsoft Visio 2010}{14}{subsection*.20}
-\contentsline {subsection}{Visual Studio 2013}{14}{subsection*.21}
-\contentsline {subsection}{NI Multisim 13.0 med Ultiboard 13.0}{14}{subsection*.22}
-\contentsline {subsection}{NI-DAQmx}{14}{subsection*.23}
-\contentsline {subsection}{Analog Discovery fra Digilent and Analog Devices}{14}{subsection*.24}
-\contentsline {section}{\numberline {6.8}Opn\IeC {\r a}ede erfaringer}{14}{section.6.8}
-\contentsline {section}{\numberline {6.9}Fremtidigt arbejde}{15}{section.6.9}
-\contentsline {chapter}{\chapternumberline {7}Konklusion}{16}{chapter.7}
-\contentsline {chapter}{\chapternumberline {8}Referencer}{17}{chapter.8}
-\contentsline {chapter}{Litteratur}{18}{section*.26}
-\contentsline {section}{\numberline {8.1}Referencer}{18}{section.8.1}
-\contentsline {subsubsection}{Billeder}{18}{subsubsection*.27}
-\contentsline {subsubsection}{B\IeC {\o }ger}{18}{subsubsection*.28}
-\contentsline {subsubsection}{Internetsider}{18}{subsubsection*.29}
-\contentsline {subsubsection}{Dokumenter}{18}{subsubsection*.30}
+\contentsline {subsection}{PUSH/PULL m\IeC {\o }nster}{14}{subsection*.20}
+\contentsline {subsection}{Observer/Subject m\IeC {\o }nster}{15}{subsection*.21}
+\contentsline {subsection}{Queue}{15}{subsection*.22}
+\contentsline {subsection}{Trelagsmodel}{15}{subsection*.23}
+\contentsline {section}{\numberline {6.6}Resultater og diskussion}{16}{section.6.6}
+\contentsline {section}{\numberline {6.7}Udviklingsv\IeC {\ae }rkt\IeC {\o }jer}{16}{section.6.7}
+\contentsline {subsection}{Microsoft Visio 2010}{16}{subsection*.24}
+\contentsline {subsection}{Visual Studio 2013}{16}{subsection*.25}
+\contentsline {subsection}{NI Multisim 13.0 med Ultiboard 13.0}{16}{subsection*.26}
+\contentsline {subsection}{NI-DAQmx}{16}{subsection*.27}
+\contentsline {subsection}{Analog Discovery fra Digilent and Analog Devices}{16}{subsection*.28}
+\contentsline {section}{\numberline {6.8}Opn\IeC {\r a}ede erfaringer}{16}{section.6.8}
+\contentsline {section}{\numberline {6.9}Fremtidigt arbejde}{16}{section.6.9}
+\contentsline {chapter}{\chapternumberline {7}Konklusion}{17}{chapter.7}
+\contentsline {chapter}{\chapternumberline {8}Referencer}{18}{chapter.8}
+\contentsline {chapter}{Litteratur}{19}{section*.30}
+\contentsline {section}{\numberline {8.1}Referencer}{19}{section.8.1}
+\contentsline {subsubsection}{Billeder}{19}{subsubsection*.31}
+\contentsline {subsubsection}{B\IeC {\o }ger}{19}{subsubsection*.32}
+\contentsline {subsubsection}{Internetsider}{19}{subsubsection*.33}
+\contentsline {subsubsection}{Dokumenter}{19}{subsubsection*.34}
