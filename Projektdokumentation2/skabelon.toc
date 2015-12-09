@@ -22,8 +22,8 @@
 \contentsline {subsubsection}{Block definition diagram}{18}{subsubsection*.11}
 \contentsline {subsubsection}{Internal block definition}{19}{subsubsection*.12}
 \contentsline {subsection}{Modultest}{20}{subsection*.13}
-\contentsline {section}{\numberline {3.2}Software design}{20}{section.3.2}
-\contentsline {subsection}{Problemidentifikation}{20}{subsection*.14}
+\contentsline {section}{\numberline {3.2}Software design}{21}{section.3.2}
+\contentsline {subsection}{Problemidentifikation}{21}{subsection*.14}
 \contentsline {subsubsection}{Dom\IeC {\ae }nemodel}{22}{subsubsection*.15}
 \contentsline {subsection}{Klasseidentifikation}{24}{subsection*.16}
 \contentsline {subsubsection}{Applikationsmodel}{24}{subsubsection*.17}
