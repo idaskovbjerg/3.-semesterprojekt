@@ -26,70 +26,93 @@
 \@writefile{toc}{\contentsline {subsection}{FURPS+ med MoSCoW}{10}{subsection*.2}}
 \@writefile{lof}{\contentsline {figure}{\numberline {2.3}{\ignorespaces Skitse af startsk\IeC {\ae }rmen, som repr\IeC {\ae }senterer EPJ systemet}}{11}{figure.2.3}}
 \@writefile{lof}{\contentsline {figure}{\numberline {2.4}{\ignorespaces Skitse af hovedsk\IeC {\ae }rmen, hvilken repr\IeC {\ae }senterer en blodtryksm\IeC {\r a}lers brugergr\IeC {\ae }nseflade}}{12}{figure.2.4}}
+\citation{filter}
 \@writefile{lof}{\addvspace {10pt}}
 \@writefile{lot}{\addvspace {10pt}}
 \@writefile{toc}{\contentsline {chapter}{\chapternumberline {3}Arkitektur og design}{13}{chapter.3}}
 \@writefile{toc}{\contentsline {section}{\numberline {3.1}Hardware design}{13}{section.3.1}}
-\@writefile{toc}{\contentsline {subsection}{Implementering}{13}{subsection*.3}}
-\@writefile{toc}{\contentsline {subsubsection}{Block definition diagram}{13}{subsubsection*.4}}
-\@writefile{lof}{\contentsline {figure}{\numberline {3.1}{\ignorespaces \textbf  {Block definition diagram. Dette diagram viser hardware delene i systemet, samt sammenh\IeC {\ae }ngen mellem disse.}}}{13}{figure.3.1}}
-\@writefile{toc}{\contentsline {subsubsection}{Internal block definition}{13}{subsubsection*.5}}
-\@writefile{lof}{\contentsline {figure}{\numberline {3.2}{\ignorespaces \textbf  {Internal block diagram. Dette diagram viser signalerne imellem blokkene.}}}{14}{figure.3.2}}
-\@writefile{toc}{\contentsline {subsection}{Modultest}{14}{subsection*.6}}
-\@writefile{toc}{\contentsline {section}{\numberline {3.2}Software design}{14}{section.3.2}}
-\@writefile{toc}{\contentsline {subsection}{Problemidentifikation}{14}{subsection*.7}}
-\@writefile{lof}{\contentsline {figure}{\numberline {3.3}{\ignorespaces \textbf  {Id\IeC {\'e} til projekt. Startsk\IeC {\ae }rmen hvor det vil v\IeC {\ae }re muligt at v\IeC {\ae }lge m\IeC {\r a}lested.}}}{15}{figure.3.3}}
-\@writefile{lof}{\contentsline {figure}{\numberline {3.4}{\ignorespaces \textbf  {Startsk\IeC {\ae }rmen, hvilken fungerer som EPJ-systemet}}}{16}{figure.3.4}}
-\@writefile{lof}{\contentsline {figure}{\numberline {3.5}{\ignorespaces \textbf  {Hovedsk\IeC {\ae }rmen, hvilken fungerer som blodtryksm\IeC {\r a}lerens gr\IeC {\ae }nseflade}}}{16}{figure.3.5}}
-\@writefile{toc}{\contentsline {subsubsection}{Dom\IeC {\ae }nemodel}{16}{subsubsection*.8}}
-\@writefile{lof}{\contentsline {figure}{\numberline {3.6}{\ignorespaces \textbf  {Dom\IeC {\ae }nemodel for blodtryksm\IeC {\r a}lersystemet.}}}{17}{figure.3.6}}
-\@writefile{toc}{\contentsline {subsection}{Klasseidentifikation}{18}{subsection*.9}}
-\@writefile{toc}{\contentsline {subsubsection}{Applikationsmodel}{18}{subsubsection*.10}}
-\@writefile{lof}{\contentsline {figure}{\numberline {3.7}{\ignorespaces \textbf  {Applikationsmodel for blodtryksm\IeC {\r a}lersystemet.}}}{18}{figure.3.7}}
-\@writefile{lof}{\contentsline {figure}{\numberline {3.8}{\ignorespaces \textbf  {Trelagsmodellen. Her ses hvor de forskellige klasser ligger i der forskellige lag.}}}{19}{figure.3.8}}
-\@writefile{toc}{\contentsline {subsection}{Metodeidentifikation}{20}{subsection*.11}}
-\@writefile{toc}{\contentsline {subsubsection}{Sekvensdiagrammer}{20}{subsubsection*.12}}
-\@writefile{lof}{\contentsline {figure}{\numberline {3.9}{\ignorespaces \textbf  {Sekvensdiagram for blodtryksm\IeC {\r a}lersystemet. Denne viser adf\IeC {\ae }rden for Use case 1 }}}{20}{figure.3.9}}
-\@writefile{lof}{\contentsline {figure}{\numberline {3.10}{\ignorespaces \textbf  {Sekvensdiagram for blodtryksm\IeC {\r a}lersystemet. Denne viser adf\IeC {\ae }rden for Use case 2 del 1}}}{21}{figure.3.10}}
-\@writefile{lof}{\contentsline {figure}{\numberline {3.11}{\ignorespaces \textbf  {Sekvensdiagram for blodtryksm\IeC {\r a}lersystemet. Denne viser adf\IeC {\ae }rden for Use case 2 del 2}}}{22}{figure.3.11}}
-\@writefile{lof}{\contentsline {figure}{\numberline {3.12}{\ignorespaces \textbf  {Sekvensdiagram for blodtryksm\IeC {\r a}lersystemet. Denne viser adf\IeC {\ae }rden for Use case 2 del 3}}}{23}{figure.3.12}}
-\@writefile{lof}{\contentsline {figure}{\numberline {3.13}{\ignorespaces \textbf  {Sekvensdiagram for blodtryksm\IeC {\r a}lersystemet. Denne viser adf\IeC {\ae }rden for Use case 3}}}{24}{figure.3.13}}
-\@writefile{lof}{\contentsline {figure}{\numberline {3.14}{\ignorespaces \textbf  {Sekvensdiagram for blodtryksm\IeC {\r a}lersystemet. Denne viser adf\IeC {\ae }rden for Use case 4}}}{25}{figure.3.14}}
-\@writefile{toc}{\contentsline {subsection}{Implementering}{25}{subsection*.13}}
+\@writefile{toc}{\contentsline {subsection}{Udviklingsfase og iterationer}{13}{subsection*.3}}
+\@writefile{toc}{\contentsline {subsubsection}{F\IeC {\o }rste iteration - komponenter i lavpasfilteret}{13}{subsubsection*.4}}
+\@writefile{lof}{\contentsline {figure}{\numberline {3.1}{\ignorespaces \textbf  {Butterworth Sallen-key filter.}}}{13}{figure.3.1}}
+\@writefile{toc}{\contentsline {subsubsection}{Anden iteration - komponenter i lavpasfilteret}{14}{subsubsection*.5}}
+\@writefile{toc}{\contentsline {subsubsection}{Tredje iteration - komponenter lavpasfilteret, forst\IeC {\ae }rker og forsyningssp\IeC {\ae }nding}{14}{subsubsection*.6}}
+\@writefile{toc}{\contentsline {subsubsection}{Fjerde iteration - aktivt filter}{15}{subsubsection*.7}}
+\@writefile{toc}{\contentsline {subsubsection}{Design af lavpasfilteret}{15}{subsubsection*.8}}
+\@writefile{lof}{\contentsline {figure}{\numberline {3.2}{\ignorespaces \textbf  {Butterworth Sallen-key filter.}}}{15}{figure.3.2}}
+\@writefile{lof}{\contentsline {figure}{\numberline {3.3}{\ignorespaces \textbf  {Mathcad beregninger.}}}{16}{figure.3.3}}
+\@writefile{lof}{\contentsline {figure}{\numberline {3.4}{\ignorespaces \textbf  {Mathcad beregninger.}}}{16}{figure.3.4}}
+\@writefile{lof}{\contentsline {figure}{\numberline {3.5}{\ignorespaces \textbf  {Matlab bodeplot med 6.6k$\Omega $ modstande.}}}{17}{figure.3.5}}
+\@writefile{toc}{\contentsline {subsubsection}{Design af operationsforst\IeC {\ae }rkeren}{17}{subsubsection*.9}}
+\@writefile{lof}{\contentsline {figure}{\numberline {3.6}{\ignorespaces \textbf  {Denne viser opbygningen og delene i operationsforst\IeC {\ae }rkeren INA114}}}{18}{figure.3.6}}
+\@writefile{toc}{\contentsline {subsection}{Implementering}{18}{subsection*.10}}
+\@writefile{toc}{\contentsline {subsubsection}{Block definition diagram}{18}{subsubsection*.11}}
+\@writefile{lof}{\contentsline {figure}{\numberline {3.7}{\ignorespaces \textbf  {Block definition diagram. Dette diagram viser hardware delene i systemet, samt sammenh\IeC {\ae }ngen mellem disse.}}}{19}{figure.3.7}}
+\@writefile{toc}{\contentsline {subsubsection}{Internal block definition}{19}{subsubsection*.12}}
+\@writefile{lof}{\contentsline {figure}{\numberline {3.8}{\ignorespaces \textbf  {Internal block diagram. Dette diagram viser signalerne imellem blokkene.}}}{20}{figure.3.8}}
+\@writefile{toc}{\contentsline {subsection}{Modultest}{20}{subsection*.13}}
+\@writefile{toc}{\contentsline {section}{\numberline {3.2}Software design}{20}{section.3.2}}
+\@writefile{toc}{\contentsline {subsection}{Problemidentifikation}{20}{subsection*.14}}
+\@writefile{lof}{\contentsline {figure}{\numberline {3.9}{\ignorespaces \textbf  {Id\IeC {\'e} til projekt. Startsk\IeC {\ae }rmen hvor det vil v\IeC {\ae }re muligt at v\IeC {\ae }lge m\IeC {\r a}lested.}}}{21}{figure.3.9}}
+\@writefile{lof}{\contentsline {figure}{\numberline {3.10}{\ignorespaces \textbf  {Startsk\IeC {\ae }rmen, hvilken fungerer som EPJ-systemet}}}{21}{figure.3.10}}
+\@writefile{lof}{\contentsline {figure}{\numberline {3.11}{\ignorespaces \textbf  {Hovedsk\IeC {\ae }rmen, hvilken fungerer som blodtryksm\IeC {\r a}lerens gr\IeC {\ae }nseflade}}}{22}{figure.3.11}}
+\@writefile{toc}{\contentsline {subsubsection}{Dom\IeC {\ae }nemodel}{22}{subsubsection*.15}}
+\@writefile{lof}{\contentsline {figure}{\numberline {3.12}{\ignorespaces \textbf  {Dom\IeC {\ae }nemodel for blodtryksm\IeC {\r a}lersystemet.}}}{23}{figure.3.12}}
+\@writefile{toc}{\contentsline {subsection}{Klasseidentifikation}{24}{subsection*.16}}
+\@writefile{toc}{\contentsline {subsubsection}{Applikationsmodel}{24}{subsubsection*.17}}
+\@writefile{lof}{\contentsline {figure}{\numberline {3.13}{\ignorespaces \textbf  {Applikationsmodel for blodtryksm\IeC {\r a}lersystemet.}}}{24}{figure.3.13}}
+\@writefile{lof}{\contentsline {figure}{\numberline {3.14}{\ignorespaces \textbf  {Trelagsmodellen. Her ses hvor de forskellige klasser ligger i der forskellige lag.}}}{25}{figure.3.14}}
+\@writefile{toc}{\contentsline {subsection}{Metodeidentifikation}{26}{subsection*.18}}
+\@writefile{toc}{\contentsline {subsubsection}{Sekvensdiagrammer}{26}{subsubsection*.19}}
+\@writefile{lof}{\contentsline {figure}{\numberline {3.15}{\ignorespaces \textbf  {Sekvensdiagram for blodtryksm\IeC {\r a}lersystemet. Denne viser adf\IeC {\ae }rden for Use case 1 }}}{26}{figure.3.15}}
+\@writefile{lof}{\contentsline {figure}{\numberline {3.16}{\ignorespaces \textbf  {Sekvensdiagram for blodtryksm\IeC {\r a}lersystemet. Denne viser adf\IeC {\ae }rden for Use case 2 del 1}}}{27}{figure.3.16}}
+\@writefile{lof}{\contentsline {figure}{\numberline {3.17}{\ignorespaces \textbf  {Sekvensdiagram for blodtryksm\IeC {\r a}lersystemet. Denne viser adf\IeC {\ae }rden for Use case 2 del 2}}}{28}{figure.3.17}}
+\@writefile{lof}{\contentsline {figure}{\numberline {3.18}{\ignorespaces \textbf  {Sekvensdiagram for blodtryksm\IeC {\r a}lersystemet. Denne viser adf\IeC {\ae }rden for Use case 2 del 3}}}{29}{figure.3.18}}
+\@writefile{lof}{\contentsline {figure}{\numberline {3.19}{\ignorespaces \textbf  {Sekvensdiagram for blodtryksm\IeC {\r a}lersystemet. Denne viser adf\IeC {\ae }rden for Use case 3}}}{30}{figure.3.19}}
+\@writefile{lof}{\contentsline {figure}{\numberline {3.20}{\ignorespaces \textbf  {Sekvensdiagram for blodtryksm\IeC {\r a}lersystemet. Denne viser adf\IeC {\ae }rden for Use case 4}}}{31}{figure.3.20}}
+\@writefile{toc}{\contentsline {subsection}{Implementering}{31}{subsection*.20}}
+\@writefile{toc}{\contentsline {subsubsection}{Kalibrering}{31}{subsubsection*.21}}
 \citation{digifilter}
 \citation{blodtrykwiki}
-\@writefile{lof}{\contentsline {figure}{\numberline {3.15}{\ignorespaces \textbf  {Digital filter ramme. Denne viser hvordan rammen bestemmer gennemsnittet og rykker \IeC {\'e}n hver gang.}}}{26}{figure.3.15}}
-\@writefile{toc}{\contentsline {subsection}{Unittest}{28}{subsection*.14}}
-\@writefile{toc}{\contentsline {section}{\numberline {3.3}Integrationstest}{28}{section.3.3}}
+\@writefile{toc}{\contentsline {subsubsection}{Nulpunktsjustering}{32}{subsubsection*.22}}
+\@writefile{toc}{\contentsline {subsubsection}{Digitalt filter}{32}{subsubsection*.23}}
+\@writefile{lof}{\contentsline {figure}{\numberline {3.21}{\ignorespaces \textbf  {Digital filter ramme. Denne viser hvordan rammen bestemmer gennemsnittet og rykker \IeC {\'e}n hver gang.}}}{32}{figure.3.21}}
+\@writefile{toc}{\contentsline {subsubsection}{Beregning af systolisk, diastolisk og middeltryks v\IeC {\ae }rdi}{33}{subsubsection*.24}}
+\@writefile{toc}{\contentsline {subsubsection}{EKG-signal}{34}{subsubsection*.25}}
+\@writefile{toc}{\contentsline {subsubsection}{Iltm\IeC {\ae }tning}{34}{subsubsection*.26}}
+\@writefile{toc}{\contentsline {subsubsection}{M\IeC {\o }sntre: Subject/Observer og PUSH/PULL}{34}{subsubsection*.27}}
+\citation{queue}
+\@writefile{toc}{\contentsline {subsubsection}{Queue}{35}{subsubsection*.28}}
+\@writefile{toc}{\contentsline {subsection}{Unittest}{35}{subsection*.29}}
+\@writefile{toc}{\contentsline {section}{\numberline {3.3}Integrationstest}{35}{section.3.3}}
 \@writefile{lof}{\addvspace {10pt}}
 \@writefile{lot}{\addvspace {10pt}}
-\@writefile{toc}{\contentsline {chapter}{\chapternumberline {4}Accepttest}{29}{chapter.4}}
-\@writefile{toc}{\contentsline {section}{\numberline {4.1}Indledning}{29}{section.4.1}}
-\@writefile{toc}{\contentsline {section}{\numberline {4.2}Accepttest for funktionelle krav}{29}{section.4.2}}
-\@writefile{toc}{\contentsline {subsection}{Opstilling}{29}{subsection*.15}}
-\@writefile{lot}{\contentsline {table}{\numberline {4.1}{\ignorespaces Accepttest for Use case 1}}{30}{table.4.1}}
-\newlabel{tab:tabel8}{{\M@TitleReference {4.1}{Accepttest for Use case 1}}{30}{Accepttest for Use case 1}{table.4.1}{}}
-\@writefile{lot}{\contentsline {table}{\numberline {4.2}{\ignorespaces Accepttest for Use case 2}}{31}{table.4.2}}
-\newlabel{tab:tabel9}{{\M@TitleReference {4.2}{Accepttest for Use case 2}}{31}{Accepttest for Use case 2}{table.4.2}{}}
-\@writefile{lot}{\contentsline {table}{\numberline {4.3}{\ignorespaces Accepttest for Use case 2}}{32}{table.4.3}}
-\newlabel{tab:tabel10}{{\M@TitleReference {4.3}{Accepttest for Use case 2}}{32}{Accepttest for Use case 2}{table.4.3}{}}
-\@writefile{lot}{\contentsline {table}{\numberline {4.4}{\ignorespaces Accepttest for Use case 2}}{32}{table.4.4}}
-\newlabel{tab:tabel11}{{\M@TitleReference {4.4}{Accepttest for Use case 2}}{32}{Accepttest for Use case 2}{table.4.4}{}}
-\@writefile{lot}{\contentsline {table}{\numberline {4.5}{\ignorespaces Accepttest for Use case 2}}{33}{table.4.5}}
-\newlabel{tab:tabel12}{{\M@TitleReference {4.5}{Accepttest for Use case 2}}{33}{Accepttest for Use case 2}{table.4.5}{}}
-\@writefile{lot}{\contentsline {table}{\numberline {4.6}{\ignorespaces Accepttest for Use case 3}}{33}{table.4.6}}
-\newlabel{tab:tabel13}{{\M@TitleReference {4.6}{Accepttest for Use case 3}}{33}{Accepttest for Use case 3}{table.4.6}{}}
-\@writefile{lot}{\contentsline {table}{\numberline {4.7}{\ignorespaces Accepttest for Use case 3}}{33}{table.4.7}}
-\newlabel{tab:tabel14}{{\M@TitleReference {4.7}{Accepttest for Use case 3}}{33}{Accepttest for Use case 3}{table.4.7}{}}
-\@writefile{lot}{\contentsline {table}{\numberline {4.8}{\ignorespaces Accepttest for Use case 3}}{34}{table.4.8}}
-\newlabel{tab:tabel15}{{\M@TitleReference {4.8}{Accepttest for Use case 3}}{34}{Accepttest for Use case 3}{table.4.8}{}}
-\@writefile{lot}{\contentsline {table}{\numberline {4.9}{\ignorespaces Accepttest for Use case 4}}{34}{table.4.9}}
-\newlabel{tab:tabel16}{{\M@TitleReference {4.9}{Accepttest for Use case 4}}{34}{Accepttest for Use case 4}{table.4.9}{}}
-\@writefile{lot}{\contentsline {table}{\numberline {4.10}{\ignorespaces Accepttest for Use case 4}}{34}{table.4.10}}
-\newlabel{tab:tabel17}{{\M@TitleReference {4.10}{Accepttest for Use case 4}}{34}{Accepttest for Use case 4}{table.4.10}{}}
-\@writefile{toc}{\contentsline {section}{\numberline {4.3}Accepttest for ikke-funktionelle krav}{35}{section.4.3}}
-\@writefile{lot}{\contentsline {table}{\numberline {4.11}{Accepttest for ikke-funktionelle krav}}{35}{table.4.11}}
-\newlabel{tab:label18}{{\M@TitleReference {4.11}{Accepttest}}{35}{Accepttest for ikke-funktionelle krav}{table.4.11}{}}
+\@writefile{toc}{\contentsline {chapter}{\chapternumberline {4}Accepttest}{36}{chapter.4}}
+\@writefile{toc}{\contentsline {section}{\numberline {4.1}Indledning}{36}{section.4.1}}
+\@writefile{toc}{\contentsline {section}{\numberline {4.2}Accepttest for funktionelle krav}{36}{section.4.2}}
+\@writefile{toc}{\contentsline {subsection}{Opstilling}{36}{subsection*.30}}
+\@writefile{lot}{\contentsline {table}{\numberline {4.1}{\ignorespaces Accepttest for Use case 1}}{37}{table.4.1}}
+\newlabel{tab:tabel8}{{\M@TitleReference {4.1}{Accepttest for Use case 1}}{37}{Accepttest for Use case 1}{table.4.1}{}}
+\@writefile{lot}{\contentsline {table}{\numberline {4.2}{\ignorespaces Accepttest for Use case 2}}{38}{table.4.2}}
+\newlabel{tab:tabel9}{{\M@TitleReference {4.2}{Accepttest for Use case 2}}{38}{Accepttest for Use case 2}{table.4.2}{}}
+\@writefile{lot}{\contentsline {table}{\numberline {4.3}{\ignorespaces Accepttest for Use case 2}}{39}{table.4.3}}
+\newlabel{tab:tabel10}{{\M@TitleReference {4.3}{Accepttest for Use case 2}}{39}{Accepttest for Use case 2}{table.4.3}{}}
+\@writefile{lot}{\contentsline {table}{\numberline {4.4}{\ignorespaces Accepttest for Use case 2}}{39}{table.4.4}}
+\newlabel{tab:tabel11}{{\M@TitleReference {4.4}{Accepttest for Use case 2}}{39}{Accepttest for Use case 2}{table.4.4}{}}
+\@writefile{lot}{\contentsline {table}{\numberline {4.5}{\ignorespaces Accepttest for Use case 2}}{40}{table.4.5}}
+\newlabel{tab:tabel12}{{\M@TitleReference {4.5}{Accepttest for Use case 2}}{40}{Accepttest for Use case 2}{table.4.5}{}}
+\@writefile{lot}{\contentsline {table}{\numberline {4.6}{\ignorespaces Accepttest for Use case 3}}{40}{table.4.6}}
+\newlabel{tab:tabel13}{{\M@TitleReference {4.6}{Accepttest for Use case 3}}{40}{Accepttest for Use case 3}{table.4.6}{}}
+\@writefile{lot}{\contentsline {table}{\numberline {4.7}{\ignorespaces Accepttest for Use case 3}}{40}{table.4.7}}
+\newlabel{tab:tabel14}{{\M@TitleReference {4.7}{Accepttest for Use case 3}}{40}{Accepttest for Use case 3}{table.4.7}{}}
+\@writefile{lot}{\contentsline {table}{\numberline {4.8}{\ignorespaces Accepttest for Use case 3}}{41}{table.4.8}}
+\newlabel{tab:tabel15}{{\M@TitleReference {4.8}{Accepttest for Use case 3}}{41}{Accepttest for Use case 3}{table.4.8}{}}
+\@writefile{lot}{\contentsline {table}{\numberline {4.9}{\ignorespaces Accepttest for Use case 4}}{41}{table.4.9}}
+\newlabel{tab:tabel16}{{\M@TitleReference {4.9}{Accepttest for Use case 4}}{41}{Accepttest for Use case 4}{table.4.9}{}}
+\@writefile{lot}{\contentsline {table}{\numberline {4.10}{\ignorespaces Accepttest for Use case 4}}{41}{table.4.10}}
+\newlabel{tab:tabel17}{{\M@TitleReference {4.10}{Accepttest for Use case 4}}{41}{Accepttest for Use case 4}{table.4.10}{}}
+\@writefile{toc}{\contentsline {section}{\numberline {4.3}Accepttest for ikke-funktionelle krav}{42}{section.4.3}}
+\@writefile{lot}{\contentsline {table}{\numberline {4.11}{Accepttest for ikke-funktionelle krav}}{42}{table.4.11}}
+\newlabel{tab:label18}{{\M@TitleReference {4.11}{Accepttest}}{42}{Accepttest for ikke-funktionelle krav}{table.4.11}{}}
 \gdef \LT@i {\LT@entry 
     {1}{44.09819pt}\LT@entry 
     {1}{89.22234pt}\LT@entry 
@@ -97,10 +120,10 @@
     {1}{89.22234pt}\LT@entry 
     {1}{74.99596pt}\LT@entry 
     {1}{74.99596pt}}
-\@writefile{toc}{\contentsline {section}{\numberline {4.4}Godkendelses formular}{39}{section.4.4}}
-\newlabel{tab:tabel19}{{\M@TitleReference {4.4}{Accepttest}}{39}{Godkendelses formular}{section.4.4}{}}
+\@writefile{toc}{\contentsline {section}{\numberline {4.4}Godkendelses formular}{46}{section.4.4}}
+\newlabel{tab:tabel19}{{\M@TitleReference {4.4}{Accepttest}}{46}{Godkendelses formular}{section.4.4}{}}
 \@setckpt{testing}{
-\setcounter{page}{40}
+\setcounter{page}{47}
 \setcounter{equation}{0}
 \setcounter{enumi}{6}
 \setcounter{enumii}{2}
@@ -147,9 +170,9 @@
 \setcounter{cmsm@mctr}{0}
 \setcounter{bsm@mctr}{0}
 \setcounter{workm@mctr}{0}
-\setcounter{sheetsequence}{42}
-\setcounter{lastsheet}{42}
-\setcounter{lastpage}{40}
+\setcounter{sheetsequence}{49}
+\setcounter{lastsheet}{48}
+\setcounter{lastpage}{46}
 \setcounter{figure}{0}
 \setcounter{lofdepth}{1}
 \setcounter{table}{11}
