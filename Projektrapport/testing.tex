@@ -25,14 +25,6 @@ Brian Hansen & BH \\\hline
 Mohamed Hussein Mohamed & MM \\\hline 
 Khaled Edwan & KE \\\hline
 \end{tabular}
-\\
-Hvad vil vi
-Hvad skal produktet kunne
-Løsning
-Fremtiden
-Deltager; Fulde navn og initialer
-
-
 \chapter{Hjertet}
 Hjertet er en muskel, der fungere som en pumpe i kroppen. Hjertet pumper det iltede blod ud til resten af kroppen gennem arterie- og vene systemer. Når blodet passere ud af hjertet igennem arterierne sker der et tryk mod arterievæggene, dette kaldes blodtrykket. Man benytter blodtrykket til at bedømme kraften og mængden af det blod, som pumpes ud af hjertet. Blodtrykket inddeles i to typer, systolisk og diastolisk. \\\\
 Systolen angives som den kraft, der skabes når der kommer pres på karvæggen i arterierne. Dette sker i hjertets sammentrækningsfase, hvor blodet pumpes ud i arterierne. Systolen i et normalt blodtryk i hvile vil ligge i intervallet 100-140mm Hg og ved forhøjet blodtryk er værdien for trykket over 140 mm Hg. Diastolen angiver hjertets hvilefase og ses mellem to sammentrækninger. I denne fase fyldes ventriklerne med blod. Den normale værdi for diastolen ligger i intervallet 60-90 mm Hg. Hvis den overstiger 90 mm Hg anses blodtrykket for at være forhøjet. Udover systolen og diastolen kan også middeltrykket angives. Denne udregnes ved formlen: $middeltryk = \dfrac{2}{3}\cdot diastolisk + \dfrac{1}{3}\cdot systolisk$.  \cite{blodtrykwiki}
@@ -177,34 +169,38 @@ Systemets softwarestruktur og forløb beskrives ved at benytte UML klassediagram
 	\section{Specifikation og analyse}
 	??
 	Beregninger til hardware
+	
 	\section{Arkitektur}
-	\subsection{Hardware design}
+	\subsection{Hardware}
 	kort indledning
 	Hardware beskrivelse
 	Signalets vej
-	BBD indsættes
-	\subsection{Software design}
-	Kort indledning
-	\section{Design, implementering og test}
+	BDD/IBD indsættes
+	\subsection{Software}
+system arkitektur
+domænemodellen
+
+\section{Design, implementering og test}
+\subsection{Observer mønsteret}
+Observer/subject mønstreret bruges til at sende data op kontinueret og på en fornuftig måde. Subject har en metode til at koble en obeserver til, og en anden metode til at fjerne observeren. Der er en tredje metode i subject, kaldet notify. Notify sørger for at give besked til den tilknyttet observer om opdatering. En observer er interesseret i at kende til ændring i et objekt. Beskeden om ændring kommer fra subjectet, der er tilknyttet observeren. \\
+\\
+I dette projekt er der valgt at bruge observer/ subject mønstreret til at sende data fra datalag til logiklaget. Mønstreret er også brugt til at sende data videre fra logiklaget til præsentationslaget. Yderligere beskrivelse findes i projektdokumentationen under kapitlet Arkitektur og design under afsnittet Software design. 
 \subsection{PUSH/PULL mønster}
 PUSH/PULL er et software mønstre, der enten skubber eller trækker data op. PUSH betyder at skubbe, og betyder at data bliver skubbet op, når der sker en ændring, uden der skal gives besked om at hente data. PULL trækker data op imellem lagene. I PULL gives der besked til et lag om en ændring. Herefter skal laget der ønsker at kende til ændringen bede om ændringen, før det sendes op.\\
 \\
 I dette projekt er der valgt PUSH mønstret, da det er interessant at få målinger op til brugergrænsefalden hele tiden når, er indlæst nye målinger fra DAQ’en, og få sendte målingerne sammen med. Yderligere beskrivelse findes i projektdokumentationen under kapitlet Arkitektur og design under afsnittet Software design. 
-\subsection{Observer/Subject mønster}
-Observer/ subject mønstreret bruges til at sende data op kontinueret og på en fornuftig måde. Subject har en metode til at koble en obeserver til, og en anden metode til at fjerne observeren. Der er en tredje metode i subject, kaldet notify. Notify sørger for at give besked til den tilknyttet observer om opdatering. En observer er interesseret i at kende til ændring i et objekt. Beskeden om ændring kommer fra subjectet, der er tilknyttet observeren. \\
-\\
-I dette projekt er der valgt at bruge observer/ subject mønstreret til at sende data fra datalag til logiklaget. Mønstreret er også brugt til at sende data videre fra logiklaget til præsentationslaget. Yderligere beskrivelse findes i projektdokumentationen under kapitlet Arkitektur og design under afsnittet Software design. 
 \subsection{Queue}
 For at sikre at data bliver sendt op i den rigtige rækkefølge og på en kontrolleret måde, er der i dette projekt valgt at benytte en kø. Til dette er der benyttet en indbygget funktion i Visual Studio, Queue class. Herunder ligger der to metoder, som kan bruges til at sende objekter af tal ind i den ene ende af køen og efter at køen er blevet fyldt op, er der en funktion til at fjerne det første objekt fra den anden ende af køen. Dette sørger for at der hele tiden er et flow i køen når der sendes data ind i denne. \\
 \\
-En yderligere beskrivelse af hvordan Queue klassen benyttes i koden og hvordan denne er opbygget er beskrevet i dokumentationen under Arkitektur og design under afsnittet Implementering
+En yderligere beskrivelse af hvordan Queue klassen benyttes i koden og hvordan denne er opbygget er beskrevet i dokumentationen under Arkitektur og design under afsnittet Implementering.
 \subsection{Trelagsmodel}
 Trelagsmodellen er en software model, til at inddele sin software i tre lag, præsentationslaget, logiklaget og datalaget. Hver lag har sit eget ansvar og funktionalitet. Præsentationslaget kan kun tilgå logiklaget, og må kun vise data på brugergrænseflade eller indlæse data fra brugergrænsefladen. Logiklaget må tilgå både datalaget og præsentationslaget. Logik er det midterste lag, og står for behandling af data fra præsentationslaget og datalaget. Datalaget er det nederste lag og sørge for at sende data fra et måle apparat op til logiklaget. Datalaget står også for at gemme data i en fil eller en database.\\
 \\ 
 I dette projekt er koden opdelt efter trelagsmodellen, ved at have et præsentationslag med to brugergrænsefalder, et logiklag med algoritmer til udregning af blodtryk, og et datalag der hente data fra DAQ’en og gemmer dem i en database.  Yderligere beskrivelse og model over trelagsmodellens inddeling af software koden findes i projektdokumentationen under kapitlet Arkitektur og design under afsnittet Software design. 
-
-	
-	
+\subsection{Unittest}
+Det er blevet besluttet at lave unittest på softwaren. Unit-test forstås ved at der testes på hvert enkelt komponent i koden, i objektorienteret kode vil det sige metoderne. Man sikrer sig at metoderne returnerer det forventede. En unit test bør foregå løbende lige så frit som koden bliver udviklet, så kan man fokusere på de del-elementer som ikke virker efter hensigten. \\
+\\
+I dette projekt blev der valgt at lave unit-test efter sidste iteration af koden, da de sidste versioner af softwaren ændrede sig meget, så alle unit-tests skulle laves forfra. Grundlaget for mange metoder ændrede sig løbende. Disse unit-tests blev lavet i koden ved at sætte breakpoints og følge metoden til ende og evaluere på hvorvidt metoden opførte sig efter hensigten. Unit-tests er blevet foretaget i koden, hvor der er skrevet kommentarer til de metoder der er blevet testet.
 \section{Resultater og diskussion}
 Hvad er der kommet frem til
 \section{Udviklingsværktøjer}
