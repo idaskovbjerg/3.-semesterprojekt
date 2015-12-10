@@ -30,7 +30,7 @@ Denne kravspecifikation er blevet udarbejdet på baggrund af krav fra kunden, sa
 
 \section{Systembeskrivelse}
 Blodtryksmålersystemet ønskes at kunne måle blodtryk, EKG og iltmætning for en patient. Ud fra blodtrykket findes systolisk, diastolisk og middeltryks værdier, dette gøres ved at finde den maksimale værdi (systole) og den minimale værdi (diastole) for blodtrykskurven. Ud fra disse to værdier bestemmes middeltrykket, dette gøres ved formlen: $middel = 1/3 \cdot systole + 2/3 \cdot diastole$. \cite{blodtrykwiki}
-\\ Ud fra EKG-signalet kan pulsen bestemmes, dette gøres ved at bestemme antallet af R-takker på et minut. Desuden kan pulsen bestemmes ud fra blodtrykket, da pulsen her er antallet af systoliske værdier på et minut. Iltmætningen er mængden af ilt i blodet. For at kunne bestemme denne værdi skal et eksternt produkt benyttes. Dette produkt skal ved hjælp at infrarød bestemme iltmætningen i blodet. 
+\\ Ud fra EKG-signalet kan pulsen bestemmes, dette gøres ved at bestemme antallet af R-takker på et minut. Desuden kan pulsen bestemmes ud fra blodtrykket, da pulsen her er antallet af systoliske/diastoliske værdier på et minut. Iltmætningen er mængden af ilt i blodet. For at kunne bestemme denne værdi skal et eksternt produkt benyttes. Dette produkt skal ved hjælp en infrarød sensor bestemme iltmætningen i blodet, dette bliver ikke implementeret i denne prototype.
 \newpage
 
 \section{Aktør-kontekst diagram}
@@ -112,9 +112,6 @@ Systemet består af en computer med programkode, en NI-DAQ samt hardware. Hardwa
 \\
 Systemet gør det muligt at hente data fra transduceren. Her går data fra transduceren igennem forstærkeren, hvilken bliver forsynet af spænding fra to 9 V batterier. Fra forstærkeren går signalet videre til lavpasfilteret og derefter ind i NI-DAQ, som så sender data videre til computeren og ind i programkoden. 
 \\ 
-
-"Signalets vej" og opbygning beskrives\\\\
-
 Det digitale filter er pr. default slået til når systemet startes, dog vil det være muligt at slå dette filter fra under målingen.\\
 Når programmet startes skal computeren have VPN-forbindelse til "ASE IHA VPN", desuden skal der være en forbindelse til $"webhotel10.F15ST2ITS2201404669.db_{-}owner"$(Personaledatabasen) og $"webhotel10.F15ST2ITS2201405838.db_{-}owner"$ (EPJ database).\\\\
 Programmet skal have to skærme; en startskærm, der fungerer som EPJ systemet, og en hovedskærm, der fungerer som selve blodtryksmålerens grænseflade.
@@ -157,7 +154,7 @@ Udvidelse/undtagelser: & - \\\hline
 2. Besked: "Logget på" vises  \newline
 3. Liste med patienter kommer frem\newline
 4. Den ønskede patient vælges \newline
-5. Sundhedsfaglig personale indtaster nulpunktjusterings værdien og starter  nulpunktsjusteringen \newline
+5. Sundhedsfaglig personale indtaster nulpunktjusterings værdien og starter  nulpunktsjusteringen. \newline
 6. Systemet foretager nulpunktsjusteringen. \newline
 7. Sundhedsfaglig personale starter målingen \newline
 8. Systemet indhenter data fra transduceren og måler, hvor lang tid målingen foretages\newline
@@ -474,7 +471,6 @@ Ud fra BDD kan et IBD diagram udarbejdes. IBD diagrammet viser koblingen mellem 
 \includegraphics[width =1.0\textwidth , center]{billeder/IBD}
 \caption{\textbf{Internal block diagram. Dette diagram viser signalerne imellem blokkene.}}
 \end{figure}
-
 \subsection{Modultest}
 
 \newpage
@@ -497,14 +493,13 @@ Ud fra alle disse faktorer kan grundstrukturen, til hvordan startskærmen og hov
 \includegraphics[width =0.8\textwidth , center]{billeder/SkitseHovedNy}
 \caption{\textbf{Hovedskærmen, hvilken fungerer som blodtryksmålerens grænseflade}}
 \end{figure}
-
 \subsubsection{Domænemodel}
 Først skal der klarlægges hvilke klasser som systemet skal bestå af, hvilket er det første skridt i processen. For at kunne identificere disse klasse udarbejdes en domænemodel, hvilken har sit udgangspunkt i Use cases. Det er i de konceptuelle klasser fra Use cases som indeholder den information som systemet skal holde styr på. Derfor findes de konceptuelle klasser i Use cases og disse indføres i domænemodellen som klasser. Domænemodellen opstilles derfor for at finde frem til hvad problemet er i softwaren i forhold til, hvad der skal holdes styr på.
 \begin{figure}[H]
 \includegraphics[width =1.0\textwidth , center]{billeder/DM}
 \caption{\textbf{Domænemodel for blodtryksmålersystemet.}}
 \end{figure}
-Denne domænemodel viser det sundhedsfaglige personales interaktion med systemet, samt hvilke handlinger der startes af denne interaktion. Det sundhedsfaglige personale udfører en handling, der medfører, at en række processer igangsættes i systemet. Disse processer sørger at hente data fra transduceren og EKG patient, sørger for at starte beregningen af puls, systolisk, diastolisk og middeltryks værdierne og vise disse på brugergrænsefladen, samt sørger for at disse data bliver gemt i en database.
+Denne domænemodel viser det sundhedsfaglige personales interaktion med systemet, samt hvilke handlinger der startes af denne interaktion. Det sundhedsfaglige personale udfører en handling, der medfører, at en række processer igangsættes i systemet. Disse processer sørger for at hente data fra transduceren og EKG patient, samt sørger for at starte beregningen af puls, systolisk, diastolisk og middeltryks værdierne. Efter beregningerne viser systemet disse værdier på brugergrænsefladen, samt sørger for at disse data bliver gemt i en database.
 \newpage
 \subsection{Klasseidentifikation}
 \subsubsection{Applikationsmodel}
@@ -514,55 +509,59 @@ Modellen bruges til at bestemme de interagerende klasser i blodtryksmålersystem
 \includegraphics[width =1.0\textwidth , center]{billeder/appModel}
 \caption{\textbf{Applikationsmodel for blodtryksmålersystemet.}}
 \end{figure}
-Ud fra denne model ses klasserne og databaserne der skal implementeres i softwaren, samt interaktionen mellem disse. Altså hvordan klasserne må tale sammen på kryds og tværs. Så idet at det vides at tre-lagsmodellen skal benyttes, kan disse klasser ligges ind i det tilhørende lag. Databaserne vil blive tilgået fra datalaget, domæneklasserne ligger i logiklaget og i præsentationslaget vil startskærmen og hovedskærmen ligge hvorfra de vil blive præsenteret for det sundhedsfaglige personale.\\\\
-\textbf{Trelagsmodellen}
-Trelags modellen er en software model, der gør det muligt at inddele ens software kode op i tre lag. De tre lag er præsentationslaget, logiklaget og datalaget. \\
-Fordelen ved at kunne dele softwaren op på denne måde, er at man kan rette i de forskellige lag, uden at det får indflydelse i de andre lag. Man kan herved implementere nye klasser og deres funktioner, og bare henvise til dem i de andre lag. Hvert lag har deres egen funktionalitet og ansvar.\\
-Præsentationslaget er det øverste lag i trelags modellen, og kan kun snakke sammen med logiklaget. I præsentationslaget må der ikke laves nogen form for beregninger, disse skal komme fra logiklaget. Med andre ord fungerer præsentationslaget, kun til at præsenter data på en brugergrænseflade. Præsentationslaget er også det eneste lag, som brugeren kommer til at integrerer med.\\
+Ud fra denne model ses klasserne og databaserne, der skal implementeres i softwaren, samt interaktionen mellem disse. Altså hvordan klasserne taler sammen på kryds og tværs. Idet det vides at trelagsmodellen skal benyttes, kan applikationsmodellen bruges til at identificere hvor disse klasser ligger i det tilhørende lag. Databaserne vil være en boundary klasse (grænse klasse) og vil blive tilgået fra datalaget, domain klasserne (domæne klasse) er de klasser der skal ligge i logiklaget og det er disse klasser der findes fra domænemodellen og i præsentationslaget vil startskærmen og hovedskærmen, hvilke også er grænse klasser, ligge hvorfra de vil blive præsenteret for det sundhedsfaglige personale. Control klasserne (kontrol klasserne) er systemets Use cases. Grænse klasserne er de klasser der repræsentere aktørerne fra Use casene og disse aktøreres grænseflader. Domæne klasserne er de klasser hvori data bliver behandlet og bearbejdet. Kontrol klasserne er de klasser der udfører Use casene ved at interagere med grænse og domæne klasserne. \\\\
+\textbf{Trelagsmodellen} 
+Trelags modellen er en software model, der gør det muligt at inddele software kodeN op i tre lag. De tre lag er præsentationslaget, logiklaget og datalaget. \\
+Fordelen ved at kunne dele softwaren op på denne måde, er at man kan rette i de forskellige lag, uden at det får indflydelse i de andre lag. Man kan herved implementere nye klasser og deres funktioner, og blot henvise til dem i de andre lag. Hvert lag har deres egen funktionalitet og ansvar.\\
+Præsentationslaget er det øverste lag i trelags modellen, og kan kun snakke sammen med logiklaget. I præsentationslaget må der ikke laves nogen form for beregninger, disse skal komme fra logiklaget. Med andre ord fungerer præsentationslaget, kun til at præsenter data på en brugergrænseflade, hvorfra data kan præsenteres for brugeren. Præsentationslaget er derfor også det eneste lag, som brugeren kommer til at integrerer med.\\
 Logiklaget er det midterste lag, og er et bindeled mellem præsentationslaget og datalaget. I logiklaget forgår alt behandling af data fra præsentationslaget og datalaget. Det betyder at alle algoritmer skal ligge i logiklaget. \\
-Datalaget er det nederste lag, og indhenter data eller gemmer data. Der kan indlæses data fra en fil, eller et måleapparat eller en database. Datalaget kan gemme data fra logiklaget i en fil eller database. \\
-I trelagsmodellen kan man skabe et flydende bindeled, der kan snakke sammen med alle lagene, dette kaldes for en DTO. En DTO står for data transfer object, og transporter objekter imellem alle lagene, og kan derved tilgås af alle lagene. \\
+Datalaget er det nederste lag, og her indhentes eller gemmes data. Der kan indlæses data fra en fil, eller et måleapparat eller en database. Datalaget kan gemme data fra logiklaget i en fil eller database. \\
+I trelagsmodellen kan der skabes et flydende bindeled, der kan snakke sammen med alle lagene, dette kaldes for en DTO. En DTO står for Data transfer object, og transporter objekter imellem alle lagene, og kan derved tilgås af alle lagene. \\
 \\
 I dette projekt er trelagsmodellen blevet opfyldt ved at der er oprettet en solution der hedder PulsMaalerSystem, under denne solution ligger der fire projekter; PulsMaalerSystem, PulsMaalerSystem.Logiklag, PulsMaalerSystem.Datalag og PulsMaalerSystem.DTOlag. Opdeling af softwarekoden i trelagsmodel kan ses på figuren nedenfor. 
 \begin{figure}[H]
 \includegraphics[width =1.0\textwidth , center]{billeder/Trelagsmodel}
 \caption{\textbf{Trelagsmodellen. Her ses hvor de forskellige klasser ligger i der forskellige lag.}}
 \end{figure}
-Det første projekt PulsMaalerSystem fungerer som præsentationslaget og består af to Windows forms, StartGUI og HovedGUI. Begge forms sender informationer ned til logiklaget og henter data, som blodtryksværdier, og viser det på en graf. \\
-Det andet projekt PulsMaalerSystem.Logiklag er logiklaget i projektet. I dette logiklag, er der implementeret seks klasser under: Blodtryk, Kalibrering, Digitaltfilter, Nulpunkts$_{-}$justering og EKG, Logiklag.
+Det første projekt PulsMaalerSystem fungerer som præsentationslaget og består af to Windows forms, StartGUI og HovedGUI. Begge forms sender informationer ned til logiklaget og henter data, som blodtryksværdier, og viser det på en graf. \\\\
+Det andet projekt PulsMaalerSystem.Logiklag er logiklaget i projektet. I dette logiklag, er der implementeret seks klasser: Blodtryk, Kalibrering, Digitaltfilter, Nulpunkts$_{-}$justering og EKG, Logiklag.\\
 Klassen Blodtryk tager sig af at udregne systolen, diastolen og middeltrykket med algoritmer ud fra blodtrykket. \\
-Kalibrerings klassen sørger for at kalibrer blodtrykssignalet med en kalibreringsværdi der kan indtastes i præsentationslaget.
+Kalibrerings klassen sørger for at beregne kalibreringsværdien ud fra de indtastede værdier for tryk og spænding og sender denne værdi over i Logiklag klassen, hvilken kalibrér blodtrykssignalet ved at gange kalibreringsværdien på signalet.\\
 Digitaltfilter klassen implementer et glidende middelværdisfilter, der sørger for at udglatte blodtrykssignalet.\\
-Nulpunkts$_{-}$justering klassen sørger for at sætte signalet baseline ved 0 V. 
+Nulpunkts$_{-}$justering klassen sørger for at sætte signalets baseline ved 0 V. 
 EKG klassen skulle have sørget for at finde R-takker og udregne pulsen. Grundet tidspres har det ikke været muligt at implementer EKG i projektet. Der er dog gjort klar til det med denne klasse. \\\\
 Logiklags klassen binder alle de andre klasser sammen, ved at hente data nede fra datalaget til klasserne og sende metoderne med videre til præsentationslaget.\\
 \\
 Det tredje projekt PulsMaalerSystem.Datalag består af to klasser: DAQ og datalag. 
-DAQ klassen sørger for at hente data op fra DAQ’en. Datalag klassen sørger for at hente informationer om patienten og personalet i databassen. Datalag klassen sørger også for at gemme blodtrykket for patienten løbende i en database. \\
+DAQ klassen sørger for at hente data op fra DAQ’en. Datalag klassen sørger for at hente informationer om patienten og personalet i databaserne; Personale database og EPJ database. Datalag klassen sørger også for at gemme blodtrykket for patienten løbende i EPJ databasen. \\
  \\
-Det sidste projekt PulsMaalerSystem.DTOlag består af tre klasser: GrænseværdiDTO, IObserver, ISubject og KalibreringsDTO. GrænseværdiDTO klassen indeholder set og get metoder for grænseværdien, og sender grænseværdierne med i metode. IObserver kigger ned på subjectet, hvor klassen ISubject. KalibreringsDTO klassen har set og get metoder til volt og tryk, og en metode til at sende disse videre.\\\\
+Det sidste projekt PulsMaalerSystem.DTOlag består af tre klasser: GrænseværdiDTO, IObserver, ISubject og KalibreringsDTO. GrænseværdiDTO klassen indeholder get og set metoder for grænseværdien, og sender grænseværdierne videre med en metode. IObserver kigger ned på subjectet, hvor klassen ISubject . KalibreringsDTO klassen har get og set metoder for spænding og tryk, og en metode til at sende disse videre.\\\\
 
 \subsection{Metodeidentifikation}
 \subsubsection{Sekvensdiagrammer}
-Nedenfor er vist sekvensdiagrammer for systemet. Der er lavet sekvens diagrammer for alle Use case. Vores Use cases er henholdsvis Use case 1: Kalibrér system, Use case 2: Foretag måling, Use case 3: Alarmér og Use case 4: Stop måling. Sekvens diagrammet er et interaktionsdiagram, som viser hvorledes processerne forløber i forhold til hinanden. Ud fra sekvensdiagrammerne kan det altså ses hvornår og hvordan de forskellige dele i systemet forløber og interagerer. \\
+Nedenfor er vist sekvensdiagrammer for systemet. Der er lavet sekvens diagrammer for alle Use case. Vores Use cases er henholdsvis Use case 1: Kalibrér apparat, Use case 2: Foretag måling, Use case 3: Alarmér og Use case 4: Stop måling. Sekvens diagrammet er et interaktionsdiagram, som viser hvorledes processerne forløber i forhold til hinanden. Ud fra sekvensdiagrammerne kan det altså ses hvornår og hvordan de forskellige dele i systemet forløber og interagerer. \\
 \begin{figure}[H]
-\includegraphics[width =1.0\textwidth , center]{billeder/sdUC1}
+\includegraphics[width =0.9\textwidth , center]{billeder/sdUC1}
 \caption{\textbf{Sekvensdiagram for blodtryksmålersystemet. Denne viser adfærden for Use case 1 }}
 \end{figure}
-I sekvens diagrammet for Use case 1 interagerer servicemedarbejder med blodtryksmålersystemet. Her er det servicemedarbejderen som starter kalibreringen og blodtryksmålersystemet som foretager kalibreringen igennem lagene og klassen Kalibring. Her ses det at servicemedarbejderen indtaster værdierne der aflæses, hvorefter der trykkes på knappen, hvorefter systemet foretager beregningen for kalibreringen.\\\\ 
+I sekvens diagrammet for Use case 1 interagerer servicemedarbejder med blodtryksmålersystemet. Her er det servicemedarbejderen som starter kalibreringen og blodtryksmålersystemet som foretager kalibreringen igennem lagene og klassen Kalibring. Her ses det at servicemedarbejderen indtaster værdierne der aflæses for tryk og spænding, hvorefter der trykkes på knappen, hvorefter systemet foretager beregningen for kalibreringen. 
 \begin{figure}[H]
-\includegraphics[width =1.0\textwidth , center]{billeder/sdUC2}
-\caption{\textbf{Sekvensdiagram for blodtryksmålersystemet. Denne viser adfærden for Use case 2 del 1}}
+\includegraphics[width =0.8\textwidth , center]{billeder/sdUC2}
+\caption{\textbf{Sekvensdiagram for blodtryksmålersystemet. Denne viser adfærden for Use case 2, del 1 af 4}}
 \end{figure}
 \begin{figure}[H]
-\includegraphics[width =1.0\textwidth , center]{billeder/sdUC2_2}
-\caption{\textbf{Sekvensdiagram for blodtryksmålersystemet. Denne viser adfærden for Use case 2 del 2}}
+\includegraphics[width =0.9\textwidth , center]{billeder/sdUC2_2}
+\caption{\textbf{Sekvensdiagram for blodtryksmålersystemet. Denne viser adfærden for Use case 2, del 2 af 4}}
 \end{figure}
 \begin{figure}[H]
 \includegraphics[width =1.0\textwidth , center]{billeder/sdUC2_3}
-\caption{\textbf{Sekvensdiagram for blodtryksmålersystemet. Denne viser adfærden for Use case 2 del 3}}
+\caption{\textbf{Sekvensdiagram for blodtryksmålersystemet. Denne viser adfærden for Use case 2, del 3 af 4}}
 \end{figure}
-I sekvens diagrammet for Use case 2 ønsker det sundhedsfaglig personale at foretage måling, dette gøres ved at det sundhedsfaglig personale interagerer med blodtryksmålersystemet. For at målingen forløber, foregår den videre interaktion via blodtryksmålersystemet og de klasser, som indgår i Use casen. Transducer, EKG patient sender sine data til datalaget, EPJ database og Personale database får sine data fra datalaget. I dette sekvens diagram ses det sundhedsfaglige personales interaktion med blodtryksmålersystemet. Denne interaktion igangsætter processerne, som medfører at blodtryksmålingen forløber. Det ses også, at præsentationslaget, som er vores blodtryksmålersystem, kommunikerer med logiklaget og logiklaget kommunikerer med datalag, altså er trelagsmodellen opfyldt. \\\\
+\begin{figure}[H]
+\includegraphics[width =0.7\textwidth , center]{billeder/sdUC2_4}
+\caption{\textbf{Sekvensdiagram for blodtryksmålersystemet. Denne viser adfærden for Use case 2, del 4 af 4}}
+\end{figure}
+I sekvens diagrammet for Use case 2 ønsker det sundhedsfaglig personale at foretage måling, dette gøres ved at det sundhedsfaglig personale interagerer med blodtryksmålersystemet. For at målingen forløber, foregår den videre interaktion via blodtryksmålersystemet og de klasser, som indgår i Use casen. Transducer, EKG patient sender sine data til datalaget, EPJ database og Personale database får sine data fra datalaget. I dette sekvens diagram ses det sundhedsfaglige personales interaktion med blodtryksmålersystemet. Denne interaktion igangsætter processerne, som medfører at blodtryksmålingen forløber. Det ses også, at præsentationslaget, som er vores blodtryksmålersystem, kommunikerer med logiklaget og logiklaget kommunikerer med datalag, altså er trelagsmodellen opfyldt, idet datalaget ikke direkte kan kommunikere med præsentationslaget, men skal igennem logiklaget. \\\\
 \begin{figure}[H]
 \includegraphics[width =1.0\textwidth , center]{billeder/sdUC3}
 \caption{\textbf{Sekvensdiagram for blodtryksmålersystemet. Denne viser adfærden for Use case 3}}
@@ -572,7 +571,308 @@ I dette sekvens diagram for Use case 3 tjekker logiklaget hvorvidt grænseværdi
 \includegraphics[width =1.0\textwidth , center]{billeder/sdUC4}
 \caption{\textbf{Sekvensdiagram for blodtryksmålersystemet. Denne viser adfærden for Use case 4}}
 \end{figure}
-I sekvens diagrammet for Use case 4 ønsker sundhedsfaglig personale, at stoppe målingen. Dette gøres ved, at sundhedsfaglig personale interagerer med blodtryksmålersystemet i præsentationslaget. Denne interaktion medfører en videre kommunikation mellem logiklaget og datalaget, som medfører at data ikke længere hentes fra transduceren. Når blodtryksmålingen er afsluttet vises det som besked til det sundhedsfaglig personale. 
+I sekvens diagrammet for Use case 4 ønsker sundhedsfaglig personale, at stoppe målingen. Dette gøres ved, at sundhedsfaglig personale interagerer med blodtryksmålersystemet i præsentationslaget. Denne interaktion medfører en videre kommunikation mellem logiklaget og datalaget, som medfører at DAQ'en ikke længere henter data fra transduceren. Når blodtryksmålingen er afsluttet kan det sundhedsfaglige personale logge ud. 
+\subsubsection{Klassediagram}
+Ud fra domænemodellen er der fundet ud af hvilke klasser blodtrykssystemet skal bestå af. Ud fra applikationsmodellen er samhørigheden af klasserne bestemt. Der skal være lav kobling og høj samhørighed, dette betyder at klasserne ikke må være koblet sammen på tværs i de forskellige lag. Ud fra sekvensdiagrammerne analyseres det hvilke metoder, der tilhører hver klasse.\\\\
+Ud fra informationerne fra domænemodellen, applikationsmodellen og sekvensdiagrammet kan der laves et klassediagram, der indeholder attributterne og metoderne for hver klasse fra domænemodellen.
+\begin{figure}[H]
+\includegraphics[width =1.0\textwidth , center]{billeder/klassediagram}
+\caption{\textbf{Heraf ses klasserne med de tilhørende attributter og metoder.}}
+\end{figure}
+\subsubsection{Metodebeskrivelse}
+Metoderne identificeres i klassediagramme vil her beskrives, hvor det beskrives, hvilken parameter metoden tager imod, hvilken returværdi metoden sender vider og en kort beskrivelse af metoden funktion. \\\\
+\textbf{StartGUI}
+\begin{figure}[H]
+\includegraphics[width =0.5\textwidth , center]{billeder/klassediagramStart}
+\caption{\textbf{Klassediagram for StartGUI.}}
+\end{figure}
+\begin{table}[H]
+\label{tab:tabel2}
+\begin{tabular}{| l | p{13cm} |}
+   \hline
+   \multicolumn{2}{|l|}{public StartGUI()} \\ \hline
+   Parameter: & Ingen\\ \hline
+   Returværdi: & Ingen \\ \hline
+   Beskrivelse: & Denne metode sørger for forbindelse til LogikLag klassen og Kalibrering klassen.\\ \hline
+\end{tabular}
+\end{table}
+\begin{table}[H]
+\label{tab:tabel2}
+\begin{tabular}{| l | p{13cm} |}
+   \hline
+   \multicolumn{2}{|l|}{private void tjekBruger(string, int)} \\ \hline
+   Parameter: & string, int\\ \hline
+   Returværdi: & Ingen \\ \hline
+   Beskrivelse: & Metoden går ind og kalder metoden getKode() fra LogikLag klassen for at tjekke om det indtastede brugernavn og kode hører sammen.\\ \hline
+\end{tabular}
+\end{table}
+\begin{table}[H]
+\label{tab:tabel2}
+\begin{tabular}{| l | p{13cm} |}
+   \hline
+   \multicolumn{2}{|l|}{private void opsætningKnap\_ SelectedIndexChanged(object, EventArgs)} \\ \hline
+   Parameter: & object, EventArgs\\ \hline
+   Returværdi: & Ingen \\ \hline
+   Beskrivelse: & Metoden gør det muligt at skrive tekst i idTextBox og passwordTextBox og gør loginKnap mulig at trykke på.\\ \hline
+\end{tabular}
+\end{table}
+\begin{table}[H]
+\label{tab:tabel2}
+\begin{tabular}{| l | p{13cm} |}
+   \hline
+   \multicolumn{2}{|l|}{public void tjekPatient(string)} \\ \hline
+   Parameter: & string\\ \hline
+   Returværdi: & Ingen \\ \hline
+   Beskrivelse: & Denne metode går ind og kigger på hver patient i patientlisten fra LogikLag, og ser hvilke patienter som er koblet sammen med det indtastede personale brugernavn og tilføjer patienterne til listen af patienter i PatientComboBox.\\ \hline
+\end{tabular}
+\end{table}
+\begin{table}[H]
+\label{tab:tabel2}
+\begin{tabular}{| l | p{13cm} |}
+   \hline
+   \multicolumn{2}{|l|}{private void loginKnap\_ Click(object, EventArgs)} \\ \hline
+   Parameter: & object, EventArgs\\ \hline
+   Returværdi: & Ingen \\ \hline
+   Beskrivelse: & Metoden kalder metoden tjekBruger(), hvor det indtastede brugernavn og password sendes med. Ryder PatientComboBox og kalder metoden tjekPatient(), som sender brugernavnet med.\\ \hline
+\end{tabular}
+\end{table}
+\begin{table}[H]
+\label{tab:tabel2}
+\begin{tabular}{| l | p{13cm} |}
+   \hline
+   \multicolumn{2}{|l|}{private void patientComboBox\_ SelectedIndexChanged(object, EventArgs)} \\ \hline
+   Parameter: & object, EventArgs\\ \hline
+   Returværdi: & Ingen \\ \hline
+   Beskrivelse: & Denne metode kalder PatientDTO klassen og bruger denne til at vælge patient fra patientComboBox. Sender den valgte port videre til HovedGUI. Viser HovedGUI og skjuler StartGUI.\\ \hline
+\end{tabular}
+\end{table}
+\begin{table}[H]
+\label{tab:tabel2}
+\begin{tabular}{| l | p{13cm} |}
+   \hline
+   \multicolumn{2}{|l|}{private void kalibreringKnap\_ Click(object, EventArgs)} \\ \hline
+   Parameter: & object, EventArgs\\ \hline
+   Returværdi: & Ingen \\ \hline
+   Beskrivelse: & Denne metode kalder KalibrerinsDTO og henter syntaksen for værdierne indtastet i Volttextbox og mmHgTextBox. Kalder metoden BeregnKalibreringsTal() i Kalibrering klassen, hvilken bruger de indtastede værdier og kalder metoden setKalibreringstal() i LogikLag klassen, hvilken bruger den beregnede værdi. Værdien udskrives herefter på startskærmen.\\ \hline
+\end{tabular}
+\end{table}
+\begin{table}[H]
+\label{tab:tabel2}
+\begin{tabular}{| l | p{13cm} |}
+   \hline
+   \multicolumn{2}{|l|}{private void kalibreringsKnap\_ Enabled(object, EventArgs)} \\ \hline
+   Parameter: & object, EventArgs\\ \hline
+   Returværdi: & Ingen \\ \hline
+   Beskrivelse: & Denne metode gør kalibrerings knappen enabled, altså gør det muligt at trykke på knappen.\\ \hline
+\end{tabular}
+\end{table}
+\textbf{HovedGUI}
+\begin{figure}[H]
+\includegraphics[width =0.5\textwidth , center]{billeder/klassediagramHoved}
+\caption{\textbf{Klassediagram for HovedGUI}}
+\end{figure}
+\begin{table}[H]
+\label{tab:tabel2}
+\begin{tabular}{| l | p{13cm} |}
+   \hline
+   \multicolumn{2}{|l|}{public HovedGUI(string, LogikLag)} \\ \hline
+   Parameter: & string, LogikLag\\ \hline
+   Returværdi: & Ingen \\ \hline
+   Beskrivelse: & .\\ \hline
+\end{tabular}
+\end{table}
+\begin{table}[H]
+\label{tab:tabel2}
+\begin{tabular}{| l | p{13cm} |}
+   \hline
+   \multicolumn{2}{|l|}{void tidsTæller\_ Elapsed(object, System.Timers.ElapsedEventArgs)} \\ \hline
+   Parameter: & object, System.Timers.ElapsedEventArgs\\ \hline
+   Returværdi: & Ingen \\ \hline
+   Beskrivelse: & .\\ \hline
+\end{tabular}
+\end{table}
+\begin{table}[H]
+\label{tab:tabel2}
+\begin{tabular}{| l | p{13cm} |}
+   \hline
+   \multicolumn{2}{|l|}{void alarmTimer\_ Elapsed(object, System.Timers.ElapsedEventArgs)} \\ \hline
+   Parameter: & object, System.Timers.ElapsedEventArgs\\ \hline
+   Returværdi: & Ingen \\ \hline
+   Beskrivelse: & .\\ \hline
+\end{tabular}
+\end{table}
+\begin{table}[H]
+\label{tab:tabel2}
+\begin{tabular}{| l | p{13cm} |}
+   \hline
+   \multicolumn{2}{|l|}{private delegate void UpdateUICallback()} \\ \hline
+   Parameter: & Ingen\\ \hline
+   Returværdi: & Ingen \\ \hline
+   Beskrivelse: & .\\ \hline
+\end{tabular}
+\end{table}
+\begin{table}[H]
+\label{tab:tabel2}
+\begin{tabular}{| l | p{13cm} |}
+   \hline
+   \multicolumn{2}{|l|}{private void updateChart()} \\ \hline
+   Parameter: & Ingen\\ \hline
+   Returværdi: & Ingen \\ \hline
+   Beskrivelse: & .\\ \hline
+\end{tabular}
+\end{table}
+\begin{table}[H]
+\label{tab:tabel2}
+\begin{tabular}{| l | p{13cm} |}
+   \hline
+   \multicolumn{2}{|l|}{private void tandKnap\_ Click(object, EventArgs) } \\ \hline
+   Parameter: & object, EventArgs\\ \hline
+   Returværdi: & Ingen \\ \hline
+   Beskrivelse: & .\\ \hline
+\end{tabular}
+\end{table}
+\begin{table}[H]
+\label{tab:tabel2}
+\begin{tabular}{| l | p{13cm} |}
+   \hline
+   \multicolumn{2}{|l|}{private void slukKnap\_ Click(object, EventArgs) } \\ \hline
+   Parameter: & object, EventArgs\\ \hline
+   Returværdi: & Ingen \\ \hline
+   Beskrivelse: & .\\ \hline
+\end{tabular}
+\end{table}
+\begin{table}[H]
+\label{tab:tabel2}
+\begin{tabular}{| l | p{13cm} |}
+   \hline
+   \multicolumn{2}{|l|}{private void afbrydKnap\_ Click(object, EventArgs)} \\ \hline
+   Parameter: & object, EventArgs\\ \hline
+   Returværdi: & Ingen \\ \hline
+   Beskrivelse: & .\\ \hline
+\end{tabular}
+\end{table}
+\begin{table}[H]
+\label{tab:tabel2}
+\begin{tabular}{| l | p{13cm} |}
+   \hline
+   \multicolumn{2}{|l|}{private void nulpunktKnap\_ Click(object, EventArgs)} \\ \hline
+   Parameter: & object, EventArgs\\ \hline
+   Returværdi: & Ingen \\ \hline
+   Beskrivelse: & .\\ \hline
+\end{tabular}
+\end{table}
+\begin{table}[H]
+\label{tab:tabel2}
+\begin{tabular}{| l | p{13cm} |}
+   \hline
+   \multicolumn{2}{|l|}{private void alarmKnap\_ Click(object, EventArgs)} \\ \hline
+   Parameter: & object, EventArgs\\ \hline
+   Returværdi: & Ingen \\ \hline
+   Beskrivelse: & .\\ \hline
+\end{tabular}
+\end{table}
+\begin{table}[H]
+\label{tab:tabel2}
+\begin{tabular}{| l | p{13cm} |}
+   \hline
+   \multicolumn{2}{|l|}{private void systoleOP\_ Click(object, EventArgs)} \\ \hline
+   Parameter: & object, EventArgs\\ \hline
+   Returværdi: & Ingen \\ \hline
+   Beskrivelse: & .\\ \hline
+\end{tabular}
+\end{table}
+\begin{table}[H]
+\label{tab:tabel2}
+\begin{tabular}{| l | p{13cm} |}
+   \hline
+   \multicolumn{2}{|l|}{private void systoleNED\_ Click(object, EventArgs)} \\ \hline
+   Parameter: & object, EventArgs\\ \hline
+   Returværdi: & Ingen \\ \hline
+   Beskrivelse: & .\\ \hline
+\end{tabular}
+\end{table}
+\begin{table}[H]
+\label{tab:tabel2}
+\begin{tabular}{| l | p{13cm} |}
+   \hline
+   \multicolumn{2}{|l|}{private void diastoleOP\_ Click(object, EventArgs)} \\ \hline
+   Parameter: & object, EventArgs\\ \hline
+   Returværdi: & Ingen \\ \hline
+   Beskrivelse: & .\\ \hline
+\end{tabular}
+\end{table}
+\begin{table}[H]
+\label{tab:tabel2}
+\begin{tabular}{| l | p{13cm} |}
+   \hline
+   \multicolumn{2}{|l|}{private void diastoleNED\_ Click(object, EventArgs)} \\ \hline
+   Parameter: & object, EventArgs\\ \hline
+   Returværdi: & Ingen \\ \hline
+   Beskrivelse: & .\\ \hline
+\end{tabular}
+\end{table}
+\begin{table}[H]
+\label{tab:tabel2}
+\begin{tabular}{| l | p{13cm} |}
+   \hline
+   \multicolumn{2}{|l|}{public void Update(double[])} \\ \hline
+   Parameter: & double[]\\ \hline
+   Returværdi: & Ingen \\ \hline
+   Beskrivelse: & .\\ \hline
+\end{tabular}
+\end{table}
+\begin{table}[H]
+\label{tab:tabel2}
+\begin{tabular}{| l | p{13cm} |}
+   \hline
+   \multicolumn{2}{|l|}{private void HovedGUI\_ Load(object, EventArgs)} \\ \hline
+   Parameter: & object, EventArgs\\ \hline
+   Returværdi: & Ingen \\ \hline
+   Beskrivelse: & .\\ \hline
+\end{tabular}
+\end{table}
+\textbf{LogikLag}
+\begin{figure}[H]
+\includegraphics[width =1.0\textwidth , center]{billeder/klassediagramLogik}
+\caption{\textbf{Klassediagram for LogikLag.}}
+\end{figure}
+\textbf{PatientDTO}
+\begin{figure}[H]
+\includegraphics[width =0.4\textwidth , center]{billeder/klassediagrampatientDTO}
+\caption{\textbf{Klassediagram for PatientDTO.}}
+\end{figure}
+\textbf{KalibreringDTO}
+\begin{figure}[H]
+\includegraphics[width =0.4\textwidth , center]{billeder/klassediagramkalibreringDTO}
+\caption{\textbf{Klassediagram for KalibreringDTO.}}
+\end{figure}
+
+\textbf{ISubject}
+\begin{figure}[H]
+\includegraphics[width =0.4\textwidth , center]{billeder/klassediagramIsubject}
+\caption{\textbf{Klassediagram for ISubject.}}
+\end{figure}
+
+\textbf{IObserver}
+\begin{figure}[H]
+\includegraphics[width =0.4\textwidth , center]{billeder/klassediagramIobserver}
+\caption{\textbf{Klassediagram for IObserver.}}
+\end{figure}
+
+\textbf{GrænseVærdiDTO}
+\begin{figure}[H]
+\includegraphics[width =0.4\textwidth , center]{billeder/klassediagramgransevardiDTO}
+\caption{\textbf{Klassediagram for GrænseVærdiDTO.}}
+\end{figure}
+
+\textbf{Kalibrering}
+\begin{figure}[H]
+\includegraphics[width =0.5\textwidth , center]{billeder/klassediagramkalibrering}
+\caption{\textbf{Klassediagram for Kalibrering.}}
+\end{figure}
+
+
+
 
 \subsection{Implementering}
 \subsubsection{Kalibrering}
@@ -625,8 +925,8 @@ Algoritmen middeltryk starter med en for lykke med en tæller "i", der starter f
 Implementeringen af EKG-signalet er i dette projekt ikke sket. Dette er ikke implementeret, da der ikke har været tid til dette. Hvis der dog havde været tid til dette, ville Semesterprojekt 2: EKG diagnostik, været blevet benyttet til at få grundstrukturen til at se hvordan denne implementering skulle foregå.
 \subsubsection{Iltmætning}
 Desuden blev iltsaturation ikke implementeret. Dermed bliver iltmætningen ikke vist for patienten. Dette er ikke blevet implementeret på grund af flere faktorer: Der er ikke nok tid, der er ikke den fornødne viden til at få implementeret dette og der haves ikke de nødvendige materialer.
-\subsubsection{Møsntre: Subject/Observer og PUSH/PULL}
-Subject/Observer møsteret benyttes i dette projekt for at sørge for at data bliver sendt igennem alle lagene på en fornuftig og kontinuer måde.\\
+\subsubsection{Observer mønster med PUSH}
+Observer møsteret benyttes i dette projekt for at sørge for at data bliver sendt igennem alle lagene på en fornuftig og kontinuer måde.\\
 Subject kan være en abstrakt klasse eller et interface, der har tre metoder; en metode der tilknytter en observer, som gerne vil modtage opdateringer, en metode til at fjerne observeren og en notify metode. Notify metoden giver informationen til observeren om ændringer.\\
 Observer er et interface, som skal implementeres af alle de klasser, hvilke skal have besked, når der sker en ændring. Der bruges en observer, når der skal ændres i et objekt og det ikke vides hvor mange objekter der skal ændres i. Observer modtager besked om ændringer fra subjectet, dette kan ske enten ved PUSH eller PULL mønsteret. \\\\
 PULL fungerer ved at subjectet giver besked til observeren om at der er ændringer. Observeren sender besked til subjectet om at modtage ændringerne. Subjectet sender herefter ændringen til observeren.
@@ -641,10 +941,15 @@ Logiklaget er subject for præsentationslaget. Præsentationslaget er observer f
 \subsubsection{Queue}
 For at være sikker på at den data, der er blevet nulpunktsjusteret og kalibreret bliver sendt korrekt op til præsentationslaget bliver der benyttet en kø metode: Queue Class \cite{queue}. Dette er en klasse der er indbygget i Visual Studio. Denne klasse har to metoder, hvilke benyttes til at sende data ind i den rigtige ende, hvorefter data fjernes fra den anden ende når køen er fuld. \\Disse to metoder er Enqueue(object) og Dequeue(). Enqueue(object) er metoden, hvilken tilføjer et object til køen. Dette object er data fra Blodtryksværdiliste. Metoden ligger i en for-løkke, sådan at data kommer ind sådan som de indlæses fra DAQ'en. \\\\
 Dequeue() er metoden, som fjerne et object fra den anden ende, og tager den første værdi i rækken og fjerner. Denne metode ligger ligeledes i for-løkken, hvorunder der er if/else metoder. Dette sørger for at køen er fuld inden der bliver fjernet en værdi fra den anden ende og dermed sørger for at de to metoder følges ad.
+\subsubsection{Databaser}
+\begin{figure}[H]
+\includegraphics[width =1.0\textwidth , center]{billeder/databaser}
+\caption{\textbf{Databaserne; Personale database og EPJ database. Her ses sammenhængen mellem tabellerne i databasen, og hvilken data der er under hver tabel.}}
+\end{figure}
+
 \subsection{Unittest}
 
 \section{Integrationstest}
-
 
 \chapter{Accepttest}
 \section{Indledning}
