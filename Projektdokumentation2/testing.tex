@@ -27,9 +27,8 @@ Kundens underskrift &&&&&&&&&&Leverandørens underskrift\\
 \section{Indledning}
 Denne kravspecifikation er blevet udarbejdet på baggrund af krav fra kunden, samt hvad leverandøren finder muligt. Kravspecifikationens formål er at specificere de krav, der er til produktet. 
 \newpage
-
 \section{Systembeskrivelse}
-Det er blevet besluttet ud fra projektformuleringen at udvikle systemet som en prototype med perspektivering til fremtidigt arbejde. Blodtryksmålersystemet ønskes ideelt at kunne måle blodtryk, EKG og iltmætning for en patient. Ud fra blodtrykket findes systolisk, diastolisk og middeltryks værdier, dette gøres ved at finde den maksimale værdi (systole) og den minimale værdi (diastole) for blodtrykskurven. Ud fra disse to værdier bestemmes middeltrykket, dette gøres ved formlen: $middeltryk = 1/3 \cdot systole + 2/3 \cdot diastole$. \cite{blodtrykwiki}
+Det er blevet besluttet ud fra projektformuleringen at udvikle et blodtryksmålersystem som en prototype med perspektivering til fremtidigt arbejde. Blodtryksmålersystemet ønskes ideelt at kunne måle blodtryk, EKG og iltmætning for en patient. Ud fra blodtrykket findes systolisk, diastolisk og middeltryks værdier, dette gøres ved at finde den maksimale værdi (systole) og den minimale værdi (diastole) for blodtrykskurven. Ud fra disse to værdier bestemmes middeltrykket, dette gøres ved formlen: $middeltryk = 1/3 \cdot systole + 2/3 \cdot diastole$. \cite{blodtrykwiki}
 \\ Ud fra EKG-signalet kan pulsen bestemmes, dette gøres ved at bestemme antallet af R-takker på et minut. Desuden kan pulsen bestemmes ud fra blodtrykket, da pulsen her er antallet af systoliske/diastoliske værdier på et minut. Iltmætningen er mængden af ilt i blodet. For at kunne bestemme denne værdi skal et eksternt produkt benyttes. Dette produkt skal ved hjælp en infrarød sensor bestemme iltmætningen i blodet, dette bliver ikke implementeret i denne prototype.\\\\
 Forudsætninger for brug af systemet er, at det skal køres på en computer, samt overholde de opstillede krav. Systemet er opbygget af en hardwaredel og en softwaredel. \\\\
 Hardwaredelen består af et aktivt 2. Ordens Butterworth Sallen-Key lavpasfilter, samt en forstærker. Forstærkeren modtager et signal fra den udleverede transducer, dette signal forstærkes op. Signalet sendes videre til lavpasfilteret hvor alle frekvenser over 50Hz bliver dæmpet. Her fra sendes signalet ind i dataopsamlingsenheden NI-DAQ.\\\\
@@ -40,15 +39,12 @@ Man har valgt at have to databaser for at simulere det at der er en adskillelse 
 \caption{\textbf{Skitse af opbygning af systemet.}}
 \end{figure}
 \newpage
-
 \section{Aktør-kontekst diagram}
 \begin{figure}[h!]
 \includegraphics[width =0.65\textwidth , center]{billeder/Aktorkontekst.jpg}
 \caption{\textbf{Aktør-kontekst diagram}}
 \end{figure}
-
 Af dette diagram ses de interagerende aktører: \textit{Sundhedsfaglig personale}, \textit{Transducer}, \textit{EKG patient}, \textit{EPJ database}, \textit{Personale database} og \textit{Servicemedarbejder}.\\ Herunder er der en detaljeret beskrivelse af hver aktør.
-
 \begin{table}[h!]
 \begin{tabular}{| >{\raggedright\arraybackslash}p{3cm} | >{\raggedright\arraybackslash}p{12cm} |}
    \hline
@@ -57,8 +53,6 @@ Af dette diagram ses de interagerende aktører: \textit{Sundhedsfaglig personale
    Beskrivelse: & Det sundhedsfaglige personale er aktøren, der sætter måleudstyret til transduceren, samt starter målingen. Det er det sundhedsfaglige personale, der interagerer med systemet og dermed har tilgang til de viste målinger på brugergrænsefladerne (startskærm og hovedskærm).\\ \hline
 \end{tabular}
 \end{table}
-
-
 \begin{table}[h!]
 \begin{tabular}{| >{\raggedright\arraybackslash}p{3cm} | >{\raggedright\arraybackslash}p{12cm} |}
    \hline
@@ -67,7 +61,6 @@ Af dette diagram ses de interagerende aktører: \textit{Sundhedsfaglig personale
    Beskrivelse: & Transduceren er kilden til måleresultaterne, og dermed fungerer som patienten og forbindelsen til systemet. I dette tilfælde er det en in-vitro maskine, der leverer et tryk i mmHg til transduceren, som sender dette tryk videre til en forstærker, hvorefter signalet sendes igennem et lavpasfilter, for derefter at sendes ind i systemet via NI-DAQ.\\ \hline
 \end{tabular}
 \end{table}
-
 \begin{table}[h!]
 \begin{tabular}{| >{\raggedright\arraybackslash}p{3cm} | >{\raggedright\arraybackslash}p{12cm} |}
    \hline
@@ -76,8 +69,6 @@ Af dette diagram ses de interagerende aktører: \textit{Sundhedsfaglig personale
    Beskrivelse: & EKG patienten er den aktør hvorfra værdierne til EKG-kurven fås fra. Dermed er det denne aktør der er kilden til pulsen. Disse værdier hentes fra PhysioBank ATM.\\ \hline
 \end{tabular}
 \end{table}
-
-
 \begin{table}[h!]
 \begin{tabular}{| >{\raggedright\arraybackslash}p{3cm} | >{\raggedright\arraybackslash}p{12cm} |}
    \hline
@@ -86,8 +77,6 @@ Af dette diagram ses de interagerende aktører: \textit{Sundhedsfaglig personale
    Beskrivelse: & Personale database er der, hvori det sundhedsfaglige personales login informationer opbevares, hvilket benyttes til at tilgå systemet. \\ \hline
 \end{tabular}
 \end{table}
-
-
 \begin{table}[h!]
 \begin{tabular}{| >{\raggedright\arraybackslash}p{3cm} | >{\raggedright\arraybackslash}p{12cm} |}
    \hline
@@ -96,8 +85,6 @@ Af dette diagram ses de interagerende aktører: \textit{Sundhedsfaglig personale
    Beskrivelse: & EPJ database er den database, hvor patientdata ligger, samt der hvori analyseresultaterne, der opnås ved målingerne i systemet, samt signalerne bliver gemt. Disse data er grafer for EKG, arterietryk, samt talværdier for puls, systole, diastole og middeltryk. Denne EPJ database skal simulere den EPJ database der fungere på sygehusene i virkeligheden.\\ \hline
 \end{tabular}
 \end{table}
-
-
 \begin{table}[h!]
 \begin{tabular}{| >{\raggedright\arraybackslash}p{3cm} | >{\raggedright\arraybackslash}p{12cm} |}
    \hline
@@ -106,15 +93,12 @@ Af dette diagram ses de interagerende aktører: \textit{Sundhedsfaglig personale
    Beskrivelse: & Servicemedarbejderen er aktøreren der igangsætter og foretager kalibreringen.\\ \hline
 \end{tabular}
 \end{table}
-
 \newpage
-
 \section{Use cases}
 \begin{figure}[H]
 \includegraphics[width =0.7\textwidth , center]{billeder/UseCaseDiagram}
 \caption{\textbf{Use case diagram}}
 \end{figure}
-
 De fire Use cases kan ses ud fra Use case diagrammet, disse er: \textit{Kalibrér apparat}, \textit{Foretag måling}, \textit{Alarmér} og \textit{Stop måling}. Hver enkel af disse Use cases beskrives detaljeret herunder i et fully-dressed Use case skema.\\
 Systemet består af en computer med programkode, en NI-DAQ samt hardware. Hardwaren består af et lavpasfilter, en forstærker og en transducer desuden er der hertil tilkoblet to 9 V batterier.
 \\
@@ -137,9 +121,13 @@ Programmet skal have to skærme; en startskærm, der fungerer som EPJ systemet, 
    Forudsætninger: & Blodtryksmålersystemet er tændt og tilsluttet kalibreringsudstyret.\\ \hline
    Resultat:& Apparatet er kalibreret\\ \hline
    Hovedscenarie:& 
-1. Servicemedarbejder foretager kalibreringen, ved at indtaste spændingen og trykket for målepunktet fra væskesøjlen.\newline
+\textit{$[$Udvidelse 1: Undlad kalibrering$]$ } \newline
+1. Servicemedarbejder foretager kalibreringen, ved at \textit{$[$Udvidelse 1: Undlad kalibrering$]$ }indtaste spændingen og trykket for målepunktet fra væskesøjlen.\newline
 2. Systemet beregner kalibreringsværdien.\\\hline
-Udvidelse/undtagelser: & - \\\hline
+Udvidelse/undtagelser: & \textit{$[$Udvidelse 1:Undlad kalibrering$]$ }\newline
+1.1 Undlad kalibrering\newline
+1.2 Fortsæt til Use case 2. \newline
+1.3 Kalibreringsværdien hentes fra den forrige måling. \\\hline
 \end{tabular}
 \end{table}
 
@@ -184,7 +172,6 @@ $[$Udvidelse 2: Juster systolens/diastolens grænseværdi$]$\newline
 \end{tabular}
 \end{table}
 
-
 \begin{table}[H]
 \caption{Use case 3}\label{tab:tabel6}
 \begin{tabular}{| l | >{\raggedright\arraybackslash}p{11cm} |}
@@ -216,7 +203,6 @@ $[$Udvidelse 2: Udsæt alarm$]$\newline
 \end{tabular}
 \end{table}
 
-
 \begin{table}[H]
 \caption{Use case 4}\label{tab:tabel7}
 \begin{tabular}{| l | >{\raggedright\arraybackslash}p{11cm} |}
@@ -236,16 +222,10 @@ $[$Udvidelse 2: Udsæt alarm$]$\newline
 Udvidelse/undtagelser: & -\\\hline
 \end{tabular}
 \end{table}
-
-
-
 \newpage 
 \newpage 
 \newpage
 \newpage
-
-
-
 \section{Ikke-funktionelle krav}
 De ikke-funktionelle krav er opsat efter FURPS+ metoden. De er prioriteret efter MoSCoW metoden:
 \begin{itemize}
@@ -266,7 +246,6 @@ De ikke-funktionelle krav er opsat efter FURPS+ metoden. De er prioriteret efter
 \item Dermed er de krav der bliver markeret med et \textbf{(W)}, altså de krav til funktioner der ville være gode til produktet, men ikke bliver implementeret i produktet. Grunden til dette kan være at der ikke er tid, eller at funktionen ikke er vigtig for produktet.
 \end{itemize}
 \end{itemize}
-
 \subsection{FURPS+ med MoSCoW}
 \begin{enumerate}
 \item \textbf{Functionality}
@@ -622,7 +601,6 @@ Det tredje projekt PulsMaalerSystem.Datalag består af to klasser: DAQ og datala
 DAQ klassen sørger for at hente data op fra DAQ’en. Datalag klassen sørger for at hente informationer om patienten og personalet i databaserne; Personale database og EPJ database. Datalag klassen sørger også for at gemme blodtrykket for patienten løbende i EPJ databasen. \\
  \\
 Det sidste projekt PulsMaalerSystem.DTOlag består af tre klasser: GrænseværdiDTO, IObserver, ISubject og KalibreringsDTO. GrænseværdiDTO klassen indeholder get og set metoder for grænseværdien, og sender grænseværdierne videre med en metode. IObserver kigger ned på subjectet, hvor klassen ISubject . KalibreringsDTO klassen har get og set metoder for spænding og tryk, og en metode til at sende disse videre.\\\\
-
 \subsection{Metodeidentifikation}
 \subsubsection{Sekvensdiagrammer}
 Nedenfor er vist sekvensdiagrammer for systemet. Der er lavet sekvens diagrammer for alle Use case. Vores Use cases er henholdsvis Use case 1: Kalibrér apparat, Use case 2: Foretag måling, Use case 3: Alarmér og Use case 4: Stop måling. Sekvens diagrammet er et interaktionsdiagram, som viser hvorledes processerne forløber i forhold til hinanden. Ud fra sekvensdiagrammerne kan det altså ses hvornår og hvordan de forskellige dele i systemet forløber og interagerer. \\
@@ -752,7 +730,6 @@ Metoderne der identificeres i klassediagrammet vil her beskrives, hvor det beskr
    Beskrivelse: & Denne metode gør kalibrerings knappen enabled, altså gør det muligt at trykke på knappen.\\ \hline
 \end{tabular}
 \end{table}
-
 \textbf{HovedGUI}
 \begin{figure}[H]
 \includegraphics[width =0.5\textwidth , center]{billeder/klassediagramHoved}
@@ -918,7 +895,6 @@ Metoderne der identificeres i klassediagrammet vil her beskrives, hvor det beskr
    Beskrivelse: & Metoden sætter navn og cpr på HovedGUI ved at kalde PatientDTO, hvilken indeholder denne information.\\ \hline
 \end{tabular}
 \end{table}
-
 \textbf{PatientDTO}
 \begin{figure}[H]
 \includegraphics[width =0.4\textwidth , center]{billeder/klassediagrampatientDTO}
@@ -934,7 +910,6 @@ Metoderne der identificeres i klassediagrammet vil her beskrives, hvor det beskr
    Beskrivelse: & Denne sætter syntaksen for patienten og dermed hvilke parametre denne indeholder.\\ \hline
 \end{tabular}
 \end{table}
-
 \textbf{KalibreringDTO}
 \begin{figure}[H]
 \includegraphics[width =0.4\textwidth , center]{billeder/klassediagramkalibreringDTO}
@@ -950,7 +925,6 @@ Metoderne der identificeres i klassediagrammet vil her beskrives, hvor det beskr
    Beskrivelse: & Denne sætter syntaksen for kalibrering og dermed hvilke parametre der skal benyttes til kalibrering.\\ \hline
 \end{tabular}
 \end{table}
-
 \textbf{ISubject}
 \begin{figure}[H]
 \includegraphics[width =0.4\textwidth , center]{billeder/klassediagramIsubject}
@@ -986,7 +960,6 @@ Metoderne der identificeres i klassediagrammet vil her beskrives, hvor det beskr
    Beskrivelse: & Denne metode modtager et array med grafmålinger.\\ \hline
 \end{tabular}
 \end{table}
-
 \textbf{IObserver}
 \begin{figure}[H]
 \includegraphics[width =0.4\textwidth , center]{billeder/klassediagramIobserver}
@@ -1002,8 +975,6 @@ Metoderne der identificeres i klassediagrammet vil her beskrives, hvor det beskr
    Beskrivelse: & Denne metode modtager et array, hvori grafen ligger.\\ \hline
 \end{tabular}
 \end{table}
-
-
 \textbf{GrænseVærdiDTO}
 \begin{figure}[H]
 \includegraphics[width =0.4\textwidth , center]{billeder/klassediagramgransevardiDTO}
@@ -1019,7 +990,6 @@ Metoderne der identificeres i klassediagrammet vil her beskrives, hvor det beskr
    Beskrivelse: & Metoden sætter syntaksen sådan at der skal være en øvre og nedre grænseværdi.\\ \hline
 \end{tabular}
 \end{table}
-
 \textbf{Kalibrering}
 \begin{figure}[H]
 \includegraphics[width =0.5\textwidth , center]{billeder/klassediagramkalibrering}
@@ -1035,7 +1005,6 @@ Metoderne der identificeres i klassediagrammet vil her beskrives, hvor det beskr
    Beskrivelse: & Denne metode beregner kalibrerings værdien ved at modtage syntaksen fra KalibreringsDTO: tryk divideret med spænding. Og returnerer denne som en double værdi.\\ \hline
 \end{tabular}
 \end{table}
-
 \textbf{Nulpunkts\_ justering}
 \begin{figure}[H]
 \includegraphics[width =0.5\textwidth , center]{billeder/klassediagramnulpunkt}
@@ -1051,7 +1020,6 @@ Metoderne der identificeres i klassediagrammet vil her beskrives, hvor det beskr
    Beskrivelse: & Metoden sætter nulpunktsværdien, ved at trække den indtastede værdi fra nul og returnere denne værdi som en double.\\ \hline
 \end{tabular}
 \end{table}
-
 \textbf{Blodtryk}
 \begin{figure}[H]
 \includegraphics[width =0.5\textwidth , center]{billeder/klassediagramblodtryk}
@@ -1087,7 +1055,6 @@ Metoderne der identificeres i klassediagrammet vil her beskrives, hvor det beskr
    Beskrivelse: & Metoden går ind og kigger på samtlige værdier i diastolelisten og systolelisten. Metoden tager  her en værdi for diastole og en værdi for systole og beregner middeltryk ved formlen: $\dfrac{2}{3}diastole+\dfrac{1}{3}systole$. Tilføjer værdien til en middeltrykliste og returnerer denne. \\ \hline
 \end{tabular}
 \end{table}
-
 \textbf{Digitalt\_ filter}
 \begin{figure}[H]
 \includegraphics[width =0.5\textwidth , center]{billeder/klassediagramdigi}
@@ -1143,7 +1110,6 @@ Metoderne der identificeres i klassediagrammet vil her beskrives, hvor det beskr
    Beskrivelse: & Metoden gør sådan at blodtryklisten kører igennem en ramme, hvor gennemsnittet beregnes af rammens indhold og rammen rykker én plads efter beregningen, sådan at beregningen sker glidende på blodtrykslisten. Metoden returnerer det beregnede gennemsnit i et double array. \\ \hline
 \end{tabular}
 \end{table}
-
 \textbf{LogikLag}
 \begin{figure}[H]
 \includegraphics[width =1.0\textwidth , center]{billeder/klassediagramLogik}
@@ -1419,7 +1385,6 @@ Metoderne der identificeres i klassediagrammet vil her beskrives, hvor det beskr
    Beskrivelse: & Metoden tilføjer et double array til blodtryksværdiliste og BTDataTilDB der bruges til at gemme data. Denne metode kalder metoden GemBTData() fra DataLag og gemmer når BTDataTilDB listen indeholder 1000 elementer og ryder derefter listen for denne kan tage 1000 nye elementer. \\ \hline
 \end{tabular}
 \end{table}
-
 \textbf{DataLag}
 \begin{figure}[H]
 \includegraphics[width =0.4\textwidth , center]{billeder/klassediagramdata}
@@ -1693,7 +1658,6 @@ Testen af databaser er foregået løbende. Da softwareløsningen gemmer data kon
 \caption{\textbf{Udsnit af data gemt i BTData.}}
 \end{figure}
 \section{Integrationstest}
-
 \chapter{Accepttest}
 \section{Indledning}
 Accepttestene skal vise om kravene der er opstillet for blodtryksmålersystemet i kravspecifikationen lever op til de standarder der er sat op for at produktet aktivt kan indgå i en hverdag på sygehusene.\\
@@ -1714,6 +1678,18 @@ Billede indsættes - haves ikke endnu
    Systemet beregner kalibreringsværdien og kalibrerer systemet, resultatet af beregningen vises på startskærmen & IKKE TESTBAR\\\hline
 \end{tabular}
 \end{table}
+
+
+\begin{table}[H]
+\caption{Accepttest for Use case 1}\label{tab:tabel8}
+\begin{tabular}{|>{\raggedright\arraybackslash}p{2.5cm}| >{\raggedright\arraybackslash}p{2.9cm} | >{\raggedright\arraybackslash}p{2.9cm} | >{\raggedright\arraybackslash}p{2.9cm} | >{\raggedright\arraybackslash}p{2.8cm} |}
+   \hline
+   \textbf{Use case 1: Kalibrer apparat} &\textbf{Test}& \textbf{Prækondition} & \textbf{Forventet resultat} & \textbf{Godkendt/ kommentar}\\ \hline
+   $[$Udvidelse 1:Undlad kalibrering$]$ & Undlad kalibrering og fortsæt til Use case 2. & Blodtryksmåler-systemet er tilsluttet og tændt & Kalibrerings-værdien hentes, fra den forrige måling, fra EPJ databasen. & \\\hline
+
+\end{tabular}
+\end{table}
+
 Det forudsættes for følgende Use cases (Use case 2, 3 og 4) at systemet er tilsluttet korrekt, port til DAQ er bestemt, at der er en VPN-forbindelse til "ASE IHA VPN", desuden skal der være en forbindelse til $"webhotel10.F15ST2ITS2201404669.db_{-}owner"$(Personaledatabasen) og $"webhotel10.F15ST2ITS2201405838.db_{-}owner"$ (EPJ database).
 \begin{table}[H]
 \caption{Accepttest for Use case 2}\label{tab:tabel9}
@@ -1730,8 +1706,6 @@ Det forudsættes for følgende Use cases (Use case 2, 3 og 4) at systemet er til
 \end{tabular}
 \end{table}
 
-
-
 \begin{table}[H]
 \caption{Accepttest for Use case 2}\label{tab:tabel10}
 \begin{tabular}{|>{\raggedright\arraybackslash}p{2.5cm}| >{\raggedright\arraybackslash}p{2.9cm} | >{\raggedright\arraybackslash}p{2.9cm} | >{\raggedright\arraybackslash}p{2.9cm} | >{\raggedright\arraybackslash}p{2.8cm} |}
@@ -1741,8 +1715,6 @@ Det forudsættes for følgende Use cases (Use case 2, 3 og 4) at systemet er til
    &Tryk "Log ind" & Port valgt. VPN, Personale database og EPJ database er tilsluttet korrekt. & Besked: "Brugernavn og/eller kode indtastet forkert" &\\\hline
 \end{tabular}
 \end{table}
-
-
 
 \begin{table}[H]
 \caption{Accepttest for Use case 2}\label{tab:tabel11}
@@ -1754,7 +1726,6 @@ Det forudsættes for følgende Use cases (Use case 2, 3 og 4) at systemet er til
 \end{tabular}
 \end{table}
 
-
 \begin{table}[H]
 \caption{Accepttest for Use case 2}\label{tab:tabel12}
 \begin{tabular}{|>{\raggedright\arraybackslash}p{2.5cm}| >{\raggedright\arraybackslash}p{2.9cm} | >{\raggedright\arraybackslash}p{2.9cm} | >{\raggedright\arraybackslash}p{2.9cm} | >{\raggedright\arraybackslash}p{2.8cm} |}
@@ -1764,8 +1735,6 @@ Det forudsættes for følgende Use cases (Use case 2, 3 og 4) at systemet er til
    &Tryk på "Systole ned"/"Diastole ned" & Signalet er startet & Grænseværdien ændres 1 mmHg ned og intervallet vises på hovedskærmen & \\\hline
 \end{tabular}
 \end{table}
-
-
 
 \begin{table}[H]
 \caption{Accepttest for Use case 3}\label{tab:tabel13}
@@ -1777,8 +1746,6 @@ Det forudsættes for følgende Use cases (Use case 2, 3 og 4) at systemet er til
 \end{tabular}
 \end{table}
 
-
-
 \begin{table}[H]
 \caption{Accepttest for Use case 3}\label{tab:tabel14}
 \begin{tabular}{|>{\raggedright\arraybackslash}p{2.5cm}| >{\raggedright\arraybackslash}p{2.9cm} | >{\raggedright\arraybackslash}p{2.9cm} | >{\raggedright\arraybackslash}p{2.9cm} | >{\raggedright\arraybackslash}p{2.8cm} |}
@@ -1788,8 +1755,6 @@ Det forudsættes for følgende Use cases (Use case 2, 3 og 4) at systemet er til
 \end{tabular}
 \end{table}
 
-
-
 \begin{table}[H]
 \caption{Accepttest for Use case 3}\label{tab:tabel15}
 \begin{tabular}{|>{\raggedright\arraybackslash}p{2.5cm}| >{\raggedright\arraybackslash}p{2.9cm} | >{\raggedright\arraybackslash}p{2.9cm} | >{\raggedright\arraybackslash}p{2.9cm} | >{\raggedright\arraybackslash}p{2.8cm} |}
@@ -1798,9 +1763,6 @@ Det forudsættes for følgende Use cases (Use case 2, 3 og 4) at systemet er til
    Udvidelse 2: Udsæt alarm & Tryk på "Udsæt alarm" knappen & Alarmering er startet & Systemet stopper alarmens lyd i et minut, Udsæt alarm knappen fortsætter med at blinke skiftevis rød og hvid indtil alarmen ikke længere er overskredet.  &\\\hline
 \end{tabular}
 \end{table}
-
-
-
 
 \begin{table}[H]
 \caption{Accepttest for Use case 4}\label{tab:tabel16}
@@ -1813,7 +1775,6 @@ Det forudsættes for følgende Use cases (Use case 2, 3 og 4) at systemet er til
 \end{tabular}
 \end{table}
 
-
 \begin{table}[H]
 \caption{Accepttest for Use case 4}\label{tab:tabel17}
 \begin{tabular}{|>{\raggedright\arraybackslash}p{2.5cm}| >{\raggedright\arraybackslash}p{2.9cm} | >{\raggedright\arraybackslash}p{2.9cm} | >{\raggedright\arraybackslash}p{2.9cm} | >{\raggedright\arraybackslash}p{2.8cm} |}
@@ -1822,16 +1783,10 @@ Det forudsættes for følgende Use cases (Use case 2, 3 og 4) at systemet er til
 Undtagelse 1: Tryk på "Nej" &Tryk "Nej" & Signalet og målingen er stoppet & Kommer tilbage til hovedskærmen &\\\hline
 \end{tabular}
 \end{table}
-
-
 \newpage
-
 \newpage
-
 \newpage
-
 \section{Accepttest for ikke-funktionelle krav}
-
 \begin{longtable}{|>{\raggedright\arraybackslash}p{1.1cm}| >{\raggedright\arraybackslash}p{2.7cm} | >{\raggedright\arraybackslash}p{2.7cm} | >{\raggedright\arraybackslash}p{2.7cm} | >{\raggedright\arraybackslash}p{2.2cm} |>{\raggedright\arraybackslash}p{2.2cm}|}
    \caption{Accepttest for ikke-funktionelle krav}\label{tab:label18}
 \\ \hline   
@@ -1868,7 +1823,6 @@ Undtagelse 1: Tryk på "Nej" &Tryk "Nej" & Signalet og målingen er stoppet & Ko
   6.1 & Der skal være adgang til en computer med Windows 7, 8 eller 10 - computeren skal minimum have 4 GB RAM & & & & \\\hline
   6.2 & Der skal være adgang til en computer hvor National Instruments er installeret & & & & \\\hline
 \end{longtable}
-
 \section{Godkendelses formular}
 \begin{table}[h!]
 \label{tab:tabel19}
