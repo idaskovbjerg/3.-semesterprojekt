@@ -29,8 +29,16 @@ Denne kravspecifikation er blevet udarbejdet på baggrund af krav fra kunden, sa
 \newpage
 
 \section{Systembeskrivelse}
-Blodtryksmålersystemet ønskes at kunne måle blodtryk, EKG og iltmætning for en patient. Ud fra blodtrykket findes systolisk, diastolisk og middeltryks værdier, dette gøres ved at finde den maksimale værdi (systole) og den minimale værdi (diastole) for blodtrykskurven. Ud fra disse to værdier bestemmes middeltrykket, dette gøres ved formlen: $middel = 1/3 \cdot systole + 2/3 \cdot diastole$. \cite{blodtrykwiki}
-\\ Ud fra EKG-signalet kan pulsen bestemmes, dette gøres ved at bestemme antallet af R-takker på et minut. Desuden kan pulsen bestemmes ud fra blodtrykket, da pulsen her er antallet af systoliske/diastoliske værdier på et minut. Iltmætningen er mængden af ilt i blodet. For at kunne bestemme denne værdi skal et eksternt produkt benyttes. Dette produkt skal ved hjælp en infrarød sensor bestemme iltmætningen i blodet, dette bliver ikke implementeret i denne prototype.
+Det er blevet besluttet ud fra projektformuleringen at udvikle systemet som en prototype med perspektivering til fremtidigt arbejde. Blodtryksmålersystemet ønskes ideelt at kunne måle blodtryk, EKG og iltmætning for en patient. Ud fra blodtrykket findes systolisk, diastolisk og middeltryks værdier, dette gøres ved at finde den maksimale værdi (systole) og den minimale værdi (diastole) for blodtrykskurven. Ud fra disse to værdier bestemmes middeltrykket, dette gøres ved formlen: $middeltryk = 1/3 \cdot systole + 2/3 \cdot diastole$. \cite{blodtrykwiki}
+\\ Ud fra EKG-signalet kan pulsen bestemmes, dette gøres ved at bestemme antallet af R-takker på et minut. Desuden kan pulsen bestemmes ud fra blodtrykket, da pulsen her er antallet af systoliske/diastoliske værdier på et minut. Iltmætningen er mængden af ilt i blodet. For at kunne bestemme denne værdi skal et eksternt produkt benyttes. Dette produkt skal ved hjælp en infrarød sensor bestemme iltmætningen i blodet, dette bliver ikke implementeret i denne prototype.\\\\
+Forudsætninger for brug af systemet er, at det skal køres på en computer, samt overholde de opstillede krav. Systemet er opbygget af en hardwaredel og en softwaredel. \\\\
+Hardwaredelen består af et aktivt 2. Ordens Butterworth Sallen-Key lavpasfilter, samt en forstærker. Forstærkeren modtager et signal fra den udleverede transducer, dette signal forstærkes op. Signalet sendes videre til lavpasfilteret hvor alle frekvenser over 50Hz bliver dæmpet. Her fra sendes signalet ind i dataopsamlingsenheden NI-DAQ.\\\\
+Softwaredelen består af et window forms program udviklet i C\# .net, programmet skal kunne præsentere data indhentet fra DAQ’en. Ligeledes skal programmet kunne analysere og filtrere data fra DAQ’en, samt gemme disse i en "EPJ"-database. Programmet skal også kunne hente login-oplysninger fra en "personale"-database. \\
+Man har valgt at have to databaser for at simulere det at der er en adskillelse af medarbejderdata og patientdata.
+\begin{figure}[H]
+\includegraphics[width =0.8\textwidth , center]{billeder/system}
+\caption{\textbf{Skitse af opbygning af systemet.}}
+\end{figure}
 \newpage
 
 \section{Aktør-kontekst diagram}
@@ -472,7 +480,85 @@ Ud fra BDD kan et IBD diagram udarbejdes. IBD diagrammet viser koblingen mellem 
 \caption{\textbf{Internal block diagram. Dette diagram viser signalerne imellem blokkene.}}
 \end{figure}
 \subsection{Modultest}
-
+Modultesten omfatter kun en operationsforstærker. De resterende komponenter, som er anvendt i den samlede hardwaresystem, tages ikke i modultesten, da de er udleverede af vejlederen. De udleverede dele af systemet består af et filter, en transducer, et kateter og en dataopsamler i form af NI-USB-6009. Selvom filtret er udleverede, indgår den i modultesten, da man skal sikre at det dæmper de høje frekvenser.  Modultesten foretages enkeltvis dvs. de enkelte blokke testes hver for sig. Til sidst testes systemet med en vandsøjle for at identificere om operationsforstærkeren og filteret kommunikere med hinanden. Rækkefølgen som blokkene skal testes er som følgende:
+\begin{itemize}
+\item Test af operationsforstærker.
+\item Test af filter.
+\item Den enelige test med vandsøjle.
+\end{itemize}
+\begin{figure}[H]
+\includegraphics[width =1.0\textwidth , center]{billeder/testOpstilling}
+\caption{\textbf{Opstilling af hardware systemet simuleret med Analog Discovery.}}
+\end{figure}
+\subsubsection{Test af operationsforstærker} 
+Operationsforstærkerens funktion er at forstærke et lavt signal til et ønsket højt signal. Der er brugt INA-114 som operationsforstærker, da det er muligt at få den ønskede forstærkning ved den ønskede båndbredde. Der er i alt 8 pin og det forklares som følgende:
+\begin{table}[H]
+\label{tab:tabel2}
+\begin{tabular}{| l | l |}
+   \hline
+   Pin 1 = $R_{G}$ & Pin 5 = $Ref$ \\ \hline
+   Pin 2 = $V_{in}^{-}$ & Pin 6 = $V_{0}$\\ \hline
+   Pin 3 = $V_{in}^{+}$ & Pin 7 = $V^{+}$\\ \hline
+   Pin 4 = $V_{-}$ & Pin 8 = $R_{G}$\\ \hline
+\end{tabular}
+\end{table}
+\begin{figure}[H]
+\includegraphics[width =0.2\textwidth , center]{billeder/ina_114}
+\caption{\textbf{Op. Amp. INA-114}}
+\end{figure}
+Vha. Analog Discovery er der påført INA-114 et differentielt signal dvs. to signaler med hver 10mV, hvor der varieres i frekvensen fra 1 til 500Hz. Det forventet resultat er at de 20mV bliver forstærket. De to signaler har samme stelpunkt. Outputtet af signalet måles vha. et oscilloskop. Resultatet af denne simulering er som følgende:
+\begin{table}[H]
+\label{tab:tabel2}
+\begin{tabular}{| l | l |}
+   \hline
+   Frekvens [Hz] & Forstærket [V]. Peak to peak.  \\ \hline
+   1 & 16,308 \\ \hline
+   10 & 17,512\\ \hline
+   25 & 17,558 \\ \hline
+   49 & 17,512 \\\hline
+   70 & 17,258 \\\hline
+  100 & 17,308 \\\hline
+\end{tabular}
+\end{table}
+\subsubsection{Test af filter}
+Systemets filtre er et 2. ordens lavpasfilter af typen Sallen-Key og designes som et Butterworth med cut off frekvens på 50Hz. Om filtret lever op til de opstillet krav kan testes ved at sende signaler med høje frekvenser igennem. De høje frekvenser skal blive dæmpet. Der er brugt Analog Discovery til at generer et signal med forskellige frekvenser. Da cut off frekvensen ligger på 50Hz, forventes der at alt over 50 bliver dæmpet og ved 500 skal der dæmpes minimum 40 dB pr. dekade.
+\begin{table}[H]
+\label{tab:tabel2}
+\begin{tabular}{| l | l |}
+   \hline
+   Frekvens [Hz] & Spænding [V] \\ \hline
+   1 & 13,504 \\ \hline
+   10 & 13,220\\ \hline
+   25 & 12,412 \\ \hline
+   49 & 10,644 \\\hline
+   70 & 6,658 \\\hline
+   100 & 3,662 \\\hline
+   250 & 0,666 \\\hline
+   500 & 0,220\\\hline
+\end{tabular}
+\end{table}
+Nedstående figur viser et meget lille signal input på 20mV. De 20 mV bliver herefter forstærket til 10,854V. Dette tal er ikke en 11 volts forstærkning, men peak to peak forstærkning. 
+\begin{figure}[H]
+\includegraphics[width =1.0\textwidth , center]{billeder/testFilter}
+\caption{\textbf{Output af lavpasfilteret ved 1 Hz.}}
+\end{figure}
+\subsubsection{Test med vandsøjle}
+Den endelig måling er foretages vha. vandsøjlen som signalgenerator i form af tryk til transduceren. Det generede signal skal herefter igennem forstærkeren, hvor der forventes at operationsforstærkeren forstærker signalet. Tabellen viser trykket fra vandsøjlen til transduceren og det forstærket tryk i V. Nedstående målinger er det der er kalibrereret efter. Hældning af den nedstående kurve er kalibreringskoefficienten i V/mmHg. For at lave det om til mmHg/V skal hældning ganges med 30,21 ved fx tryk på 10mmHg. 
+\begin{table}[H]
+\label{tab:tabel2}
+\begin{tabular}{| l | l |}
+   \hline
+   Tryk [mmHg] & Spænding [V] \\ \hline
+   0 & 0,147 \\ \hline
+   10 & 0,478\\ \hline
+   50 & 2,025 \\ \hline
+   100 & 3,601\\\hline
+\end{tabular}
+\end{table}
+\begin{figure}[H]
+\includegraphics[width =1.0\textwidth , center]{billeder/vandsojleTest}
+\caption{\textbf{Sammenhængen mellem tryk og spænding.}}
+\end{figure}
 \newpage
 \section{Software design}
 I dette afsnit beskrives softwaredesign på baggrund af systembeskrivelsen og kravspecifikationen. Denne beskrivelse opnås ved, at der benyttes relevante diagrammer og modeller, hvilke kan bruges til at beskrive softwaren. Overvejelser og valg, der er blevet gjort i forbindelse med design og implementering af softwaren, vil i dette afsnit blive præsenteret.
@@ -580,7 +666,7 @@ Ud fra informationerne fra domænemodellen, applikationsmodellen og sekvensdiagr
 \caption{\textbf{Heraf ses klasserne med de tilhørende attributter og metoder.}}
 \end{figure}
 \subsubsection{Metodebeskrivelse}
-Metoderne identificeres i klassediagramme vil her beskrives, hvor det beskrives, hvilken parameter metoden tager imod, hvilken returværdi metoden sender vider og en kort beskrivelse af metoden funktion. \\\\
+Metoderne der identificeres i klassediagrammet vil her beskrives, hvor det beskrives, hvilken parameter metoden tager imod, hvilken returværdi metoden sender vider og en kort beskrivelse af metoden funktion. \\\\
 \textbf{StartGUI}
 \begin{figure}[H]
 \includegraphics[width =0.5\textwidth , center]{billeder/klassediagramStart}
@@ -633,7 +719,7 @@ Metoderne identificeres i klassediagramme vil her beskrives, hvor det beskrives,
    \multicolumn{2}{|l|}{private void loginKnap\_ Click(object, EventArgs)} \\ \hline
    Parameter: & object, EventArgs\\ \hline
    Returværdi: & Ingen \\ \hline
-   Beskrivelse: & Metoden kalder metoden tjekBruger(), hvor det indtastede brugernavn og password sendes med. Ryder PatientComboBox og kalder metoden tjekPatient(), som sender brugernavnet med.\\ \hline
+   Beskrivelse: & Metoden kalder metoden tjekBruger(), hvor det indtastede brugernavn og password sendes med. Ryder PatientComboBoxens liste. Kalder metoden tjekPatient(), som sender brugernavnet med.\\ \hline
 \end{tabular}
 \end{table}
 \begin{table}[H]
@@ -653,7 +739,7 @@ Metoderne identificeres i klassediagramme vil her beskrives, hvor det beskrives,
    \multicolumn{2}{|l|}{private void kalibreringKnap\_ Click(object, EventArgs)} \\ \hline
    Parameter: & object, EventArgs\\ \hline
    Returværdi: & Ingen \\ \hline
-   Beskrivelse: & Denne metode kalder KalibrerinsDTO og henter syntaksen for værdierne indtastet i Volttextbox og mmHgTextBox. Kalder metoden BeregnKalibreringsTal() i Kalibrering klassen, hvilken bruger de indtastede værdier og kalder metoden setKalibreringstal() i LogikLag klassen, hvilken bruger den beregnede værdi. Værdien udskrives herefter på startskærmen.\\ \hline
+   Beskrivelse: & Denne metode kalder KalibrerinsDTO og henter syntaksen for værdierne indtastet i Volttextbox og mmHgTextBox. Kalder metoden BeregnKalibreringsTal() i Kalibrering klassen, hvilken bruger de indtastede værdier og kalder metoden setKalibreringstal() fra LogikLag klassen, hvilken bruger den beregnede værdi. Værdien udskrives herefter på startskærmen.\\ \hline
 \end{tabular}
 \end{table}
 \begin{table}[H]
@@ -666,6 +752,7 @@ Metoderne identificeres i klassediagramme vil her beskrives, hvor det beskrives,
    Beskrivelse: & Denne metode gør kalibrerings knappen enabled, altså gør det muligt at trykke på knappen.\\ \hline
 \end{tabular}
 \end{table}
+
 \textbf{HovedGUI}
 \begin{figure}[H]
 \includegraphics[width =0.5\textwidth , center]{billeder/klassediagramHoved}
@@ -678,7 +765,7 @@ Metoderne identificeres i klassediagramme vil her beskrives, hvor det beskrives,
    \multicolumn{2}{|l|}{public HovedGUI(string, LogikLag)} \\ \hline
    Parameter: & string, LogikLag\\ \hline
    Returværdi: & Ingen \\ \hline
-   Beskrivelse: & .\\ \hline
+   Beskrivelse: & Denne metode bruges til sætter tiden hvormed alarmen skal udsættes. Sætter det digitale filter på signalet pr. default og hvis radioButtonOFF vælges bliver det digitale filter slået fra, hvorefter det bliver muligt at slå digitalt filter til ved at vælge radioButtonON.\\ \hline
 \end{tabular}
 \end{table}
 \begin{table}[H]
@@ -688,7 +775,7 @@ Metoderne identificeres i klassediagramme vil her beskrives, hvor det beskrives,
    \multicolumn{2}{|l|}{void tidsTæller\_ Elapsed(object, System.Timers.ElapsedEventArgs)} \\ \hline
    Parameter: & object, System.Timers.ElapsedEventArgs\\ \hline
    Returværdi: & Ingen \\ \hline
-   Beskrivelse: & .\\ \hline
+   Beskrivelse: & Metoden henter tidTæller tråden og tæller den én værdi op hvert sekund og viser værdien på HovedGUI.\\ \hline
 \end{tabular}
 \end{table}
 \begin{table}[H]
@@ -698,7 +785,7 @@ Metoderne identificeres i klassediagramme vil her beskrives, hvor det beskrives,
    \multicolumn{2}{|l|}{void alarmTimer\_ Elapsed(object, System.Timers.ElapsedEventArgs)} \\ \hline
    Parameter: & object, System.Timers.ElapsedEventArgs\\ \hline
    Returværdi: & Ingen \\ \hline
-   Beskrivelse: & .\\ \hline
+   Beskrivelse: & Metoden kalder TjektDiastoleOverskredet() metoden fra LogikLag og kobler blodtrykslisten på denne, hvilken går ind og ser om der er en grænseværdi der er overskredet. Hvis en grænseværdi er overskredet skifter alarmKnap baggrundsbillede mellem to billeder; et rødt og et hvidt og starter en Beep.Play(). TjektSystoleOverskredet() metoden fra LogikLag kaldes og kobles til blodtrykslisten, hvilken går ind og ser om der er en grænseværdi der er overskredet. Hvis en grænseværdi er overskredet skifter alarmKnap baggrundsbillede mellem to billeder; et rødt og et hvidt, og starter en Beep.Play().\\ \hline
 \end{tabular}
 \end{table}
 \begin{table}[H]
@@ -708,7 +795,7 @@ Metoderne identificeres i klassediagramme vil her beskrives, hvor det beskrives,
    \multicolumn{2}{|l|}{private delegate void UpdateUICallback()} \\ \hline
    Parameter: & Ingen\\ \hline
    Returværdi: & Ingen \\ \hline
-   Beskrivelse: & .\\ \hline
+   Beskrivelse: & En delegate der bliver koblet til updateChart().\\ \hline
 \end{tabular}
 \end{table}
 \begin{table}[H]
@@ -718,7 +805,7 @@ Metoderne identificeres i klassediagramme vil her beskrives, hvor det beskrives,
    \multicolumn{2}{|l|}{private void updateChart()} \\ \hline
    Parameter: & Ingen\\ \hline
    Returværdi: & Ingen \\ \hline
-   Beskrivelse: & .\\ \hline
+   Beskrivelse: & Metoden er en tråd, hvilken går ind og ser om chart Blodtryk ligger i en anden tråd og starter tråden. Metoden går ind og sender værdier fra blodtrykslisten ind i Blodtryk chart. Henter systoliske, diastolisk og middeltryks værdier, og sender disse værdier til labels på startskærmen.\\ \hline
 \end{tabular}
 \end{table}
 \begin{table}[H]
@@ -728,7 +815,7 @@ Metoderne identificeres i klassediagramme vil her beskrives, hvor det beskrives,
    \multicolumn{2}{|l|}{private void tandKnap\_ Click(object, EventArgs) } \\ \hline
    Parameter: & object, EventArgs\\ \hline
    Returværdi: & Ingen \\ \hline
-   Beskrivelse: & .\\ \hline
+   Beskrivelse: & Metoden kalder hentBTdata() og Attach() metoderne fra LogikLag. Kalder HentSystoleGrænseværdier() og HentDiastoleGrænseværdier() metoderne for at hente øvre og nedre grænseværdier.\\ \hline
 \end{tabular}
 \end{table}
 \begin{table}[H]
@@ -738,7 +825,7 @@ Metoderne identificeres i klassediagramme vil her beskrives, hvor det beskrives,
    \multicolumn{2}{|l|}{private void slukKnap\_ Click(object, EventArgs) } \\ \hline
    Parameter: & object, EventArgs\\ \hline
    Returværdi: & Ingen \\ \hline
-   Beskrivelse: & .\\ \hline
+   Beskrivelse: & Denne kalder metoderne StopHentData() og Detach() fra LogikLag klassen.\\ \hline
 \end{tabular}
 \end{table}
 \begin{table}[H]
@@ -748,7 +835,7 @@ Metoderne identificeres i klassediagramme vil her beskrives, hvor det beskrives,
    \multicolumn{2}{|l|}{private void afbrydKnap\_ Click(object, EventArgs)} \\ \hline
    Parameter: & object, EventArgs\\ \hline
    Returværdi: & Ingen \\ \hline
-   Beskrivelse: & .\\ \hline
+   Beskrivelse: & Metoden åbner en MessageBox som spørger "Er du sikker?" hvis "ja" vises StartGUI og HovedGUI skjules.\\ \hline
 \end{tabular}
 \end{table}
 \begin{table}[H]
@@ -758,7 +845,7 @@ Metoderne identificeres i klassediagramme vil her beskrives, hvor det beskrives,
    \multicolumn{2}{|l|}{private void nulpunktKnap\_ Click(object, EventArgs)} \\ \hline
    Parameter: & object, EventArgs\\ \hline
    Returværdi: & Ingen \\ \hline
-   Beskrivelse: & .\\ \hline
+   Beskrivelse: & Metoden kalder NulpunktsJuster() fra Nulpunkts\_ justering klassen, og sender den indtastede værdi videre for at beregne værdien. setNulpunktsJustering() metoden fra LogikLag kaldes og den beregnede værdi sendes til LogikLag.\\ \hline
 \end{tabular}
 \end{table}
 \begin{table}[H]
@@ -768,7 +855,7 @@ Metoderne identificeres i klassediagramme vil her beskrives, hvor det beskrives,
    \multicolumn{2}{|l|}{private void alarmKnap\_ Click(object, EventArgs)} \\ \hline
    Parameter: & object, EventArgs\\ \hline
    Returværdi: & Ingen \\ \hline
-   Beskrivelse: & .\\ \hline
+   Beskrivelse: & Denne metode udsætter alarmens lyd ved at kalde postPoneSoundAlarm og udsættelsens varighed sættes.\\ \hline
 \end{tabular}
 \end{table}
 \begin{table}[H]
@@ -778,7 +865,7 @@ Metoderne identificeres i klassediagramme vil her beskrives, hvor det beskrives,
    \multicolumn{2}{|l|}{private void systoleOP\_ Click(object, EventArgs)} \\ \hline
    Parameter: & object, EventArgs\\ \hline
    Returværdi: & Ingen \\ \hline
-   Beskrivelse: & .\\ \hline
+   Beskrivelse: & Denne metode gør at de systoliske grænseværdier forøges. Metoden SystoleOP() fra LogikLag kaldes, hvorfra ØvreGrænseværdi og NedreGrænseVærdi ændres.\\ \hline
 \end{tabular}
 \end{table}
 \begin{table}[H]
@@ -788,7 +875,7 @@ Metoderne identificeres i klassediagramme vil her beskrives, hvor det beskrives,
    \multicolumn{2}{|l|}{private void systoleNED\_ Click(object, EventArgs)} \\ \hline
    Parameter: & object, EventArgs\\ \hline
    Returværdi: & Ingen \\ \hline
-   Beskrivelse: & .\\ \hline
+   Beskrivelse: & Denne metode gør at de systoliske grænseværdier nedsænkes. Metoden SystoleNED() fra LogikLag kaldes, hvorfra ØvreGrænseværdi og NedreGrænseVærdi ændres.\\ \hline
 \end{tabular}
 \end{table}
 \begin{table}[H]
@@ -798,7 +885,7 @@ Metoderne identificeres i klassediagramme vil her beskrives, hvor det beskrives,
    \multicolumn{2}{|l|}{private void diastoleOP\_ Click(object, EventArgs)} \\ \hline
    Parameter: & object, EventArgs\\ \hline
    Returværdi: & Ingen \\ \hline
-   Beskrivelse: & .\\ \hline
+   Beskrivelse: & Denne metode gør at de diastoliske grænseværdier forøges. Metoden DiastoleOP() fra LogikLag kaldes, hvorfra ØvreGrænseværdi og NedreGrænseVærdi ændres.\\ \hline
 \end{tabular}
 \end{table}
 \begin{table}[H]
@@ -808,7 +895,7 @@ Metoderne identificeres i klassediagramme vil her beskrives, hvor det beskrives,
    \multicolumn{2}{|l|}{private void diastoleNED\_ Click(object, EventArgs)} \\ \hline
    Parameter: & object, EventArgs\\ \hline
    Returværdi: & Ingen \\ \hline
-   Beskrivelse: & .\\ \hline
+   Beskrivelse: &  Denne metode gør at de diastoliske grænseværdier sænkes. Metoden DiastoleNED() fra LogikLag kaldes, hvorfra ØvreGrænseværdi og NedreGrænseVærdi ændres.\\ \hline
 \end{tabular}
 \end{table}
 \begin{table}[H]
@@ -818,7 +905,7 @@ Metoderne identificeres i klassediagramme vil her beskrives, hvor det beskrives,
    \multicolumn{2}{|l|}{public void Update(double[])} \\ \hline
    Parameter: & double[]\\ \hline
    Returværdi: & Ingen \\ \hline
-   Beskrivelse: & .\\ \hline
+   Beskrivelse: & Metoden sætter blodtrykslisten lig med et double array og kalder metoden updateChart().\\ \hline
 \end{tabular}
 \end{table}
 \begin{table}[H]
@@ -828,51 +915,662 @@ Metoderne identificeres i klassediagramme vil her beskrives, hvor det beskrives,
    \multicolumn{2}{|l|}{private void HovedGUI\_ Load(object, EventArgs)} \\ \hline
    Parameter: & object, EventArgs\\ \hline
    Returværdi: & Ingen \\ \hline
-   Beskrivelse: & .\\ \hline
+   Beskrivelse: & Metoden sætter navn og cpr på HovedGUI ved at kalde PatientDTO, hvilken indeholder denne information.\\ \hline
 \end{tabular}
 \end{table}
-\textbf{LogikLag}
-\begin{figure}[H]
-\includegraphics[width =1.0\textwidth , center]{billeder/klassediagramLogik}
-\caption{\textbf{Klassediagram for LogikLag.}}
-\end{figure}
+
 \textbf{PatientDTO}
 \begin{figure}[H]
 \includegraphics[width =0.4\textwidth , center]{billeder/klassediagrampatientDTO}
 \caption{\textbf{Klassediagram for PatientDTO.}}
 \end{figure}
+\begin{table}[H]
+\label{tab:tabel2}
+\begin{tabular}{| l | p{13cm} |}
+   \hline
+   \multicolumn{2}{|l|}{public PatientDTO(string, long)} \\ \hline
+   Parameter: & string, long\\ \hline
+   Returværdi: & Ingen \\ \hline
+   Beskrivelse: & Denne sætter syntaksen for patienten og dermed hvilke parametre denne indeholder.\\ \hline
+\end{tabular}
+\end{table}
+
 \textbf{KalibreringDTO}
 \begin{figure}[H]
 \includegraphics[width =0.4\textwidth , center]{billeder/klassediagramkalibreringDTO}
 \caption{\textbf{Klassediagram for KalibreringDTO.}}
 \end{figure}
+\begin{table}[H]
+\label{tab:tabel2}
+\begin{tabular}{| l | p{13cm} |}
+   \hline
+   \multicolumn{2}{|l|}{public KalibreringDTO(double, int)} \\ \hline
+   Parameter: & double, int\\ \hline
+   Returværdi: & Ingen \\ \hline
+   Beskrivelse: & Denne sætter syntaksen for kalibrering og dermed hvilke parametre der skal benyttes til kalibrering.\\ \hline
+\end{tabular}
+\end{table}
 
 \textbf{ISubject}
 \begin{figure}[H]
 \includegraphics[width =0.4\textwidth , center]{billeder/klassediagramIsubject}
 \caption{\textbf{Klassediagram for ISubject.}}
 \end{figure}
+\begin{table}[H]
+\label{tab:tabel2}
+\begin{tabular}{| l | p{13cm} |}
+   \hline
+   \multicolumn{2}{|l|}{void Attach(IObserver)} \\ \hline
+   Parameter: & IObserver\\ \hline
+   Returværdi: & Ingen \\ \hline
+   Beskrivelse: & Denne metode modtager en observer.\\ \hline
+\end{tabular}
+\end{table}
+\begin{table}[H]
+\label{tab:tabel2}
+\begin{tabular}{| l | p{13cm} |}
+   \hline
+   \multicolumn{2}{|l|}{void Detach(IObserver)} \\ \hline
+   Parameter: & IObserver\\ \hline
+   Returværdi: & Ingen \\ \hline
+   Beskrivelse: & Denne metode modtager en observer.\\ \hline
+\end{tabular}
+\end{table}
+\begin{table}[H]
+\label{tab:tabel2}
+\begin{tabular}{| l | p{13cm} |}
+   \hline
+   \multicolumn{2}{|l|}{void Notify(double[])} \\ \hline
+   Parameter: & double[]\\ \hline
+   Returværdi: & Ingen \\ \hline
+   Beskrivelse: & Denne metode modtager et array med grafmålinger.\\ \hline
+\end{tabular}
+\end{table}
 
 \textbf{IObserver}
 \begin{figure}[H]
 \includegraphics[width =0.4\textwidth , center]{billeder/klassediagramIobserver}
 \caption{\textbf{Klassediagram for IObserver.}}
 \end{figure}
+\begin{table}[H]
+\label{tab:tabel2}
+\begin{tabular}{| l | p{13cm} |}
+   \hline
+   \multicolumn{2}{|l|}{void Update(double[])} \\ \hline
+   Parameter: & double[]\\ \hline
+   Returværdi: & Ingen \\ \hline
+   Beskrivelse: & Denne metode modtager et array, hvori grafen ligger.\\ \hline
+\end{tabular}
+\end{table}
+
 
 \textbf{GrænseVærdiDTO}
 \begin{figure}[H]
 \includegraphics[width =0.4\textwidth , center]{billeder/klassediagramgransevardiDTO}
 \caption{\textbf{Klassediagram for GrænseVærdiDTO.}}
 \end{figure}
+\begin{table}[H]
+\label{tab:tabel2}
+\begin{tabular}{| l | p{13cm} |}
+   \hline
+   \multicolumn{2}{|l|}{public GrænseVærdiDTO(int, int)} \\ \hline
+   Parameter: & int, int\\ \hline
+   Returværdi: & double \\ \hline
+   Beskrivelse: & Metoden sætter syntaksen sådan at der skal være en øvre og nedre grænseværdi.\\ \hline
+\end{tabular}
+\end{table}
 
 \textbf{Kalibrering}
 \begin{figure}[H]
 \includegraphics[width =0.5\textwidth , center]{billeder/klassediagramkalibrering}
 \caption{\textbf{Klassediagram for Kalibrering.}}
 \end{figure}
+\begin{table}[H]
+\label{tab:tabel2}
+\begin{tabular}{| l | p{13cm} |}
+   \hline
+   \multicolumn{2}{|l|}{public double BeregnKalibreringsTal(KalibreringDTO)} \\ \hline
+   Parameter: & KalibreringDTO\\ \hline
+   Returværdi: & double \\ \hline
+   Beskrivelse: & Denne metode beregner kalibrerings værdien ved at modtage syntaksen fra KalibreringsDTO: tryk divideret med spænding. Og returnerer denne som en double værdi.\\ \hline
+\end{tabular}
+\end{table}
 
+\textbf{Nulpunkts\_ justering}
+\begin{figure}[H]
+\includegraphics[width =0.5\textwidth , center]{billeder/klassediagramnulpunkt}
+\caption{\textbf{Klassediagram for Nulpunkts\_ justering.}}
+\end{figure}
+\begin{table}[H]
+\label{tab:tabel2}
+\begin{tabular}{| l | p{13cm} |}
+   \hline
+   \multicolumn{2}{|l|}{public double NulpunktsJuster(double)} \\ \hline
+   Parameter: & double\\ \hline
+   Returværdi: & double \\ \hline
+   Beskrivelse: & Metoden sætter nulpunktsværdien, ved at trække den indtastede værdi fra nul og returnere denne værdi som en double.\\ \hline
+\end{tabular}
+\end{table}
 
+\textbf{Blodtryk}
+\begin{figure}[H]
+\includegraphics[width =0.5\textwidth , center]{billeder/klassediagramblodtryk}
+\caption{\textbf{Klassediagram for Blodtryk.}}
+\end{figure}
+\begin{table}[H]
+\label{tab:tabel2}
+\begin{tabular}{| l | p{13cm} |}
+   \hline
+   \multicolumn{2}{|l|}{public List<int> BeregnSystole(List<double>)} \\ \hline
+   Parameter: & List<double>\\ \hline
+   Returværdi: & List<int> \\ \hline
+   Beskrivelse: & Metoden går ind og kigger på samtlige værdier i blodtryksliste. Metoden ser om værdien er over en sat baseline, hvis den er det, går metoden ind og ser om den næste værdi er højere, når værdien bliver lavere igen tilføjer metoden den højeste værdi til listen toppunkter og returnerer denne liste. \\ \hline
+\end{tabular}
+\end{table}
+\begin{table}[H]
+\label{tab:tabel2}
+\begin{tabular}{| l | p{13cm} |}
+   \hline
+   \multicolumn{2}{|l|}{public List<int> BeregnDiastole(List<double>)} \\ \hline
+   Parameter: & List<double>\\ \hline
+   Returværdi: & List<int> \\ \hline
+   Beskrivelse: & Metoden går ind og kigger på samtlige værdier i blodtryksliste. Metoden ser om værdien er under en sat baseline, hvis den er det, går metoden ind og ser om den næste værdi er lavere, når værdien bliver højere igen tilføjer metoden den laveste værdi til listen minimumspunkter og returnerer denne liste. \\ \hline
+\end{tabular}
+\end{table}
+\begin{table}[H]
+\label{tab:tabel2}
+\begin{tabular}{| l | p{13cm} |}
+   \hline
+   \multicolumn{2}{|l|}{public List<int> BeregnMiddeltryk(List<int>, List<int>, List<double>)} \\ \hline
+   Parameter: & List<int>, List<int>, List<double>\\ \hline
+   Returværdi: & List<int> \\ \hline
+   Beskrivelse: & Metoden går ind og kigger på samtlige værdier i diastolelisten og systolelisten. Metoden tager  her en værdi for diastole og en værdi for systole og beregner middeltryk ved formlen: $\dfrac{2}{3}diastole+\dfrac{1}{3}systole$. Tilføjer værdien til en middeltrykliste og returnerer denne. \\ \hline
+\end{tabular}
+\end{table}
 
+\textbf{Digitalt\_ filter}
+\begin{figure}[H]
+\includegraphics[width =0.5\textwidth , center]{billeder/klassediagramdigi}
+\caption{\textbf{Klassediagram for Digitalt\_ Filter.}}
+\end{figure}
+\begin{table}[H]
+\label{tab:tabel2}
+\begin{tabular}{| l | p{13cm} |}
+   \hline
+   \multicolumn{2}{|l|}{public Digitalt\_ filter()} \\ \hline
+   Parameter: & Ingen\\ \hline
+   Returværdi: & Ingen \\ \hline
+   Beskrivelse: & Denne sætter boolean filterOn lig med true. \\ \hline
+\end{tabular}
+\end{table}
+\begin{table}[H]
+\label{tab:tabel2}
+\begin{tabular}{| l | p{13cm} |}
+   \hline
+   \multicolumn{2}{|l|}{public bool IsFilterOn()} \\ \hline
+   Parameter: & Ingen\\ \hline
+   Returværdi: & bool\\ \hline
+   Beskrivelse: & Metoden returnerer filterOn\\ \hline
+\end{tabular}
+\end{table}
+\begin{table}[H]
+\label{tab:tabel2}
+\begin{tabular}{| l | p{13cm} |}
+   \hline
+   \multicolumn{2}{|l|}{public bool SetFilterOn()} \\ \hline
+   Parameter: & Ingen\\ \hline
+   Returværdi: & Ingen\\ \hline
+   Beskrivelse: & Metoden sætter filterOn lig true.\\ \hline
+\end{tabular}
+\end{table}
+\begin{table}[H]
+\label{tab:tabel2}
+\begin{tabular}{| l | p{13cm} |}
+   \hline
+   \multicolumn{2}{|l|}{public bool SetFilterOff()} \\ \hline
+   Parameter: & Ingen\\ \hline
+   Returværdi: & Ingen\\ \hline
+   Beskrivelse: & Metoden sætter filterOn lig false.\\ \hline
+\end{tabular}
+\end{table}
+\begin{table}[H]
+\label{tab:tabel2}
+\begin{tabular}{| l | p{13cm} |}
+   \hline
+   \multicolumn{2}{|l|}{public double[] FilterMovingAverage(int, double[])} \\ \hline
+   Parameter: & int, double[]\\ \hline
+   Returværdi: & double[]\\ \hline
+   Beskrivelse: & Metoden gør sådan at blodtryklisten kører igennem en ramme, hvor gennemsnittet beregnes af rammens indhold og rammen rykker én plads efter beregningen, sådan at beregningen sker glidende på blodtrykslisten. Metoden returnerer det beregnede gennemsnit i et double array. \\ \hline
+\end{tabular}
+\end{table}
+
+\textbf{LogikLag}
+\begin{figure}[H]
+\includegraphics[width =1.0\textwidth , center]{billeder/klassediagramLogik}
+\caption{\textbf{Klassediagram for LogikLag.}}
+\end{figure}
+\begin{table}[H]
+\label{tab:tabel2}
+\begin{tabular}{| l | p{13cm} |}
+   \hline
+   \multicolumn{2}{|l|}{public void SetFilterOn()} \\ \hline
+   Parameter: & Ingen\\ \hline
+   Returværdi: & Ingen\\ \hline
+   Beskrivelse: & Denne metode kalder Digitalt\_ filter klassens metode SetFilterOn() \\ \hline
+\end{tabular}
+\end{table}
+\begin{table}[H]
+\label{tab:tabel2}
+\begin{tabular}{| l | p{13cm} |}
+   \hline
+   \multicolumn{2}{|l|}{public void SetFilterOff()} \\ \hline
+   Parameter: & Ingen\\ \hline
+   Returværdi: & Ingen\\ \hline
+   Beskrivelse: & Denne metode kalder Digitalt\_ filter klassens metode SetFilterOff() \\ \hline
+\end{tabular}
+\end{table}
+\begin{table}[H]
+\label{tab:tabel2}
+\begin{tabular}{| l | p{13cm} |}
+   \hline
+   \multicolumn{2}{|l|}{public bool IsFilterOn()} \\ \hline
+   Parameter: & Ingen\\ \hline
+   Returværdi: & bool\\ \hline
+   Beskrivelse: & Denne metode returnerer Digitalt\_ filter metoden IsFilterOn() \\ \hline
+\end{tabular}
+\end{table}
+\begin{table}[H]
+\label{tab:tabel2}
+\begin{tabular}{| l | p{13cm} |}
+   \hline
+   \multicolumn{2}{|l|}{public void setKalibreringstal(double)} \\ \hline
+   Parameter: & double\\ \hline
+   Returværdi: & Ingen\\ \hline
+   Beskrivelse: & Metoden sætter kalibreringstallet til et double tal. \\ \hline
+\end{tabular}
+\end{table}
+\begin{table}[H]
+\label{tab:tabel2}
+\begin{tabular}{| l | p{13cm} |}
+   \hline
+   \multicolumn{2}{|l|}{public void hentBTdata(string, double, double, double, int, PatientDTO)} \\ \hline
+   Parameter: & string, double, double, double, int, PatientDTO\\ \hline
+   Returværdi: & Ingen\\ \hline
+   Beskrivelse: & Metoden kalder ST3DAQ metoden startReadData(). Implementere og starter tråden af typen StartHentData i logiklaget.\\ \hline
+\end{tabular}
+\end{table}
+\begin{table}[H]
+\label{tab:tabel2}
+\begin{tabular}{| l | p{13cm} |}
+   \hline
+   \multicolumn{2}{|l|}{Private void StartHentData()} \\ \hline
+   Parameter: & Ingen\\ \hline
+   Returværdi: & Ingen\\ \hline
+   Beskrivelse: & Metoden laver en kø-metode med 500 pladser. Kalder Attach() metoden fra ST3DAQ. Så længde metoden isRunning gælder, og der kommer værdier ind, sendes der værdier ind i køen indtil der er 500 objekter i denne, hvor efter der sendes et objekt ud inden der sendes et nyt ind. Inden objekterne tilføjes til køen, bliver nulpunktværdien lagt til, og kalibreringsværdien bliver ganget på hvert tal i Blodtryksværdilisten. Herefter kaldes tælleren sådan at der kun tages hvert tiende tal i Blodtryksværdilisten. Digitalt\_ filter metoden IsFilterOn() kaldes, hvilket tjekker om filteret er slået til, hvis filteret er det kaldes metoden Digitalt\_ filter FilterMovingAverage() hvilket gør at værdierne i kømetoden bliver filtreret. Notify metoden kalds til sidst for at sende arrayet med den behandlede data op til HovedGUI\\ \hline
+\end{tabular}
+\end{table}
+\begin{table}[H]
+\label{tab:tabel2}
+\begin{tabular}{| l | p{13cm} |}
+   \hline
+   \multicolumn{2}{|l|}{public bool getKode(string, int)} \\ \hline
+   Parameter: & string, int\\ \hline
+   Returværdi: & bool\\ \hline
+   Beskrivelse: & Metoden returnerer koden, hvor denne er lig med koden, som hentes med brugernavn parameteren, fra metoden getKode fra DataLag.  \\ \hline
+\end{tabular}
+\end{table}
+\begin{table}[H]
+\label{tab:tabel2}
+\begin{tabular}{| l | p{13cm} |}
+   \hline
+   \multicolumn{2}{|l|}{public string getCPR(string, string)} \\ \hline
+   Parameter: & string, sting\\ \hline
+   Returværdi: & string\\ \hline
+   Beskrivelse: & Metoden returnerer cpr. \\ \hline
+\end{tabular}
+\end{table}
+\begin{table}[H]
+\label{tab:tabel2}
+\begin{tabular}{| l | p{13cm} |}
+   \hline
+   \multicolumn{2}{|l|}{public bool isRunning()} \\ \hline
+   Parameter: & Ingen\\ \hline
+   Returværdi: & bool\\ \hline
+   Beskrivelse: & Metoden returnerer ST3DAQ klassens metode IsRunning(). \\ \hline
+\end{tabular}
+\end{table}
+\begin{table}[H]
+\label{tab:tabel2}
+\begin{tabular}{| l | p{13cm} |}
+   \hline
+   \multicolumn{2}{|l|}{public void StopHentData()} \\ \hline
+   Parameter: & Ingen\\ \hline
+   Returværdi: & Ingen\\ \hline
+   Beskrivelse: & Metoden kalder ST3DAQ klassens metoder Detach() og StopReadData(). Metoden stopper tråden der startes i hentBTdata(). \\ \hline
+\end{tabular}
+\end{table}
+\begin{table}[H]
+\label{tab:tabel2}
+\begin{tabular}{| l | p{13cm} |}
+   \hline
+   \multicolumn{2}{|l|}{public List<PatientDTO> listePatient(string)} \\ \hline
+   Parameter: & string\\ \hline
+   Returværdi: & List<PatientDTO>\\ \hline
+   Beskrivelse: & Metoden returnerer metoden PatientOpslag() fra DataLag, hvilken har syntaksen fra PatientDTO.\\ \hline
+\end{tabular}
+\end{table}
+\begin{table}[H]
+\label{tab:tabel2}
+\begin{tabular}{| l | p{13cm} |}
+   \hline
+   \multicolumn{2}{|l|}{public bool TjekSystoleOverskredet(List<double>)} \\ \hline
+   Parameter: & List<double>\\ \hline
+   Returværdi: & bool\\ \hline
+   Beskrivelse: & Metoden henter systoleværdierne ved at kalder BeregnSystole() metoden fra Blodtryk. Metoden tjekker om systole værdien er over den øvre grænseværdi eller under den nedre grænseværdi og hvis én af værdierne har en højere/lavere værdi er grænseværdien overskredet. Metoden returnerer resultatet. \\ \hline
+\end{tabular}
+\end{table}
+\begin{table}[H]
+\label{tab:tabel2}
+\begin{tabular}{| l | p{13cm} |}
+   \hline
+   \multicolumn{2}{|l|}{public bool TjekDiastoleOverskredet(List<double>)} \\ \hline
+   Parameter: & List<double>\\ \hline
+   Returværdi: & bool\\ \hline
+   Beskrivelse: & Metoden henter diastoleværdierne ved at kalder BeregnDiastole() metoden fra Blodtryk. Metoden tjekker om diastole værdien er over den øvre grænseværdi eller under den nedre grænseværdi og hvis én af værdierne har en højere/lavere værdi er grænseværdien overskredet. Metoden returnerer resultatet. \\ \hline
+\end{tabular}
+\end{table}
+\begin{table}[H]
+\label{tab:tabel2}
+\begin{tabular}{| l | p{13cm} |}
+   \hline
+   \multicolumn{2}{|l|}{public List<int> SystoleListe(List<double>)} \\ \hline
+   Parameter: & List<double>\\ \hline
+   Returværdi: & List<int>\\ \hline
+   Beskrivelse: &  Metoden returnerer en liste med systoler ved at koble blodtrykslisten sammen med metoden BeregnSystole() fra Blodtryk.\\ \hline
+\end{tabular}
+\end{table}
+\begin{table}[H]
+\label{tab:tabel2}
+\begin{tabular}{| l | p{13cm} |}
+   \hline
+   \multicolumn{2}{|l|}{public List<int> DiastoleListe(List<double>)} \\ \hline
+   Parameter: & List<double>\\ \hline
+   Returværdi: & List<int>\\ \hline
+   Beskrivelse: &  Metoden returnerer en liste med diastoler ved at koble metoden BeregnDiastole() fra Blodtryk sammen med blodtrykslisten.\\ \hline
+\end{tabular}
+\end{table}
+\begin{table}[H]
+\label{tab:tabel2}
+\begin{tabular}{| l | p{13cm} |}
+   \hline
+   \multicolumn{2}{|l|}{public List<int> Middeltrykliste(List<int>, List<int>, List<double>)} \\ \hline
+   Parameter: & List<int>, List<int>, List<double>\\ \hline
+   Returværdi: & List<int>\\ \hline
+   Beskrivelse: &  Metoden returnerer en liste med middeltryksværdier ved at kalde metoden BeregnMiddeltryk() fra Blodtryk og koble denne sammen med systolelisten, diastolelisten og blodtrykslisten.\\ \hline
+\end{tabular}
+\end{table}
+\begin{table}[H]
+\label{tab:tabel2}
+\begin{tabular}{| l | p{13cm} |}
+   \hline
+   \multicolumn{2}{|l|}{public GrænseVærdiDTO SystoleOP()} \\ \hline
+   Parameter: & Ingen \\ \hline
+   Returværdi: & GrænseVærdiDTO\\ \hline
+   Beskrivelse: & Metoden kalder den nedre og øvre grænseværdi og gør begge grænseværdier én større. Metoden returnerer de nye grænseværdier med syntaksen fra GrænseVærdiDTO.\\ \hline
+\end{tabular}
+\end{table}
+\begin{table}[H]
+\label{tab:tabel2}
+\begin{tabular}{| l | p{13cm} |}
+   \hline
+   \multicolumn{2}{|l|}{public GrænseVærdiDTO SystoleNED()} \\ \hline
+   Parameter: & Ingen \\ \hline
+   Returværdi: & GrænseVærdiDTO\\ \hline
+   Beskrivelse: & Metoden kalder den nedre og øvre grænseværdi og gør begge grænseværdier én mindre. Metoden returnerer de nye grænseværdier med syntaksen fra GrænseVærdiDTO.\\ \hline
+\end{tabular}
+\end{table}
+\begin{table}[H]
+\label{tab:tabel2}
+\begin{tabular}{| l | p{13cm} |}
+   \hline
+   \multicolumn{2}{|l|}{public GrænseVærdiDTO DiastoleOP()} \\ \hline
+   Parameter: & Ingen \\ \hline
+   Returværdi: & GrænseVærdiDTO\\ \hline
+   Beskrivelse: & Metoden kalder den nedre og øvre grænseværdi og gør begge grænseværdier én større. Metoden returnerer de nye grænseværdier med syntaksen fra GrænseVærdiDTO.\\ \hline
+\end{tabular}
+\end{table}
+\begin{table}[H]
+\label{tab:tabel2}
+\begin{tabular}{| l | p{13cm} |}
+   \hline
+   \multicolumn{2}{|l|}{public GrænseVærdiDTO DiastoleNED()} \\ \hline
+   Parameter: & Ingen \\ \hline
+   Returværdi: & GrænseVærdiDTO\\ \hline
+   Beskrivelse: & Metoden kalder den nedre og øvre grænseværdi og gør begge grænseværdier én mindre. Metoden returnerer de nye grænseværdier med syntaksen fra GrænseVærdiDTO.\\ \hline
+\end{tabular}
+\end{table}
+\begin{table}[H]
+\label{tab:tabel2}
+\begin{tabular}{| l | p{13cm} |}
+   \hline
+   \multicolumn{2}{|l|}{public GrænseVærdiDTO HentSystoleGrænseværdier()} \\ \hline
+   Parameter: & Ingen \\ \hline
+   Returværdi: & GrænseVærdiDTO\\ \hline
+   Beskrivelse: & Metoden returnerer grænseværdierne for systole.\\ \hline
+\end{tabular}
+\end{table}
+\begin{table}[H]
+\label{tab:tabel2}
+\begin{tabular}{| l | p{13cm} |}
+   \hline
+   \multicolumn{2}{|l|}{public GrænseVærdiDTO HentDiastoleGrænseværdier()} \\ \hline
+   Parameter: & Ingen \\ \hline
+   Returværdi: & GrænseVærdiDTO\\ \hline
+   Beskrivelse: & Metoden returnerer grænseværdierne for diastole.\\ \hline
+\end{tabular}
+\end{table}
+\begin{table}[H]
+\label{tab:tabel2}
+\begin{tabular}{| l | p{13cm} |}
+   \hline
+   \multicolumn{2}{|l|}{public void setNulpunktsJustering(double)} \\ \hline
+   Parameter: & double \\ \hline
+   Returværdi: & Ingen\\ \hline
+   Beskrivelse: & Metoden sætter nulpunktværdien til et double tal.\\ \hline
+\end{tabular}
+\end{table}
+\begin{table}[H]
+\label{tab:tabel2}
+\begin{tabular}{| l | p{13cm} |}
+   \hline
+   \multicolumn{2}{|l|}{public void Attach(IObserver)} \\ \hline
+   Parameter: & IObserver \\ \hline
+   Returværdi: & Ingen\\ \hline
+   Beskrivelse: & Metoden tilføjer en observer til IObserver.\\ \hline
+\end{tabular}
+\end{table}
+\begin{table}[H]
+\label{tab:tabel2}
+\begin{tabular}{| l | p{13cm} |}
+   \hline
+   \multicolumn{2}{|l|}{public void Detach(IObserver)} \\ \hline
+   Parameter: & IObserver \\ \hline
+   Returværdi: & Ingen\\ \hline
+   Beskrivelse: & Metoden fjerner en observer fra IObserver.\\ \hline
+\end{tabular}
+\end{table}
+\begin{table}[H]
+\label{tab:tabel2}
+\begin{tabular}{| l | p{13cm} |}
+   \hline
+   \multicolumn{2}{|l|}{public void Notify(double[])} \\ \hline
+   Parameter: & double[] \\ \hline
+   Returværdi: & Ingen\\ \hline
+   Beskrivelse: & Metoden kigger på hver observer i IObserver og kalder her metoden Update().\\ \hline
+\end{tabular}
+\end{table}
+\begin{table}[H]
+\label{tab:tabel2}
+\begin{tabular}{| l | p{13cm} |}
+   \hline
+   \multicolumn{2}{|l|}{public void Update(double[])} \\ \hline
+   Parameter: & double[] \\ \hline
+   Returværdi: & Ingen\\ \hline
+   Beskrivelse: & Metoden tilføjer et double array til blodtryksværdiliste og BTDataTilDB der bruges til at gemme data. Denne metode kalder metoden GemBTData() fra DataLag og gemmer når BTDataTilDB listen indeholder 1000 elementer og ryder derefter listen for denne kan tage 1000 nye elementer. \\ \hline
+\end{tabular}
+\end{table}
+
+\textbf{DataLag}
+\begin{figure}[H]
+\includegraphics[width =0.4\textwidth , center]{billeder/klassediagramdata}
+\caption{\textbf{Klassediagram for DataLag.}}
+\end{figure}
+\begin{table}[H]
+\label{tab:tabel2}
+\begin{tabular}{| l | p{13cm} |}
+   \hline
+   \multicolumn{2}{|l|}{public DataLag()} \\ \hline
+   Parameter: & Ingen\\ \hline
+   Returværdi: & Ingen\\ \hline
+   Beskrivelse: & Metoden skaber forbindelse til de to databaser der benyttes og laver forbindelse til ST3DAQ.\\ \hline
+\end{tabular}
+\end{table}
+\begin{table}[H]
+\label{tab:tabel2}
+\begin{tabular}{| l | p{13cm} |}
+   \hline
+   \multicolumn{2}{|l|}{public int BrugernavnOpslag(string)} \\ \hline
+   Parameter: & string \\ \hline
+   Returværdi: & int\\ \hline
+   Beskrivelse: & Metoden kalder en metode der åbner Personale databasen, og oprettet en SQL kommando, hvor der hentes alt fra Personale tabellen hvor brugernavn er lig med brugernavn parameteren. En metode til at udføre kommando kaldes. Metoden undersøger om brugernavnet passer, lukker databasen og returnerer svaret. \\ \hline
+\end{tabular}
+\end{table}
+\begin{table}[H]
+\label{tab:tabel2}
+\begin{tabular}{| l | p{13cm} |}
+   \hline
+   \multicolumn{2}{|l|}{public List<PatientDTO> PatientOpslag(string)} \\ \hline
+   Parameter: & string \\ \hline
+   Returværdi: & List<PatientDTO>\\ \hline
+   Beskrivelse: & Metoden laver en patientliste der indholder syntaksen fra PatientDTO. Kalder en metode der åbner Patient databasen, og oprettet en SQL kommando, hvor der hentes alt fra Patient tabellen hvor den sundhedsfaglige er lig med brugernavn parameteren. En metode til at udføre kommando kaldes. Metoden undersøger om der findes en patient med tilkobling til den sundhedsfaglige og tilføjer CPR og Navn til patientlisten. Metoden lukker databasen og returnerer patientlisten. \\ \hline
+\end{tabular}
+\end{table}
+\begin{table}[H]
+\label{tab:tabel2}
+\begin{tabular}{| l | p{13cm} |}
+   \hline
+   \multicolumn{2}{|l|}{public int getCPR(string)} \\ \hline
+   Parameter: & string \\ \hline
+   Returværdi: & int\\ \hline
+   Beskrivelse: & Metoden kalder en metode der åbner Patient databasen, og oprettet en SQL kommando, hvor CPR hentes fra Patient tabellen hvor Navn er lig med patient parameteren. En metode til at udføre kommandoen kaldes. Metoden henter CPR for patienten, lukker databasen og returnerer CPR. \\ \hline
+\end{tabular}
+\end{table}
+\begin{table}[H]
+\label{tab:tabel2}
+\begin{tabular}{| l | p{13cm} |}
+   \hline
+   \multicolumn{2}{|l|}{public int getKode(string)} \\ \hline
+   Parameter: & string \\ \hline
+   Returværdi: & int\\ \hline
+   Beskrivelse: & Metoden kalder en metode der åbner Patient databasen, og oprettet en SQL kommando, hvor Adgangskode hentes fra Personale tabellen hvor Brugernavn er lig med brugernavn parameteren. En metode til at udføre kommandoen kaldes. Metoden henter koden for den sundhedsfaglige, lukker databasen og returnerer koden. \\ \hline
+\end{tabular}
+\end{table}
+\begin{table}[H]
+\label{tab:tabel2}
+\begin{tabular}{| l | p{13cm} |}
+   \hline
+   \multicolumn{2}{|l|}{public void GemBTData(long, double, double, double[])} \\ \hline
+   Parameter: & long, double, double, double[] \\ \hline
+   Returværdi: & Ingen\\ \hline
+   Beskrivelse: & Metoden kalder en metode der åbner Patient databasen, og oprettet en SQL kommando, hvor CPR, Dato, KalibreringsTalog NulpunktsjusteringsTal indsættes i Målinger tabellen. En metode til at udføre kommandoen kaldes. Metoden lukker databasen. Metoden kalder en metode der åbner Patient databasen igen, og oprettet en SQL kommando, hvor BTdata og MålingId indsættes i BTdata tabellen. En metode til at udføre kommandoen kaldes. Metoden lukker databasen.  \\ \hline
+\end{tabular}
+\end{table}
+\begin{table}[H]
+\label{tab:tabel2}
+\begin{tabular}{| l | p{13cm} |}
+   \hline
+   \multicolumn{2}{|l|}{ private byte[] GetBytesAlt(double[])} \\ \hline
+   Parameter: & double[] \\ \hline
+   Returværdi: & byte[]\\ \hline
+   Beskrivelse: & Metoden konverterer double array til byte array. Bruges til at gemme data i SQL-database. Metoden bruges i GemBTData() metoden. \\ \hline
+\end{tabular}
+\end{table}
+
+\textbf{ST3DAQ}
+\begin{figure}[H]
+\includegraphics[width =0.4\textwidth , center]{billeder/klassediagramdaq}
+\caption{\textbf{Klassediagram for ST3DAQ.}}
+\end{figure}
+\begin{table}[H]
+\label{tab:tabel2}
+\begin{tabular}{| l | p{13cm} |}
+   \hline
+   \multicolumn{2}{|l|}{public ST3DAQ()} \\ \hline
+   Parameter: & Ingen \\ \hline
+   Returværdi: & Ingen\\ \hline
+   Beskrivelse: &  Metoden henter en liste af observers fra IObservers.\\ \hline
+\end{tabular}
+\end{table}
+\begin{table}[H]
+\label{tab:tabel2}
+\begin{tabular}{| l | p{13cm} |}
+   \hline
+   \multicolumn{2}{|l|}{public bool IsRunning()} \\ \hline
+   Parameter: & Ingen \\ \hline
+   Returværdi: & bool\\ \hline
+   Beskrivelse: & Metoden tjekker om tasken kører. Hvis den kører returnerer den true ellers returnerer denne false. \\ \hline
+\end{tabular}
+\end{table}
+\begin{table}[H]
+\label{tab:tabel2}
+\begin{tabular}{| l | p{13cm} |}
+   \hline
+   \multicolumn{2}{|l|}{public void startReadData(string, double, double, double, int)} \\ \hline
+   Parameter: & string, double, double, double, int \\ \hline
+   Returværdi: & Ingen\\ \hline
+   Beskrivelse: & Denne metode starter for en ny opgave, hvilken henter data fra NI-DAQ. Data hentes ved at bruge metoderne koblet til National Instruments ved at kalde Task(). \\ \hline
+\end{tabular}
+\end{table}
+\begin{table}[H]
+\label{tab:tabel2}
+\begin{tabular}{| l | p{13cm} |}
+   \hline
+   \multicolumn{2}{|l|}{private void AnalogInCallback(IAsyncResult)} \\ \hline
+   Parameter: & IAsyncResult \\ \hline
+   Returværdi: & Ingen\\ \hline
+   Beskrivelse: & Metoden er en delegate, der tjekker om NI-DAQ henter data og laver et asynkront kald. Tilføjer alle data fra NI-DAQ i et array. Dette array bliver notificeret med metoden Notify(). Efter stoppes opgaven startet i startReadData().\\ \hline
+\end{tabular}
+\end{table}
+\begin{table}[H]
+\label{tab:tabel2}
+\begin{tabular}{| l | p{13cm} |}
+   \hline
+   \multicolumn{2}{|l|}{public void Attach(IObserver)} \\ \hline
+   Parameter: & IObserver \\ \hline
+   Returværdi: & Ingen\\ \hline
+   Beskrivelse: & Metoden tilføjer en observer til IObserver.\\ \hline
+\end{tabular}
+\end{table}
+\begin{table}[H]
+\label{tab:tabel2}
+\begin{tabular}{| l | p{13cm} |}
+   \hline
+   \multicolumn{2}{|l|}{public void Detach(IObserver)} \\ \hline
+   Parameter: & IObserver \\ \hline
+   Returværdi: & Ingen\\ \hline
+   Beskrivelse: & Metoden fjerner en observer fra IObserver.\\ \hline
+\end{tabular}
+\end{table}
+\begin{table}[H]
+\label{tab:tabel2}
+\begin{tabular}{| l | p{13cm} |}
+   \hline
+   \multicolumn{2}{|l|}{public void Notify(double[])} \\ \hline
+   Parameter: & double[] \\ \hline
+   Returværdi: & Ingen\\ \hline
+   Beskrivelse: & Metoden kigger på hver observer i IObserver og kalder her metoden Update().\\ \hline
+\end{tabular}
+\end{table}
 
 \subsection{Implementering}
 \subsubsection{Kalibrering}
@@ -946,9 +1644,54 @@ Dequeue() er metoden, som fjerne et object fra den anden ende, og tager den før
 \includegraphics[width =1.0\textwidth , center]{billeder/databaser}
 \caption{\textbf{Databaserne; Personale database og EPJ database. Her ses sammenhængen mellem tabellerne i databasen, og hvilken data der er under hver tabel.}}
 \end{figure}
-
+Dette afsnit vil beskrive opbygningen af databaser og tabellerne. Da der er valgt at tage udgangspunkt i et brugsscenarie, afspejler datamodelleringen i databasen dette scenarie. Det er vigtigt at bemærke at der er en regulær opdeling af databaser og skemaer, realiseret som beskrevet nedenfor.
+\\\\
+\textbf{Personale database}\\
+Personale databasen bliver brugt til at tilgå data for personalet. Her er der tale om brugernavn og password. Disse data er lagt i databasen på forhånd, så det er altså en login-database.\\ 
+\textbf{Database-adresse:} webhotel10.F15ST2ITS2201404669.db\_ owner
+\\\\
+\textbf{EPJ database}\\
+EPJ databasen bliver brugt til at tilgå data for patienten. Her tænkes på CPR/Navn. Ligeledes gemmes der i denne database målinger, samt metadata for at kvalificere disse data. Der kunne udvides med mange flere metadata, specielt i forhold til afsnittet om fremtidigt arbejde "Datawarehouse". Det bør bemærkes der i databasen er gjort klar til EKG-data, selvom det ikke er implementeret. Patient-tabellen modsvarer vores version af en EPJ-database, hvor BTData-tabellen repræsenterer målingerne foretaget af vores system.\\
+\textbf{Database-adresse:} webhotel10.F15ST2ITS2201405838.db\_ owner
+\\\\
+\textbf{Opdeling}\\
+Man ville normalt have en "Foreign Key"-constraint fra Patient-tabellen til Personal-tabellen. Men da de befinder sig i to forskellige skemaer, der simulerer to forskellige databaser, så er det ikke en fornuftig løsning. Man ville i stedet benytte sig af en "trigger" der kan håndtere en evt. Fejl. Det er ikke en korrekt løsning og vi har valgt ikke at implementere den, men det er bedre end at "satse" på data stemmer overens. Man ville sandsynligvis løse problemet i software, eller hvis begge tabeller findes i samme skema. \\
+Et eksempel på sådan en trigger vil se sådan her ud;
+\begin{figure}[H]
+\includegraphics[width =0.5\textwidth , center]{billeder/database_kode}
+\caption{\textbf{Eksempel på en trigger.}}
+\end{figure}
 \subsection{Unittest}
-
+Det er blevet besluttet at lave unittest på softwaren. Ved unit-test forstås at man tester hver enkelt komponent i koden, i objektorienteret kode vil det sige metoderne. Man sikrer sig at metoderne returnerer det man forventer. En unit test bør foregå løbende lige så frit som koden bliver udviklet, så kan man fokusere på de del-elementer som ikke virker efter hensigten. \\\\
+I dette projekt valgte man at lave unit test efter sidste iteration af koden, da de sidste versioner af softwaren ændrede sig meget, så alle unittests skulle laves forfra. Grundlaget for mange metoder ændrede sig løbende. Disse unit-tests blev lavet i koden ved at sætte breakpoints og følge metoden til ende og evaluere på hvorvidt metoden opførte sig efter hensigten. Unit-tests er blevet foretaget i koden, man har skrevet kommentarer til de metoder der er blevet testet.
+\subsubsection{Code review}
+Desuden er der blevet foretaget omfattende code-review, som en er en gennemgang af koden og de metodikker og formatering der er benyttet. Code-review er blevet foretaget af en person fra hardware-holdet. Gennemgangen har resulteret i nogle formateringsændringer i koden, ligeledes er kodesegmenter der ikke bliver brugt kommenteret ud.
+\subsubsection{Databaser og test}
+Databasetest er blevet foretaget i det tilgængelige testmiljø, det vil sige serverne er placeret på IHA og der kræves VPN for at kunne tilgå dem. Der er i projektet benyttet to databaser for at simulere separat personale og EPJ databaser. \\\\
+\textbf{Personale database}\\
+Bliver brugt til at tilgå data for personalet. Her er der tale om brugernavn og password. Disse data er lagt i databasen på forhånd.\\
+Database-adresse: webhotel10.F15ST2ITS2201404669.db\_ owner
+\begin{figure}[H]
+\includegraphics[width =0.2\textwidth , center]{billeder/database_p_tabel}
+\caption{\textbf{Personale database med kolonner}}
+\end{figure}
+\textbf{EPJ database}\\
+Bliver brugt til at tilgå data for patienten. Her tænkes på CPR/Navn. Ligeledes gemmes der i denne database målinger, samt metadata for at kvalificere disse data. Der kunne udvides med mange flere metadata, specielt i forhold til afsnittet om fremtidigt arbejde "Datawarehouse". Det bør bemærkes der i databasen er gjort klar til EKG-data, selvom det ikke er implementeret.\\
+Database-adresse: webhotel10.F15ST2ITS2201405838.db\_ owner
+\begin{figure}[H]
+\includegraphics[width =0.2\textwidth , center]{billeder/database_e_tabel}
+\caption{\textbf{EPJ database med kolonner.}}
+\end{figure}
+\textbf{Test}\\
+Testen af databaser er foregået løbende. Da softwareløsningen gemmer data kontinuert, så kan man altså tjekke om data bliver gemt ved at tjekke tabellernes indhold løbende. 
+\begin{figure}[H]
+\includegraphics[width =0.5\textwidth , center]{billeder/database_data_gem}
+\caption{\textbf{Udsnit af data gemt i Målinger.}}
+\end{figure}
+\begin{figure}[H]
+\includegraphics[width =0.3\textwidth , center]{billeder/database_bt_gem}
+\caption{\textbf{Udsnit af data gemt i BTData.}}
+\end{figure}
 \section{Integrationstest}
 
 \chapter{Accepttest}
@@ -966,8 +1709,8 @@ Billede indsættes - haves ikke endnu
 \begin{tabular}{|>{\raggedright\arraybackslash}p{2.5cm}| >{\raggedright\arraybackslash}p{2.9cm} | >{\raggedright\arraybackslash}p{2.9cm} | >{\raggedright\arraybackslash}p{2.9cm} | >{\raggedright\arraybackslash}p{2.8cm} |}
    \hline
    \textbf{Use case 1: Kalibrer apparat} &\textbf{Test}& \textbf{Prækondition} & \textbf{Forventet resultat} & \textbf{Godkendt/ kommentar}\\ \hline
-   Normalforløb: & Indtast den aflæste værdi for spændingen fra waveforms, og aflæs trykket fra vandsøjlens skema for det af målepunkterne fra vandsøjlen der måles på. & Blodtryksmålersystemet er tændt, tilsluttet og startet, og tilsluttet kalibreringsudstyret (Analog Discovery og Waveforms). & Servicemedarbejder foretager kalibrering. Værdierne indtastes korrekt. & \\\hline
-   & Tryk på "Kalibrering" & Blodtryksmålersystemet er tændt og tilsluttet, og tilsluttet kalibreringsudstyret (Analog Discovery og Waveforms) og værdierne indtastet. &
+   Normalforløb: & Indtast den aflæste værdi for spændingen fra waveforms, og aflæs trykket fra vandsøjlens skema for det af målepunkterne fra vandsøjlen der måles på. & Blodtryksmåler-systemet er tændt, tilsluttet og startet, og tilsluttet kalibreringsudstyret (Analog Discovery og Waveforms). & Service-medarbejder foretager kalibrering. Værdierne indtastes korrekt. & \\\hline
+   & Tryk på "Kalibrering" & Blodtryksmåler-systemet er tændt og tilsluttet, og tilsluttet kalibreringsudstyret (Analog Discovery og Waveforms) og værdierne indtastet. &
    Systemet beregner kalibreringsværdien og kalibrerer systemet, resultatet af beregningen vises på startskærmen & IKKE TESTBAR\\\hline
 \end{tabular}
 \end{table}
@@ -981,7 +1724,7 @@ Det forudsættes for følgende Use cases (Use case 2, 3 og 4) at systemet er til
    &Tryk "Log ind" & Port valgt. VPN, Personale database og EPJ database er tilsluttet korrekt & Besked: "Logget på" og den sundhedsfaglige er dermed logget på &\\\hline
    &Tryk på patient dropdown på startskærm & En sundhedsfaglig er logget på & Liste med patienter kommer frem  & \\\hline
    & Vælg patienten "Arne Jensen" & Den sundhedsfaglige er logget på & Nyt vindue kommer frem: Hovedskærmen &\\\hline
-   & Indsend atmosfærisk tryk igennem transduceren, aflæs værdien på waveforms og indtast denne korrekt & Patient valgt og blodtryksmålersystemet (transduceren) er tilsluttet & Nulpunktsjusterings værdien er indtastet korrekt &\\\hline
+   & Indsend atmosfærisk tryk igennem transduceren, aflæs værdien på waveforms og indtast denne korrekt & Patient valgt og blodtryksmålersystemet (transduceren) er tilsluttet & Nulpunkts-justerings værdien er indtastet korrekt &\\\hline
    & Tryk på "Nulpunkts justering" & Værdien er indtastet korrekt & Systemet starter nulpunkts justeringen. Systemet tilpasser grafen. &\\\hline
    & Tryk på "Tænd"& Systemet er nulpunktjusteret & Systemet indhenter data fra transduceren og starter timer på hovedskærm. EKG og arterietryk præsenteres kontinuert på hver sin graf. Puls, systole, diastole og middeltryk vises som talværdier på hovedskærmen. Data gemmes automatisk kontinuert i EPJ database & \\\hline
 \end{tabular}

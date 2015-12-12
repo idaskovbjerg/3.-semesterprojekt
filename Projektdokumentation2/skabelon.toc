@@ -22,35 +22,40 @@
 \contentsline {subsubsection}{Block definition diagram}{18}{subsubsection*.11}
 \contentsline {subsubsection}{Internal block definition}{19}{subsubsection*.12}
 \contentsline {subsection}{Modultest}{20}{subsection*.13}
-\contentsline {section}{\numberline {3.2}Software design}{21}{section.3.2}
-\contentsline {subsection}{Problemidentifikation}{21}{subsection*.14}
-\contentsline {subsubsection}{Dom\IeC {\ae }nemodel}{22}{subsubsection*.15}
-\contentsline {subsection}{Klasseidentifikation}{24}{subsection*.16}
-\contentsline {subsubsection}{Applikationsmodel}{24}{subsubsection*.17}
-\contentsline {subsection}{Metodeidentifikation}{26}{subsection*.18}
-\contentsline {subsubsection}{Sekvensdiagrammer}{26}{subsubsection*.19}
-\contentsline {subsubsection}{Klassediagram}{34}{subsubsection*.20}
-\contentsline {subsubsection}{Metodebeskrivelse}{35}{subsubsection*.21}
-\contentsline {subsection}{Implementering}{43}{subsection*.22}
-\contentsline {subsubsection}{Kalibrering}{43}{subsubsection*.23}
-\contentsline {subsubsection}{Nulpunktsjustering}{43}{subsubsection*.24}
-\contentsline {subsubsection}{Digitalt filter}{43}{subsubsection*.25}
-\contentsline {subsubsection}{Beregning af systolisk, diastolisk og middeltryks v\IeC {\ae }rdi}{44}{subsubsection*.26}
-\contentsline {subsubsection}{EKG-signal}{45}{subsubsection*.27}
-\contentsline {subsubsection}{Iltm\IeC {\ae }tning}{46}{subsubsection*.28}
-\contentsline {subsubsection}{Observer m\IeC {\o }nster med PUSH}{46}{subsubsection*.29}
-\contentsline {subsubsection}{Queue}{46}{subsubsection*.30}
-\contentsline {subsubsection}{Databaser}{47}{subsubsection*.31}
-\contentsline {subsection}{Unittest}{47}{subsection*.32}
-\contentsline {section}{\numberline {3.3}Integrationstest}{47}{section.3.3}
-\contentsline {chapter}{\chapternumberline {4}Accepttest}{48}{chapter.4}
-\contentsline {section}{\numberline {4.1}Indledning}{48}{section.4.1}
-\contentsline {section}{\numberline {4.2}Accepttest for funktionelle krav}{48}{section.4.2}
-\contentsline {subsection}{Opstilling}{48}{subsection*.33}
-\contentsline {section}{\numberline {4.3}Accepttest for ikke-funktionelle krav}{54}{section.4.3}
-\contentsline {section}{\numberline {4.4}Godkendelses formular}{58}{section.4.4}
-\contentsline {chapter}{Litteratur}{59}{section*.35}
-\contentsline {section}{\numberline {4.5}Referencer}{59}{section.4.5}
-\contentsline {subsubsection}{B\IeC {\o }ger}{59}{subsubsection*.36}
-\contentsline {subsubsection}{Internetsider}{59}{subsubsection*.37}
-\contentsline {subsubsection}{Dokumenter}{59}{subsubsection*.38}
+\contentsline {subsubsection}{Test af operationsforst\IeC {\ae }rker}{21}{subsubsection*.14}
+\contentsline {subsubsection}{Test af filter}{22}{subsubsection*.15}
+\contentsline {subsubsection}{Test med vands\IeC {\o }jle}{23}{subsubsection*.16}
+\contentsline {section}{\numberline {3.2}Software design}{25}{section.3.2}
+\contentsline {subsection}{Problemidentifikation}{25}{subsection*.17}
+\contentsline {subsubsection}{Dom\IeC {\ae }nemodel}{26}{subsubsection*.18}
+\contentsline {subsection}{Klasseidentifikation}{28}{subsection*.19}
+\contentsline {subsubsection}{Applikationsmodel}{28}{subsubsection*.20}
+\contentsline {subsection}{Metodeidentifikation}{30}{subsection*.21}
+\contentsline {subsubsection}{Sekvensdiagrammer}{30}{subsubsection*.22}
+\contentsline {subsubsection}{Klassediagram}{38}{subsubsection*.23}
+\contentsline {subsubsection}{Metodebeskrivelse}{39}{subsubsection*.24}
+\contentsline {subsection}{Implementering}{58}{subsection*.25}
+\contentsline {subsubsection}{Kalibrering}{58}{subsubsection*.26}
+\contentsline {subsubsection}{Nulpunktsjustering}{58}{subsubsection*.27}
+\contentsline {subsubsection}{Digitalt filter}{59}{subsubsection*.28}
+\contentsline {subsubsection}{Beregning af systolisk, diastolisk og middeltryks v\IeC {\ae }rdi}{59}{subsubsection*.29}
+\contentsline {subsubsection}{EKG-signal}{60}{subsubsection*.30}
+\contentsline {subsubsection}{Iltm\IeC {\ae }tning}{61}{subsubsection*.31}
+\contentsline {subsubsection}{Observer m\IeC {\o }nster med PUSH}{61}{subsubsection*.32}
+\contentsline {subsubsection}{Queue}{61}{subsubsection*.33}
+\contentsline {subsubsection}{Databaser}{62}{subsubsection*.34}
+\contentsline {subsection}{Unittest}{63}{subsection*.35}
+\contentsline {subsubsection}{Code review}{63}{subsubsection*.36}
+\contentsline {subsubsection}{Databaser og test}{63}{subsubsection*.37}
+\contentsline {section}{\numberline {3.3}Integrationstest}{65}{section.3.3}
+\contentsline {chapter}{\chapternumberline {4}Accepttest}{66}{chapter.4}
+\contentsline {section}{\numberline {4.1}Indledning}{66}{section.4.1}
+\contentsline {section}{\numberline {4.2}Accepttest for funktionelle krav}{66}{section.4.2}
+\contentsline {subsection}{Opstilling}{66}{subsection*.38}
+\contentsline {section}{\numberline {4.3}Accepttest for ikke-funktionelle krav}{72}{section.4.3}
+\contentsline {section}{\numberline {4.4}Godkendelses formular}{76}{section.4.4}
+\contentsline {chapter}{Litteratur}{77}{section*.40}
+\contentsline {section}{\numberline {4.5}Referencer}{77}{section.4.5}
+\contentsline {subsubsection}{B\IeC {\o }ger}{77}{subsubsection*.41}
+\contentsline {subsubsection}{Internetsider}{77}{subsubsection*.42}
+\contentsline {subsubsection}{Dokumenter}{77}{subsubsection*.43}
