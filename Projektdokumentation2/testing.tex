@@ -102,7 +102,7 @@ Af dette diagram ses de interagerende aktører: \textit{Sundhedsfaglig personale
 De fire Use cases kan ses ud fra Use case diagrammet, disse er: \textit{Kalibrér apparat}, \textit{Foretag måling}, \textit{Alarmér} og \textit{Stop måling}. Hver enkel af disse Use cases beskrives detaljeret herunder i et fully-dressed Use case skema.\\
 Systemet består af en computer med programkode, en NI-DAQ samt hardware. Hardwaren består af et lavpasfilter, en forstærker og en transducer desuden er der hertil tilkoblet to 9 V batterier.
 \\
-Systemet gør det muligt at hente data fra transduceren. Her går data fra transduceren igennem forstærkeren, hvilken bliver forsynet af spænding fra to 9 V batterier. Fra forstærkeren går signalet videre til lavpasfilteret og derefter ind i NI-DAQ, som så sender data videre til computeren og ind i programkoden. 
+Systemet gør det muligt at hente data fra det væskefylde kateter via tryktransduceren. Data går herefter fra tryktransduceren igennem forstærkeren, hvilken bliver forsynet af spænding fra to 9 V batterier. Det forstærkede signal fra forstærkeren går videre til lavpasfilteret og derefter ind i NI-DAQ, som så sender data videre til computeren og ind i programkoden. 
 \\ 
 Det digitale filter er pr. default slået til når systemet startes, dog vil det være muligt at slå dette filter fra under målingen.\\
 Når programmet startes skal computeren have VPN-forbindelse til "ASE IHA VPN", desuden skal der være en forbindelse til $"webhotel10.F15ST2ITS2201404669.db_{-}owner"$(Personaledatabasen) og $"webhotel10.F15ST2ITS2201405838.db_{-}owner"$ (EPJ database).\\\\
@@ -150,11 +150,11 @@ Udvidelse/undtagelser: & \textit{$[$Undtagelse 1:Undlad kalibrering$]$ }\newline
 2. Besked: "Logget på" vises  \newline
 3. Liste med patienter kommer frem\newline
 4. Den ønskede patient vælges \newline
-5. Sundhedsfaglig personale indtaster nulpunktjusterings værdien og starter  nulpunktsjusteringen. \newline
+5. Sundhedsfaglig personale indtaster nulpunktjusterings værdien og starter nulpunktsjusteringen. \newline
 6. Systemet foretager nulpunktsjusteringen. \newline
 7. Sundhedsfaglig personale starter målingen \newline
 8. Systemet indhenter data fra transduceren og måler, hvor lang tid målingen foretages\newline
-9. EKG og arterietryk præsenteres kontinuert på hver sin graf. Puls, systole, diastole og middeltryk vises som talværdier. Data gemmes automatisk kontinuert i EPJ database. \newline
+9. EKG og arterietryk præsenteres kontinuert på hver sin graf. Puls, systole, diastole og middeltryk vises som talværdier. Data gemmes automatisk løbende i EPJ database. \newline
 \textit{$[$Udvidelse 1: Slå digitalt filter til/fra$]$}\newline
 \textit{$[$Udvidelse 2: Juster systolens/diastolens grænseværdi$]$}
  \\\hline
@@ -262,7 +262,7 @@ De ikke-funktionelle krav er opsat efter FURPS+ metoden. De er prioriteret efter
 \item (\textbf{M}) Sundhedsfagligt personale skal kunne ændre "devicename/enhedsnavn" i dropdown på startskærmen.
 \item (\textbf{S}) Programmet skal indeholde en dropdown, hvor patienten kan vælges, på startskærmen.
 \item (\textbf{M}) Programmet skal have en "Nulpunkts indstilling" knap på hovedskærmen.
-\item (\textbf{M}) Programmet skal have en knap til at slå det digitale filter fra og til på hovedskærmen.
+\item (\textbf{M}) Programmet skal have to radiobuttons til at slå det digitale filter fra og til på hovedskærmen.
 \item (\textbf{S}) Programmet skal have knapper til at justere systolisk og diastolisk grænseværdi-intervaller op og ned, på hovedskærmen.
 \item (\textbf{S}) Programmet skal have en "Udsæt alarm" knap på hovedskærmen.
 \item (\textbf{M}) Programmet skal have en "Tænd" knap på hovedskærmen.
@@ -1673,8 +1673,8 @@ Billede indsættes - haves ikke endnu
 \begin{tabular}{|>{\raggedright\arraybackslash}p{2.5cm}| >{\raggedright\arraybackslash}p{2.9cm} | >{\raggedright\arraybackslash}p{2.9cm} | >{\raggedright\arraybackslash}p{2.9cm} | >{\raggedright\arraybackslash}p{2.8cm} |}
    \hline
    \textbf{Use case 1: Kalibrer apparat} &\textbf{Test}& \textbf{Prækondition} & \textbf{Forventet resultat} & \textbf{Godkendt/ kommentar}\\ \hline
-   Normalforløb: & Indtast den aflæste værdi for spændingen fra waveforms, og aflæs trykket fra vandsøjlens skema for det af målepunkterne fra vandsøjlen der måles på. & Blodtryksmåler-systemet er tændt, tilsluttet og startet, og tilsluttet kalibreringsudstyret (Analog Discovery og Waveforms). & Service-medarbejder foretager kalibrering. Værdierne indtastes korrekt. & \\\hline
-   & Tryk på "Kalibrering" & Blodtryksmåler-systemet er tændt og tilsluttet, og tilsluttet kalibreringsudstyret (Analog Discovery og Waveforms) og værdierne indtastet. &
+   Normalforløb: & Vælg et målepunkt på vandsøjlen. Indtast den aflæste værdi for spændingen fra waveforms, og aflæs trykket fra vandsøjlens skema for målepunktet. & Blodtryksmåler-systemet er tændt, tilsluttet og startet, og tilsluttet kalibreringsudstyret (Væskesøjle, Analog Discovery og Waveforms). & Service-medarbejder foretager kalibrering. Værdierne indtastes korrekt. & \\\hline
+   & Tryk på "Kalibrering" & Blodtryksmåler-systemet er tændt og tilsluttet, og tilsluttet kalibreringsudstyret (Væskesøjle, Analog Discovery og Waveforms) og værdierne indtastet. &
    Systemet beregner kalibreringsværdien og kalibrerer systemet, resultatet af beregningen vises på startskærmen & IKKE TESTBAR\\\hline
 \end{tabular}
 \end{table}
@@ -1686,11 +1686,9 @@ Billede indsættes - haves ikke endnu
    \hline
    \textbf{Use case 1: Kalibrer apparat} &\textbf{Test}& \textbf{Prækondition} & \textbf{Forventet resultat} & \textbf{Godkendt/ kommentar}\\ \hline
    $[$Undtagelse 1:Undlad kalibrering$]$ & Undlad kalibrering og fortsæt til Use case 2. & Blodtryksmåler-systemet er tilsluttet og tændt & Kalibreringsværdien hentes, fra den forrige måling, fra EPJ databasen. & \\\hline
-
 \end{tabular}
 \end{table}
-
-Det forudsættes for følgende Use cases (Use case 2, 3 og 4) at systemet er tilsluttet korrekt, port til DAQ er bestemt, at der er en VPN-forbindelse til "ASE IHA VPN", desuden skal der være en forbindelse til $"webhotel10.F15ST2ITS2201404669.db_{-}owner"$(Personaledatabasen) og $"webhotel10.F15ST2ITS2201405838.db_{-}owner"$ (EPJ database).
+Det forudsættes for de følgende Use cases (Use case 2, 3 og 4) at systemet er tilsluttet korrekt, porten til NI-DAQ er bestemt, at der er en VPN-forbindelse til "ASE IHA VPN", desuden skal der være en forbindelse til $"webhotel10.F15ST2ITS2201404669.db_{-}owner"$(Personaledatabasen) og $"webhotel10.F15ST2ITS2201405838.db_{-}owner"$ (EPJ database). Desuden skal blodtryksmålersystemet være tilsluttet In vitro maskinen.
 \begin{table}[H]
 \caption{Accepttest for Use case 2}\label{tab:tabel9}
 \begin{tabular}{|>{\raggedright\arraybackslash}p{2.5cm}| >{\raggedright\arraybackslash}p{2.9cm} | >{\raggedright\arraybackslash}p{2.9cm} | >{\raggedright\arraybackslash}p{2.9cm} | >{\raggedright\arraybackslash}p{2.8cm} |}
@@ -1702,7 +1700,7 @@ Det forudsættes for følgende Use cases (Use case 2, 3 og 4) at systemet er til
    & Vælg patienten "Arne Jensen" & Den sundhedsfaglige er logget på & Nyt vindue kommer frem: Hovedskærmen &\\\hline
    & Indsend atmosfærisk tryk igennem transduceren, aflæs værdien på waveforms og indtast denne korrekt & Patient valgt og blodtryksmålersystemet (transduceren) er tilsluttet & Nulpunkts-justerings værdien er indtastet korrekt &\\\hline
    & Tryk på "Nulpunkts justering" & Værdien er indtastet korrekt & Systemet starter nulpunkts justeringen. Systemet tilpasser grafen. &\\\hline
-   & Tryk på "Tænd"& Systemet er nulpunktjusteret & Systemet indhenter data fra transduceren og starter timer på hovedskærm. EKG og arterietryk præsenteres kontinuert på hver sin graf. Puls, systole, diastole og middeltryk vises som talværdier på hovedskærmen. Data gemmes automatisk kontinuert i EPJ database & \\\hline
+   & Tryk på "Tænd"& Systemet er nulpunktjusteret & Systemet indhenter data fra In vitro maskingen igennem hardwaren og starter timer på hovedskærm. EKG og arterietryk præsenteres kontinuert på hver sin graf. Puls, systole, diastole og middeltryk vises som talværdier på hovedskærmen. Data gemmes automatisk kontinuert i EPJ database & \\\hline
 \end{tabular}
 \end{table}
 
@@ -1721,7 +1719,7 @@ Det forudsættes for følgende Use cases (Use case 2, 3 og 4) at systemet er til
 \begin{tabular}{|>{\raggedright\arraybackslash}p{2.5cm}| >{\raggedright\arraybackslash}p{2.9cm} | >{\raggedright\arraybackslash}p{2.9cm} | >{\raggedright\arraybackslash}p{2.9cm} | >{\raggedright\arraybackslash}p{2.8cm} |}
    \hline
    \textbf{Use case 2: Foretag måling} &\textbf{Test}& \textbf{Prækondition} & \textbf{Forventet resultat} & \textbf{Godkendt/ kommentar}\\ \hline
-   Udvidelse 1: Slå digitalt filter til/fra:& Tryk på "Digitalt filter OFF" radiobutton & Signalet er startet og filteret er sat til pr. default & Systemet slår det digitale filter fra. De to sinus signaler (XX Hz og YY Hz) er indsendt &\\\hline
+   Udvidelse 1: Slå digitalt filter til/fra:& Tryk på "Digitalt filter OFF" radiobutton & Signalet er startet og filteret er sat til pr. default & Systemet slår det digitale filter fra. Det ses at grafen bliver ufiltreret. &\\\hline
    &Tryk på "Digitalt filter ON" radiobutton & Signalet er startet og "Digitalt filter OFF" radiobutton er valgt & Systemet slår det digitale filter til. Signalet ses udglattet. &\\\hline
 \end{tabular}
 \end{table}
@@ -1741,8 +1739,8 @@ Det forudsættes for følgende Use cases (Use case 2, 3 og 4) at systemet er til
 \begin{tabular}{|>{\raggedright\arraybackslash}p{2.5cm}| >{\raggedright\arraybackslash}p{2.9cm} | >{\raggedright\arraybackslash}p{2.9cm} | >{\raggedright\arraybackslash}p{2.9cm} | >{\raggedright\arraybackslash}p{2.8cm} |}
    \hline
    \textbf{Use case 3: Alarmér } &\textbf{Test}& \textbf{Prækondition} & \textbf{Forventet resultat} & \textbf{Godkendt/ kommentar}\\ \hline
-   Normalforløb:& Grænseværdi overskrides& Signalet er startet & Alarm starter med lyd og "Udsæt alarm" knappen blinker skiftevis mellem rød og hvid &\\\hline
-   & Grænseværdien er ikke overskredet mere & Alarmen igangsat & Alarm lyden stopper og tallet skifter farve tilbage til hvid. & \\\hline
+   Normalforløb:& Grænseværdi overskrides ved at justere grænseværdierne. & Signalet er startet & Alarm starter med lyd og "Udsæt alarm" knappen blinker skiftevis mellem rød og hvid baggrund &\\\hline
+   & Grænseværdien er ikke overskredet mere. Grænseværdi rykkes sådan at værdierne for systole og diastole ligger indenfor intervallerne. & Alarmen igangsat & Alarm lyden stopper og tallet skifter farve tilbage til hvid. & \\\hline
 \end{tabular}
 \end{table}
 
@@ -1751,7 +1749,7 @@ Det forudsættes for følgende Use cases (Use case 2, 3 og 4) at systemet er til
 \begin{tabular}{|>{\raggedright\arraybackslash}p{2.5cm}| >{\raggedright\arraybackslash}p{2.9cm} | >{\raggedright\arraybackslash}p{2.9cm} | >{\raggedright\arraybackslash}p{2.9cm} | >{\raggedright\arraybackslash}p{2.8cm} |}
    \hline
    \textbf{Use case 3: Alarmér } &\textbf{Test}& \textbf{Prækondition} & \textbf{Forventet resultat} & \textbf{Godkendt/ kommentar}\\ \hline
-   Udvidelse 1: Anden grænseværdi overskrides & Endnu en grænseværdi overskrides & Signalet er er startet og en alarm er startet & Lyd fra første alarm fortsætter. &\\\hline
+   Udvidelse 1: Anden grænseværdi overskrides & Endnu en grænseværdi overskrides & Signalet er er startet og en alarm er startet & Ingen ændring. Alarmlyden fra den forrige alarm fortsætter og knappen blinker fortsat &\\\hline
 \end{tabular}
 \end{table}
 
@@ -1760,7 +1758,7 @@ Det forudsættes for følgende Use cases (Use case 2, 3 og 4) at systemet er til
 \begin{tabular}{|>{\raggedright\arraybackslash}p{2.5cm}| >{\raggedright\arraybackslash}p{2.9cm} | >{\raggedright\arraybackslash}p{2.9cm} | >{\raggedright\arraybackslash}p{2.9cm} | >{\raggedright\arraybackslash}p{2.8cm} |}
    \hline
    \textbf{Use case 3: Alarmér } &\textbf{Test}& \textbf{Prækondition} & \textbf{Forventet resultat} & \textbf{Godkendt/ kommentar}\\ \hline
-   Udvidelse 2: Udsæt alarm & Tryk på "Udsæt alarm" knappen & Alarmering er startet & Systemet stopper alarmens lyd i et minut, Udsæt alarm knappen fortsætter med at blinke skiftevis rød og hvid indtil alarmen ikke længere er overskredet.  &\\\hline
+   Udvidelse 2: Udsæt alarm & Tryk på "Udsæt alarm" knappen & Alarmering er startet & Systemet stopper alarmens lyd i et minut, Udsæt alarm knappen fortsætter med at blinke skiftevis med rød og hvid baggrund indtil alarmen ikke længere er overskredet.  &\\\hline
 \end{tabular}
 \end{table}
 
@@ -1771,7 +1769,7 @@ Det forudsættes for følgende Use cases (Use case 2, 3 og 4) at systemet er til
    \textbf{Use case 4: Stop måling } &\textbf{Test}& \textbf{Prækondition} & \textbf{Forventet resultat} & \textbf{Godkendt/ kommentar}\\ \hline
    Normalforløb:& Tryk på "Sluk" & Målingen er foretaget & Målingen, signalet og timer på hovedskærmen stopper &\\\hline
    & Tryk på "Log ud" & Signalet er stoppet & Pop-up vindue kommer op: "Er du sikker?" &\\\hline
-   &Tryk "Ja"&Signalet og målingen er stoppet& Startskærmen kommer frem og sundhedsfaglig personale kan logge på igen sådan at ny måling kan foretages &\\\hline
+   &Tryk "Ja"&Signalet og målingen er stoppet& Startskærmen kommer frem og det sundhedsfaglig personale kan logge på igen sådan at ny måling kan foretages &\\\hline
 \end{tabular}
 \end{table}
 
@@ -1800,7 +1798,7 @@ Undtagelse 1: Tryk på "Nej" &Tryk "Nej" & Signalet og målingen er stoppet & Ko
   2.4 &Sundhedsfaglig personale skal kunne ændre "device/enhedsnavn" i dropdown på startskærm & Start program og tjek startskærm & Der er en opsætnings dropdown på startskærmen, hvor device/enhedsnavn kan ændres. & & \\\hline
   2.5 & Programmet skal indeholde en dropdown, hvor patienten kan vælges på startskærmen & Start program, log på og tjek startskærm & Startskærmen har en dropdown med patienter & & \\\hline
   2.6 & Programmet skal have en "Nulpunkts indstilling" knap på hovedskærmen & Start program og tjek hovedskærm & Der er en "Nulpunkts indstilling" knap på hovedskærmen & & \\\hline
-  2.7 & Programmet skal have en knap, til at slå det digitale filter fra og til, på hovedskærmen & Start program og tjek hovedskærm & Der er en "Digital filter" knap på hovedskærmen & & \\\hline
+  2.7 & Programmet skal have to radiobuttons, til hhv. at slå det digitale filter fra og til, på hovedskærmen & Start program og tjek hovedskærm & Der er to "Digital filter" radiobuttons på hovedskærmen & & \\\hline
   2.8 & Programmet skal have knapper, til at justere systolisk og diastolisk grænseværdiintervaller op og ned, på hovedskærmen & Start program og tjek hovedskærm & Der er ialt fire knapper, som justerer grænseværdierne på hovedskærmen & & \\\hline
   2.9 & Programmet skal have en "Udsæt alarm" knap på hovedskærmen & Start program og tjek hovedskærm & Der er en "Udsæt alarm" på hovedskærmen & & \\\hline
   2.10 & Programmet skal have en "Tænd" knap på hovedskærmen & Start program og tjek hovedskærm & Hovedskærmen har en "Tænd" kanp& & \\\hline
