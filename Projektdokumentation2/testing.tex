@@ -58,7 +58,7 @@ Af dette diagram ses de interagerende aktører: \textit{Sundhedsfaglig personale
    \hline
    Navn: & Transducer\\ \hline
    Type: & Sekundær aktør \\ \hline
-   Beskrivelse: & Transduceren er kilden til måleresultaterne, og dermed fungerer som patienten og forbindelsen til systemet. I dette tilfælde er det en in-vitro maskine, der leverer et tryk i mmHg til transduceren, som sender dette tryk videre til en forstærker, hvorefter signalet sendes igennem et lavpasfilter, for derefter at sendes ind i systemet via NI-DAQ.\\ \hline
+   Beskrivelse: & Transduceren er kilden til måleresultaterne, og fungerer dermed som patienten og forbindelsen til systemet. I dette tilfælde er det en in-vitro maskine, der leverer et tryk til transduceren, som sender dette tryk videre til en forstærker, hvorefter signalet sendes igennem et lavpasfilter, for derefter at sendes ind i systemet via NI-DAQ.\\ \hline
 \end{tabular}
 \end{table}
 \begin{table}[h!]
@@ -121,10 +121,10 @@ Programmet skal have to skærme; en startskærm, der fungerer som EPJ systemet, 
    Forudsætninger: & Blodtryksmålersystemet er tændt og tilsluttet kalibreringsudstyret.\\ \hline
    Resultat:& Apparatet er kalibreret\\ \hline
    Hovedscenarie:& 
-\textit{$[$Udvidelse 1: Undlad kalibrering$]$ } \newline
-1. Servicemedarbejder foretager kalibreringen, ved at \textit{$[$Udvidelse 1: Undlad kalibrering$]$ }indtaste spændingen og trykket for målepunktet fra væskesøjlen.\newline
+\textit{$[$Undtagelse 1: Undlad kalibrering$]$ } \newline
+1. Servicemedarbejder foretager kalibreringen, ved at indtaste spændingen og trykket for målepunktet fra væskesøjlen.\newline
 2. Systemet beregner kalibreringsværdien.\\\hline
-Udvidelse/undtagelser: & \textit{$[$Udvidelse 1:Undlad kalibrering$]$ }\newline
+Udvidelse/undtagelser: & \textit{$[$Undtagelse 1:Undlad kalibrering$]$ }\newline
 1.1 Undlad kalibrering\newline
 1.2 Fortsæt til Use case 2. \newline
 1.3 Kalibreringsværdien hentes fra den forrige måling. \\\hline
@@ -644,10 +644,10 @@ Ud fra informationerne fra domænemodellen, applikationsmodellen og sekvensdiagr
 \caption{\textbf{Heraf ses klasserne med de tilhørende attributter og metoder.}}
 \end{figure}
 \subsubsection{Metodebeskrivelse}
-Metoderne der identificeres i klassediagrammet vil her beskrives, hvor det beskrives, hvilken parameter metoden tager imod, hvilken returværdi metoden sender vider og en kort beskrivelse af metoden funktion. \\\\
+Metoderne der identificeres i klassediagrammet vil her beskrives, hvor det beskrives, hvilken parameter metoden tager imod, hvilken returværdi metoden sender videre og en kort beskrivelse af metodens funktion. Event metoderne der ikke er i klassediagrammet, vil dog her ligeledes blive beskrevet. \\\\
 \textbf{StartGUI}
 \begin{figure}[H]
-\includegraphics[width =0.5\textwidth , center]{billeder/klassediagramStart}
+\includegraphics[width =0.4\textwidth , center]{billeder/klassediagramStart}
 \caption{\textbf{Klassediagram for StartGUI.}}
 \end{figure}
 \begin{table}[H]
@@ -732,7 +732,7 @@ Metoderne der identificeres i klassediagrammet vil her beskrives, hvor det beskr
 \end{table}
 \textbf{HovedGUI}
 \begin{figure}[H]
-\includegraphics[width =0.5\textwidth , center]{billeder/klassediagramHoved}
+\includegraphics[width =0.7\textwidth , center]{billeder/klassediagramHoved}
 \caption{\textbf{Klassediagram for HovedGUI}}
 \end{figure}
 \begin{table}[H]
@@ -992,7 +992,7 @@ Metoderne der identificeres i klassediagrammet vil her beskrives, hvor det beskr
 \end{table}
 \textbf{Kalibrering}
 \begin{figure}[H]
-\includegraphics[width =0.5\textwidth , center]{billeder/klassediagramkalibrering}
+\includegraphics[width =0.4\textwidth , center]{billeder/klassediagramkalibrering}
 \caption{\textbf{Klassediagram for Kalibrering.}}
 \end{figure}
 \begin{table}[H]
@@ -1007,7 +1007,7 @@ Metoderne der identificeres i klassediagrammet vil her beskrives, hvor det beskr
 \end{table}
 \textbf{Nulpunkts\_ justering}
 \begin{figure}[H]
-\includegraphics[width =0.5\textwidth , center]{billeder/klassediagramnulpunkt}
+\includegraphics[width =0.4\textwidth , center]{billeder/klassediagramnulpunkt}
 \caption{\textbf{Klassediagram for Nulpunkts\_ justering.}}
 \end{figure}
 \begin{table}[H]
@@ -1022,7 +1022,7 @@ Metoderne der identificeres i klassediagrammet vil her beskrives, hvor det beskr
 \end{table}
 \textbf{Blodtryk}
 \begin{figure}[H]
-\includegraphics[width =0.5\textwidth , center]{billeder/klassediagramblodtryk}
+\includegraphics[width =0.4\textwidth , center]{billeder/klassediagramblodtryk}
 \caption{\textbf{Klassediagram for Blodtryk.}}
 \end{figure}
 \begin{table}[H]
@@ -1057,7 +1057,7 @@ Metoderne der identificeres i klassediagrammet vil her beskrives, hvor det beskr
 \end{table}
 \textbf{Digitalt\_ filter}
 \begin{figure}[H]
-\includegraphics[width =0.5\textwidth , center]{billeder/klassediagramdigi}
+\includegraphics[width =0.4\textwidth , center]{billeder/klassediagramdigi}
 \caption{\textbf{Klassediagram for Digitalt\_ Filter.}}
 \end{figure}
 \begin{table}[H]
@@ -1112,7 +1112,7 @@ Metoderne der identificeres i klassediagrammet vil her beskrives, hvor det beskr
 \end{table}
 \textbf{LogikLag}
 \begin{figure}[H]
-\includegraphics[width =1.0\textwidth , center]{billeder/klassediagramLogik}
+\includegraphics[width =0.7\textwidth , center]{billeder/klassediagramLogik}
 \caption{\textbf{Klassediagram for LogikLag.}}
 \end{figure}
 \begin{table}[H]
@@ -1463,7 +1463,7 @@ Metoderne der identificeres i klassediagrammet vil her beskrives, hvor det beskr
 
 \textbf{ST3DAQ}
 \begin{figure}[H]
-\includegraphics[width =0.4\textwidth , center]{billeder/klassediagramdaq}
+\includegraphics[width =0.6\textwidth , center]{billeder/klassediagramdaq}
 \caption{\textbf{Klassediagram for ST3DAQ.}}
 \end{figure}
 \begin{table}[H]
@@ -1685,7 +1685,7 @@ Billede indsættes - haves ikke endnu
 \begin{tabular}{|>{\raggedright\arraybackslash}p{2.5cm}| >{\raggedright\arraybackslash}p{2.9cm} | >{\raggedright\arraybackslash}p{2.9cm} | >{\raggedright\arraybackslash}p{2.9cm} | >{\raggedright\arraybackslash}p{2.8cm} |}
    \hline
    \textbf{Use case 1: Kalibrer apparat} &\textbf{Test}& \textbf{Prækondition} & \textbf{Forventet resultat} & \textbf{Godkendt/ kommentar}\\ \hline
-   $[$Udvidelse 1:Undlad kalibrering$]$ & Undlad kalibrering og fortsæt til Use case 2. & Blodtryksmåler-systemet er tilsluttet og tændt & Kalibrerings-værdien hentes, fra den forrige måling, fra EPJ databasen. & \\\hline
+   $[$Undtagelse 1:Undlad kalibrering$]$ & Undlad kalibrering og fortsæt til Use case 2. & Blodtryksmåler-systemet er tilsluttet og tændt & Kalibreringsværdien hentes, fra den forrige måling, fra EPJ databasen. & \\\hline
 
 \end{tabular}
 \end{table}
