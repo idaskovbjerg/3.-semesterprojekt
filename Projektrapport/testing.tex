@@ -285,37 +285,37 @@ I dette projekt blev der valgt at lave unit-test efter sidste iteration af koden
 Igennem integrationstesten og accepttesten er der opnået resultater for projektet. Igennem accepttesten er der opstillet krav til hvordan blodtryksmåler systemet skal opføre sig i forhold til Use cases, og hvordan dette kommer til udtryk visuelt. Resultaterne for projektet er visuelle resultater af accepttesten, og ses i dette afsnit som screendumps. \\\\
 I accepttesten er det første step for accepttest af Use case 1, er at vælge en værdi på vandsøjlen og kalibrer efter den. Herved skal den aflæste spænding og trykket i vandsøjlen indtastes. Når programmet starter, vises start skærmen neden for.
 \begin{figure}[H]
-\includegraphics[width =0.5\textwidth , center]{billeder/ITstartGUI}
+\includegraphics[width =0.4\textwidth , center]{billeder/ITstartGUI}
 \caption{\textbf{Startskærm uden indtastede login oplysninger.}}
 \end{figure}
 Der kan ses på figuren neden for at det er muligt at kalibrer på hovedskærmen, og at blodtryksmålersystemet selv udregner en kalibreringsværdi ud fra de indtastede oplysninger. Kalibreringsværdien udregnes først, når der er trykket på kalibreringsknappen. 
 \begin{figure}[H]
-\includegraphics[width =0.5\textwidth , center]{billeder/ITstartGUIlogKali}
+\includegraphics[width =0.4\textwidth , center]{billeder/ITstartGUIlogKali}
 \caption{\textbf{Startskærm med login oplysninger og kalibreringsværdi.}}
 \end{figure}
 Næste step i accepttesten er for Use case 2, er at indtaste brugernavnet "anpe" og koden "1234". Derefter trykkes der på login og vælge patient i patient dropdown. Inden dette er sket er der valgt den port, som DAQ’en er tilkoblet computeren i, og der er logget ind på VPN. På figuren oven for, kan der ses at der er indskrevet brugernavn og adgangskode for anpe, og der vises hvilke patienter anpe kan tilgå i Patient-dropdown. Efter at have valgt en patient i patient dropdown, kommer hovedskærmen frem. Her skal der trykkes på tænd-knappen, og derefter bliver grafen for blodtrykket vist, samt værdierne for systolen, diastolen, middeltrykket og pulsen. Det ses på figuren neden for at blodtrykket bliver vidst med filteret på, og der vises en puls værdi på 69, samt en systole på 125, en diastole på 83 og et middeltryk på 96.
 \begin{figure}[H]
-\includegraphics[width =0.5\textwidth , center]{billeder/IThovedGUIkorer}
+\includegraphics[width =0.6\textwidth , center]{billeder/IThovedGUIkorer}
 \caption{\textbf{Blodtryksmåling med det digitale slået til.}}
 \end{figure}
 Blodtryksmålersystemet skal også kunne angive hvis brugernavnet/adgangskoden ikke findes i databasen. Herved er der i accepttesten for Use case 2, indtastet brugernavnet efgh og koden 1234. Ingen af disse findes i personale databasen, og kan herved ikke bruges til at logge ind med. Som det ses på figuren neden for, er det heller ikke muligt at logge ind, og programmet giver besked om, at brugernavn og/ eller kode er indtastet forkert.
 \begin{figure}[H]
-\includegraphics[width =0.5\textwidth , center]{billeder/ITstartGUIforkert}
+\includegraphics[width =0.4\textwidth , center]{billeder/ITstartGUIforkert}
 \caption{\textbf{Brugerneavn/kode er indtastet forkert.}}
 \end{figure}
 I blodtryksmålersystemet skal det være muligt at kunne slå filteret til og fra, dette bliver testet i accepttesten ved at klikke i radiobutton for digitalt filter off. På figuren neden for, ses at det blodtrykssignalet er forvrænget, da der er kommet mere støj på signalet, herved kan det konkluderes at filteret virker. 
 \begin{figure}[H]
-\includegraphics[width =0.5\textwidth , center]{billeder/IThovedGUIkorerufiltreret}
+\includegraphics[width =0.6\textwidth , center]{billeder/IThovedGUIkorerufiltreret}
 \caption{\textbf{Blodtrykssiganelet uden digitalt filter.}}
 \end{figure}
 I accepttesten skal blodtryksmålersystemet kunne melde alarm når grænseværdierne overskrides, og grænseværdierne skal kunne ændres på hovedskærmen. På figuren neden for, ses det at grænseværdierne for systolen op og ned, er ændret til 129/89, hvor de før var sat til normal værdierne for systolen, 140/100. Blodtrykssignalet har en systoleværdi på 132, hvilket er over den nye grænseværdi på 129, og derved går alarmen i gang, som det ses med den røde alarm klokke øverst i højre hjørne af hovedskærmen. 
 \begin{figure}[H]
-\includegraphics[width =0.5\textwidth , center]{billeder/IThovedGUIAlarm}
+\includegraphics[width =0.6\textwidth , center]{billeder/IThovedGUIAlarm}
 \caption{\textbf{Grænseværdi for systole ændret og alarm igangsat.}}
 \end{figure}
 I acceptesten for Use case 4, skal der trykkes på sluk, derefter log ud og til sidst ja på pop-up vinduet. På figuren neden for, ses der at der er trykket på sluk-knappen, da den er blevet gennemsigtig, og kun tænd-knappen der kan trykkes. Log ud er blevet trykket for at bekræft pop-up vinduet er kommet frem. Herved virker log ud knappen som den skal, og der bliver gemt målingen for patienten i EPJ-databasen. Blodtryksmålingen for patienten bliver gemt løbende i EPJ-databasen. 
 \begin{figure}[H]
-\includegraphics[width =0.5\textwidth , center]{billeder/IThovedGUILogUd}
+\includegraphics[width =0.6\textwidth , center]{billeder/IThovedGUILogUd}
 \caption{\textbf{Log ud af blodtryksmålersystemet.}}
 \end{figure}
 Fra de forgående figur kan det konkluderes at blodtryksmålersystemet lever op til accepttestens krav omkring, at kunne vise et blodtrykssignalet kontinuert, samt sætte et digitalt filter til og fra. \\\\
@@ -337,7 +337,13 @@ NI-DAQmx, også omtalt NI-DAQ, er et værktøj som er blevet udarbejdet af Natio
 \subsection{Analog Discovery fra Digilent and Analog Devices}
 Analog Discovery er i projektet den der benyttes om en waveform-generator. Det er derfor Analog Discovery der benyttes til at teste systemet. Dette sker ved at der sendes et sinus signal ind i systemet, som systemet derefter skal behandle.
 \section{Opnåede erfaringer}
-- Ida
+På baggrund af vores sundhedsfaglige viden og de opsatte rammer for projektet, er der blevet opstillet en projektformulering, som er løst ved hjælp af viden omkring programmering, analog og digital signalbehandling, SysML og UML. Arbejdet har styrket vores tværfaglige kompetencer og vi har formået at skabe en teknisk løsning på et sundhedsfagligt problem.\\
+Kompetencerne inden for digital signalbehandling, er indenfor dette projekt opnået ved at udarbejde et moving average lavpasfilter. Inden det blev klart at dette lavpasfilter skulle benyttes, er flere forskellige filtre blevet afprøvet. Disse filtre er ved brug af programmet MatLab blevet afprøvet, et butterworth IIR (Infinite impulse filter) lavpas filter her blev udarbejdet. Det var dog et FIR (Finite impulse filter) lavpasfilter der skulle benyttes, hvilket førte frem til at moving average filteret blev afprøvet, hvilket virkede efter hensigt. \\
+Programmerings koden til filteret skulle herefter udarbejdes, her blev der undersøgt forskellige metoder der kunne benyttes via søgninger på internettet, hvilket sammen med at "snakke og tegne" koden førte frem til at koden kunne skrives til det digitale filter. Realiseringen af lavpasfilteret forbedrede derfor ligeledes programmeringskompetencerne. Det at "snakke og tegne" koden, blev brugt ved alle problemstillingerne i programmeringen, for at finde frem til den tilgang der skulle bruges for at løse problemet. Bl.a. ved udarbejdelse af metoden til hvordan der skulle holdes styr på den data der skulle sendes op, blev koden "snakket og tegnet" igennem inden. Idet blodtrykket skulle vises løbende, skulle der være en kømetode, som kunne indhente og udsende data løbende og samtidig holde styr på data i køen.\\
+Andre software kompetence er ligeledes blevet opnået, ved at benytte forskellige mønstre og kode opbygninger, hvor netop kombinationen af disse faktorer har ført til en bredere forståelse i programmering og hvordan et projekt logisk kan bygges godt op. Herunder hvor de forskellige metoder må ligge og hvordan klasserne må snakke sammen. \\\\
+Data der skulle sendes ind i kodes, skulle først igennem den udarbejdede hardware. Under udarbejdelsen af hardware produktet er kompetencerne inden for analog signalbehandling, blevet forbedret. Ud fra problemstillingen og projektformuleringen vidste vi hvordan signalet skulle sendes ind, her skulle kredsløbet, der skulle praktisere dette, først designes. En forstærker og et lavpasfilter skulle designes, hvilket blev gjort i forskellige fase, først igennem forskellige beregninger, som kunne føre til at bestemme komponenterne der skulle benyttes ved forstærkeren og lavpasfilteret. Herefter kunne kredsløbet designes i multisim og på fumlebræt for at se om det analyserede kredsløbet kunne realiseres. \\\\
+Det var lærerigt at give reviews til andre grupper, da vi her fik muligheden for at reflektere over, hvordan vi selv havde arbejdet med projektet og samtidig fik vi et indblik i, hvordan de andre grupper havde valgt at gribe opgaven an. Der blev udført to reviews, et review på kravspecifikation og accepttest og et review på design og specifikation af software og hardware.  Desværre har der gennem projektforløbet været en del forvirring på tværs af grupperne omkring diverse krav og fremgangsmåder vedrørende projektudførelsen, hvilket gjorde review møderne mindre udbytterige end de kunne have været.\\\\
+Projektstyringen og ledelsen må vi indse har været for svag i dette projekt. Rigtigt ville vi have benyttet SCRUM, men dette kom ikke rigtig op og køre, så opgaverne har været mere løst opsatte. Hvor vi igennem SCRUM kunne have haft identificeret mere klare opgaver og sætte en fast deadline for, hvornår opgaven skulle være færdig. Ligeledes kunne opgaverne her prioriteres sådan det også blev identificeret hvor stor opgaven er og hvor høj prioritering denne opgave har. Det må dog også erkendes at fordelingen af ressourcerne ikke har været optimalt. 
 \section{Fremtidigt arbejde}
 I dette projekt har der været flere overvejelser om hvorledes vi ønskede vores slutprodukt skulle se ud og hvilke funktioner vi efterstræbte at opfylde. Vores besøg på Herning sygehus gav os et indblik i hvordan en invasiv blodtryksmåler fungerer i praksis og hvilke funktioner der er indbygget heri. Vi ønskede altså at baserer vores system ud fra et virkeligt brugsscenarie. Dette brugte vi som udgangspunkt for vores system og vi udtænkte derfor en ide og opstillede et design, som vi ville udarbejde i vores projekt. Vores produkt skulle slutteligt kunne vise både EKG, systolisk samt diastolisk blodtryk og iltmætning. Alle værdier skulle udskrives i en graf og talværdierne vises på brugergrænsefladen. 
 \subsection{EKG-signal}

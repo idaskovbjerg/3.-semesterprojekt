@@ -56,19 +56,19 @@
 \contentsline {section}{\numberline {6.7}Udviklingsv\IeC {\ae }rkt\IeC {\o }jer}{29}{section.6.7}
 \contentsline {subsection}{Microsoft Visio 2010}{29}{subsection*.37}
 \contentsline {subsection}{Visual Studio 2013}{29}{subsection*.38}
-\contentsline {subsection}{NI Multisim 13.0 med Ultiboard 13.0}{29}{subsection*.39}
+\contentsline {subsection}{NI Multisim 13.0 med Ultiboard 13.0}{30}{subsection*.39}
 \contentsline {subsection}{NI-DAQmx}{30}{subsection*.40}
 \contentsline {subsection}{Analog Discovery fra Digilent and Analog Devices}{30}{subsection*.41}
 \contentsline {section}{\numberline {6.8}Opn\IeC {\r a}ede erfaringer}{30}{section.6.8}
-\contentsline {section}{\numberline {6.9}Fremtidigt arbejde}{30}{section.6.9}
-\contentsline {subsection}{EKG-signal}{30}{subsection*.42}
-\contentsline {subsection}{Iltm\IeC {\ae }tning}{30}{subsection*.43}
-\contentsline {subsection}{EPJ}{31}{subsection*.44}
-\contentsline {subsection}{Datawarehouse}{31}{subsection*.45}
-\contentsline {chapter}{\chapternumberline {7}Konklusion}{32}{chapter.7}
-\contentsline {chapter}{Litteratur}{33}{section*.47}
-\contentsline {section}{\numberline {7.1}Referencer}{33}{section.7.1}
-\contentsline {subsubsection}{Billeder}{33}{subsubsection*.48}
-\contentsline {subsubsection}{B\IeC {\o }ger}{33}{subsubsection*.49}
-\contentsline {subsubsection}{Internetsider}{33}{subsubsection*.50}
-\contentsline {subsubsection}{Dokumenter}{34}{subsubsection*.51}
+\contentsline {section}{\numberline {6.9}Fremtidigt arbejde}{31}{section.6.9}
+\contentsline {subsection}{EKG-signal}{31}{subsection*.42}
+\contentsline {subsection}{Iltm\IeC {\ae }tning}{31}{subsection*.43}
+\contentsline {subsection}{EPJ}{32}{subsection*.44}
+\contentsline {subsection}{Datawarehouse}{32}{subsection*.45}
+\contentsline {chapter}{\chapternumberline {7}Konklusion}{33}{chapter.7}
+\contentsline {chapter}{Litteratur}{34}{section*.47}
+\contentsline {section}{\numberline {7.1}Referencer}{34}{section.7.1}
+\contentsline {subsubsection}{Billeder}{34}{subsubsection*.48}
+\contentsline {subsubsection}{B\IeC {\o }ger}{34}{subsubsection*.49}
+\contentsline {subsubsection}{Internetsider}{34}{subsubsection*.50}
+\contentsline {subsubsection}{Dokumenter}{35}{subsubsection*.51}

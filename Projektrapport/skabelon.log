@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.15 (MiKTeX 2.9) (preloaded format=pdflatex 2015.4.2)  14 DEC 2015 10:42
+This is pdfTeX, Version 3.14159265-2.6-1.40.15 (MiKTeX 2.9) (preloaded format=pdflatex 2015.4.2)  14 DEC 2015 11:57
 entering extended mode
 **skabelon.tex
 (skabelon.tex
@@ -1619,7 +1619,7 @@ File: billeder/ITstartGUI.jpg Graphic file (type jpg)
 
 <use billeder/ITstartGUI.jpg>
 Package pdftex.def Info: billeder/ITstartGUI.jpg used on input line 288.
-(pdftex.def)             Requested size: 226.48395pt x 149.97743pt.
+(pdftex.def)             Requested size: 181.18439pt x 119.98195pt.
 
 Underfull \hbox (badness 10000) in paragraph at lines 285--290
 
@@ -1635,14 +1635,14 @@ File: billeder/ITstartGUIlogKali.jpg Graphic file (type jpg)
 <use billeder/ITstartGUIlogKali.jpg>
 Package pdftex.def Info: billeder/ITstartGUIlogKali.jpg used on input line 293.
 
-(pdftex.def)             Requested size: 226.48395pt x 147.63524pt.
+(pdftex.def)             Requested size: 181.18439pt x 118.10313pt.
 
 <billeder/IThovedGUIkorer.jpg, id=319, 1028.34187pt x 523.9575pt>
 File: billeder/IThovedGUIkorer.jpg Graphic file (type jpg)
 
 <use billeder/IThovedGUIkorer.jpg>
 Package pdftex.def Info: billeder/IThovedGUIkorer.jpg used on input line 298.
-(pdftex.def)             Requested size: 226.48395pt x 115.39093pt.
+(pdftex.def)             Requested size: 271.7835pt x 138.4803pt.
 Package babel Info: Redefining danish shorthand "|
 (babel)             in language  on input line 301.
 Package babel Info: Redefining danish shorthand "~
@@ -1654,7 +1654,7 @@ File: billeder/ITstartGUIforkert.jpg Graphic file (type jpg)
 <use billeder/ITstartGUIforkert.jpg>
 Package pdftex.def Info: billeder/ITstartGUIforkert.jpg used on input line 303.
 
-(pdftex.def)             Requested size: 226.48395pt x 151.2213pt.
+(pdftex.def)             Requested size: 181.18439pt x 120.97603pt.
 
 <billeder/IThovedGUIkorerufiltreret.jpg, id=326, 1028.34187pt x 523.9575pt>
 File: billeder/IThovedGUIkorerufiltreret.jpg Graphic file (type jpg)
@@ -1662,14 +1662,14 @@ File: billeder/IThovedGUIkorerufiltreret.jpg Graphic file (type jpg)
 <use billeder/IThovedGUIkorerufiltreret.jpg>
 Package pdftex.def Info: billeder/IThovedGUIkorerufiltreret.jpg used on input l
 ine 308.
-(pdftex.def)             Requested size: 226.48395pt x 115.39093pt.
+(pdftex.def)             Requested size: 271.7835pt x 138.4803pt.
 
 <billeder/IThovedGUIAlarm.jpg, id=327, 1028.34187pt x 524.71031pt>
 File: billeder/IThovedGUIAlarm.jpg Graphic file (type jpg)
 
 <use billeder/IThovedGUIAlarm.jpg>
 Package pdftex.def Info: billeder/IThovedGUIAlarm.jpg used on input line 313.
-(pdftex.def)             Requested size: 226.48395pt x 115.55672pt.
+(pdftex.def)             Requested size: 271.7835pt x 138.67926pt.
 Package babel Info: Redefining danish shorthand "|
 (babel)             in language  on input line 315.
 Package babel Info: Redefining danish shorthand "~
@@ -1681,7 +1681,7 @@ File: billeder/IThovedGUILogUd.jpg Graphic file (type jpg)
 
 <use billeder/IThovedGUILogUd.jpg>
 Package pdftex.def Info: billeder/IThovedGUILogUd.jpg used on input line 318.
-(pdftex.def)             Requested size: 226.48395pt x 115.7225pt.
+(pdftex.def)             Requested size: 271.7835pt x 138.87823pt.
 
 Underfull \hbox (badness 10000) in paragraph at lines 321--327
 
@@ -1720,31 +1720,50 @@ Package babel Info: Redefining danish shorthand "|
 (babel)             in language  on input line 339.
 Package babel Info: Redefining danish shorthand "~
 (babel)             in language  on input line 339.
-Package babel Info: Redefining danish shorthand "|
-(babel)             in language  on input line 341.
-Package babel Info: Redefining danish shorthand "~
-(babel)             in language  on input line 341.
-Package babel Info: Redefining danish shorthand "|
-(babel)             in language  on input line 349.
-Package babel Info: Redefining danish shorthand "~
-(babel)             in language  on input line 349.
 
+Underfull \hbox (badness 10000) in paragraph at lines 340--347
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 340--347
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 340--347
+
+ []
+
+Package babel Info: Redefining danish shorthand "|
+(babel)             in language  on input line 347.
+Package babel Info: Redefining danish shorthand "~
+(babel)             in language  on input line 347.
 [30]
 Package babel Info: Redefining danish shorthand "|
-(babel)             in language  on input line 361.
+(babel)             in language  on input line 347.
 Package babel Info: Redefining danish shorthand "~
-(babel)             in language  on input line 361.
+(babel)             in language  on input line 347.
+Package babel Info: Redefining danish shorthand "|
+(babel)             in language  on input line 355.
+Package babel Info: Redefining danish shorthand "~
+(babel)             in language  on input line 355.
  [31]
 Package babel Info: Redefining danish shorthand "|
-(babel)             in language  on input line 361.
+(babel)             in language  on input line 367.
 Package babel Info: Redefining danish shorthand "~
-(babel)             in language  on input line 361.
+(babel)             in language  on input line 367.
+ [32]
+Package babel Info: Redefining danish shorthand "|
+(babel)             in language  on input line 367.
+Package babel Info: Redefining danish shorthand "~
+(babel)             in language  on input line 367.
 )
 Package babel Info: Redefining danish shorthand "|
 (babel)             in language  on input line 62.
 Package babel Info: Redefining danish shorthand "~
 (babel)             in language  on input line 62.
- [32
+ [33
 
 ] (bibliotek.tex
 Package babel Info: Redefining danish shorthand "|
@@ -1818,7 +1837,7 @@ Package babel Info: Redefining danish shorthand "|
 (babel)             in language  on input line 29.
 Package babel Info: Redefining danish shorthand "~
 (babel)             in language  on input line 29.
-[33
+[34
 
 
 
@@ -1827,7 +1846,7 @@ Package babel Info: Redefining danish shorthand "|
 (babel)             in language  on input line 65.
 Package babel Info: Redefining danish shorthand "~
 (babel)             in language  on input line 65.
- [34]
+ [35]
 Package babel Info: Redefining danish shorthand "|
 (babel)             in language  on input line 68.
 Package babel Info: Redefining danish shorthand "~
@@ -1844,10 +1863,10 @@ Package rerunfilecheck Info: File `skabelon.out' has not changed.
 Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 71.
  ) 
 Here is how much of TeX's memory you used:
- 12538 strings out of 493698
- 179762 string characters out of 3141969
+ 12540 strings out of 493698
+ 179790 string characters out of 3141969
  320568 words of memory out of 3000000
- 15502 multiletter control sequences out of 15000+200000
+ 15504 multiletter control sequences out of 15000+200000
  71866 words of font info for 59 fonts, out of 3000000 for 9000
  1025 hyphenation exceptions out of 8191
  46i,11n,37p,1605b,529s stack positions out of 5000i,500n,10000p,200000b,50000s
@@ -1867,9 +1886,9 @@ Files (x86)/MiKTeX 2.9/fonts/type1/public/lm/lmri10.pfb><C:/Program Files (x86)
 /MiKTeX 2.9/fonts/type1/public/lm/lmro10.pfb><C:/Program Files (x86)/MiKTeX 2.9
 /fonts/type1/public/lm/lmsy10.pfb><C:/Program Files (x86)/MiKTeX 2.9/fonts/type
 1/public/lm/lmtt10.pfb>
-Output written on skabelon.pdf (37 pages, 1661206 bytes).
+Output written on skabelon.pdf (38 pages, 1664787 bytes).
 PDF statistics:
- 471 PDF objects out of 1000 (max. 8388607)
+ 474 PDF objects out of 1000 (max. 8388607)
  105 named destinations out of 1000 (max. 500000)
  296 words of extra memory for PDF output out of 10000 (max. 10000000)
 
