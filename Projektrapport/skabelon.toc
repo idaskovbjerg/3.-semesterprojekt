@@ -11,7 +11,7 @@
 \contentsline {section}{\numberline {5.1}Akt\IeC {\o }rbeskrivelse}{11}{section.5.1}
 \contentsline {subsection}{Sundhedsfaglig personale}{11}{subsection*.2}
 \contentsline {subsection}{Transducer}{11}{subsection*.3}
-\contentsline {subsection}{EKG-patient}{12}{subsection*.4}
+\contentsline {subsection}{EKG-patient}{11}{subsection*.4}
 \contentsline {subsection}{Servicemedarbejder}{12}{subsection*.5}
 \contentsline {subsection}{EPJ database}{12}{subsection*.6}
 \contentsline {subsection}{Personale database}{12}{subsection*.7}
@@ -56,7 +56,7 @@
 \contentsline {section}{\numberline {6.7}Udviklingsv\IeC {\ae }rkt\IeC {\o }jer}{29}{section.6.7}
 \contentsline {subsection}{Microsoft Visio 2010}{29}{subsection*.37}
 \contentsline {subsection}{Visual Studio 2013}{29}{subsection*.38}
-\contentsline {subsection}{NI Multisim 13.0 med Ultiboard 13.0}{30}{subsection*.39}
+\contentsline {subsection}{NI Multisim 13.0 med Ultiboard 13.0}{29}{subsection*.39}
 \contentsline {subsection}{NI-DAQmx}{30}{subsection*.40}
 \contentsline {subsection}{Analog Discovery fra Digilent and Analog Devices}{30}{subsection*.41}
 \contentsline {section}{\numberline {6.8}Opn\IeC {\r a}ede erfaringer}{30}{section.6.8}
