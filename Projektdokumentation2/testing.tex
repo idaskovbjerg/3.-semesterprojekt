@@ -1,12 +1,12 @@
 \chapter{Indledning}
-Gennem dette projekt ønskes der at skabe et produkt, som kan måle systole og diastole og præsentere disse i en graf, samt visuelt præsentere pågældende værdier. Dette ønskes at blive vist i en brugervenlig blodtryksmåler, som følger de standarder vi har fået oplyst, gennem samtale med en anæstesi sygeplejerske fra Herning Sygehus. 
+Gennem dette projekt ønskes der at skabe et produkt, som kan måle blodtrykket for en patient. Produktet skal vise blodtrykskurven og herudfra bestemme systole og diastole og visuelt præsentere pågældende værdier. Dette ønskes vist i en brugervenlig blodtryksmåler, som følger de standarder vi har fået oplyst, gennem samtale med anæstesi sygeplejerske Charlotte Høj fra Herning Sygehus. 
 \\\\
-Blodtrykket er det tryk, som blodet udøver på karvæggen i arterierne, når det pumpes rundt i kroppen. Systolen måles når venstre hjertekammer trækker sig sammen og som resultat herfra pumpes blodet rundt i kroppen. Diastolen er hvilefasen, og denne indtræder når hjertet hviler mellem slagene. I klinisk praksis måles dette blodtryk invasivt, og blodtryksmåleren er koblet til patientens arterier gennem et væskefyldt kateter. I dette projekt er der ikke brugt en patient, men der udviklet et elektronisk kredsløb, hvor transduceren forestiller at være patient.
+Blodtrykket er det tryk, som blodet udøver på karvæggen i arterierne, når det pumpes rundt i kroppen. Systolen måles når venstre hjertekammer trækker sig sammen og som resultat herfra pumpes blodet rundt i kroppen. Diastolen er hvilefasen, og denne indtræder når hjertet hviler mellem slagene. I klinisk praksis måles dette blodtryk invasivt, og blodtryksmåleren er koblet til patientens arterier gennem et væskefyldt kateter. I dette projekt er der ikke brugt en patient, men der udviklet et elektronisk kredsløb, hvor en In vitro maskine simulerer en patient.
 \\\\
-Vi har i starten af projektet gjort os nogle tanker og ideer, som vi ønskede implementeret i vores færdigudviklede system. Gennem arbejdsprocessen har vi løbende fået ny viden og gennem en innovativ proces, har vi udarbejdet et produkt, som levet op til de forventninger vi har haft til vores produkt. Vi vil i denne dokumentation kommentere på de valg og fravalg der har måttet være gennem procesforløbet.  
+I starten af projektet blev der gjort nogle tanker og ideer om produktet, som vi ønskede implementeret i det færdigudviklede system. Gennem arbejdsprocessen er der løbende kommet ny viden og gennem en innovativ proces, er der blevet udarbejdet et produkt, som lever op til de forventninger der har været til produktet. I denne dokumentation kommenteres der på de valg og fravalg der har måttet være gennem procesforløbet.  
 \\\\
-Ud fra viden omkring digital og analog signalbehandling, samt sundhedsfaglig viden omkring blodtryk og programmeringsmæssige færdigheder er protypen af produktet blevet til. Protypen består af en hardware del, der er baseret på et anden ordens butterworth sallen-key filter og operationsforstærker, og en software del der er basseret på algortimer til at udregne systole, diastole og middeltryk. Samt præsenter blodtrykket i en graf på brugergrænsefladen sammen med værdier for blodtrykket.\\
-Denne dokumentation vil præsentere vores kravspecifikation for vores produkt. Der vil efterfølgende beskrives arkitektur, herunder SysML og UML diagrammer samt design af henholdsvis software og hardware. Der vil i denne dokumentation fremgå test af hardware og software, i form af modultest og unitest. Der vil i denne dokumentation også fremgå accepttest, som er lavet på bagrund af kravspecifikationen. Til sidst i denne dokumentation vil der fremgå bilag. 
+Ud fra viden omkring digital og analog signalbehandling, samt sundhedsfaglig viden omkring blodtryk og programmeringsmæssige færdigheder er protypen af produktet blevet til. Protypen består af en hardware del, der er baseret på et anden ordens butterworth sallen-key filter og operationsforstærker, og en software del, der er baseret på algoritmer til at udregne systole, diastole og middeltryk. Produktet kan præsentere blodtrykket i en graf på brugergrænsefladen sammen med værdierne for systole, diastole og middeltryk.\\
+Denne dokumentation vil præsentere vores kravspecifikation for produktet. Efterfølgende beskrives arkitektur, herunder SysML og UML diagrammer, samt design af henholdsvis software og hardware. I denne dokumentation fremgår test af hardware og software, i form af modultest og unittest. Der vil i dokumentationen også fremgå en accepttest, som er lavet på bagrund af kravspecifikationen. Til sidst i denne dokumentation vil der fremgå bilag. 
 \chapter{Kravspecifikation}
 \section{Godkendelsesformular}
 \begin{table}[h!]
@@ -15,7 +15,7 @@ Denne dokumentation vil præsentere vores kravspecifikation for vores produkt. D
    \hline
    \textbf{Forfattere} & Ida, Line, Mette, Brian, Mohamed og Khaled\\ \hline
    \textbf{Godkendes af:} & Samuel Alberg Thrysøe\\ \hline
-   \textbf{Antal sider:} & \\ \hline
+   \textbf{Antal sider:} & 9 \\ \hline
    \textbf{Kunde:} & IHA\\ \hline
 \end{tabular}
 \end{table}
@@ -35,11 +35,12 @@ Kundens underskrift &&&&&&&&&&Leverandørens underskrift\\
 Denne kravspecifikation er blevet udarbejdet på baggrund af krav fra kunden, samt hvad leverandøren finder muligt. Kravspecifikationens formål er at specificere de krav, der er til produktet. 
 \newpage
 \section{Systembeskrivelse}
-Det er blevet besluttet ud fra projektformuleringen at udvikle et blodtryksmålersystem som en prototype med perspektivering til fremtidigt arbejde. Blodtryksmålersystemet ønskes ideelt at kunne måle blodtryk, EKG og iltmætning for en patient. Ud fra blodtrykket findes systolisk, diastolisk og middeltryks værdier, dette gøres ved at finde den maksimale værdi (systole) og den minimale værdi (diastole) for blodtrykskurven. Ud fra disse to værdier bestemmes middeltrykket, dette gøres ved formlen: $middeltryk = 1/3 \cdot systole + 2/3 \cdot diastole$. \cite{blodtrykwiki}
-\\ Ud fra EKG-signalet kan pulsen bestemmes, dette gøres ved at bestemme antallet af R-takker på et minut. Desuden kan pulsen bestemmes ud fra blodtrykket, da pulsen her er antallet af systoliske/diastoliske værdier på et minut. Iltmætningen er mængden af ilt i blodet. For at kunne bestemme denne værdi skal et eksternt produkt benyttes. Dette produkt skal ved hjælp en infrarød sensor bestemme iltmætningen i blodet, dette bliver ikke implementeret i denne prototype.\\\\
+Det er blevet besluttet ud fra projektformuleringen at udvikle et blodtryksmålesystem som en prototype med perspektivering til fremtidigt arbejde. Blodtryksmålesystemet ønskes ideelt at kunne måle blodtryk, EKG og iltmætning for en patient. Ud fra blodtrykket findes systolisk, diastolisk og middeltryks værdier, dette gøres ved at finde den maksimale værdi (systole) og den minimale værdi (diastole) for blodtrykskurven. Ud fra disse to værdier bestemmes middeltrykket, dette gøres ved formlen: $middeltryk = 1/3 \cdot systole + 2/3 \cdot diastole$. \cite{blodtrykwiki}
+\\ 
+Ud fra EKG-signalet kan pulsen bestemmes, dette gøres ved at bestemme antallet af R-takker på et minut. Desuden kan pulsen bestemmes ud fra blodtrykket, da pulsen her er antallet af systoliske værdier på et minut. Iltmætningen er mængden af ilt i blodet. For at kunne bestemme denne værdi skal et eksternt produkt benyttes. Dette produkt skal ved hjælp en infrarød sensor bestemme iltmætningen i blodet, dette bliver ikke implementeret i denne prototype.\\\\
 Forudsætninger for brug af systemet er, at det skal køres på en computer, samt overholde de opstillede krav. Systemet er opbygget af en hardwaredel og en softwaredel. \\\\
-Hardwaredelen består af et aktivt 2. Ordens Butterworth Sallen-Key lavpasfilter, samt en forstærker. Forstærkeren modtager et signal fra den udleverede transducer, dette signal forstærkes op. Signalet sendes videre til lavpasfilteret hvor alle frekvenser over 50Hz bliver dæmpet. Her fra sendes signalet ind i dataopsamlingsenheden NI-DAQ.\\\\
-Softwaredelen består af et window forms program udviklet i C\# .net, programmet skal kunne præsentere data indhentet fra DAQ’en. Ligeledes skal programmet kunne analysere og filtrere data fra DAQ’en, samt gemme disse i en "EPJ"-database. Programmet skal også kunne hente login-oplysninger fra en "personale"-database. \\
+Hardwaredelen består af et aktivt 2. Ordens Butterworth Sallen-Key lavpasfilter, samt en forstærker. Forstærkeren modtager et signal fra den udleverede tryktransducer, dette signal forstærkes op. Signalet sendes videre til lavpasfilteret, hvor alle frekvenser over 50Hz bliver dæmpet. Her fra sendes signalet ind i dataopsamlingsenheden NI-DAQ.\\\\
+Softwaredelen består af et windows forms program udviklet i C\# .net, programmet skal kunne præsentere data indhentet fra DAQ’en. Ligeledes skal programmet kunne analysere og filtrere data fra DAQ’en, samt gemme disse i en "EPJ"-database. Programmet skal også kunne hente login-oplysninger fra en "personale"-database. \\
 Man har valgt at have to databaser for at simulere, at der er en adskillelse af medarbejderdata og patientdata.
 \begin{figure}[H]
 \includegraphics[width =0.8\textwidth , center]{billeder/system}
@@ -57,7 +58,7 @@ Af dette diagram ses de interagerende aktører: \textit{Sundhedsfaglig personale
    \hline
    Navn: & Sundhedsfaglig personale\\ \hline
    Type: & Primær aktør \\ \hline
-   Beskrivelse: & Det sundhedsfaglige personale er aktøren, der sætter måleudstyret til transduceren, samt starter målingen. Det er det sundhedsfaglige personale, der interagerer med systemet og dermed har tilgang til de viste målinger på brugergrænsefladerne (startskærm og hovedskærm).\\ \hline
+   Beskrivelse: & Det sundhedsfaglige personale er aktøren, der sætter måleudstyret til In vitro maskinen, samt starter målingen. Det er det sundhedsfaglige personale, der interagerer med systemet og dermed har tilgang til de viste målinger på brugergrænsefladerne (startskærm og hovedskærm).\\ \hline
 \end{tabular}
 \end{table}
 \begin{table}[h!]
@@ -65,7 +66,7 @@ Af dette diagram ses de interagerende aktører: \textit{Sundhedsfaglig personale
    \hline
    Navn: & Transducer\\ \hline
    Type: & Sekundær aktør \\ \hline
-   Beskrivelse: & Transduceren er kilden til måleresultaterne, og fungerer dermed som patienten og forbindelsen til systemet. I dette tilfælde er det en in-vitro maskine, der leverer et tryk til transduceren, som sender dette tryk videre til en forstærker, hvorefter signalet sendes igennem et lavpasfilter, for derefter at sendes ind i systemet via NI-DAQ.\\ \hline
+   Beskrivelse: & Transduceren er kilden til måleresultaterne, og fungerer dermed som patienten og forbindelsen til systemet. I dette tilfælde er det en In vitro maskine, der leverer et tryk til tryktransduceren, som sender dette tryk videre til en forstærker, hvorefter signalet sendes igennem et lavpasfilter, for derefter at sendes ind i computeren via NI-DAQ.\\ \hline
 \end{tabular}
 \end{table}
 \begin{table}[h!]
@@ -89,7 +90,7 @@ Af dette diagram ses de interagerende aktører: \textit{Sundhedsfaglig personale
    \hline
    Navn: & EPJ database\\ \hline
    Type: & Sekundær aktør \\ \hline
-   Beskrivelse: & EPJ database er den database, hvor patientdata ligger, samt der hvori analyseresultaterne, der opnås ved målingerne i systemet, samt signalerne bliver gemt. Disse data er grafer for EKG, arterietryk, samt talværdier for puls, systole, diastole og middeltryk. Denne EPJ database skal simulere den EPJ database der fungere på sygehusene i virkeligheden.\\ \hline
+   Beskrivelse: & EPJ database er den database, hvor patientdata ligger, samt der hvori analyseresultaterne, der opnås ved målingerne i systemet, samt signalerne bliver gemt. Disse data er grafer for EKG, blodtryk, samt talværdier for puls, systole, diastole og middeltryk. Denne EPJ database skal simulere den EPJ database der fungerer på sygehusene i virkeligheden.\\ \hline
 \end{tabular}
 \end{table}
 \begin{table}[h!]
@@ -107,13 +108,13 @@ Af dette diagram ses de interagerende aktører: \textit{Sundhedsfaglig personale
 \caption{\textbf{Use case diagram}}
 \end{figure}
 De fire Use cases kan ses ud fra Use case diagrammet, disse er: \textit{Kalibrér apparat}, \textit{Foretag måling}, \textit{Alarmér} og \textit{Stop måling}. Hver enkel af disse Use cases beskrives detaljeret herunder i et fully-dressed Use case skema.\\
-Systemet består af en computer med programkode, en NI-DAQ samt hardware. Hardwaren består af et lavpasfilter, en forstærker og en transducer desuden er der hertil tilkoblet to 9 V batterier.
+Systemet består af en computer med programkode, en NI-DAQ samt hardware. Hardwaren består af et lavpasfilter, en forstærker og en tryktransducer desuden er der hertil tilkoblet to 9 V batterier.
 \\
 Systemet gør det muligt at hente data fra det væskefylde kateter via tryktransduceren. Data går herefter fra tryktransduceren igennem forstærkeren, hvilken bliver forsynet af spænding fra to 9 V batterier. Det forstærkede signal fra forstærkeren går videre til lavpasfilteret og derefter ind i NI-DAQ, som så sender data videre til computeren og ind i programkoden. 
 \\ 
 Det digitale filter er pr. default slået til når systemet startes, dog vil det være muligt at slå dette filter fra under målingen.\\
 Når programmet startes skal computeren have VPN-forbindelse til "ASE IHA VPN", desuden skal der være en forbindelse til $"webhotel10.F15ST2ITS2201404669.db_{-}owner"$(Personaledatabasen) og $"webhotel10.F15ST2ITS2201405838.db_{-}owner"$ (EPJ database).\\\\
-Programmet skal have to skærme; en startskærm, der fungerer som EPJ systemet, og en hovedskærm, der fungerer som selve blodtryksmålerens grænseflade.
+Programmet skal have to skærme; en startskærm, der fungerer som EPJ systemet (EPJ computer), og en hovedskærm, der fungerer som selve blodtryksmålerens grænseflade (monitoren).
 
 \begin{table}[H]
 \caption{Use case 1}\label{tab:tabel4}
@@ -125,7 +126,7 @@ Programmet skal have to skærme; en startskærm, der fungerer som EPJ systemet, 
    Aktører:& Servicemedarbejder (primær)\\ \hline
    Referencer: & - \\ \hline
    Samtidige forekomster: & én kalibrering pr. apparat \\\hline
-   Forudsætninger: & Blodtryksmålersystemet er tændt og tilsluttet kalibreringsudstyret.\\ \hline
+   Forudsætninger: & Blodtryksmålesystemet er tændt og tilsluttet kalibreringsudstyret.\\ \hline
    Resultat:& Apparatet er kalibreret\\ \hline
    Hovedscenarie:& 
 \textit{$[$Undtagelse 1: Undlad kalibrering$]$ } \newline
@@ -446,7 +447,7 @@ R_G=62.5\Omega
 Et potentiometer er blevet valgt at benytte som denne modstand, da der helst skulle kunne reguleres på systemet, og den ovenstående værdi er beregnet med ideelle komponenter.
 \subsection{Implementering}
 \subsubsection{Block definition diagram}
-På nedenstående figur bliver systemets hardware illustreret i et BDD. Heraf ses det at systemet har seks hardware blokke: Computer, transducer, NI-DAQ, lavpas filter, forstærker og en strømforsyning. Disse blokke udgør tilsammen blodtryksmålersystemet.
+På nedenstående figur bliver systemets hardware illustreret i et BDD. Heraf ses det at systemet har seks hardware blokke: Computer, transducer, NI-DAQ, lavpas filter, forstærker og en strømforsyning. Disse blokke udgør tilsammen blodtryksmålesystemet.
 \begin{figure}[H]
 \includegraphics[width =1.0\textwidth , center]{billeder/BDD}
 \caption{\textbf{Block definition diagram. Dette diagram viser hardware delene i systemet, samt sammenhængen mellem disse.}}
@@ -569,17 +570,17 @@ Ud fra alle disse faktorer kan grundstrukturen, til hvordan startskærmen og hov
 Først skal der klarlægges hvilke klasser som systemet skal bestå af, hvilket er det første skridt i processen. For at kunne identificere disse klasse udarbejdes en domænemodel, hvilken har sit udgangspunkt i Use cases. Det er i de konceptuelle klasser fra Use cases som indeholder den information som systemet skal holde styr på. Derfor findes de konceptuelle klasser i Use cases og disse indføres i domænemodellen som klasser. Domænemodellen opstilles derfor for at finde frem til hvad problemstillingen i forhold til softwaren er med henhold til, hvad der skal holdes styr på.
 \begin{figure}[H]
 \includegraphics[width =1.0\textwidth , center]{billeder/DM}
-\caption{\textbf{Domænemodel for blodtryksmålersystemet.}}
+\caption{\textbf{Domænemodel for blodtryksmålesystemet.}}
 \end{figure}
 Denne domænemodel viser det sundhedsfaglige personales interaktion med systemet, samt hvilke handlinger der startes af denne interaktion. Det sundhedsfaglige personale udfører en handling, der medfører, at en række processer igangsættes i systemet. Disse processer sørger for at hente data fra transduceren og EKG patient, samt sørger for at starte beregningen af puls, systolisk, diastolisk og middeltryks værdierne. Efter beregningerne viser systemet disse værdier på brugergrænsefladen, samt sørger for at disse data bliver gemt i en database.
 \newpage
 \subsection{Klasseidentifikation}
 \subsubsection{Applikationsmodel}
 Ud fra domænemodellen kan en applikationsmodel opstilles. Denne model tager afsæt i domænemodellens klasser. Dette betyder derfor at denne model således også tager udgangspunkt i alle Use cases.\\
-Modellen bruges til at bestemme de interagerende klasser i blodtryksmålersystemet.\\
+Modellen bruges til at bestemme de interagerende klasser i blodtryksmålesystemet.\\
 \begin{figure}[H]
 \includegraphics[width =1.0\textwidth , center]{billeder/appModel}
-\caption{\textbf{Applikationsmodel for blodtryksmålersystemet.}}
+\caption{\textbf{Applikationsmodel for blodtryksmålesystemet.}}
 \end{figure}
 Ud fra denne model ses klasserne og databaserne, der skal implementeres i softwaren, samt interaktionen mellem disse. Altså hvordan klasserne taler sammen på kryds og tværs. Idet det vides at trelagsmodellen skal benyttes, kan applikationsmodellen bruges til at identificere hvor disse klasser ligger i det tilhørende lag. Databaserne vil være en boundary klasse (grænse klasse) og vil blive tilgået fra datalaget. Domain klasserne (domæne klasse) er de klasser der skal ligge i logiklaget og det er disse klasser der findes fra domænemodellen. I præsentationslaget ligger startskærmen og hovedskærmen, som også er grænseklasser, herfra vil de blive præsenteret for det sundhedsfalige personale. Control klasserne (kontrol klasserne) er systemets Use cases. Grænse klasserne er de klasser der repræsentere aktørerne fra Use casene og disse aktøreres grænseflader. Domæne klasserne er de klasser hvori data bliver behandlet og bearbejdet. Kontrol klasserne er de klasser der udfører Use casene ved at interagere med grænse og domæne klasserne. \\\\
 \textbf{Trelagsmodellen} \\
@@ -613,36 +614,36 @@ Det sidste projekt PulsMaalerSystem.DTOlag består af tre klasser: Grænseværdi
 Nedenfor er vist sekvensdiagrammer for systemet. Der er lavet sekvens diagrammer for alle Use case. Vores Use cases er henholdsvis Use case 1: Kalibrér apparat, Use case 2: Foretag måling, Use case 3: Alarmér og Use case 4: Stop måling. Sekvens diagrammet er et interaktionsdiagram, som viser hvorledes processerne forløber i forhold til hinanden. Ud fra sekvensdiagrammerne kan det altså ses hvornår og hvordan de forskellige dele i systemet forløber og interagerer. \\
 \begin{figure}[H]
 \includegraphics[width =0.8\textwidth , center]{billeder/sdUC1}
-\caption{\textbf{Sekvensdiagram for blodtryksmålersystemet. Denne viser adfærden for Use case 1 }}
+\caption{\textbf{Sekvensdiagram for blodtryksmålesystemet. Denne viser adfærden for Use case 1 }}
 \end{figure}
-I sekvens diagrammet for Use case 1 interagerer servicemedarbejder med blodtryksmålersystemet. Her er det servicemedarbejderen som starter kalibreringen og blodtryksmålersystemet som foretager kalibreringen igennem lagene og klassen Kalibring. Her ses det at servicemedarbejderen indtaster værdierne der aflæses for tryk og spænding, hvorefter der trykkes på knappen, hvorefter systemet foretager beregningen for kalibreringen. 
+I sekvens diagrammet for Use case 1 interagerer servicemedarbejder med blodtryksmålesystemet. Her er det servicemedarbejderen som starter kalibreringen og blodtryksmålesystemet som foretager kalibreringen igennem lagene og klassen Kalibring. Her ses det at servicemedarbejderen indtaster værdierne der aflæses for tryk og spænding, hvorefter der trykkes på knappen, hvorefter systemet foretager beregningen for kalibreringen. 
 \begin{figure}[H]
 \includegraphics[width =0.8\textwidth , center]{billeder/sdUC2}
-\caption{\textbf{Sekvensdiagram for blodtryksmålersystemet. Denne viser adfærden for Use case 2, del 1 af 4}}
+\caption{\textbf{Sekvensdiagram for blodtryksmålesystemet. Denne viser adfærden for Use case 2, del 1 af 4}}
 \end{figure}
 \begin{figure}[H]
 \includegraphics[width =1.0\textwidth , center]{billeder/sdUC2_2}
-\caption{\textbf{Sekvensdiagram for blodtryksmålersystemet. Denne viser adfærden for Use case 2, del 2 af 4}}
+\caption{\textbf{Sekvensdiagram for blodtryksmålesystemet. Denne viser adfærden for Use case 2, del 2 af 4}}
 \end{figure}
 \begin{figure}[H]
 \includegraphics[width =1.0\textwidth , center]{billeder/sdUC2_3}
-\caption{\textbf{Sekvensdiagram for blodtryksmålersystemet. Denne viser adfærden for Use case 2, del 3 af 4}}
+\caption{\textbf{Sekvensdiagram for blodtryksmålesystemet. Denne viser adfærden for Use case 2, del 3 af 4}}
 \end{figure}
 \begin{figure}[H]
 \includegraphics[width =0.7\textwidth , center]{billeder/sdUC2_4}
-\caption{\textbf{Sekvensdiagram for blodtryksmålersystemet. Denne viser adfærden for Use case 2, del 4 af 4}}
+\caption{\textbf{Sekvensdiagram for blodtryksmålesystemet. Denne viser adfærden for Use case 2, del 4 af 4}}
 \end{figure}
-I sekvens diagrammet for Use case 2 ønsker det sundhedsfaglig personale at foretage en blodtryksmåling, dette gøres ved at det sundhedsfaglig personale interagerer med blodtryksmålersystemet. For at målingen forløber, foregår den videre interaktion via blodtryksmålersystemet og de klasser, som indgår i Use casen. Transducer, EKG patient sender sine data til datalaget, EPJ database og Personale database får sine data fra datalaget. I dette sekvens diagram ses det sundhedsfaglige personales interaktion med blodtryksmålersystemet. Denne interaktion igangsætter processerne, som medfører at blodtryksmålingen forløber. Det ses også, at præsentationslaget, som er vores blodtryksmålersystem, kommunikerer med logiklaget og logiklaget kommunikerer med datalag, altså er trelagsmodellen opfyldt, idet datalaget ikke direkte kan kommunikere med præsentationslaget, men skal igennem logiklaget. \\\\
+I sekvens diagrammet for Use case 2 ønsker det sundhedsfaglig personale at foretage en blodtryksmåling, dette gøres ved at det sundhedsfaglig personale interagerer med blodtryksmålesystemet. For at målingen forløber, foregår den videre interaktion via blodtryksmålesystemet og de klasser, som indgår i Use casen. Transducer, EKG patient sender sine data til datalaget, EPJ database og Personale database får sine data fra datalaget. I dette sekvens diagram ses det sundhedsfaglige personales interaktion med blodtryksmålesystemet. Denne interaktion igangsætter processerne, som medfører at blodtryksmålingen forløber. Det ses også, at præsentationslaget, som er vores blodtryksmålesystem, kommunikerer med logiklaget og logiklaget kommunikerer med datalag, altså er trelagsmodellen opfyldt, idet datalaget ikke direkte kan kommunikere med præsentationslaget, men skal igennem logiklaget. \\\\
 \begin{figure}[H]
 \includegraphics[width =0.8\textwidth , center]{billeder/sdUC3}
-\caption{\textbf{Sekvensdiagram for blodtryksmålersystemet. Denne viser adfærden for Use case 3}}
+\caption{\textbf{Sekvensdiagram for blodtryksmålesystemet. Denne viser adfærden for Use case 3}}
 \end{figure}
-I dette sekvens diagram for Use case 3 tjekker logiklaget hvorvidt grænseværdierne for systole og diastole er overskredet. Hvis en grænseværdi overskrides starter alarmeringen. I denne Use case har det sundhedsfaglig personale mulighed for at udsætte alarmen, dette sker ved en interaktion mellem sundhedsfaglig personale og blodtryksmålersystemet.\\\\ 
+I dette sekvens diagram for Use case 3 tjekker logiklaget hvorvidt grænseværdierne for systole og diastole er overskredet. Hvis en grænseværdi overskrides starter alarmeringen. I denne Use case har det sundhedsfaglig personale mulighed for at udsætte alarmen, dette sker ved en interaktion mellem sundhedsfaglig personale og blodtryksmålesystemet.\\\\ 
 \begin{figure}[H]
 \includegraphics[width =1.0\textwidth , center]{billeder/sdUC4}
-\caption{\textbf{Sekvensdiagram for blodtryksmålersystemet. Denne viser adfærden for Use case 4}}
+\caption{\textbf{Sekvensdiagram for blodtryksmålesystemet. Denne viser adfærden for Use case 4}}
 \end{figure}
-I sekvens diagrammet for Use case 4 ønsker sundhedsfaglig personale, at stoppe målingen. Dette gøres ved, at sundhedsfaglig personale interagerer med blodtryksmålersystemet i præsentationslaget. Denne interaktion medfører en videre kommunikation mellem logiklaget og datalaget, som medfører at DAQ'en ikke længere henter data fra transduceren. Når blodtryksmålingen er afsluttet kan det sundhedsfaglige personale logge ud. 
+I sekvens diagrammet for Use case 4 ønsker sundhedsfaglig personale, at stoppe målingen. Dette gøres ved, at sundhedsfaglig personale interagerer med blodtryksmålesystemet i præsentationslaget. Denne interaktion medfører en videre kommunikation mellem logiklaget og datalaget, som medfører at DAQ'en ikke længere henter data fra transduceren. Når blodtryksmålingen er afsluttet kan det sundhedsfaglige personale logge ud. 
 \subsubsection{Klassediagram}
 Ud fra domænemodellen er der fundet ud af hvilke klasser blodtrykssystemet skal bestå af. Ud fra applikationsmodellen er samhørigheden af klasserne bestemt. Der skal være lav kobling og høj samhørighed, dette betyder at klasserne ikke må være koblet sammen på tværs i de forskellige lag. Ud fra sekvensdiagrammerne analyseres det hvilke metoder, der tilhører hvilke klasse.\\\\
 Ud fra informationerne fra domænemodellen, applikationsmodellen og sekvensdiagrammet kan der laves et klassediagram, der indeholder attributterne og metoderne for hver klasse fra domænemodellen.
@@ -1679,7 +1680,7 @@ På figuren neden for, ses det at signalet der vises på brugergrænsefladen, mi
   \begin{minipage}{0.45\textwidth}
     \centering
       \includegraphics[width=\textwidth]{billeder/integrationstest_opstilling}
-      \caption{\textbf{Blodtryksmålersystemet der viser et blodtrykssignal}}
+      \caption{\textbf{Blodtryksmålesystemet der viser et blodtrykssignal}}
     \label{fig:figur1}
   \end{minipage}
   \hspace{0.1\textwidth}
@@ -1693,7 +1694,7 @@ På figuren neden for, ses det at signalet der vises på brugergrænsefladen, mi
 Konklusionen på integrationstesten er, at softwaren modtager et blodtrykssignal fra hardwaren. Softwaren kan også analyser på blodtrykssignalet der bliver læst ind af DAQ’en, da der vises værdier for systolen, diastolen og middeltrykket(vises i parentes) på brugergrænsefladen. Herved kan det konkluderes at integrationstesten viser fuld integration mellem hardware og software, da der kan sendes et simuleret blodtrykssignal igennem operationsforstækeren og lavpasfilteret på veroboardet, hvorefter signalet opsamles med DAQ’en og bliver præsenteret på brugergrænsefalden.
 \chapter{Accepttest}
 \section{Indledning}
-Accepttestene skal vise om kravene der er opstillet for blodtryksmålersystemet i kravspecifikationen lever op til de standarder der er sat op for at produktet aktivt kan indgå i en hverdag på sygehusene.\\
+Accepttestene skal vise om kravene der er opstillet for blodtryksmålesystemet i kravspecifikationen lever op til de standarder der er sat op for at produktet aktivt kan indgå i en hverdag på sygehusene.\\
 Accepttestene er er opfølgning af kravspecifikationen, hvilket sikre at alle krav er overholdt og dermed opnået.\\\\
 Når der i feltet Godkendt er skrevet initialer for den der har udført testen, samt datoen for testens udførelse, betyder det at testen er godkendt.  \\
 Igennem Arkitektur og design er systemet blevet identificeret og specificeret, sadan at vides hvilke dele systemet består af og hvordan dette skal præsenteres på user interfaces.
@@ -1719,7 +1720,7 @@ Billede indsættes - haves ikke endnu
  Undtagelse 1:Undlad kalibrering & Undlad kalibrering og fortsæt til Use case 2. & Blodtryksmåler-systemet er tilsluttet og tændt & Kalibrerings-værdien hentes, fra den forrige måling, fra EPJ databasen. & \\\hline
 \end{tabular}
 \end{table}
-Det forudsættes for de følgende Use cases (Use case 2, 3 og 4) at systemet er tilsluttet korrekt, porten til NI-DAQ er bestemt, at der er en VPN-forbindelse til "ASE IHA VPN", desuden skal der være en forbindelse til $"webhotel10.F15ST2ITS2201404669.db_{-}owner"$(Personaledatabasen) og $"webhotel10.F15ST2ITS2201405838.db_{-}owner"$ (EPJ database). Desuden skal blodtryksmålersystemet være tilsluttet In vitro maskinen.
+Det forudsættes for de følgende Use cases (Use case 2, 3 og 4) at systemet er tilsluttet korrekt, porten til NI-DAQ er bestemt, at der er en VPN-forbindelse til "ASE IHA VPN", desuden skal der være en forbindelse til $"webhotel10.F15ST2ITS2201404669.db_{-}owner"$(Personaledatabasen) og $"webhotel10.F15ST2ITS2201405838.db_{-}owner"$ (EPJ database). Desuden skal blodtryksmålesystemet være tilsluttet In vitro maskinen.
 \begin{table}[H]
 \caption{Accepttest for Use case 2}\label{tab:tabel9}
 \begin{tabular}{|>{\raggedright\arraybackslash}p{2.5cm}| >{\raggedright\arraybackslash}p{2.9cm} | >{\raggedright\arraybackslash}p{2.9cm} | >{\raggedright\arraybackslash}p{2.9cm} | >{\raggedright\arraybackslash}p{2.8cm} |}
@@ -1729,7 +1730,7 @@ Det forudsættes for de følgende Use cases (Use case 2, 3 og 4) at systemet er 
    &Tryk "Log ind" & Port valgt. VPN, Personale database. & Besked: "Logget på" og den sundhedsfaglige er dermed logget på &\\\hline
    &Tryk på patient dropdown på startskærm & En sundhedsfaglig er logget på & Liste med patienter kommer frem  & \\\hline
    & Vælg patienten "Arne Jensen" & Den sundhedsfaglige er logget på & Nyt vindue kommer frem: Hovedskærmen &\\\hline
-   & Indsend atmosfærisk tryk igennem transduceren, indstil værdien efter grafen. & Patient valgt og blodtryksmålersystemet (transduceren) er tilsluttet & Nulpunkts-justerings værdien indtastes &\\\hline
+   & Indsend atmosfærisk tryk igennem transduceren, indstil værdien efter grafen. & Patient valgt og blodtryksmålesystemet (transduceren) er tilsluttet & Nulpunkts-justerings værdien indtastes &\\\hline
    & Tryk på "Nulpunkts justering" & Værdien er indtastet & Systemet starter nulpunkts justeringen og tilpasser grafen. &\\\hline
    & Tryk på "Tænd"& Systemet er nulpunktjusteret & Data fra In vitro maskingen hentes igennem hardwaren. Timer startes hovedskærm. EKG og arterietryk præsenteres kontinuert på hver sin graf. Puls, systole, diastole og middeltryk vises som talværdier på hovedskærmen. Data gemmes automatisk løbende i EPJ database & \\\hline
 \end{tabular}
