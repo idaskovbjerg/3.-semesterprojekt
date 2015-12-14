@@ -5,7 +5,7 @@ Blodtrykket er det tryk, som blodet udøver på karvæggen i arterierne, når de
 \\\\
 Vi har i starten af projektet gjort os nogle tanker og ideer, som vi ønskede implementeret i vores færdigudviklede system. Gennem arbejdsprocessen har vi løbende fået ny viden og gennem en innovativ proces, har vi udarbejdet et produkt, som levet op til de forventninger vi har haft til vores produkt. Vi vil i denne dokumentation kommentere på de valg og fravalg der har måttet være gennem procesforløbet.  
 \\\\
-Ud fra vores omkring digital og analog signal behandling, samt sundhedsfagligviden omkring blodtryk og programmeringsmæssige færdigheder er protypen af produktet blevet til. Protypen består af en hardware del, der er basseret på et anden ordens butterworth sallen-key filter og operationsforstærker, og en software del der er basseret på algortimer til at udregne systole, diastole og middeltryk. Samt præsenter blodtrykket i en graf på brugergrænsefladen sammen med værdier for blodtrykket.\\
+Ud fra vores omkring digital og analog signal behandling, samt sundhedsfaglig viden omkring blodtryk og programmeringsmæssige færdigheder er protypen af produktet blevet til. Protypen består af en hardware del, der er basseret på et anden ordens butterworth sallen-key filter og operationsforstærker, og en software del der er basseret på algortimer til at udregne systole, diastole og middeltryk. Samt præsenter blodtrykket i en graf på brugergrænsefladen sammen med værdier for blodtrykket.\\
 Denne dokumentation vil præsentere vores kravspecifikation for vores produkt. Der vil efterfølgende beskrives arkitektur, herunder SysML og UML diagrammer samt design af henholdsvis software og hardware. Der vil i denne dokumentation fremgå test af hardware og software, i form af modultest og unitest. Der vil i denne dokumentation også fremgå accepttest, som er lavet på bagrund af kravspecifikationen. Til sidst i denne dokumentation vil der fremgå bilag. 
 \chapter{Kravspecifikation}
 \section{Godkendelsesformular}
@@ -612,7 +612,7 @@ Det sidste projekt PulsMaalerSystem.DTOlag består af tre klasser: Grænseværdi
 \subsubsection{Sekvensdiagrammer}
 Nedenfor er vist sekvensdiagrammer for systemet. Der er lavet sekvens diagrammer for alle Use case. Vores Use cases er henholdsvis Use case 1: Kalibrér apparat, Use case 2: Foretag måling, Use case 3: Alarmér og Use case 4: Stop måling. Sekvens diagrammet er et interaktionsdiagram, som viser hvorledes processerne forløber i forhold til hinanden. Ud fra sekvensdiagrammerne kan det altså ses hvornår og hvordan de forskellige dele i systemet forløber og interagerer. \\
 \begin{figure}[H]
-\includegraphics[width =0.9\textwidth , center]{billeder/sdUC1}
+\includegraphics[width =0.8\textwidth , center]{billeder/sdUC1}
 \caption{\textbf{Sekvensdiagram for blodtryksmålersystemet. Denne viser adfærden for Use case 1 }}
 \end{figure}
 I sekvens diagrammet for Use case 1 interagerer servicemedarbejder med blodtryksmålersystemet. Her er det servicemedarbejderen som starter kalibreringen og blodtryksmålersystemet som foretager kalibreringen igennem lagene og klassen Kalibring. Her ses det at servicemedarbejderen indtaster værdierne der aflæses for tryk og spænding, hvorefter der trykkes på knappen, hvorefter systemet foretager beregningen for kalibreringen. 
@@ -621,7 +621,7 @@ I sekvens diagrammet for Use case 1 interagerer servicemedarbejder med blodtryks
 \caption{\textbf{Sekvensdiagram for blodtryksmålersystemet. Denne viser adfærden for Use case 2, del 1 af 4}}
 \end{figure}
 \begin{figure}[H]
-\includegraphics[width =0.9\textwidth , center]{billeder/sdUC2_2}
+\includegraphics[width =1.0\textwidth , center]{billeder/sdUC2_2}
 \caption{\textbf{Sekvensdiagram for blodtryksmålersystemet. Denne viser adfærden for Use case 2, del 2 af 4}}
 \end{figure}
 \begin{figure}[H]
@@ -634,7 +634,7 @@ I sekvens diagrammet for Use case 1 interagerer servicemedarbejder med blodtryks
 \end{figure}
 I sekvens diagrammet for Use case 2 ønsker det sundhedsfaglig personale at foretage måling, dette gøres ved at det sundhedsfaglig personale interagerer med blodtryksmålersystemet. For at målingen forløber, foregår den videre interaktion via blodtryksmålersystemet og de klasser, som indgår i Use casen. Transducer, EKG patient sender sine data til datalaget, EPJ database og Personale database får sine data fra datalaget. I dette sekvens diagram ses det sundhedsfaglige personales interaktion med blodtryksmålersystemet. Denne interaktion igangsætter processerne, som medfører at blodtryksmålingen forløber. Det ses også, at præsentationslaget, som er vores blodtryksmålersystem, kommunikerer med logiklaget og logiklaget kommunikerer med datalag, altså er trelagsmodellen opfyldt, idet datalaget ikke direkte kan kommunikere med præsentationslaget, men skal igennem logiklaget. \\\\
 \begin{figure}[H]
-\includegraphics[width =1.0\textwidth , center]{billeder/sdUC3}
+\includegraphics[width =0.8\textwidth , center]{billeder/sdUC3}
 \caption{\textbf{Sekvensdiagram for blodtryksmålersystemet. Denne viser adfærden for Use case 3}}
 \end{figure}
 I dette sekvens diagram for Use case 3 tjekker logiklaget hvorvidt grænseværdierne for systole og diastole er overskredet. Hvis en grænseværdi overskrides starter alarmeringen. I denne Use case har det sundhedsfaglig personale mulighed for at udsætte alarmen, dette sker ved en interaktion mellem sundhedsfaglig personale og blodtryksmålersystemet.\\\\ 
