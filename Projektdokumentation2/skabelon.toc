@@ -43,19 +43,20 @@
 \contentsline {subsubsection}{Iltm\IeC {\ae }tning}{61}{subsubsection*.31}
 \contentsline {subsubsection}{Observer m\IeC {\o }nster med PUSH}{61}{subsubsection*.32}
 \contentsline {subsubsection}{Queue}{61}{subsubsection*.33}
-\contentsline {subsubsection}{Databaser}{62}{subsubsection*.34}
-\contentsline {subsection}{Unittest}{63}{subsection*.35}
-\contentsline {subsubsection}{Code review}{63}{subsubsection*.36}
-\contentsline {subsubsection}{Databaser og test}{63}{subsubsection*.37}
+\contentsline {subsubsection}{Konfiguration}{62}{subsubsection*.34}
+\contentsline {subsubsection}{Databaser}{62}{subsubsection*.35}
+\contentsline {subsection}{Unittest}{63}{subsection*.36}
+\contentsline {subsubsection}{Code review}{63}{subsubsection*.37}
+\contentsline {subsubsection}{Databaser og test}{63}{subsubsection*.38}
 \contentsline {section}{\numberline {3.3}Integrationstest}{65}{section.3.3}
 \contentsline {chapter}{\chapternumberline {4}Accepttest}{66}{chapter.4}
 \contentsline {section}{\numberline {4.1}Indledning}{66}{section.4.1}
 \contentsline {section}{\numberline {4.2}Accepttest for funktionelle krav}{66}{section.4.2}
-\contentsline {subsection}{Opstilling}{66}{subsection*.38}
+\contentsline {subsection}{Opstilling}{66}{subsection*.39}
 \contentsline {section}{\numberline {4.3}Accepttest for ikke-funktionelle krav}{72}{section.4.3}
 \contentsline {section}{\numberline {4.4}Godkendelses formular}{76}{section.4.4}
-\contentsline {chapter}{Litteratur}{77}{section*.40}
+\contentsline {chapter}{Litteratur}{77}{section*.41}
 \contentsline {section}{\numberline {4.5}Referencer}{77}{section.4.5}
-\contentsline {subsubsection}{B\IeC {\o }ger}{77}{subsubsection*.41}
-\contentsline {subsubsection}{Internetsider}{77}{subsubsection*.42}
-\contentsline {subsubsection}{Dokumenter}{77}{subsubsection*.43}
+\contentsline {subsubsection}{B\IeC {\o }ger}{77}{subsubsection*.42}
+\contentsline {subsubsection}{Internetsider}{77}{subsubsection*.43}
+\contentsline {subsubsection}{Dokumenter}{77}{subsubsection*.44}

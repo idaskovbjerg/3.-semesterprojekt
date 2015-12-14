@@ -1,5 +1,12 @@
 \chapter{Indledning}
-
+Gennem dette projekt ønskes der at skabe et produkt, som kan måle systole og diastole og udskive disse i en graf, samt visuelt præsentere pågældende værdier. Dette ønskes at blive udskrevet i en brugervenlig blodtryksmåler, som følger de standarder vi har fået oplyst, gennem samtale med en anæstesi sygeplejerske fra Herning Sygehus. 
+\\\\
+Blodtrykket er det tryk, som blodet udøver på karvæggen i arterierne, når det pumpes rundt i kroppen. Systolen måles når venstre hjertekammer trækker sig sammen og som resultat herfra pumpes blodet rundt i kroppen. Diastolen er hvilefasen, og denne indtræder når hjertet hviler mellem slagene. I klinisk praksis måles dette blodtryk invasivt, og blodtryksmåleren er koblet til patientens arterier gennem et væskefyldt kateter. I dette projekt er der ikke brugt en patient, men der udviklet et elektronisk kredsløb, hvor transduceren forestiller at være patient.
+\\\\
+Vi har i starten af projektet gjort os nogle tanker og ideer, som vi ønskede implementeret i vores færdigudviklede system. Gennem arbejdsprocessen har vi løbende fået ny viden og gennem en innovativ proces, har vi udarbejdet et produkt, som levet op til de forventninger vi har haft til vores produkt. Vi vil i denne dokumentation kommentere på de valg og fravalg der har måttet være gennem procesforløbet.  
+\\\\
+Ud fra vores omkring digital og analog signal behandling, samt sundhedsfagligviden omkring blodtryk og programmeringsmæssige færdigheder er protypen af produktet blevet til. Protypen består af en hardware del, der er basseret på et anden ordens butterworth sallen-key filter og operationsforstærker, og en software del der er basseret på algortimer til at udregne systole, diastole og middeltryk. Samt præsenter blodtrykket i en graf på brugergrænsefladen sammen med værdier for blodtrykket.\\
+Denne dokumentation vil præsentere vores kravspecifikation for vores produkt. Der vil efterfølgende beskrives arkitektur, herunder SysML og UML diagrammer samt design af henholdsvis software og hardware. Der vil i denne dokumentation fremgå test af hardware og software, i form af modultest og unitest. Der vil i denne dokumentation også fremgå accepttest, som er lavet på bagrund af kravspecifikationen. Til sidst i denne dokumentation vil der fremgå bilag. 
 \chapter{Kravspecifikation}
 \section{Godkendelsesformular}
 \begin{table}[h!]
@@ -575,7 +582,7 @@ Modellen bruges til at bestemme de interagerende klasser i blodtryksmålersystem
 \caption{\textbf{Applikationsmodel for blodtryksmålersystemet.}}
 \end{figure}
 Ud fra denne model ses klasserne og databaserne, der skal implementeres i softwaren, samt interaktionen mellem disse. Altså hvordan klasserne taler sammen på kryds og tværs. Idet det vides at trelagsmodellen skal benyttes, kan applikationsmodellen bruges til at identificere hvor disse klasser ligger i det tilhørende lag. Databaserne vil være en boundary klasse (grænse klasse) og vil blive tilgået fra datalaget, domain klasserne (domæne klasse) er de klasser der skal ligge i logiklaget og det er disse klasser der findes fra domænemodellen og i præsentationslaget vil startskærmen og hovedskærmen, hvilke også er grænse klasser, ligge hvorfra de vil blive præsenteret for det sundhedsfaglige personale. Control klasserne (kontrol klasserne) er systemets Use cases. Grænse klasserne er de klasser der repræsentere aktørerne fra Use casene og disse aktøreres grænseflader. Domæne klasserne er de klasser hvori data bliver behandlet og bearbejdet. Kontrol klasserne er de klasser der udfører Use casene ved at interagere med grænse og domæne klasserne. \\\\
-\textbf{Trelagsmodellen} 
+\textbf{Trelagsmodellen} \\
 Trelags modellen er en software model, der gør det muligt at inddele software kodeN op i tre lag. De tre lag er præsentationslaget, logiklaget og datalaget. \\
 Fordelen ved at kunne dele softwaren op på denne måde, er at man kan rette i de forskellige lag, uden at det får indflydelse i de andre lag. Man kan herved implementere nye klasser og deres funktioner, og blot henvise til dem i de andre lag. Hvert lag har deres egen funktionalitet og ansvar.\\
 Præsentationslaget er det øverste lag i trelags modellen, og kan kun snakke sammen med logiklaget. I præsentationslaget må der ikke laves nogen form for beregninger, disse skal komme fra logiklaget. Med andre ord fungerer præsentationslaget, kun til at præsenter data på en brugergrænseflade, hvorfra data kan præsenteres for brugeren. Præsentationslaget er derfor også det eneste lag, som brugeren kommer til at integrerer med.\\
@@ -600,7 +607,7 @@ Logiklags klassen binder alle de andre klasser sammen, ved at hente data nede fr
 Det tredje projekt PulsMaalerSystem.Datalag består af to klasser: DAQ og datalag. 
 DAQ klassen sørger for at hente data op fra DAQ’en. Datalag klassen sørger for at hente informationer om patienten og personalet i databaserne; Personale database og EPJ database. Datalag klassen sørger også for at gemme blodtrykket for patienten løbende i EPJ databasen. \\
  \\
-Det sidste projekt PulsMaalerSystem.DTOlag består af tre klasser: GrænseværdiDTO, IObserver, ISubject og KalibreringsDTO. GrænseværdiDTO klassen indeholder get og set metoder for grænseværdien, og sender grænseværdierne videre med en metode. IObserver kigger ned på subjectet, hvor klassen ISubject . KalibreringsDTO klassen har get og set metoder for spænding og tryk, og en metode til at sende disse videre.\\\\
+Det sidste projekt PulsMaalerSystem.DTOlag består af tre klasser: GrænseværdiDTO, IObserver, ISubject og KalibreringsDTO. GrænseværdiDTO klassen indeholder get og set metoder for grænseværdien, og sender grænseværdierne videre med en metode. IObserver kigger ned på subjectet, hvor klassen ISubject . KalibreringsDTO klassen har get og set metoder for spænding og tryk, og en metode til at sende disse videre.
 \subsection{Metodeidentifikation}
 \subsubsection{Sekvensdiagrammer}
 Nedenfor er vist sekvensdiagrammer for systemet. Der er lavet sekvens diagrammer for alle Use case. Vores Use cases er henholdsvis Use case 1: Kalibrér apparat, Use case 2: Foretag måling, Use case 3: Alarmér og Use case 4: Stop måling. Sekvens diagrammet er et interaktionsdiagram, som viser hvorledes processerne forløber i forhold til hinanden. Ud fra sekvensdiagrammerne kan det altså ses hvornår og hvordan de forskellige dele i systemet forløber og interagerer. \\
@@ -1604,6 +1611,8 @@ Logiklaget er subject for præsentationslaget. Præsentationslaget er observer f
 \subsubsection{Queue}
 For at være sikker på at den data, der er blevet nulpunktsjusteret og kalibreret bliver sendt korrekt op til præsentationslaget bliver der benyttet en kø metode: Queue Class \cite{queue}. Dette er en klasse der er indbygget i Visual Studio. Denne klasse har to metoder, hvilke benyttes til at sende data ind i den rigtige ende, hvorefter data fjernes fra den anden ende når køen er fuld. \\Disse to metoder er Enqueue(object) og Dequeue(). Enqueue(object) er metoden, hvilken tilføjer et object til køen. Dette object er data fra Blodtryksværdiliste. Metoden ligger i en for-løkke, sådan at data kommer ind sådan som de indlæses fra DAQ'en. \\\\
 Dequeue() er metoden, som fjerne et object fra den anden ende, og tager den første værdi i rækken og fjerner. Denne metode ligger ligeledes i for-løkken, hvorunder der er if/else metoder. Dette sørger for at køen er fuld inden der bliver fjernet en værdi fra den anden ende og dermed sørger for at de to metoder følges ad.
+\subsubsection{Konfiguration}
+Man har i programmet valgt at benytte sig af en konfigurationsfil, denne fil holder oplysninger i XML-format omkring opsætningen af softwaren. Det er blevet besluttet at holde det i konfigurationsfilen, for nemmere at kunne ændre indstillinger løbende under test og udvikling. Ligeledes er det valgt at skrive kalibreringskoefficienten ind i konfigurationsfilen for at simulere at en tekniker kan kalibrere programmet og ændre tallet. Det er også blevet besluttet at ligge SQL-"connectionstrings" ud i config, normalt ville man i et program som dette have en test-database og en produktions-database. Af samme grund er det vigtigt der er ét centralt sted hvor dette kan ændres.
 \subsubsection{Databaser}
 \begin{figure}[H]
 \includegraphics[width =1.0\textwidth , center]{billeder/databaser}
@@ -1673,19 +1682,17 @@ Billede indsættes - haves ikke endnu
 \begin{tabular}{|>{\raggedright\arraybackslash}p{2.5cm}| >{\raggedright\arraybackslash}p{2.9cm} | >{\raggedright\arraybackslash}p{2.9cm} | >{\raggedright\arraybackslash}p{2.9cm} | >{\raggedright\arraybackslash}p{2.8cm} |}
    \hline
    \textbf{Use case 1: Kalibrer apparat} &\textbf{Test}& \textbf{Prækondition} & \textbf{Forventet resultat} & \textbf{Godkendt/ kommentar}\\ \hline
-   Normalforløb: & Vælg et målepunkt på vandsøjlen. Indtast den aflæste værdi for spændingen fra waveforms, og aflæs trykket fra vandsøjlens skema for målepunktet. & Blodtryksmåler-systemet er tændt, tilsluttet og startet, og tilsluttet kalibreringsudstyret (Væskesøjle, Analog Discovery og Waveforms). & Service-medarbejder foretager kalibrering. Værdierne indtastes korrekt. & \\\hline
-   & Tryk på "Kalibrering" & Blodtryksmåler-systemet er tændt og tilsluttet, og tilsluttet kalibreringsudstyret (Væskesøjle, Analog Discovery og Waveforms) og værdierne indtastet. &
-   Systemet beregner kalibreringsværdien og kalibrerer systemet, resultatet af beregningen vises på startskærmen & IKKE TESTBAR\\\hline
+   Normalforløb: & Vælg et målepunkt på vandsøjlen. Indtast den aflæste værdi for spændingen, og aflæs trykket fra vandsøjlens skema for målepunktet. & Blodtryksmåler-systemet er tændt, tilsluttet og startet, og tilsluttet kalibreringsudstyret. & Service-medarbejder foretager kalibrering. Værdierne indtastes korrekt. & \\\hline
+   & Tryk på "Kalibrering" & Blodtryksmåler-systemet er tændt og tilsluttet, og tilsluttet kalibreringsudstyret og værdierne indtastet. & Systemet beregner kalibreringsværdien og kalibrerer systemet, resultatet af beregningen vises på startskærmen & \\\hline
 \end{tabular}
 \end{table}
-
 
 \begin{table}[H]
 \caption{Accepttest for Use case 1}\label{tab:tabel8}
 \begin{tabular}{|>{\raggedright\arraybackslash}p{2.5cm}| >{\raggedright\arraybackslash}p{2.9cm} | >{\raggedright\arraybackslash}p{2.9cm} | >{\raggedright\arraybackslash}p{2.9cm} | >{\raggedright\arraybackslash}p{2.8cm} |}
    \hline
    \textbf{Use case 1: Kalibrer apparat} &\textbf{Test}& \textbf{Prækondition} & \textbf{Forventet resultat} & \textbf{Godkendt/ kommentar}\\ \hline
-   $[$Undtagelse 1:Undlad kalibrering$]$ & Undlad kalibrering og fortsæt til Use case 2. & Blodtryksmåler-systemet er tilsluttet og tændt & Kalibreringsværdien hentes, fra den forrige måling, fra EPJ databasen. & \\\hline
+ Undtagelse 1:Undlad kalibrering & Undlad kalibrering og fortsæt til Use case 2. & Blodtryksmåler-systemet er tilsluttet og tændt & Kalibrerings-værdien hentes, fra den forrige måling, fra EPJ databasen. & \\\hline
 \end{tabular}
 \end{table}
 Det forudsættes for de følgende Use cases (Use case 2, 3 og 4) at systemet er tilsluttet korrekt, porten til NI-DAQ er bestemt, at der er en VPN-forbindelse til "ASE IHA VPN", desuden skal der være en forbindelse til $"webhotel10.F15ST2ITS2201404669.db_{-}owner"$(Personaledatabasen) og $"webhotel10.F15ST2ITS2201405838.db_{-}owner"$ (EPJ database). Desuden skal blodtryksmålersystemet være tilsluttet In vitro maskinen.
@@ -1694,13 +1701,13 @@ Det forudsættes for de følgende Use cases (Use case 2, 3 og 4) at systemet er 
 \begin{tabular}{|>{\raggedright\arraybackslash}p{2.5cm}| >{\raggedright\arraybackslash}p{2.9cm} | >{\raggedright\arraybackslash}p{2.9cm} | >{\raggedright\arraybackslash}p{2.9cm} | >{\raggedright\arraybackslash}p{2.8cm} |}
    \hline
    \textbf{Use case 2: Foretag måling} &\textbf{Test}& \textbf{Prækondition} & \textbf{Forventet resultat} & \textbf{Godkendt/ kommentar}\\ \hline
-   Normalforløb:& Indtast brugernavn "anpe" og kode "1234" & Port valgt. VPN-forbindelse, Personale database og EPJ database er tilsluttet korrekt & Korrekt indtastning fuldendt & \\\hline
-   &Tryk "Log ind" & Port valgt. VPN, Personale database og EPJ database er tilsluttet korrekt & Besked: "Logget på" og den sundhedsfaglige er dermed logget på &\\\hline
+   Normalforløb:& Indtast brugernavn "anpe" og kode "1234" & Port valgt. Der er VPN-forbindelse. & Korrekt indtastning fuldendt & \\\hline
+   &Tryk "Log ind" & Port valgt. VPN, Personale database. & Besked: "Logget på" og den sundhedsfaglige er dermed logget på &\\\hline
    &Tryk på patient dropdown på startskærm & En sundhedsfaglig er logget på & Liste med patienter kommer frem  & \\\hline
    & Vælg patienten "Arne Jensen" & Den sundhedsfaglige er logget på & Nyt vindue kommer frem: Hovedskærmen &\\\hline
-   & Indsend atmosfærisk tryk igennem transduceren, aflæs værdien på waveforms og indtast denne korrekt & Patient valgt og blodtryksmålersystemet (transduceren) er tilsluttet & Nulpunkts-justerings værdien er indtastet korrekt &\\\hline
-   & Tryk på "Nulpunkts justering" & Værdien er indtastet korrekt & Systemet starter nulpunkts justeringen. Systemet tilpasser grafen. &\\\hline
-   & Tryk på "Tænd"& Systemet er nulpunktjusteret & Systemet indhenter data fra In vitro maskingen igennem hardwaren og starter timer på hovedskærm. EKG og arterietryk præsenteres kontinuert på hver sin graf. Puls, systole, diastole og middeltryk vises som talværdier på hovedskærmen. Data gemmes automatisk kontinuert i EPJ database & \\\hline
+   & Indsend atmosfærisk tryk igennem transduceren, indstil værdien efter grafen. & Patient valgt og blodtryksmålersystemet (transduceren) er tilsluttet & Nulpunkts-justerings værdien indtastes &\\\hline
+   & Tryk på "Nulpunkts justering" & Værdien er indtastet & Systemet starter nulpunkts justeringen og tilpasser grafen. &\\\hline
+   & Tryk på "Tænd"& Systemet er nulpunktjusteret & Data fra In vitro maskingen hentes igennem hardwaren. Timer startes hovedskærm. EKG og arterietryk præsenteres kontinuert på hver sin graf. Puls, systole, diastole og middeltryk vises som talværdier på hovedskærmen. Data gemmes automatisk løbende i EPJ database & \\\hline
 \end{tabular}
 \end{table}
 
@@ -1710,7 +1717,7 @@ Det forudsættes for de følgende Use cases (Use case 2, 3 og 4) at systemet er 
    \hline
    \textbf{Use case 2: Foretag måling} &\textbf{Test}& \textbf{Prækondition} & \textbf{Forventet resultat} & \textbf{Godkendt/ kommentar}\\ \hline
    Undtagelse 1: Brugernavn og/eller kode indtastet forkert & Indtast brugernavn "efgh" og kode "1234"& Port valgt. VPN, Personale database og EPJ database er tilsluttet korrekt & Forkert kombination indtastet &  \\\hline
-   &Tryk "Log ind" & Port valgt. VPN, Personale database og EPJ database er tilsluttet korrekt. & Besked: "Brugernavn og/eller kode indtastet forkert" &\\\hline
+   &Tryk "Log ind" & Port valgt. Der er VPN-forbindelse. & Besked: "Brugernavn og/eller kode indtastet forkert" &\\\hline
 \end{tabular}
 \end{table}
 
@@ -1740,7 +1747,7 @@ Det forudsættes for de følgende Use cases (Use case 2, 3 og 4) at systemet er 
    \hline
    \textbf{Use case 3: Alarmér } &\textbf{Test}& \textbf{Prækondition} & \textbf{Forventet resultat} & \textbf{Godkendt/ kommentar}\\ \hline
    Normalforløb:& Grænseværdi overskrides ved at justere grænseværdierne. & Signalet er startet & Alarm starter med lyd og "Udsæt alarm" knappen blinker skiftevis mellem rød og hvid baggrund &\\\hline
-   & Grænseværdien er ikke overskredet mere. Grænseværdi rykkes sådan at værdierne for systole og diastole ligger indenfor intervallerne. & Alarmen igangsat & Alarm lyden stopper og tallet skifter farve tilbage til hvid. & \\\hline
+   & Grænseværdien er ikke overskredet mere. Grænseværdierne rykkes sådan at værdierne for systole og diastole ligger indenfor intervallerne. & Alarmen igangsat & Alarm lyden stopper og tallet skifter farve tilbage til hvid. & \\\hline
 \end{tabular}
 \end{table}
 
@@ -1758,7 +1765,7 @@ Det forudsættes for de følgende Use cases (Use case 2, 3 og 4) at systemet er 
 \begin{tabular}{|>{\raggedright\arraybackslash}p{2.5cm}| >{\raggedright\arraybackslash}p{2.9cm} | >{\raggedright\arraybackslash}p{2.9cm} | >{\raggedright\arraybackslash}p{2.9cm} | >{\raggedright\arraybackslash}p{2.8cm} |}
    \hline
    \textbf{Use case 3: Alarmér } &\textbf{Test}& \textbf{Prækondition} & \textbf{Forventet resultat} & \textbf{Godkendt/ kommentar}\\ \hline
-   Udvidelse 2: Udsæt alarm & Tryk på "Udsæt alarm" knappen & Alarmering er startet & Systemet stopper alarmens lyd i et minut, Udsæt alarm knappen fortsætter med at blinke skiftevis med rød og hvid baggrund indtil alarmen ikke længere er overskredet.  &\\\hline
+   Udvidelse 2: Udsæt alarm & Tryk på "Udsæt alarm" knappen og mål tiden.& Alarmering er startet & Systemet stopper alarmens lyd i et minut, Udsæt alarm knappen fortsætter med at blinke skiftevis med rød og hvid baggrund indtil alarmen ikke længere er overskredet.  &\\\hline
 \end{tabular}
 \end{table}
 
@@ -1789,9 +1796,7 @@ Undtagelse 1: Tryk på "Nej" &Tryk "Nej" & Signalet og målingen er stoppet & Ko
    \caption{Accepttest for ikke-funktionelle krav}\label{tab:label18}
 \\ \hline   
 \textbf{Krav nr.}&\textbf{Krav} &\textbf{Test}& \textbf{Forventet resultat} & \textbf{Resultat} & \textbf{Godkendt/ kommentar}\\ \hline
-  1.1 & Programmet skal have et digitalt filter til udglatning af blodtrykssignal & Send to frekvenser ind (XX Hz og ZZ Hz) & Den ene (XX Hz) af de indsendte frekvenser er blevet fjernet & & \\\hline
-  1.2 & Programmet skal give alarm når grænseværdier overskrides med lyd og Udsæt alarm knappen skal blinke skiftevis rød og hvid. & Overskrid en grænseværdi og tjek alarmering & Alarmen starter& & \\\hline
-  1.3 & Programmet skal kunne gemme blodtrykssignalet i en database & Indsend signal og gå ind i databasen og se værdier & Der ligger værdier i databasen & & \\\hline\hline
+  1.1 & Programmet skal kunne gemme blodtrykssignalet i en database & Indsend signal og gå ind i databasen og se værdier & Der ligger værdier i databasen & & \\\hline\hline
   2.1 & Programmet skal have to window form: startskærm, der fungerer som EPJ systemet, og hovedskærm, som fungerer som selve blodtryksmåleren & Start program og tjek dette & Der er to window forms & & \\\hline
   2.2 & Programmet skal have en "Log ind" knap på startskærmen & Start program og tjek startskærm & Startskærmen har en "Log ind" knap & & \\\hline
   2.3 & Programmet skal have en "Kalibrering" knap på startskærmen & Start program og tjek startskærm & Startskærmen har en "Kalibrering" knap & & \\\hline
@@ -1807,7 +1812,7 @@ Undtagelse 1: Tryk på "Nej" &Tryk "Nej" & Signalet og målingen er stoppet & Ko
   2.13 & Teksten på startskærmen skal kunne aflæs fra 2 meters afstand med en synsstyrke i intervallet +/-1 & 10 personer med synsstyrke i intervallet +/-1 skal teste startskærmen  & Alle 10 personer kan læse teksten tydeligt & & \\\hline
   2.14 & Teksten og graferne på hovedskærmen skal kunne læses fra 2 meters afstand ved synsstyrke i intervellet på +/-1 & 10 personer med synsstyrke i intervallet +/-1 skal teste hovedskærmen & Alle 10 personer kan læse grafer og teksten på hovedskærmen & & \\\hline
  2.15 & Programmet skal præsentere arterietryk kontinuert, herudover vise systolisk værdi, diastolisk værdi og middeltryk som talværdier. & Start program og start målingen & Grafen vises kontinuert og talværdierne vises på hovedskærmen. & & \\\hline
-  2.16 & Programmet skal præsentere EKG og puls & Start program og start målingen. & EKG vises kontinuert og pulsen vises som talværdi på hovedskærmen. & & \\hline
+  2.16 & Programmet skal præsentere EKG og puls & Start program og start målingen. & EKG vises kontinuert og pulsen vises som talværdi på hovedskærmen. & & \\\hline
   2.17 & Programmet skal præsentere iltmætning som graf og talværdi. & Start program og start måling & Iltmætningens grafen vises kontinuert og iltmætning vises som talværdi på hovedskærm. & IKKE IMPLEMENTERET & \\\hline
   2.18 & Programmet skal præsentere grafer efter standard & Start program og tjek farver & EKG vises i lysegrøn, arterietryk vises i rød og iltmætning vises i lyseblå & & \\\hline
   2.19 & Programmet skal præsentere data i tal efter standard & Start program og tjek at talværdiernes farve er efter standard & Pulsværdien vises i lysegrøn, systolisk værdi, diastolisk værdi og middeltryk vises i rød og iltmætning vises i lyseblå.& & \\\hline\hline
@@ -1815,10 +1820,9 @@ Undtagelse 1: Tryk på "Nej" &Tryk "Nej" & Signalet og målingen er stoppet & Ko
   4.1 & Tiden der går før målingen af data påbegynder/vises i grafer må maksimalt være 2.0 sek. & Stopur igangsættes samtidig med at signalet tændes & Stopuret viser 2 sek. eller mindre & & \\\hline
   4.2 & Tiden der går fra at data er analyseret til at data er gemt i database må være 2.0 sek. med en tolerance på +/- 15\% & - & - & & \\\hline\hline
   5.1 & Programmet skrives i C\# kode. & Tjek programmet & Programmet er skrevet i C\# & & \\\hline
-  5.2 & Softwaren skal være opbygget efter trelagsmodellen & Se programopbygningen & Softwaren er opbygget efter trelagsmodellen & & \\\hline
-  5.3 & I softwaren benyttes Observer/Subject mønsteret & Tjek programmet og tjek observer/subject klasser & Observer og subject klasser/mønsteret benyttes & & \\\hline
-  5.4 & I softwaren benyttes PUSH mønsteret & Tjek programmet & Det ses at programmet er opbygget efter PUSH mønsteret. & &  \\\hline \hline
-  6.1 & Der skal være adgang til en computer med Windows 7, 8 eller 10 - computeren skal minimum have 4 GB RAM & & & & \\\hline
+  5.2 & Softwaren skal være opbygget efter trelagsmodellen & Tjek referencer i programkoden. Datalaget må ikke kunne tilgås fra præsentationslaget og omvendt. & Softwaren er opbygget efter trelagsmodellen & & \\\hline
+  5.3 & I softwaren benyttes Observer mønsteret med PUSH & Se programkode og tjek referencerne til interfacene IObserver og ISubject. & Observer og subject klasser/mønsteret benyttes & & \\\hline \hline
+  6.1 & Der skal være adgang til en computer med Windows 8 - computeren skal minimum have 8 GB RAM & & & & \\\hline
   6.2 & Der skal være adgang til en computer hvor National Instruments er installeret & & & & \\\hline
 \end{longtable}
 \section{Godkendelses formular}
