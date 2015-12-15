@@ -90,7 +90,7 @@ Et af de obligatoriske krav er desuden, at der skal være et digitalt filter, de
 Foruden disse obligatoriske krav er det valgt, at det skal være muligt at starte og stoppe målingen. Når målingen er startet skal det være muligt at justere grænseværdierne for systolen og diastolen, så grænseværdierne kan tilpasses patienten. Når signalets værdier overskrider en af grænseværdierne, skal en alarmering begynde. Denne alarm skal kunne udsættes i et minut, dog kun alarmens lyd, så det stadig er tydeligt at se, at en grænseværdi er overskredet.\\
 Systemet består af en computer med en programkode, en NI-DAQ, et lavpas filter, en forstærker, en transducer og en In vitro maskine.\\
 Blodtrykket dannes i denne prototype af en In vitro maskine, som leverer et tryk til en tryktransducer, herefter sender tryktransduceren signalet videre til hardwaren, hvor signalet bliver forstærket og høje frekvenser bliver dæmpet. Dette signal sendes derefter igennem NI-DAQ ind til softwaren, som derefter behandler og analyserer signalet.\\
-Den fulde beskrivelse af de udarbejdede Use cases (fully dressed Use case skema) findes i dokumentationen under Kravspecifikation.
+Den fulde beskrivelse af de udarbejdede Use cases (fully dressed Use case skema) findes i Projektdokumentationen under Kravspecifikation.
 \begin{figure}[H]
 \includegraphics[width =0.7\textwidth , center]{billeder/UseCaseDiagram}
 \caption{Use Case diagram. Dette diagram viser aktørernes interaktion med systemet.}
@@ -127,7 +127,7 @@ Det vil her være muligt for det sundhedsfaglige personale af udsætte alarmen. 
 \subsection{Use case 4: Stop måling}
 Det Sundhedsfaglige personale skal også kunne stoppe målingen. Dette gøres ved, at det sundhedsfaglige personale interagerer med hovedskærmen. Herefter vil det være muligt for det Sundhedsfaglige personale at logge ud, og et nyt scenarie kan påbegyndes.
 \section{Ikke-funktionelle krav}
-Ikke funktionelle krav er opsat efter FURPS+ metoden. Kravene er herefter blevet prioriteret efter MoSCoW. De udspecificerede ikke-funktionelle krav kan findes i Dokumentationen under Kravspecifikationen.
+Ikke funktionelle krav er opsat efter FURPS+ metoden. Kravene er herefter blevet prioriteret efter MoSCoW. De udspecificerede ikke-funktionelle krav kan findes i Projektdokumentationen under Kravspecifikationen.
 \subsection{FURPS+}
 \textbf{Functionality}\\
 Funktionalitet er det brugeren ønsker sig. Dette omfatter også sikkerhedsrelaterede behov. Dette er krav til hvad programmet skal kunne af funktionalitet, f.eks. at programmet skal gemme data løbende i en database.\\\\
@@ -179,7 +179,7 @@ Som nævnt tidligere valgte man fra projektets start at opdele gruppen i to hold
 \subsubsection{Ændringer i projektstyring}
 Under projektforløbet blev det valgt at ændre denne rollefordeling, idet den generelle arbejdsfordeling samt arbejdsindsats i projektgruppen ikke fungerede optimalt. Det blev valgt, at kun et gruppemedlem skulle varetage rollen som projektleder og procesleder, men at opgaverne herunder kunne uddelegeres hvis nødvendigt. Denne leder blev i fællesskab valgt og baggrunden for dette, var et ønske om en leder, som både havde viden og indflydelse på hardware og software. Denne leder skulle gribe ind, hvis gruppearbejdet og deltagernes indsat ikke opfyldte den forventningsafstemning, som står skrevet i samarbejdskontrakten. 
 \subsubsection{Scrum}
-Det blev i øvrigt besluttet at benytte SCRUM som hjælp til styring af projektet. Der blev udnævnt en tovholder, som skulle holde møder i løbet projektets udarbejdelse, samt styre opgaverne. Man valgte at bruge Pivotal Tracker \cite{tracker}  til at styre og prioritere opgaver. Der var en overordnet tidsplan fra start, denne tidsplan består af en række deadlines, som kan findes i dokumentationen.
+Det blev i øvrigt besluttet at benytte SCRUM som hjælp til styring af projektet. Der blev udnævnt en tovholder, som skulle holde møder i løbet projektets udarbejdelse, samt styre opgaverne. Man valgte at bruge Pivotal Tracker \cite{tracker}  til at styre og prioritere opgaver. Der var en overordnet tidsplan fra start, denne tidsplan består af en række deadlines, som kan findes i Produktdokumentationen.
 \subsubsection{GitHub}
 Det blev besluttet at benytte GitHub til deling af informationer og dokumentation i forbindelse med udarbejdelse af rapporten. Det blev vurderet, at det var vigtigt, at der var en central informationsudveksling, så begge grupper kunne følge med i, hvor langt de var i de forskellige processer. 
 \subsubsection{Iterativ udviklingsproces}
@@ -202,117 +202,132 @@ Systemets softwarestruktur og forløb beskrives ved at benytte UML klassediagram
 \subsection{Hardware}
 Systemets hardwarearkitektur beskrives på bagrund af systembeskrivelsen og kravspecifikationen. Ud fra relevante diagrammer, som BDD og IBD, kan hardwarens arkitektur beskrives. Samtlige diagrammer og modeller kan findes i Projektdokumentationen under Arkitektur og design. 
 \subsubsection{Problem identifikation}
-Først skulle der identificeres hvad produktet skal kunne, og hvordan det skulle virker. Der er i første omgang opstillet krav til hardwaren ud fra kravspecifikationen. De første krav til hardwaren var at, hardware delen skulle bestå af en operationsforstærker og et lavpasfilter. Der blev i første gang arbejdet med et lavpasfilter, som ikke var aktivt.  Denne ide blev kasseret, da der efter senere overvejelser blev opdaget at lavpasfilteret skulle være et anden ordens filter af typen sallen-key.  Herved blev kredsløbet for hardwaren bygget opefter en operationsforstærker og et anden ordens lavpas filter af typen sallen-key. Da filteret er aktivt, er der tilsat en spændingsforsyning i form af to 9V batterier. \\
-Hardwaren er herved yderligere specificeret igennem udformningen af diagrammerne BDD og IBD. Diagrammerne beskriver hvilke blokke blodtryksmålesystemet er bygget op af, og signalets vej igennem blokkene.
+Først skulle der identificeres hvad produktet skal kunne, og hvordan det skulle virke. Der er i første omgang opstillet krav til hardwaren ud fra kravspecifikationen. De første krav til hardwaren var, at hardwaredelen skulle bestå af en forstærker og et lavpasfilter. Der blev i første omgang arbejdet med et lavpasfilter, som ikke var aktivt. Denne idé blev kasseret, da der efter senere overvejelser blev opdaget at lavpasfilteret skulle være et aktivt anden ordens filter af typen Sallen-key. Herved blev kredsløbet for hardwaren opbygget efter en operationsforstærker og et anden ordens lavpasfilter. Da filteret er aktivt, er der tilsat en spændingsforsyning i form af to 9 V batterier. \\
+Hardwaren er herved yderligere specificeret igennem udformningen af diagrammerne BDD og IBD. Diagrammerne beskriver, hvilke blokke blodtryksmålesystemet er bygget op af, og signalets vej igennem blokkene.
 \subsubsection{BDD - block definition diagram}
-Ud fra use casen og kravene til hardware omkring blodtryksmåler systemet, er der identificeret hvilke blokke blodtryksmålesystemet består af. Der er identificeret og beskrevet hvordan hver blok i blodtryksmålesystemet snakker sammen, og er indført på BDD’et som stregerne imellem blokken. Der er angivet hvilke signaler blokkene sender ud imellem hinanden.  
+Ud fra Use cases og kravene til hardware omkring blodtryksmålesystemet, er der identificeret, hvilke blokke blodtryksmålesystemet består af. Det er identificeret og beskrevet, hvordan hver blok i blodtryksmålesystemet interagerer, og det er indført på BDD’et som stregerne imellem blokken. Der er angivet, hvilke signaler blokkene sender ud imellem hinanden.  
 \begin{figure}[H]
 \includegraphics[width =1.0\textwidth , center]{billeder/BDD}
 \caption{\textbf{BDD for blodtryksmålesystemet.}}
 \end{figure}
-Ud fra diagrammet ses det at alle blokkene er koblet til blodtryksmålesystemet, som er selve softwaren for blodtryksmåleren. Kompositionen i diagrammet viser at blodtryksmålesystem består af en computer, en transducer, en NI-DAQ, et lavpasfilter, en forstærker og en spændingsforsyning. Disse blokke til sammen sørger for at forstærke et målt signal, derefter filtreres de høje frekvenser fra, hvor efter signalet bliver omformet fra et analog signal, til et digitalt signal i NI-DAQ, som blodtryksmåleren indlæser blodtryksdata fra. 
+Ud fra diagrammet ses det, at alle blokkene er koblet til blodtryksmålesystemet, som er selve softwaren for blodtryksmåleren. Kompositionen i diagrammet viser, at blodtryksmålesystem består af en computer, en transducer, en NI-DAQ, et lavpasfilter, en forstærker og en spændingsforsyning. Disse blokke sørger tilsammen for at forstærke et målt signal og filtrere de høje frekvenser fra. Signalet bliver herefter omformet fra et analog signal til et digitalt signal i NI-DAQ, som blodtryksmåleren indlæser blodtryksdata fra. 
 \subsubsection{IBD - internal block definition diagram}
-Ud fra block definition diagram kan forbindelserne mellem blokkene identificeres. Dette føre til at et IBD diagram kan opstilles. Et IBD bruges til at bestemme signalerne mellem blokkene, og identificere hvilke signaler der sendes ind og ud af hver blok. Det er ud fra IBD der bestemmes hvilke signal typer, som blodtryksmålesystemet kan integrerer med.
+Ud fra block definition diagram kan forbindelserne mellem blokkene identificeres. Dette fører til at et IBD diagram kan opstilles. Et IBD diagram bruges til at vise forbindelserne mellem blokkene, og identificerer hvilke signaler, der sendes ind og ud af hver blok. Det er ud fra et IBD diagram det bestemmes hvilke signaltyper, som blodtryksmålesystemet kan interagere med.
 \begin{figure}[H]
 \includegraphics[width =1.0\textwidth , center]{billeder/IBD}
 \caption{\textbf{IBD diagram for blodtryksmålesystemet.}}
 \end{figure}
 \subsection{Software}
-Systemets softwarearkitektur beskrives på baggrund systembeskrivelsen og kravspecifikationen. Ud fra relevante diagrammer og modeller kan software beskrives hvorfra arkitekturen for softwaren opnås. Samtlige diagrammer og modeller kan findes i Projektdokumentationen under Arkitektur og design.
+Systemets softwarearkitektur beskrives på baggrund af systembeskrivelsen og kravspecifikationen. Ud fra relevante diagrammer og modeller kan softwaren beskrives, hvoraf arkitekturen for softwaren opnås. Samtlige diagrammer og modeller kan findes i Projektdokumentationen under Arkitektur og design.
 \subsubsection{Problemidentifikation}
-Den første fase i produkt udviklingen bestod i, at få klarlagt hvad produktet skulle bruges til og hvilke funktioner dette skulle have. Den første ide som blev udtænkt var en blodtryksmåler, som skulle benyttes til diabetes patienter. Denne ide førte til første udkast af startskærmen. På startskærmen kunne man vælge, hvor på patienten målingen skulle foretages. Her kunne man altså vælge at blodtryksmålingen skulle foretages invasivt i a. Brakialis samt underekstremiteterne og sammenligne disse to. Dette ville give en diagnosticering om hvor slemt diabetes er hos patienten. Dette kan klarlægges idet blodomløbet til underekstremiteterne hos diabetikere er dårlig, da der ses åreforkalkning hos diabetikere. Dog blev denne ide kasseret, idet der med et lavt blodtryk vil være dårlig sårheling og større risiko for infektion.\\\\
-Ideen til produktet blev udtænkt efter samtale med anæstesisygeplejerske Charlotte Høj fra operationsafdelingen på Herning Sygehus. På billedet ses anæstesisygeplejerskens arbejdsfelt, dette består af (fra højre) EPJ system, anæstesi apparat og monitor.\\\\
-Vi ønskede at vores produkt skulle opbygges med udgangspunkt i et brugsscenarie og efterleve dette system, dog kun EPJ og monitor, og de hertil tilhørende funktioner. EPJ systemet på Herning sygehus benyttes både til patientjournal og personale login. Det er her sygeplejersken logger på med et unikt bruger-ID og der vil til dette være knyttet de patienter, som hun skal tilgå den pågældende dag. Sygeplejersken vil derfor kunne se relevante data for patienten. Derudover vil det målte blodtryk også gemmes i EPJ systemet. Monitoren er den brugergrænseflade, som grafisk præsenterer blodtrykket, EKG og iltmætning samt tilhørende værdier. På monitoren er der en start- og slukknap og en timer, som starter når blodtryksmålingen sættes i gang. Derudover er der indbyggede grænseværdier for sysolen og diastolen, som justeres afhængigt af patientens tilstand. 
+Den første fase i produktudviklingen bestod i, at få klarlagt hvad produktet skulle bruges til og hvilke funktioner dette skulle have. Den første ide som blev udtænkt var en blodtryksmåler, som skulle benyttes til diabetes patienter. Denne ide førte til første udkast af startskærmen. På startskærmen kunne man vælge, hvor på patienten målingen skulle foretages. Her kunne man altså vælge, at blodtryksmålingen skulle foretages invasivt i a. brachialis, samt i underekstremiteterne, og sammenligne disse to. Dette kan klarlægge om blodomløbet i underekstremiteterne er dårligt, da der ses åreforkalkning hos diabetikere. Dog blev denne idé kasseret, idet der med et lavt blodtryk vil være dårlig sårheling og større risiko for infektion.\\\\
+Ideen til prototypen blev udtænkt efter samtale med anæstesisygeplejerske Charlotte Høj fra operationsafdelingen på Herning Sygehus. På billedet ses anæstesisygeplejerskens arbejdsfelt, dette består af (fra højre) EPJ system, anæstesi apparat og monitor.
 \begin{figure}[H]
 \includegraphics[width =0.4\textwidth , center]{billeder/anastesi}
 \caption{\textbf{Anæstesisygeplejerskens arbejdsfelt.}}
 \end{figure}
+Produktet skulle opbygges med udgangspunkt i et brugsscenarie og efterleve dette arbejdsfelt, dog kun EPJ og monitor, og de hertil tilhørende funktioner. EPJ systemet på Herning sygehus benyttes både til patientjournal og personale login. Det er her sygeplejersken logger på med et unikt bruger-ID og der vil til dette være knyttet de patienter, som hun skal tilgå den pågældende dag. Sygeplejersken vil derfor kunne se relevante data for patienten. Derudover vil det målte blodtryk også gemmes i EPJ systemet. Monitoren er den brugergrænseflade, som grafisk præsenterer blodtrykket, EKG og iltmætning, samt tilhørende værdier. På monitoren er der en start- og slukknap og en timer, som starter når blodtryksmålingen sættes i gang. Derudover er der indbyggede grænseværdier for sysolen og diastolen, som justeres afhængigt af patientens tilstand. 
 Ud fra denne idé kunne Use cases udarbejdes, disse er beskrevet under Krav, hvor hovedscenariet for brugen af blodtryksmåleren beskrives.
 \subsubsection{Domænemodel} 
-Ud fra disse Use cases kunne de klasser som systemet skulle bestå af identificeres. Disse klasser identificeres ved at bestemme de konceptuelle klasser, som indeholder den information som systemet skal holde styr på. De konceptuelle klasser indføres i domænemodellen som klasser. Det er i domænemodellen hvor problemet i forhold til hvad der skal holdes styr på i softwaren kan bestemmes. 
+Ud fra disse Use cases kunne de klasser som systemet skal bestå af identificeres. Disse klasser identificeres ved at bestemme de konceptuelle klasser, som indeholder den information som systemet skal holde styr på. De konceptuelle klasser indføres i domænemodellen som klasser. Det er i domænemodellen, hvor funktioner i softwaren kan bestemmes. 
 \begin{figure}[H]
 \includegraphics[width =1.0\textwidth , center]{billeder/DM}
 \caption{\textbf{Domænemodel for blodtryksmålesystemet.}}
 \end{figure}
-Ud fra denne model ses det sundhedsfaglige personales interaktion med systemet, samt hvilke handlinger der igangsættes af denne interaktion. Det sundhedsfaglige personale udfører en handling, der medfører, at en række processer starter i systemet. Disse processer sørger for at hente data fra transduceren og EKG patient, samt sørger for at starte beregningen af værdierne for puls,
-systole, diastole og middeltryk. Efter beregningerne viser systemet disse værdier på brugergrænsefladen, samt sørger for at disse data bliver gemt i EPJ database. 
+Ud fra denne model ses det sundhedsfaglige personales interaktion med systemet, samt hvilke handlinger, der igangsættes af denne interaktion. Det sundhedsfaglige personale udfører en handling, der medfører, at en række processer starter i systemet. Disse processer sørger for at hente data fra transduceren og EKG patient, samt sørger for at starte beregningen af værdierne for puls,
+systole, diastole og middeltryk. Efter beregningerne viser systemet disse værdier på brugergrænsefladen. 
 \subsubsection{Klasseidentifikation}
-Ud fra domænemodellen kan softwareklasserne altså identificeres. Dette fører til at en applikationsmodel kan opstilles. Applikationsmodellen bruges til at bestemme de interagerende klasser i blodtryksmålesystemet og hvordan disse klasser kan tale sammen. Det er altså også ud fra applikationsmodellen at det kan bestemmes, hvilke klasser der skal ligge i de forskellige lag i trelagsmodellen, da klasserne i applikationsmodellen kan være af typen; domain, boundary og control.\\\\ Controlklasserne (kontrolklasserne) er de klasser er udfører Use casene ved at interagere med domain- og boundary klasserne. Boundaryklasserne (grænseklasserne) er de klasser der repræsenterer aktørerne fra Use Casene og disse aktøres grænseflader. Domainklasserne (domæneklasserne) er de klasser hvori data bliver behandlet og bearbejdet. Domæneklasserne er de klasser der skal ligge i logiklaget. Præsentationslaget og datalaget indeholder begge boundaryklasserne, det skal derfor identificeres hvilke indeholder data og hvilke klasser hvorfra interaktionerne startes.
+Ud fra domænemodellen kan softwareklasserne identificeres. Dette medfører, at en applikationsmodel kan opstilles. Applikationsmodellen bruges til at bestemme de interagerende klasser i blodtryksmålesystemet, og hvordan disse klasser interagerer. Det er også ud fra applikationsmodellen, at det kan bestemmes, hvilke klasser der skal ligge i de forskellige lag i trelagsmodellen, da klasserne i applikationsmodellen kan være af typen; domain, boundary og control.\\\\ Controlklasserne er de klasser, der udfører Use casene, ved at interagere med domain- og boundaryklasserne. Boundaryklasserne er de klasser, der repræsenterer aktørerne fra Use Casene og disse aktørers grænseflader. Domainklasserne er de klasser, hvori data bliver behandlet og bearbejdet. Domæneklasserne er de klasser, der skal ligge i logiklaget. Præsentationslaget og datalaget indeholder begge boundaryklasserne, det skal derfor identificeres, hvilke indeholder data og hvilke klasser, hvorfra interaktionerne startes.
 \subsubsection{Metodeidentifikation}
-Ud fra klasserne identificeret af domænemodellen og applikationsmodellen, kan sekvensdiagrammer laves. Sekvensdiagrammerne er interaktionsdiagrammer og viser derfor hvordan processerne forløber i forhold til hinanden. Der laves et sekvensdiagram for hver Use case. Ud fra sekvensdiagrammerne kan det altså ses hvornår og hvordan de forskellige processer forløber i systemet og interagerer med hinanden. Softwaremetoderne kan derfor identificeres ud fra sekvensdiagrammerne. Ud fra sekvensdiagrammerne kan et klassediagram laves. Dette diagram viser hver metode og attribut i hver klasse.
+Ud fra klasserne identificeret i domænemodellen og applikationsmodellen, kan sekvensdiagrammer laves. Sekvensdiagrammerne er interaktionsdiagrammer og viser derfor, hvordan processerne forløber i forhold til hinanden. Der laves et sekvensdiagram for hver Use case. Ud fra sekvensdiagrammerne kan det altså ses, hvornår og hvordan de forskellige processer forløber i systemet og interagerer med hinanden. Softwaremetoderne kan derfor identificeres ud fra sekvensdiagrammerne. Ud fra sekvensdiagrammerne kan et klassediagram laves. Dette diagram viser hver metode og attribut i hver klasse.\\
+Sekvensdiagrammerne og klassediagrammet kan ses i Projektdokumentationen under Arkitektur og design.
 \section{Design, implementering og test}
 \subsection{Hardware}
 \subsubsection{Design}
-Fra projektets start var der mange informationer og krav til hardwaren i projektet. Det betød at det ret tidligt blev tydeligt hvilke delkomponenter hardwaren skulle bestå af. Hardwaren skulle bestå af et lavpasfilter og en forstærker del, samt en spændingsforsyning. Udviklingsproces og design af hardwaren var igennem en række iterationer, disse er nærmere beskrevet i dokumentationen, dette afsnit vil fokusere på den endelige dimensionering og det endelige design af hardware-delen.\\\\
+Fra projektets start var der mange informationer og krav til hardwaren i projektet. Det betød at det ret tidligt blev tydeligt, hvilke delkomponenter hardwaren skulle bestå af. Hardwaren skulle bestå af et lavpasfilter og en forstærker del, samt en spændingsforsyning. Udviklingsprocessen og design af hardwaren skete igennem en række iterationer, disse er nærmere beskrevet i Projektdokumentationen. Dette afsnit vil fokusere på den endelige dimensionering og det endelige design af hardwaredelen.\\\\
 \textbf{Lavpasfilter}\\
-Det var givet at det var et aktivt 2. Ordens Butterworth Sallen-key filter der skulle være lavpasfilter delen af projektet. Det var fra start givet at der skulle benyttes en OP27 operationsforstærker, ligeledes var en af kondensatorerne givet C2 = 680nF og R1 = R2. Filteret skulle dimensioneres til en cut-off frekvens på 50Hz, med en 20dB/decade dæmpning ved 500Hz. Ud fra disse informationer, samt en kredsløbstegning af filteret kunne vi opstille en overføringsfunktion for kredsløbet.
+Det var givet, at det var et aktivt 2. Ordens Butterworth Sallen-key filter, der skulle være lavpasfilter delen i projektet. Det var fra start givet, at der skulle benyttes en OP27 operationsforstærker, ligeledes var en af kondensatorerne givet: C2 = 680nF og R1 = R2. Filteret skulle dimensioneres til en cut-off frekvens på 50Hz, med minimum 20dB dæmpning ved 500Hz. Ud fra disse informationer, samt en kredsløbstegning af filteret kunne der opstilles en overføringsfunktion for kredsløbet:
 \begin{align}
 T_{v}(s)=\dfrac{V_{out}(s)}{V_{in}(s)}=\dfrac{\dfrac{1}{R1\cdot R2\cdot C1\cdot C2}}{s^2+\dfrac{R1 + R2}{R1\cdot R2\cdot C2}\cdot s+\dfrac{1}{R1\cdot R2\cdot C1\cdot C2}}
 \end{align}
 Denne overføringsfunktion omskrives til standardformel:
 \begin{align}
-\dfrac{V_{out}(s)}{V_{in}(s)}=\dfrac{\omega^2}{s^2+2\zeta\omega+\omega^2}
+\dfrac{V_{out}(s)}{V_{in}(s)}=\dfrac{\omega^2}{s^2+2\zeta\omega\cdot s+\omega^2}
 \end{align}
 Her isoleres cut-off frekvensen ($\omega$) i overføringsfunktionen for lavpasfilteret:
 \begin{align}
 \omega = 2\pi\sqrt{\dfrac{1}{R1\cdot R2\cdot C1\cdot C2}}
 \end{align}
-I denne ligning indsatte vi så de kendte værdier, det er beskrevet filteret er af typen 2. Ordens Sallen-Key filter, derfor ved vi at C1 er halvdelen af C2.\cite{wikifilter}
+I denne ligning indsættes de kendte værdier. Det er beskrevet at filteret er af typen 2. ordens Sallen-key filter, derfor ved vi at C1 er halvdelen af C2.\cite{wikifilter}
 \begin{align}
-50Hz\cdot 2\cdot \pi = \sqrt{\dfrac{1}{R\cdot R\cdot 680\cdot 10^{-9}F\cdot 340\cdot 10^{-9}F}}\\
+50Hz\cdot 2\cdot \pi = \sqrt{\dfrac{1}{R\cdot R\cdot 680\cdot 10^{-9}F\cdot 340\cdot 10^{-9}F}}
+\end{align}
+\begin{align}
 R=6,62\cdot 10^3 \Omega
 \end{align}
-Så vi kan se vores modstande er ca. 6.6k$\Omega$, realiseret med to 3.3k$\Omega$ modstande i serie i det endelige produkt.\\\\
+Ud fra dette ses det at modstanden er ca. 6.6k$\Omega$, realiseret med to 3.3k$\Omega$ modstande i serie i det endelige produkt.\\\\
 \textbf{Forstærker INA-114 og valg af spændingsforsyning}\\
-Udviklingen af forstærkerdelen til hardwaredelen blev bestemt ved hjælp af databladet for DAQ (NI-DAQ6009), samt databladet for tryk-transduceren (TruWave\texttrademark). DAQ kan maksimalt modtage op til +/-10V, det vil sige vi må ikke overstige peak-to-peak forstærkning på 20V. Før vi kunne beregne forstærkningen skulle vi vælge en spændingsforsyning til kredsløbet, det blev valgt at benytte to 9V-batterier. Disse blev sat op som følger.
+Udviklingen af forstærkerdelen til hardwaredelen blev bestemt ved hjælp af databladet for DAQ (NI-DAQ6009), samt databladet for tryk-transduceren (TruWave\texttrademark). DAQ kan maksimalt modtage op til +/-10V, det vil sige signalet ikke må overstige peak-to-peak spænding på 20V. Før forstærkningen kunne beregnes, skulle spændingsforsyningen til kredsløbet vælges. Det blev valgt at benytte to 9V-batterier. Disse blev sat op som følger:
 \begin{figure}[H]
 \includegraphics[width =0.2\textwidth , center]{billeder/spandingsforsyning}
 \caption{\textbf{Spændingforsyning.}}
 \end{figure}
-Denne opsætning ville i teorien sikre os 18V peak-to-peak. Man valgte at benytte en INA-114 forstærker til at forstærke signalet fra tryktransduceren. I teorien ville man kunne forstærke op til 18V peak-to-peak, men i praksis ville det være urealistisk. Det blev besluttet at forstærke op til 16V peak-to-peak. Undersøgelser for hvorvidt INA-114 havde tilstrækkelige båndbredde blev udregnet som følger. Først bestemte man det maksimale output for tryktransduceren i området 0-250mmHg.
-\begin{align*}
-V_{max}=250mmHg\cdot 16V\cdot5\mu V/V/mmHg =20 mV
-\end{align*}
+Denne opsætning ville i teorien sikre en 18V peak-to-peak spænding. Det blev valgt at benytte en INA-114 forstærker til at forstærke signalet fra tryktransduceren. I teorien ville man kunne forstærke op til 18V peak-to-peak, men i praksis ville det være urealistisk, da batterierne med tiden bliver afladet. Det blev besluttet at forstærke op til 16V peak-to-peak. Undersøgelser for hvorvidt INA-114 havde tilstrækkelige båndbredde blev udregnet som følger. Først bestemte man det maksimale output for tryktransduceren i området 0-250mmHg.
+\begin{align}
+V_{max}=250mmHg\cdot 5V\cdot 5\mu V/V/mmHg =6.25 mV
+\end{align}
 Ud fra dette kan man bestemme hvor meget gain der skal bruges fra forstærkeren.
-\begin{align*}
-16V = 20\cdot 10^{-3}V\cdot gain\\
+\begin{align}
+16V = 20\cdot 10^{-3}V\cdot gain
+\end{align}
+\begin{align}
 gain = 800
-\end{align*}
+\end{align}
 Man sikrede sig at forstærkeren kunne håndtere forstærkningen, denne del er nærmere beskrevet i dokumentationen. Herefter skulle man beregne hvor stor modstanden på INA-114 skulle dimensioneres til for at få den valgte gain.
-\begin{align*}
+\begin{align}
 G=1+\dfrac{50k\Omega}{R_G}\\
 R_G\approx 62.5\Omega
-\end{align*}
-Det blev besluttet at bruge et potentiometer i stedet for en fast modstand til RG. Så man kunne regulere denne hvis spændingsforsyningen var mere potent end 16V peak-to-peak.\\\\
+\end{align}
+Det blev besluttet at bruge et potentiometer i stedet for en fast modstand til $R_G$. Så man kunne regulere denne hvis spændingsforsyningen var mere potent end 16V peak-to-peak.\\\\
 \textbf{Spændingsregulator}\\
 Det blev i den sidste iteration besluttet at benytte en spændingsregulator for at sikre at transduceren fik en stabil spændingsforsyning. Tryktransduceren er meget følsom så derfor var det vigtigt at denne får en konstant spændingsforsyning. Det betyder også at den oprindelige skalering ikke er korrekt.
-\begin{align*}
+\begin{align}
 V_{max}=250mmHg\cdot 16V\cdot5\mu V/V/mmHg =20 mV
-\end{align*}
+\end{align}
 Gain beregning
-\begin{align*}
-16V = 6,25\cdot 10^{-3}VZ\cdot gain\\
+\begin{align}
+16V = 6,25\cdot 10^{-3}V\cdot gain
+\end{align}
+\begin{align}
 gain=2560
-\end{align*}
-Produktet af gain og båndbredde er konstant, derfor er det vigtigt båndbredden ligger over knækfrekvensen på 50Hz. Ved gain=1 kan INA-114 levere 1Mhz båndbredde, man kan opstille følgende ligning for beregning af båndbredden.
-\begin{align*}
+\end{align}
+Produktet af gain og båndbredden er konstant, derfor er det vigtigt båndbredden ligger over knækfrekvensen på 50Hz. Ved gain=1 kan INA-114 levere 1Mhz båndbredde. Følgende ligning for beregning af båndbredden kan opstilling:
+\begin{align}
 1000000=2560\cdot BW\\
 BW\approx 390Hz
-\end{align*}
-Da 390 Hz er over knækfrekvensen på 50Hz har forstærkeren tilstrækkelig båndbredde. Den nye RG kan beregnes til at skulle være.
-\begin{align*}
+\end{align}
+Da 390 Hz er over knækfrekvensen på 50Hz har forstærkeren tilstrækkelig båndbredde. Den nye $R_G$ kan beregnes til at skulle være.
+\begin{align}
 2560=1+\dfrac{50k\Omega}{R_G}\\
 R_G\approx 19,5\Omega
-\end{align*}
+\end{align}
 \subsubsection{Implementering}
-Implementeringsprocessen har været præget af de mange ændringer, som er foretaget undervejs i hardware designet. \\
-Designet af hardwaren har været igennem flere ændringer undervejs, da bestemmelsen af de rigtige specifikationer til både filtret of operationsforstærkeren ikke har været lige til. Hver gang gruppen har identificeret en fejl i hardware designet som medførte ændring i kredsløbet, skulle implementering af systemet også ændres. De nævnte ændringer er yderligere beskrevet i projektdokumentationen under afsnittet arkitektur og design for hardware. Implementeringsstrategien bestod af to faser. Den første fase var at realiserer kredsløbet på et fumlebræt, således at fejl i systemet nemt kan ændres uden store tidsomkostninger. \\\\
-Når denne fase er gennemført, skulle systemet overføres på et print som skulle designes vha. Multisims Ultiboard. Gruppens medlemmer havde ikke en forudgående erfaringer med at designe print på Multisim, men viljen til at udforske området var tilstede. Der er lagt en del tid på at færdiggøre printet, men undervejs i processen har gruppen valgt at prioritere den første strategi, eftersom tidsforbruget på at designe printet blev uoverkommeligt. \\
-Efter færdiggørelsen af det endegyldige design blev elektronikkredsløbet bygget på et fumlebræt og testen af kredsløbet blev igangsat. Der er anvendt Analog Discovery til simulering af signalet fra transduceren. Dette gøres ved at genererer et differentielt signal fra Analog Discovery, hvor W1 og W2 skal tilkobles til de to indgange på INA-114. De to signaler har samme stelpunkt. Udgangs signalet måles vha. en oscilloskop. De to signaler fra henholdsvis W1 og W1 er på 20mV med varieret frekvenser. Det forventet resultat er at de 20mV bliver forstærket og ved frekvens 500Hz skal signalet dæmpes med 40dB på en dekade. Inden accepttesten skulle eksekveres blev kredsløbet overført på et veroboard for at overskueliggøre kredsløbet, da de mange ledninger på fumlebrættet nemt kunne medføre fejl under accepttesten. Denne beslutning var ikke en del af den oprindelige plan, eftersom gruppen havde tiltro til at designe et print til tiden. Resultatet af simuleringen og accepttestens udførelse vil blive fremlagt i afsnittet resultater og diskussion. 
+Implementeringsprocessen har været præget af de mange ændringer, som er foretaget undervejs i hardwaredesignet. Disse ændringer er nærmere specificeret i Projektdokumentationen under afsnittet Arkitektur og design for hardware. \\
+Hver gang gruppen har identificeret en fejl i hardwaredesignet, som medførte ændringer i kredsløbet, skulle implementeringen af systemet også ændres. Implementeringsstrategien bestod af to faser. Den første fase var at realiserer kredsløbet på et fumlebræt, således at fejl i systemet nemt kan ændres uden store tidsomkostninger. \\\\
+Når denne fase er gennemført, skulle systemet overføres på et print som skulle designes vha. Multisims Ultiboard. Gruppens medlemmer havde ikke en forudgående erfaringer med at designe print i Ultiboard. Der er lagt en del tid i at færdiggøre printet, men undervejs i processen, har gruppen valgt at prioritere den første strategi, eftersom tidsforbruget på at designe printet blev for stort. \\
+Efter færdiggørelsen af det endegyldige design blev elektronikkredsløbet bygget på et fumlebræt og testen af kredsløbet blev igangsat. Der er anvendt Analog Discovery til simulering af signalet fra transduceren. Dette gøres ved at genererer et differentielt signal fra Analog Discovery, hvor W1 og W2 skal tilkobles til de to indgange på INA-114. De to signaler har samme stelpunkt. Udgangssignalet måles vha. et oscilloskop. De to signaler fra henholdsvis W1 og W1 var på 20mV med forskellige frekvenser. Det forventet resultat er at de 20mV bliver forstærket og ved frekvensen 500Hz skal signalet dæmpes med 20dB. Inden accepttesten skulle eksekveres blev kredsløbet overført på et veroboard for at overskueliggøre kredsløbet. Denne beslutning var ikke en del af den oprindelige plan, eftersom gruppen havde tiltro til ar færdiggøre et print i Ultiboard til tiden. Resultatet af simuleringen og accepttestens udførelse vil blive fremlagt i afsnittet Resultater og diskussion. 
+\subsubsection{Modultest}
+Modultesten omfatter en forstærkerdel og en filterdel. De udleverede dele af systemet består af en transducer, et kateter og en dataopsamler i form af NIDAQ-6009. Ved test af filteret sikrer man at de høje frekvenser dæmpes. Modultesten foretages enkeltvis dvs. de enkelte blokke testes hver for sig. Til sidst testes systemet med en vandsøjle for at identificere om operationsforstærkeren og filteret kommunikere med hinanden.  Rækkefølgen som blokkene skal testes er som følgende:
+\begin{itemize}
+\item Test af forstærker
+\item Test af filter
+\item Den endelige test med vandsøjle
+\end{itemize}
+Modultesten er nærmere beskrevet i Projektdokumentationen under Arkitektur og design.
 \subsection{Software}
-Ud fra arkitekturen kan designet af softwaren bestemmes. Det bestemmes hvilke mønstre der skal benyttes og hvordan data skal transporteres igennem koden. Herudover beskrives hvordan nulpunktsjusteringen og kalibreringen foretages.
+Ud fra arkitekturen kan designet af softwaren bestemmes. Det bestemmes, hvilke mønstre der skal benyttes og hvordan data skal transporteres igennem koden. Herudover beskrives, hvordan nulpunktsjusteringen og kalibreringen foretages.
 \subsubsection{Kalibrering}
-Kalibreringen er blevet implementeret sådan at der indtastes en værdi for trykket som vandsøjlen leverer i mmHg og en værdi for spændingen i volt, hvilken kan aflæses fra waveforms eller måles vha. et multimeter. Disse to værdier bliver herefter sendt ned i software klassen Kalibrering, hvor en kalibreringsværdi/omsætningsværdi kan udregnes ved formlen:
+Kalibreringen er blevet implementeret så der indtastes en værdi for trykket, som vandsøjlen leverer i mmHg, og en værdi for spændingen i volt, hvilken kan aflæses fra waveforms eller måles vha. et multimeter. Disse to værdier bliver herefter sendt ned i software klassen Kalibrering, hvor en kalibreringsværdi/omsætningsværdi kan udregnes ved formlen:
 \begin{align}
 X\left[\dfrac{mmHg}{V}\right]=\dfrac{pressure \left[mmHg\right]}{voltage \left[V\right]}
 \end{align}
@@ -322,105 +337,66 @@ voltage \left[V\right]\cdot X\left[\dfrac{mmHg}{V}\right] = pressure \left[mmHg\
 \end{align}
 Hermed ganges kalibreringsværdien på samtlige værdier i den liste af data der kommer fra DAQ'en (Blodtryksværdiliste). 
 \subsubsection{Nulpunktsjustering}
-Nulpunktsjusteringen foregår ved at transduceren er tilsluttet og måler det atmosfæriske tryk, denne værdi skal herefter trækkes fra samtlige værdier for blodtrykket fra DAQ'en. Denne værdi skal derfor trækkes fra inden kalibreringsværdien ganges på. Måden hvormed nulpunktsjusteringen foregår på, er ved at transduceren er tilsluttet og vha. waveforms kan det atmosfæriske tryk aflæses, denne værdi aflæses som en spænding. Denne værdi indtastes på hovedskærmen, hvorefter nulpunktsjusteringen kan startes. Systemet går herefter ind i klassen Nulpunkts$_{-}$justering, hvor følgende formel bruges til at beregne den værdi der skal benyttes videre:
+Nulpunktsjusteringen foregår ved, at transduceren er tilsluttet og måler det atmosfæriske tryk, denne værdi skal herefter trækkes fra samtlige værdier for blodtrykket fra DAQ'en. Denne værdi skal derfor trækkes fra inden kalibreringsværdien ganges på. Måden hvorpå nulpunktsjusteringen foregår, er ved at transduceren er tilsluttet, og vha. waveforms kan det atmosfæriske tryk aflæses, denne værdi aflæses som en spænding. Denne værdi indtastes på hovedskærmen, hvorefter nulpunktsjusteringen kan startes. Systemet går herefter ind i klassen Nulpunkts$_{-}$justering, hvor følgende formel bruges til at beregne den værdi der skal benyttes videre:
 \begin{align}
 V_{zero} \left[V\right]=V_{read}\left[V\right]-pressure \left[V\right] 
 \end{align}
-Det er denne værdi der herefter bliver kalibreret, for derefter at kunne blive vist som en graf for blodtrykket i mmHg.
+Det er denne værdi, der herefter bliver kalibreret, for derefter at kunne blive vist som en graf for blodtrykket i mmHg.
 \subsubsection{Digitalt filter}
-Det digitale filter der er blevet implementeret i projektet er af typen et glidende middelværdi (moving average) filter. I et glidende middelværdi filter, lægges der et vindue oven på ens talværdi, i dette vindue tager man gennemsnittet af alle værdierne. \cite{digifilter} Vinduet er her betegnelsen for et bestemt tidsinterval. \\
-I projektet er der valgt længden ti på vinduet, det betyder at for hver tiende tal i vores blodtrykliste, bliver der udregnet gennemsnittet af. Herefter rykker vinduet sig til højre og udregner for de næste ti tal i blodtrykslisten. Blodtrykslisten er listen af blodtryksværdier, der bliver indlæst af DAQ’en. 
+Det digitale filter, der er blevet implementeret i projektet, er af typen et glidende middelværdi (moving average) filter. I et glidende middelværdi filter, lægges der et vindue oven på talværdien, i dette vindue tager man gennemsnittet af alle værdierne. \cite{digifilter} Vinduet er her betegnelsen for et bestemt tidsinterval. \\
+I projektet er længden på vinduet valgt til at være ti. Det betyder, at for hvert tiende tal i vores blodtrykliste, bliver gennemsnittet beregnet. Herefter rykker vinduet sig til højre og udregner for de næste ti tal i blodtrykslisten. Blodtrykslisten er listen af blodtryksværdier, der bliver indlæst af DAQ’en. 
 \begin{figure}[H]
 \includegraphics[width =0.5\textwidth , center]{billeder/RammeDigi}
 \caption{\textbf{Digital filter ramme. Denne viser hvordan rammen bestemmer gennemsnittet og rykker én hver gang.}}
 \end{figure}
-Længden af vinduet på ti er valgt, da der bliver vist ti tal fra blodtrykslisten på en graf på brugergrænsefladen. 
-Glidende middelværdifilter kan beskrives med formlen:
+Et glidende middelværdi filter kan beskrives med formlen:
 \begin{align}
-y\left[n\right] = \dfrac{1}{M}\cdot \sum_{k=0}^{M}x\left[n-k\right],\\ b_{k}=\dfrac{1}{M}
+y\left[n\right] = \dfrac{1}{M}\cdot \sum_{k=0}^{M}x\left[n-k\right]
+\end{align}
+\begin{align}
+b_{k}=\dfrac{1}{M}
 \end{align}
 $M$ er de forgående samples for signalet, $n$ er de nuværende værdier af blodtrykket og $k$ er koefficienterne. 
 Filteret udglatter signalets høje peak værdier, da filteret er et lavpasfilter.
 \subsubsection{Observer mønsteret}
-Observer/subject mønstreret bruges til at sende data op kontinueret og på en fornuftig måde. Subject har en metode til at koble en observer til, og en anden metode til at fjerne observeren. Der er en tredje metode i subject, kaldet notify. Notify sørger for at give besked til den tilknyttet observer om opdatering. En observer er interesseret i at kende til ændringer i det subject den er tilknyttet. Beskeden om ændring kommer fra subjectet, der er tilknyttet observeren. \\
+Observer mønsteret bruges til at sende data op kontinueret. Subject har en metode til at koble en observer til, og en anden metode til at fjerne observeren. Der er en tredje metode i subject, kaldet Notify. Notify sørger for at give besked til den tilknyttede observer om opdatering. En observer er interesseret i at kende til ændringer i det subject den er tilknyttet. Beskeden om ændring kommer fra subjectet, der er tilknyttet observeren. \\
 \\
-I dette projekt er der valgt at bruge observer/subject mønstreret til at sende data fra datalag til logiklaget. Mønstreret er også brugt til at sende data videre fra logiklaget til præsentationslaget. Yderligere beskrivelse findes i projektdokumentationen under kapitlet Arkitektur og design under afsnittet Software design. 
+I dette projekt er det valgt at bruge observer mønsteret til at sende data fra datalag til logiklaget. Mønsteret er også brugt til at sende data videre fra logiklaget til præsentationslaget. Yderligere beskrivelse findes i Projektdokumentationen under kapitlet Arkitektur og design under afsnittet Software design. 
 \subsubsection{PUSH/PULL}
-PUSH/PULL er to forskellige måde at implementere Observer mønsteret på. Her bliver data enten skubbet eller trukket op. PUSH betyder at skubbe, og betyder at data bliver skubbet op, når der sker en ændring, uden der skal gives besked om at hente data. PULL trækker data op imellem lagene. I PULL gives der besked til et lag om en ændring. Herefter skal laget, der ønsker at kende til ændringen bede om ændringen, før det sendes op.\\
+PUSH/PULL er to forskellige måder at implementere observer mønster på. Her bliver data enten skubbet eller trukket op. PUSH betyder at skubbe, og betyder at data bliver skubbet op, når der sker en ændring, uden der skal gives besked om at hente data. PULL trækker data op imellem lagene. I PULL gives der besked til et lag om en ændring. Herefter skal laget, der ønsker at kende til ændringen bede om ændringen, før det sendes op.\\
 \\
-I dette projekt er det valgt at benytte PUSH til at sende data imellem lagene. Idet det er interessant at få data op til brugergrænsefalden hele tiden når der ny data fra DAQ’en. Yderligere beskrivelse findes i projektdokumentationen under kapitlet Arkitektur og design under afsnittet Software design. 
+I dette projekt er det valgt at benytte PUSH til at sende data imellem lagene. Det er interessant at få data op til brugergrænsefalden hele tiden, når der ny data tilgængelig. Yderligere beskrivelse findes i Projektdokumentationen under kapitlet Arkitektur og design under afsnittet Software design. 
 \subsubsection{Queue}
-For at sikre at data bliver sendt op i den rigtige rækkefølge og på en kontrolleret måde, er der i dette projekt valgt at benytte en kø. Til dette er der benyttet en indbygget funktion i Visual Studio, Queue class. Herunder ligger der to metoder, som kan bruges til at sende objekter af tal ind i den ene ende af køen og efter at køen er blevet fyldt op, er der en funktion til at fjerne det første objekt fra den anden ende af køen. Dette sørger for at der hele tiden er et flow i køen når der sendes data ind i denne. \\
+For at sikre, at data bliver sendt op i den rigtige rækkefølge og på en kontrolleret måde, er der i dette projekt valgt at benytte en kø. Til dette er der benyttet en indbygget funktion i .NET, Queue class. Herunder ligger der to metoder, som kan bruges til at sende objekter af tal ind i den ene ende af køen. Efter at køen er blevet fyldt op, er der en funktion til at fjerne det første objekt fra den anden ende af køen. Dette sørger for, at der hele tiden er et flow i køen når der sendes data ind i denne. \\
 \\
 En yderligere beskrivelse af hvordan Queue klassen benyttes i koden og hvordan denne er opbygget er beskrevet i dokumentationen under Arkitektur og design under afsnittet Implementering.
 \subsubsection{Trelagsmodel}
-Trelagsmodellen er en software model, til at inddele sin software i tre lag, præsentationslaget, logiklaget og datalaget. Hver lag har sit eget ansvar og funktionalitet. Præsentationslaget kan kun tilgå logiklaget, og må kun vise data på brugergrænseflade eller indlæse data fra brugergrænsefladen. Logiklaget må tilgå både datalaget og præsentationslaget. Logik er det midterste lag, og står for behandling af data fra præsentationslaget og datalaget. Datalaget er det nederste lag og sørge for at sende data fra et måle apparat op til logiklaget. Datalaget står også for at gemme data i en fil eller en database.\\
+Trelagsmodellen er en software model, til at inddele software i tre lag; præsentationslaget, logiklaget og datalaget. Hvert lag har sit eget ansvar og funktion. Præsentationslaget kan kun tilgå logiklaget, og må kun vise data på brugergrænseflade eller indlæse data fra brugergrænsefladen. Logiklaget må tilgå både datalaget og præsentationslaget. Logiklaget er det midterste lag, og står for behandling af data fra præsentationslaget og datalaget. Datalaget er det nederste lag og sørge for at sende data, fra et måleapparat, op til logiklaget. Datalaget står også for at gemme data i en fil eller en database.\\
 \\ 
-I dette projekt er koden opdelt efter trelagsmodellen, ved at have et præsentationslag med to brugergrænsefalder, et logiklag med algoritmer til udregning af blodtryk, og et datalag der hente data fra DAQ’en og gemmer dem i en database.  Yderligere beskrivelse og model over trelagsmodellens inddeling af software koden findes i projektdokumentationen under kapitlet Arkitektur og design under afsnittet Software design.
+I dette projekt er koden opdelt efter trelagsmodellen, ved at have et præsentationslag med to brugergrænsefalder, et logiklag med algoritmer til udregning af blodtryk, og et datalag der henter data fra DAQ’en og gemmer dem i en database. Yderligere beskrivelse, og model over trelagsmodellens inddeling af software koden, findes i Projektdokumentationen under kapitlet Arkitektur og design under afsnittet Software design.
 \subsubsection{Databaser}
 \begin{figure}[H]
 \includegraphics[width =1.0\textwidth , center]{billeder/databaser}
 \caption{\textbf{Databaserne; Personale database og EPJ database. Her ses sammenhængen mellem tabellerne i databasen, og hvilken data der er under hver tabel.}}
 \end{figure}
-Dette afsnit vil beskrive opbygningen af databaser og tabellerne. Da der er valgt at tage udgangspunkt i et brugsscenarie, afspejler datamodelleringen i databasen dette scenarie. Det er vigtigt at bemærke at der er en regulær opdeling af databaser og skemaer, realiseret som beskrevet nedenfor.
+Dette afsnit vil beskrive opbygningen af databaser og tabellerne. Da der er valgt at tage udgangspunkt i et brugsscenarie, afspejler datamodelleringen i databasen dette scenarie. Det er vigtigt at bemærke, at der er en regulær opdeling af databaser og skemaer, realiseret som beskrevet nedenfor.
 \\\\
 \textbf{Personale database}\\
 Personale databasen bliver brugt til at tilgå data for personalet. Her er der tale om brugernavn og password. Disse data er lagt i databasen på forhånd, så det er altså en login-database.\\ 
 \textbf{Database-adresse:} webhotel10.F15ST2ITS2201404669.db\_ owner
 \\\\
 \textbf{EPJ database}\\
-EPJ databasen bliver brugt til at tilgå data for patienten. Her tænkes på CPR/Navn. Ligeledes gemmes der i denne database målinger, samt metadata for at kvalificere disse data. Der kunne udvides med mange flere metadata, specielt i forhold til afsnittet om fremtidigt arbejde "Datawarehouse". Det bør bemærkes der i databasen er gjort klar til EKG-data, selvom det ikke er implementeret. Patient-tabellen modsvarer vores version af en EPJ-database, hvor BTData-tabellen repræsenterer målingerne foretaget af vores system.\\
+EPJ databasen bliver brugt til at tilgå data for patienten. Her tænkes på CPR og Navn. Ligeledes gemmes der i denne database målinger, samt metadata for at kvalificere disse målinger. Der kunne udvides med mange flere metadata, specielt i forhold til afsnittet om fremtidigt arbejde "Datawarehouse". Det bør bemærkes, et der i databasen er gjort klar til EKG-data, selvom det ikke er implementeret. Patient-tabellen modsvarer vores version af en EPJ-database, hvor BTData-tabellen repræsenterer målingerne foretaget af vores system.\\
 \textbf{Database-adresse:} webhotel10.F15ST2ITS2201405838.db\_ owner. 
 \subsubsection{Unittest}
-Det er blevet besluttet at lave unittest på softwaren. Unit-test forstås ved at der testes på hvert enkelt komponent i koden, i objektorienteret kode vil det sige metoderne. Man sikrer sig at metoderne returnerer det forventede. En unit test bør foregå løbende lige så frit som koden bliver udviklet, så kan man fokusere på de del-elementer som ikke virker efter hensigten. \\
+Det er blevet besluttet at lave unittest på softwaren. Unit-test forstås ved, at der testes på hvert enkelt komponent i koden, i objektorienteret kode vil det sige metoderne. Man sikrer sig, at metoderne returnerer det forventede. En unit test bør foregå løbende mens koden bliver udviklet, så man kan fokusere på de del-elementer, som ikke virker efter hensigten. \\
 \\
-I dette projekt blev der valgt at lave unit-test efter sidste iteration af koden, da de sidste versioner af softwaren ændrede sig meget, så alle unit-tests skulle laves forfra. Grundlaget for mange metoder ændrede sig løbende. Disse unit-tests blev lavet i koden ved at sætte breakpoints og følge metoden til ende og evaluere på hvorvidt metoden opførte sig efter hensigten. Unit-tests er blevet foretaget i koden, hvor der er skrevet kommentarer i koden til de metoder der er blevet testet.
+I dette projekt blev der valgt at lave unit-test efter sidste iteration af koden, da de sidste versioner af softwaren ændrede sig meget, så alle unit-tests skulle laves forfra. Grundlaget for mange metoder ændrede sig løbende. Disse unit-tests blev lavet i koden ved at sætte breakpoints og følge metoden til ende og evaluere på hvorvidt metoden opførte sig efter hensigten. Unit-tests er blevet foretaget i koden, hvor der er skrevet kommentarer i koden til de metoder, der er blevet testet.
 \section{Resultater og diskussion}
-\subsection{Software}
-Igennem integrationstesten og accepttesten er der opnået resultater for projektet. Igennem accepttesten er der opstillet krav til hvordan blodtryksmålesystemet skal opføre sig i forhold til Use cases, og hvordan dette kommer til udtryk visuelt. Resultaterne for projektet er visuelle resultater af accepttesten, og ses i dette afsnit som screendumps. \\\\
-I accepttesten er det første step for accepttest af Use case 1, er at vælge en værdi på vandsøjlen og kalibrer efter den. Herved skal den aflæste spænding og trykket i vandsøjlen indtastes. Når programmet starter, vises start skærmen neden for.
-\begin{figure}[H]
-\includegraphics[width =0.4\textwidth , center]{billeder/ITstartGUI}
-\caption{\textbf{Startskærm uden indtastede login oplysninger.}}
-\end{figure}
-Der kan ses på figuren neden for at det er muligt at kalibrer på hovedskærmen, og at blodtryksmålesystemet selv udregner en kalibreringsværdi ud fra de indtastede oplysninger. Kalibreringsværdien udregnes først, når der er trykket på kalibreringsknappen. 
-\begin{figure}[H]
-\includegraphics[width =0.4\textwidth , center]{billeder/ITstartGUIlogKali}
-\caption{\textbf{Startskærm med login oplysninger og kalibreringsværdi.}}
-\end{figure}
-Næste step i accepttesten er for Use case 2, er at indtaste brugernavnet "anpe" og koden "1234". Derefter trykkes der på login og vælge patient i patient dropdown. Inden dette er sket er der valgt den port, som DAQ’en er tilkoblet computeren i, og der er logget ind på VPN. På figuren oven for, kan der ses at der er indskrevet brugernavn og adgangskode for anpe, og der vises hvilke patienter anpe kan tilgå i Patient-dropdown. Efter at have valgt en patient i patient dropdown, kommer hovedskærmen frem. Her skal der trykkes på tænd-knappen, og derefter bliver grafen for blodtrykket vist, samt værdierne for systolen, diastolen, middeltrykket og pulsen. Det ses på figuren neden for at blodtrykket bliver vidst med filteret på, og der vises en puls værdi på 69, samt en systole på 125, en diastole på 83 og et middeltryk på 96.
-\begin{figure}[H]
-\includegraphics[width =0.6\textwidth , center]{billeder/IThovedGUIkorer}
-\caption{\textbf{Blodtryksmåling med det digitale slået til.}}
-\end{figure}
-Blodtryksmålesystemet skal også kunne angive hvis brugernavnet/adgangskoden ikke findes i databasen. Herved er der i accepttesten for Use case 2, indtastet brugernavnet efgh og koden 1234. Ingen af disse findes i personale databasen, og kan herved ikke bruges til at logge ind med. Som det ses på figuren neden for, er det heller ikke muligt at logge ind, og programmet giver besked om, at brugernavn og/ eller kode er indtastet forkert.
-\begin{figure}[H]
-\includegraphics[width =0.4\textwidth , center]{billeder/ITstartGUIforkert}
-\caption{\textbf{Brugerneavn/kode er indtastet forkert.}}
-\end{figure}
-I blodtryksmålesystemet skal det være muligt at kunne slå filteret til og fra, dette bliver testet i accepttesten ved at klikke i radiobutton for digitalt filter off. På figuren neden for, ses at det blodtrykssignalet er forvrænget, da der er kommet mere støj på signalet, herved kan det konkluderes at filteret virker. 
-\begin{figure}[H]
-\includegraphics[width =0.6\textwidth , center]{billeder/IThovedGUIkorerufiltreret}
-\caption{\textbf{Blodtrykssiganelet uden digitalt filter.}}
-\end{figure}
-I accepttesten skal blodtryksmålesystemet kunne melde alarm når grænseværdierne overskrides, og grænseværdierne skal kunne ændres på hovedskærmen. På figuren neden for, ses det at grænseværdierne for systolen op og ned, er ændret til 129/89, hvor de før var sat til normal værdierne for systolen, 140/100. Blodtrykssignalet har en systoleværdi på 132, hvilket er over den nye grænseværdi på 129, og derved går alarmen i gang, som det ses med den røde alarm klokke øverst i højre hjørne af hovedskærmen. 
-\begin{figure}[H]
-\includegraphics[width =0.6\textwidth , center]{billeder/IThovedGUIAlarm}
-\caption{\textbf{Grænseværdi for systole ændret og alarm igangsat.}}
-\end{figure}
-I acceptesten for Use case 4, skal der trykkes på sluk, derefter log ud og til sidst ja på pop-up vinduet. På figuren neden for, ses der at der er trykket på sluk-knappen, da den er blevet gennemsigtig, og kun tænd-knappen der kan trykkes. Log ud er blevet trykket for at bekræft pop-up vinduet er kommet frem. Herved virker log ud knappen som den skal, og der bliver gemt målingen for patienten i EPJ-databasen. Blodtryksmålingen for patienten bliver gemt løbende i EPJ-databasen. 
-\begin{figure}[H]
-\includegraphics[width =0.6\textwidth , center]{billeder/IThovedGUILogUd}
-\caption{\textbf{Log ud af blodtryksmålesystemet.}}
-\end{figure}
-Fra de foregående figur kan det konkluderes at blodtryksmålesystemet lever op til accepttestens krav omkring, at kunne vise et blodtrykssignal kontinuert, samt slå et digitalt filter til og fra. \\\\
-Blodtryksmålesystemet lever også op til kravet omkring at kunne kalibrere systemet. Dette gøres på startskærmen. Kravet til at systemet kan nulpunktsjusteres er ligeledes opfyldt, denne sker på hovedskærmen. Det kan diskuteres om det var smartere at systemet selv skal kunne indlæse værdien for nulpunktjustering, og derefter bare lægge denne denne værdi til blodtrykssignalet, når der trykkes på nulpunktsjusterings knappen, end at man selv skal aflæse værdien. Dog lever nulpunktsjusterings knappen, op til kravet omkring at nulpunktsjustere blodtryksmålesystemet, da alle blodtrykssignalværdierne bliver nulpunktsjusteret efter den indtastet nulpunktsværdi. \\\\
-Grænseværdierne for blodtryksmålesystemet kan også ændres, herved er dette krav opfyldt, og der kommer en alarm når værdierne for enten systolen eller diastolen overskrider de satte grænseværdier. \\
-Alarmen kan også udsættes i et minut, hvilket gøres ved at trykke på alarmknappen oppe i højre hjørne af hovedskærmen. \\\\
-En anden ting som blodtryksmålesystemet også kan er at vise en timer, som starter når man har trykket på start knappen, og stopper når der trykkes på sluk knappen. Det kan diskuteres hvor smart det er, om timeren skal nulstille, når der trykkes på start knappen igen. Der er valgt i dette projekt at timeren starter fra det stoppet tidspunkt, når tænd bliver trykket igen, dette er valgt fordi, at det giver bedst mening at man skal kunne starte fra hvor man slap. Dog giver den funktion med at starte timeren igen, ikke så meget mening ude i den virkelige verden, da anæstesisygeplejerskerne ikke starter målingen igen, efter at have stoppet målingen. \\\\
-Det kan diskuteres om brugeren skal have lov til at kalibrer på startskærmen, da kalibrering skal fortages af en servicemedarbejder. Herved skulle der kun have været log ind på startskærmen, og være lavet et servicevindue, som kun kan betjenes af servicemedarbejderen. Der er taget højde for denne problemstilling i koden, ved at have lavet en config fil, hvor kalibreringstallet kan ændres. Det betyder, at hvis det sundhedsfagligt personale springer over at kalibrere på startskærmen kalibrerer systemet automatisk efter kalibreringstallet i config filen. Meningen med config filen, er at det kun er servicepersonalet der skal kunne tilgå denne fil, og kunne ændre kalibreringstallet.
 \subsection{Hardware}
-De vigtigste resultater på hardware delen inkluderer signal forstærkning og signal filtrering. Til simulering af transduceren blev der generet et signal på 20mV fra Analog Discovery og det forventet resultat var at filtret dæmper frekvenser over 50Hz. De målte målinger fra hhv. forstærkeren og filtret ser således ud: \\\\
+Følgende resultater blev foretaget på den næstsidste iteration af hardware-delen. Det betyder at resultaterne ikke er retvisende i forhold til den endelige version af hardwaren. Det har betydning for forstærkningen samt den spænding vi får fra transduceren. \\\\
+De vigtigste resultater på hardware delen inkluderer signal forstærkning og signal filtrering. Til simulering af transduceren blev der generet et signal på 20mV fra Analog Discovery og det forventet resultat var at filtret dæmper frekvenser over 50Hz. De målte målinger fra forstærkeren: 
+\\\\
 \begin{tabular}{| l | l |} \hline
 \textbf{Frekvens [Hz]} & \textbf{Gain. [V] Peak to peak}\\\hline
 1 & 16,308 \\\hline 
@@ -432,11 +408,11 @@ De vigtigste resultater på hardware delen inkluderer signal forstærkning og si
 250 & 16,278\\\hline
 500 & 15.051\\\hline
 \end{tabular}\\\\
-Som det ses på tabellen har operationsforstærkeren levet op til det forudsete udfald. De 20mV bliver forstærket. Den gainKilde, som er beregnet i teorien var 800 og det vi har målt er i fint tråd med det teoretisk gain. 
+Som det ses på tabellen har operationsforstærkeren levet op til det forudsete udfald. De 20mV bliver forstærket. Det gain, som er beregnet i teorien var 800 og det vi har målt er i fint tråd med det teoretisk gain.  
 \begin{align}
 output_{INA114}=20\cdot 10^{-3}\cdot 800=16
 \end{align}
-Den anden måling som skulle foretages var at se om filtret lever op til det krav der er opstillet, nemlig en båndbredde på 50Hz der minimum giver 20 dB dæmpning på en dekade. Resultatet af denne måling er som følgende:  \\\\
+Den anden måling som skulle foretages var at se om filtret lever op til det krav der er opstillet, nemlig en båndbredde på 50Hz der minimum giver 20 dB dæmpning på en dekade. Resultatet af denne måling er som følgende:   \\\\
 \begin{tabular}{| l | l |} \hline
 \textbf{Frekvens [Hz]} & \textbf{Peak to peak [V]}\\\hline
 1 & 13,504 \\\hline 
@@ -452,12 +428,56 @@ Om filtret har levet op til det forventet resultat kan tjekkes som følgende:
 \begin{align}
 G_{dB}=20\cdot log\left(\dfrac{V}{V_{out}}\right)=20\cdot \left(\dfrac{16,308}{0,220V}\right)=-37,234dB
 \end{align}
-Kravet til filtret var at ved frekvens 500Hz skal signalet dæmpes med 40dB på en dekade. Overstående beregning giver en dæmpning på -37,234 dB, hvilket ikke er helt ved siden af. Afvigelsen kan skyldes anvendelsen af ikke-ideelle komponenter. \\
-Ved knækfrekvensen skal dæmpning være 3dB og det kan regnes som følgende: 
+Kravet til filtret var at ved frekvens 500Hz skal signalet dæmpes med minimum 20dB. Overstående beregning giver en dæmpning på -37,234 dB, hvilket opfylder kravet. Ved knækfrekvensen skal dæmpning være 3dB og det kan regnes som følgende: 
 \begin{align}
 G_{dB}=20\cdot log\left(\dfrac{V}{V_{out}}\right) = 20\cdot log\left(\dfrac{10,664V}{15,051V}\right)=-3,009dB
 \end{align}
-Ud fra de overstående beregninger, kan det ses  at både operationsforstærkeren og filtret levet op til kravene tilnærmelsesvis. 
+Ud fra de overstående beregninger, kan det ses at både operationsforstærkeren og filtret lever op til kravene tilnærmelsesvis. Det skal dog igen nævnes at det ikke er den sidste iteration af hardwaren som blev bygget på veroboard med spændingsregulator.
+\subsection{Software}
+Igennem integrationstesten og accepttesten er der opnået resultater for projektet. Igennem accepttesten er der opstillet krav til hvordan blodtryksmålesystemet skal opføre sig, i forhold til Use cases, og hvordan dette kommer til udtryk visuelt. Resultaterne for projektet er visuelle resultater af accepttesten, og ses i dette afsnit som screendumps. \\\\
+I accepttesten er det første step for Use case 1, at vælge en værdi på vandsøjlen og kalibrer efter denne. Herved skal den aflæste spænding og trykket i vandsøjlen indtastes. Når programmet starter, vises startskærmen nedenfor.
+\begin{figure}[H]
+\includegraphics[width =0.4\textwidth , center]{billeder/ITstartGUI}
+\caption{\textbf{Startskærm uden indtastede login oplysninger.}}
+\end{figure}
+Der kan ses på figuren nedenfor, at det er muligt at kalibrere på hovedskærmen, og at blodtryksmålesystemet selv udregner en kalibreringsværdi ud fra de indtastede oplysninger. Kalibreringsværdien udregnes først, når der er trykket på kalibreringsknappen. 
+\begin{figure}[H]
+\includegraphics[width =0.4\textwidth , center]{billeder/ITstartGUIlogKali}
+\caption{\textbf{Startskærm med login oplysninger og kalibreringsværdi.}}
+\end{figure}
+Næste step i accepttesten for Use case 2, er at indtaste brugernavnet "anpe" og koden "1234". Derefter trykkes der på login og patienten vælges i patient dropdown. Inden dette er sket, er der valgt den port, som DAQ’en er tilkoblet computeren, og der er forbindelse til VPN. På figuren ovenfor, kan det ses, at der er indskrevet brugernavn og adgangskode for anpe, og der vises hvilke patienter anpe kan tilgå i patient dropdown. Efter at have valgt en patient i patient dropdown, kommer hovedskærmen frem. Her skal der trykkes på tænd-knappen, og derefter bliver grafen for blodtrykket vist, samt værdierne for systolen, diastolen og middeltrykket. Det ses på figuren nedenfor, at blodtrykket bliver vist med filteret på, der vises en systole værdi på 125 mmHg, en diastole værdi på 83 mmHg og et middeltryk på 96 mmHg.
+\begin{figure}[H]
+\includegraphics[width =0.6\textwidth , center]{billeder/IThovedGUIkorer}
+\caption{\textbf{Blodtryksmåling med det digitale filter slået til.}}
+\end{figure}
+Blodtryksmålesystemet skal også kunne angive, hvis brugernavnet/adgangskoden ikke findes i databasen. Herved er der i accepttesten for Use case 2, indtastet brugernavnet efgh og koden 1234. Denne kombination findes ikke i personale databasen, og kan herved ikke bruges til at logge ind med. Som det ses på figuren nedenfor, er det heller ikke muligt at logge ind, og programmet giver besked om, at brugernavn og/eller adgangskode er indtastet forkert.
+\begin{figure}[H]
+\includegraphics[width =0.4\textwidth , center]{billeder/ITstartGUIforkert}
+\caption{\textbf{Brugernenavn/adgangskode er indtastet forkert.}}
+\end{figure}
+I blodtryksmålesystemet skal det være muligt at kunne slå filteret til og fra, dette bliver testet i accepttesten ved at klikke i radiobutton for digitalt filter off. På figuren nededfor ses det, at blodtrykssignalet er forvrænget, da der er kommet mere støj på signalet, herved kan det konkluderes at filteret virker. 
+\begin{figure}[H]
+\includegraphics[width =0.6\textwidth , center]{billeder/IThovedGUIkorerufiltreret}
+\caption{\textbf{Blodtrykssiganelet uden digitalt filter.}}
+\end{figure}
+I accepttesten skal blodtryksmålesystemet kunne alarmer når grænseværdierne overskrides, og grænseværdierne skal kunne ændres på hovedskærmen. På figuren nedenfor, ses det at grænseværdierne for systolen op og ned, er ændret til 129/89 mmHg, hvor de før var sat til normal værdierne for systolen; 140/100 mmHg. Blodtrykssignalet har en systoleværdi på 132 mmHg, hvilket er overskrider den nye grænseværdi på 129, og derved går alarmen igang, som det ses med den røde alarm klokke øverst i højre hjørne af hovedskærmen. 
+\begin{figure}[H]
+\includegraphics[width =0.6\textwidth , center]{billeder/IThovedGUIAlarm}
+\caption{\textbf{Grænseværdi for systole ændret og alarm igangsat.}}
+\end{figure}
+I acceptesten for Use case 4, skal der trykkes på sluk, derefter log ud og til sidst ja på pop-up vinduet. På figuren nedenfor, ses det, at der er trykket på sluk-knappen, da den er blevet gennemsigtig, og det kun er tænd-knappen der kan trykkes. Log ud er blevet trykket på; "bekræft" pop-up vinduet kommer frem. Herved virker log ud knappen som den skal, og der bliver gemt målinger for patienten i EPJ-databasen. Blodtryksmålingen for patienten bliver gemt løbende i EPJ-databasen. 
+\begin{figure}[H]
+\includegraphics[width =0.6\textwidth , center]{billeder/IThovedGUILogUd}
+\caption{\textbf{Log ud af blodtryksmålesystemet.}}
+\end{figure}
+Fra de foregående figur kan det konkluderes, at blodtryksmålesystemet lever op til accepttestens krav omkring, at kunne vise et blodtrykssignal kontinuert, samt slå et digitalt filter til og fra. \\\\
+Blodtryksmålesystemet lever også op til kravet omkring at kunne kalibrere systemet. Dette gøres på startskærmen. Kravet til at systemet kan nulpunktsjusteres er ligeledes opfyldt, denne sker på hovedskærmen. Det kan diskuteres om det var smartere at systemet selv kan foretage nulpunktsjusteringen, end at man selv skal aflæse værdien. Nulpunktsjusterings knappen lever op til kravet om at kunne nulpunktsjustere blodtryksmålesystemet. \\\\
+Grænseværdierne for blodtryksmålesystemet kan også ændres, herved er dette krav opfyldt, og der kommer en alarm når værdierne for enten systolen eller diastolen overskrider grænseværdierne. \\
+Alarmen kan også udsættes i et minut, hvilket gøres ved at trykke på udsæt alarm knappen oppe i højre hjørne af hovedskærmen. 
+\\\\
+En anden ting som blodtryksmålesystemet også kan, er at vise en timer, som starter når man har trykket på start knappen. Denne timer stopper når der trykkes på sluk knappen. Det kan diskuteres, om timeren skal nulstilles, når der trykkes på start knappen igen. Det er valgt i dette projekt, at timeren fortsætter fra det stoppede tidspunkt, når tænd knappen bliver trykket igen. Dette er valgt, da man skal kunne fortsætte blodtryksmålingen.
+\\\\
+Det kan diskuteres om brugeren skal have lov til at kalibrere på startskærmen, da kalibreringen skal foretages af en servicemedarbejder. Herved skulle der kun have været log ind på startskærmen, og være lavet et servicevindue, som kun kan betjenes af servicemedarbejderen. Der er taget højde for denne problemstilling i koden, ved at have lavet en config fil, hvor kalibreringstallet kan ændres. Det betyder, at hvis det sundhedsfaglige personale springer over kalibreringen på startskærmen, kalibrerer systemet automatisk efter kalibreringstallet i config filen. Meningen med config filen er, at det kun er servicepersonalet, der skal kunne tilgå denne fil, og kunne ændre kalibreringstallet. 
 \section{Udviklingsværktøjer}
 Til udviklingen af produktet, og dermed igennem hele projektarbejdet, er der blevet brugt en række udviklingsværktøjer. I dette afsnit er disse udviklingsværktøjer beskrevet yderligere.
 \subsection{Microsoft Visio 2010}

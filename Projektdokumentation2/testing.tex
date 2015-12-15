@@ -468,7 +468,7 @@ Ud fra BDD kan et IBD diagram udarbejdes. IBD diagrammet viser koblingen mellem 
 \caption{\textbf{Internal block diagram. Dette diagram viser signalerne imellem blokkene.}}
 \end{figure}
 \subsection{Modultest}
-Modultesten omfatter kun en operationsforstærker. De resterende komponenter, som er anvendt i den samlede hardwaresystem, medtages ikke i modultesten, da de er udleveret af vejlederen. De udleverede dele af systemet består af et filter, en transducer, et kateter og en dataopsamler i form af NI-USB-6009. Selvom filtret er udleveret, indgår den i modultesten, da man skal sikre at det dæmper de høje frekvenser.  Modultesten foretages enkeltvis dvs. de enkelte blokke testes hver for sig. Til sidst testes systemet med en væskesøjle for at identificere om operationsforstærkeren og filteret kommunikere med hinanden. Rækkefølgen som blokkene skal testes er som følgende:
+Modultesten omfatter kun test af en forstærker. De resterende komponenter, som er anvendt i det samlede hardwaresystem, medtages ikke i modultesten, da de er udleveret af vejlederen. De udleverede dele af systemet består af et filter, en transducer, et kateter og en dataopsamler i form af NI-DAQ-6009. Selvom filtret er udleveret, indgår den i modultesten, da man skal sikre at det dæmper de høje frekvenser. Modultesten foretages enkeltvis dvs. de enkelte blokke testes hver for sig. Til sidst testes systemet med en væskesøjle for at identificere om operationsforstærkeren og filteret kommunikere med hinanden. Rækkefølgen som blokkene skal testes er som følgende:
 \begin{itemize}
 \item Test af operationsforstærker.
 \item Test af filter.
@@ -478,8 +478,8 @@ Modultesten omfatter kun en operationsforstærker. De resterende komponenter, so
 \includegraphics[width =1.0\textwidth , center]{billeder/testOpstilling}
 \caption{\textbf{Opstilling af hardware systemet simuleret med Analog Discovery.}}
 \end{figure}
-\subsubsection{Test af operationsforstærker} 
-Operationsforstærkerens funktion er at forstærke et lavt signal til et ønsket højt signal. Der er brugt INA-114 som operationsforstærker, da det er muligt at få den ønskede forstærkning ved den ønskede båndbredde. Der er i alt 8 pin og det forklares som følgende:
+\subsubsection{Test af forstærker} 
+Forstærkerens funktion er at forstærke et lavt signal til et ønsket højt signal. Der er brugt INA-114 som operationsforstærker, da det er muligt at få den ønskede forstærkning ved den ønskede båndbredde. Der er i alt 8 pin og det forklares som følgende:
 \begin{table}[H]
 \label{tab:tabel2}
 \begin{tabular}{| l | l |}
