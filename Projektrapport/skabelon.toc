@@ -4,7 +4,7 @@
 \contentsline {chapter}{\chapternumberline {2}Projektformulering og afgr\IeC {\ae }nsning}{2}{chapter.2}
 \contentsline {section}{\numberline {2.1}Oversigt over projektdeltagere og hovedansvarsomr\IeC {\r a}der}{3}{section.2.1}
 \contentsline {chapter}{\chapternumberline {3}Hjertet}{4}{chapter.3}
-\contentsline {section}{\numberline {3.1}Blodtryk}{4}{section.3.1}
+\contentsline {section}{\numberline {3.1}Blodtryk}{5}{section.3.1}
 \contentsline {section}{\numberline {3.2}Direkte invasiv m\IeC {\r a}ling af blodtryk}{6}{section.3.2}
 \contentsline {chapter}{\chapternumberline {4}Systembeskrivelse}{8}{chapter.4}
 \contentsline {chapter}{\chapternumberline {5}Krav}{10}{chapter.5}
@@ -79,6 +79,5 @@
 \contentsline {chapter}{Litteratur}{40}{section*.58}
 \contentsline {section}{\numberline {7.1}Referencer}{40}{section.7.1}
 \contentsline {subsubsection}{Billeder}{40}{subsubsection*.59}
-\contentsline {subsubsection}{B\IeC {\o }ger}{40}{subsubsection*.60}
-\contentsline {subsubsection}{Internetsider}{40}{subsubsection*.61}
-\contentsline {subsubsection}{Dokumenter}{41}{subsubsection*.62}
+\contentsline {subsubsection}{Internetsider}{40}{subsubsection*.60}
+\contentsline {subsubsection}{Dokumenter}{41}{subsubsection*.61}
