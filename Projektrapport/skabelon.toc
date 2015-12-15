@@ -40,35 +40,43 @@
 \contentsline {subsection}{Software}{22}{subsection*.24}
 \contentsline {section}{\numberline {6.4}Arkitektur}{23}{section.6.4}
 \contentsline {subsection}{Hardware}{23}{subsection*.25}
-\contentsline {subsection}{Software}{23}{subsection*.26}
-\contentsline {subsubsection}{Problemidentifikation}{23}{subsubsection*.27}
-\contentsline {subsubsection}{Dom\IeC {\ae }nemodel}{23}{subsubsection*.28}
-\contentsline {subsubsection}{Klasseidentifikation}{24}{subsubsection*.29}
-\contentsline {subsubsection}{Metodeidentifikation}{25}{subsubsection*.30}
-\contentsline {section}{\numberline {6.5}Design, implementering og test}{25}{section.6.5}
-\contentsline {subsection}{Software}{25}{subsection*.31}
-\contentsline {subsubsection}{Observer m\IeC {\o }nsteret}{25}{subsubsection*.32}
-\contentsline {subsubsection}{PUSH/PULL}{25}{subsubsection*.33}
-\contentsline {subsubsection}{Queue}{26}{subsubsection*.34}
-\contentsline {subsubsection}{Trelagsmodel}{26}{subsubsection*.35}
-\contentsline {subsubsection}{Unittest}{26}{subsubsection*.36}
-\contentsline {section}{\numberline {6.6}Resultater og diskussion}{26}{section.6.6}
-\contentsline {section}{\numberline {6.7}Udviklingsv\IeC {\ae }rkt\IeC {\o }jer}{30}{section.6.7}
-\contentsline {subsection}{Microsoft Visio 2010}{30}{subsection*.37}
-\contentsline {subsection}{Visual Studio 2013}{30}{subsection*.38}
-\contentsline {subsection}{NI Multisim 13.0 med Ultiboard 13.0}{30}{subsection*.39}
-\contentsline {subsection}{NI-DAQmx}{31}{subsection*.40}
-\contentsline {subsection}{Analog Discovery fra Digilent and Analog Devices}{31}{subsection*.41}
-\contentsline {section}{\numberline {6.8}Opn\IeC {\r a}ede erfaringer}{31}{section.6.8}
-\contentsline {section}{\numberline {6.9}Fremtidigt arbejde}{32}{section.6.9}
-\contentsline {subsection}{EKG-signal}{32}{subsection*.42}
-\contentsline {subsection}{Iltm\IeC {\ae }tning}{32}{subsection*.43}
-\contentsline {subsection}{EPJ}{33}{subsection*.44}
-\contentsline {subsection}{Datawarehouse}{33}{subsection*.45}
-\contentsline {chapter}{\chapternumberline {7}Konklusion}{34}{chapter.7}
-\contentsline {chapter}{Litteratur}{35}{section*.47}
-\contentsline {section}{\numberline {7.1}Referencer}{35}{section.7.1}
-\contentsline {subsubsection}{Billeder}{35}{subsubsection*.48}
-\contentsline {subsubsection}{B\IeC {\o }ger}{35}{subsubsection*.49}
-\contentsline {subsubsection}{Internetsider}{35}{subsubsection*.50}
-\contentsline {subsubsection}{Dokumenter}{36}{subsubsection*.51}
+\contentsline {subsubsection}{Problem identifikation}{23}{subsubsection*.26}
+\contentsline {subsubsection}{BDD - block definition diagram}{23}{subsubsection*.27}
+\contentsline {subsubsection}{IBD - internal block definition diagram}{24}{subsubsection*.28}
+\contentsline {subsection}{Software}{25}{subsection*.29}
+\contentsline {subsubsection}{Problemidentifikation}{25}{subsubsection*.30}
+\contentsline {subsubsection}{Dom\IeC {\ae }nemodel}{25}{subsubsection*.31}
+\contentsline {subsubsection}{Klasseidentifikation}{26}{subsubsection*.32}
+\contentsline {subsubsection}{Metodeidentifikation}{27}{subsubsection*.33}
+\contentsline {section}{\numberline {6.5}Design, implementering og test}{27}{section.6.5}
+\contentsline {subsection}{Hardware}{27}{subsection*.34}
+\contentsline {subsubsection}{Design}{27}{subsubsection*.35}
+\contentsline {subsubsection}{Implementering}{29}{subsubsection*.36}
+\contentsline {subsection}{Software}{29}{subsection*.37}
+\contentsline {subsubsection}{Observer m\IeC {\o }nsteret}{30}{subsubsection*.38}
+\contentsline {subsubsection}{PUSH/PULL}{30}{subsubsection*.39}
+\contentsline {subsubsection}{Queue}{30}{subsubsection*.40}
+\contentsline {subsubsection}{Trelagsmodel}{30}{subsubsection*.41}
+\contentsline {subsubsection}{Unittest}{31}{subsubsection*.42}
+\contentsline {section}{\numberline {6.6}Resultater og diskussion}{31}{section.6.6}
+\contentsline {subsection}{Software}{31}{subsection*.43}
+\contentsline {subsection}{Hardware}{35}{subsection*.44}
+\contentsline {section}{\numberline {6.7}Udviklingsv\IeC {\ae }rkt\IeC {\o }jer}{36}{section.6.7}
+\contentsline {subsection}{Microsoft Visio 2010}{36}{subsection*.45}
+\contentsline {subsection}{Visual Studio 2013}{36}{subsection*.46}
+\contentsline {subsection}{NI Multisim 13.0 med Ultiboard 13.0}{36}{subsection*.47}
+\contentsline {subsection}{NI-DAQmx}{37}{subsection*.48}
+\contentsline {subsection}{Analog Discovery fra Digilent and Analog Devices}{37}{subsection*.49}
+\contentsline {section}{\numberline {6.8}Opn\IeC {\r a}ede erfaringer}{37}{section.6.8}
+\contentsline {section}{\numberline {6.9}Fremtidigt arbejde}{38}{section.6.9}
+\contentsline {subsection}{EKG-signal}{38}{subsection*.50}
+\contentsline {subsection}{Iltm\IeC {\ae }tning}{38}{subsection*.51}
+\contentsline {subsection}{EPJ}{38}{subsection*.52}
+\contentsline {subsection}{Datawarehouse}{39}{subsection*.53}
+\contentsline {chapter}{\chapternumberline {7}Konklusion}{40}{chapter.7}
+\contentsline {chapter}{Litteratur}{41}{section*.55}
+\contentsline {section}{\numberline {7.1}Referencer}{41}{section.7.1}
+\contentsline {subsubsection}{Billeder}{41}{subsubsection*.56}
+\contentsline {subsubsection}{B\IeC {\o }ger}{41}{subsubsection*.57}
+\contentsline {subsubsection}{Internetsider}{41}{subsubsection*.58}
+\contentsline {subsubsection}{Dokumenter}{42}{subsubsection*.59}

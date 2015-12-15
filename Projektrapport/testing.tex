@@ -151,7 +151,6 @@ Præstationen for produktet, handler om hvor hurtigt produktet er om at starte o
 Produktets support fortæller, om det er muligt at teste på produktet, om det er muligt at udvide produktet, installere og konfigurere produktet. Desuden om produktet er kompatibelt. Det er herunder programmets opbygnings model beskrives\\\\
 \textbf{+}\\
 Kunden kan have nogle yderligere behov, disse yderligere behov beskrives under +. Hvilke begrænsninger er der ved designet. Er der nogle krav for brugergrænsefladerne. Er der nogle fysiske eller implementerings krav. Er der dele der kan genbruges, herunder hele systemer eller dele af dem. Det er bl.a herunder at kravene til computeren der benyttes beskrives. \cite{furps}\\
-
 \subsection{MoSCoW}
 \textbf{Must}\\
 De krav der bliver markeret som et must er de krav som produktet skal have. Altså det produktet skal have/indeholde.\\\\
@@ -240,12 +239,25 @@ Efter analyse af dette mønstre er der vurderet at opbygge det efter push princi
 Der er specificeret to databaser: EPJ database og Personale database. Til at gemme data, herunder blodtrykssignalets rådata er EPJ databasen blevet benyttet. I denne database ligger samtlige patient oplysninger. For at kunne koble de to databaser sammen er hver patient er koblet til en sundhedsfaglig. Det sundhedsfaglige personales oplysninger ligger i Personale databasen. Der er valgt at det skal være databaser, i stedet for en fil, da der skal kunne ligges data i og hentes data fra databasen fra forskellige computere og servere. Informationerne om patienten er vigtige, for at kunne diagnosticere nuværende anormaliteter og grunden dertil. Ved at sammenligne de nye målinger med tidligere vil disse anormaliteter nemlig kunne bestemmes. Patientens navn og cpr bliver vist på Hovedskærmen, for at være sikker på at det er den rigtig patient der er fat i. \\\\
 Nulpunktsjustering er et krav der et opgivet i projektvejledningen. Efter snak med vejleder er der specificeret at nulpunktsjustering skal ske efter at signalet er indlæst af DAQ’en. Det er blevet analyseret frem til at der skal nulpunktsjusteres for det atmosfæriske tryk igennem transduceren. Efter videre analyse er det kommet frem til at det atmosfæriske tryk er en tilnærmelsesvis ret linje. Det atmosfæriske tryk måles manuelt ved at åbne for transduceren, så det blot er det atmosfæriske tryk der måles på. Igennem systemet måles denne værdi. Denne værdi indskrives på hovedskærmen, hvorefter systemet tilpasser for denne værdi, når der trykkes på "Nulpunktsjustering". Det er specificeret at nulpunktsjusteringsværdien lægges til samtlige blodtryksværdier. Inden signalet bliver vist på grafen, bliver kalibreringskoefficienten ganget på samtlige blodtryksværdier. Dette er valgt for at undgå en større ændringer af blodtrykssignalet, når det er vist på grafen.  
 
-	\section{Arkitektur}
-	\subsection{Hardware}
-	kort indledning
-	Hardware beskrivelse
-	Signalets vej
-	BDD/IBD indsættes
+\section{Arkitektur}
+\subsection{Hardware}
+Systemets hardwarearkitektur beskrives på bagrund af systembeskrivelsen og kravspecifikationen. Ud fra relevante diagrammer, som BDD og IBD, kan hardwarens arkitektur beskrives. Samtlige diagrammer og modeller kan findes i Projektdokumentationen under Arkitektur og design. 
+\subsubsection{Problem identifikation}
+Først skulle der identificeres hvad produktet skal kunne, og hvordan det skulle virker. Der er i første omgang opstillet krav til hardwaren ud fra kravspecifikationen. De første krav til hardwaren var at, hardware delen skulle bestå af en operationsforstærker og et lavpasfilter. Der blev i første gang arbejdet med et lavpasfilter, som ikke var aktivt.  Denne ide blev kasseret, da der efter senere overvejelser blev opdaget at lavpasfilteret skulle være et anden ordens filter af typen sallen-key.  Herved blev kredsløbet for hardwaren bygget opefter en operationsforstærker og et anden ordens lavpas filter af typen sallen-key. Da filteret er aktivt, er der tilsat en spændingsforsyning i form af to 9V batterier. \\
+Hardwaren er herved yderligere specificeret igennem udformningen af diagrammerne BDD og IBD. Diagrammerne beskriver hvilke blokke blodtryksmålersystemet er bygget op af, og signalets vej igennem blokkene.
+\subsubsection{BDD - block definition diagram}
+Ud fra use casen og kravene til hardware omkring blodtryksmåler systemet, er der identificeret hvilke blokke blodtryksmålersystemet består af. Der er identificeret og beskrevet hvordan hver blok i blodtryksmålersystemet snakker sammen, og er indført på BDD’et som stregerne imellem blokken. Der er angivet hvilke signaler blokkene sender ud imellem hinanden.  
+\begin{figure}[H]
+\includegraphics[width =1.0\textwidth , center]{billeder/BDD}
+\caption{\textbf{BDD for blodtryksmålersystemet.}}
+\end{figure}
+Ud fra diagrammet ses det at alle blokkene er koblet til blodtryksmålersystemet, som er selve softwaren for blodtryksmåleren. Kompositionen i diagrammet viser at blodtryksmålersystem består af en computer, en transducer, en NI-DAQ, et lavpasfilter, en forstærker og en spændingsforsyning. Disse blokke til sammen sørger for at forstærke et målt signal, derefter filtreres de høje frekvenser fra, hvor efter signalet bliver omformet fra et analog signal, til et digitalt signal i NI-DAQ, som blodtryksmåleren indlæser blodtryksdata fra. 
+\subsubsection{IBD - internal block definition diagram}
+Ud fra block definition diagram kan forbindelserne mellem blokkene identificeres. Dette føre til at et IBD diagram kan opstilles. Et IBD bruges til at bestemme signalerne mellem blokkene, og identificere hvilke signaler der sendes ind og ud af hver blok. Det er ud fra IBD der bestemmes hvilke signal typer, som blodtryksmålersystemet kan integrerer med.
+\begin{figure}[H]
+\includegraphics[width =1.0\textwidth , center]{billeder/IBD}
+\caption{\textbf{IBD diagram for blodtryksmålersystemet.}}
+\end{figure}
 \subsection{Software}
 Systemets softwarearkitektur beskrives på baggrund systembeskrivelsen og kravspecifikationen. Ud fra relevante diagrammer og modeller kan software beskrives hvorfra arkitekturen for softwaren opnås. Samtlige diagrammer og modeller kan findes i Projektdokumentationen under Arkitektur og design.
 \subsubsection{Problemidentifikation}
@@ -265,6 +277,74 @@ Ud fra domænemodellen kan softwareklasserne altså identificeres. Dette fører 
 \subsubsection{Metodeidentifikation}
 Ud fra klasserne identificeret af domænemodellen og applikationsmodellen, kan sekvensdiagrammer laves. Sekvensdiagrammerne er interaktionsdiagrammer og viser derfor hvordan processerne forløber i forhold til hinanden. Der laves et sekvensdiagram for hver Use case. Ud fra sekvensdiagrammerne kan det altså ses hvornår og hvordan de forskellige processer forløber i systemet og interagerer med hinanden. Softwaremetoderne kan derfor identificeres ud fra sekvensdiagrammerne. Ud fra sekvensdiagrammerne kan et klassediagram laves. Dette diagram viser hver metode og attribut i hver klasse.
 \section{Design, implementering og test}
+\subsection{Hardware}
+\subsubsection{Design}
+Fra projektets start var der mange informationer og krav til hardwaren i projektet. Det betød at det ret tidligt blev tydeligt hvilke delkomponenter hardwaren skulle bestå af. Hardwaren skulle bestå af et lavpasfilter og en forstærker del, samt en spændingsforsyning. Udviklingsproces og design af hardwaren var igennem en række iterationer, disse er nærmere beskrevet i dokumentationen, dette afsnit vil fokusere på den endelige dimensionering og det endelige design af hardware-delen.\\\\
+\textbf{Lavpasfilter}\\
+Det var givet at det var et aktivt 2. Ordens Butterworth Sallen-key filter der skulle være lavpasfilter delen af projektet. Det var fra start givet at der skulle benyttes en OP27 operationsforstærker, ligeledes var en af kondensatorerne givet C2 = 680nF og R1 = R2. Filteret skulle dimensioneres til en cut-off frekvens på 50Hz, med en 20dB/decade dæmpning ved 500Hz. Ud fra disse informationer, samt en kredsløbstegning af filteret kunne vi opstille en overføringsfunktion for kredsløbet.
+\begin{align}
+T_{v}(s)\dfrac{V_{out}(s)}{V_{in}(s)}=\dfrac{\dfrac{1}{R1\cdot R2\cdot C1\cdot C2}}{s^2+\dfrac{R1 + R2}{R1\cdot R2\cdot C2}\cdot s+\dfrac{1}{R1\cdot R2\cdot C1\cdot C2}}
+\end{align}
+Denne overføringsfunktion omskrives til standardformel:
+\begin{align}
+\dfrac{V_{out}(s)}{V_{in}(s)}=\dfrac{\omega^2}{s^2+2\zeta\omega+\omega^2}
+\end{align}
+Her isoleres cut-off frekvensen ($\omega$) i overføringsfunktionen for lavpasfilteret:
+\begin{align}
+\omega = 2\pi\sqrt{\dfrac{1}{R1\cdot R2\cdot C1\cdot C2}}
+\end{align}
+I denne ligning indsatte vi så de kendte værdier, det er beskrevet filteret er af typen 2. Ordens Sallen-Key filter, derfor ved vi at C1 er halvdelen af C2.\cite{wikifilter}
+\begin{align}
+50Hz\cdot 2\cdot \pi = \sqrt{\dfrac{1}{R\cdot R\cdot 680\cdot 10^{-9}F\cdot 340\cdot 10^{-9}F}}\\
+R=6,62\cdot 10^3 \Omega
+\end{align}
+Så vi kan se vores modstande er ca. 6.6k$\Omega$, realiseret med to 3.3k$\Omega$ modstande i serie i det endelige produkt.\\\\
+\textbf{Forstærker INA-114 og valg af spændingsforsyning}\\
+Udviklingen af forstærkerdelen til hardwaredelen blev bestemt ved hjælp af databladet for DAQ (NI-DAQ6009), samt databladet for tryk-transduceren (TruWave\texttrademark). DAQ kan maksimalt modtage op til +/-10V, det vil sige vi må ikke overstige peak-to-peak forstærkning på 20V. Før vi kunne beregne forstærkningen skulle vi vælge en spændingsforsyning til kredsløbet, det blev valgt at benytte to 9V-batterier. Disse blev sat op som følger.
+\begin{figure}[H]
+\includegraphics[width =0.2\textwidth , center]{billeder/spandingsforsyning}
+\caption{\textbf{Spændingforsyning.}}
+\end{figure}
+Denne opsætning ville i teorien sikre os 18V peak-to-peak. Man valgte at benytte en INA-114 forstærker til at forstærke signalet fra tryktransduceren. I teorien ville man kunne forstærke op til 18V peak-to-peak, men i praksis ville det være urealistisk. Det blev besluttet at forstærke op til 16V peak-to-peak. Undersøgelser for hvorvidt INA-114 havde tilstrækkelige båndbredde blev udregnet som følger. Først bestemte man det maksimale output for tryktransduceren i området 0-250mmHg.
+\begin{align*}
+V_{max}=250mmHg\cdot 16V\cdot5\mu V/V/mmHg =20 mV
+\end{align*}
+Ud fra dette kan man bestemme hvor meget gain der skal bruges fra forstærkeren.
+\begin{align*}
+16V = 20\cdot 10^{-3}V\cdot gain\\
+gain = 800
+\end{align*}
+Man sikrede sig at forstærkeren kunne håndtere forstærkningen, denne del er nærmere beskrevet i dokumentationen. Herefter skulle man beregne hvor stor modstanden på INA-114 skulle dimensioneres til for at få den valgte gain.
+\begin{align*}
+G=1+\dfrac{50k\Omega}{R_G}\\
+R_G\approx 62.5\Omega
+\end{align*}
+Det blev besluttet at bruge et potentiometer i stedet for en fast modstand til RG. Så man kunne regulere denne hvis spændingsforsyningen var mere potent end 16V peak-to-peak.\\\\
+\textbf{Spændingsregulator}\\
+Det blev i den sidste iteration besluttet at benytte en spændingsregulator for at sikre at transduceren fik en stabil spændingsforsyning. Tryktransduceren er meget følsom så derfor var det vigtigt at denne får en konstant spændingsforsyning. Det betyder også at den oprindelige skalering ikke er korrekt.
+\begin{align*}
+V_{max}=250mmHg\cdot 16V\cdot5\mu V/V/mmHg =20 mV
+\end{align*}
+Gain beregning
+\begin{align*}
+16V = 6,25\cdot 10^{-3}VZ\cdot gain\\
+gain=2560
+\end{align*}
+Produktet af gain og båndbredde er konstant, derfor er det vigtigt båndbredden ligger over knækfrekvensen på 50Hz. Ved gain=1 kan INA-114 levere 1Mhz båndbredde, man kan opstille følgende ligning for beregning af båndbredden.
+\begin{align*}
+1000000=2560\cdot BW\\
+BW\approx 390Hz
+\end{align*}
+Da 390 Hz er over knækfrekvensen på 50Hz har forstærkeren tilstrækkelig båndbredde. Den nye RG kan beregnes til at skulle være.
+\begin{align*}
+2560=1+\dfrac{50k\Omega}{R_G}\\
+R_G\approx 19,5\Omega
+\end{align*}
+\subsubsection{Implementering}
+Implementeringsprocessen har været præget af de mange ændringer, som er foretaget undervejs i hardware designet. \\
+Designet af hardwaren har været igennem flere ændringer undervejs, da bestemmelsen af de rigtige specifikationer til både filtret of operationsforstærkeren ikke har været lige til. Hver gang gruppen har identificeret en fejl i hardware designet som medførte ændring i kredsløbet, skulle implementering af systemet også ændres. De nævnte ændringer er yderligere beskrevet i projektdokumentationen under afsnittet arkitektur og design for hardware. Implementeringsstrategien bestod af to faser. Den første fase var at realiserer kredsløbet på et fumlebræt, således at fejl i systemet nemt kan ændres uden store tidsomkostninger. \\\\
+Når denne fase er gennemført, skulle systemet overføres på et print som skulle designes vha. Multisims Ultiboard. Gruppens medlemmer havde ikke en forudgående erfaringer med at designe print på Multisim, men viljen til at udforske området var tilstede. Der er lagt en del tid på at færdiggøre printet, men undervejs i processen har gruppen valgt at prioritere den første strategi, eftersom tidsforbruget på at designe printet blev uoverkommeligt. \\
+Efter færdiggørelsen af det endegyldige design blev elektronikkredsløbet bygget på et fumlebræt og testen af kredsløbet blev igangsat. Der er anvendt Analog Discovery til simulering af signalet fra transduceren. Dette gøres ved at genererer et differentielt signal fra Analog Discovery, hvor W1 og W2 skal tilkobles til de to indgange på INA-114. De to signaler har samme stelpunkt. Udgangs signalet måles vha. en oscilloskop. De to signaler fra henholdsvis W1 og W1 er på 20mV med varieret frekvenser. Det forventet resultat er at de 20mV bliver forstærket og ved frekvens 500Hz skal signalet dæmpes med 40dB på en dekade. Inden accepttesten skulle eksekveres blev kredsløbet overført på et veroboard for at overskueliggøre kredsløbet, da de mange ledninger på fumlebrættet nemt kunne medføre fejl under accepttesten. Denne beslutning var ikke en del af den oprindelige plan, eftersom gruppen havde tiltro til at designe et print til tiden. Resultatet af simuleringen og accepttestens udførelse vil blive fremlagt i afsnittet resultater og diskussion. 
 \subsection{Software}
 Ud fra arkitekturen kan designet af softwaren bestemmes. Det bestemmes hvilke mønstre der skal benyttes og hvordan data skal transporteres igennem koden.
 \subsubsection{Observer mønsteret}
@@ -288,6 +368,7 @@ Det er blevet besluttet at lave unittest på softwaren. Unit-test forstås ved a
 \\
 I dette projekt blev der valgt at lave unit-test efter sidste iteration af koden, da de sidste versioner af softwaren ændrede sig meget, så alle unit-tests skulle laves forfra. Grundlaget for mange metoder ændrede sig løbende. Disse unit-tests blev lavet i koden ved at sætte breakpoints og følge metoden til ende og evaluere på hvorvidt metoden opførte sig efter hensigten. Unit-tests er blevet foretaget i koden, hvor der er skrevet kommentarer i koden til de metoder der er blevet testet.
 \section{Resultater og diskussion}
+\subsection{Software}
 Igennem integrationstesten og accepttesten er der opnået resultater for projektet. Igennem accepttesten er der opstillet krav til hvordan blodtryksmålesystemet skal opføre sig i forhold til Use cases, og hvordan dette kommer til udtryk visuelt. Resultaterne for projektet er visuelle resultater af accepttesten, og ses i dette afsnit som screendumps. \\\\
 I accepttesten er det første step for accepttest af Use case 1, er at vælge en værdi på vandsøjlen og kalibrer efter den. Herved skal den aflæste spænding og trykket i vandsøjlen indtastes. Når programmet starter, vises start skærmen neden for.
 \begin{figure}[H]
@@ -329,7 +410,46 @@ Blodtryksmålesystemet lever også op til kravet omkring at kunne kalibrere syst
 Grænseværdierne for blodtryksmålesystemet kan også ændres, herved er dette krav opfyldt, og der kommer en alarm når værdierne for enten systolen eller diastolen overskrider de satte grænseværdier. \\
 Alarmen kan også udsættes i et minut, hvilket gøres ved at trykke på alarmknappen oppe i højre hjørne af hovedskærmen. \\\\
 En anden ting som blodtryksmålersystemet også kan er at vise en timer, som starter når man har trykket på start knappen, og stopper når der trykkes på sluk knappen. Det kan diskuteres hvor smart det er, om timeren skal nulstille, når der trykkes på start knappen igen. Der er valgt i dette projekt at timeren starter fra det stoppet tidspunkt, når tænd bliver trykket igen, dette er valgt fordi, at det giver bedst mening at man skal kunne starte fra hvor man slap. Dog giver den funktion med at starte timeren igen, ikke så meget mening ude i den virkelige verden, da anæstesi sygeplejerskerne ikke starter målingen igen, efter at have stoppet målingen. \\\\
-Det kan diskuteres om brugeren skal have lov til at kalibrer på startskærmen, da kalibrering skal fortages af en servicemedarbejder. Herved skulle der kun have været log ind på startskærmen, og være lavet et servicevindue, som kun kan betjenes af servicemedarbejderen. Der er taget højde for denne problemstilling i koden, ved at have lavet en config fil, hvor kalibreringstallet kan ændres. Det betyder, at hvis det sundhedsfagligt personale springer over at kalibrere på startskærmen kalibrerer systemet automatisk efter kalibreringstallet i config filen. Meningen med config filen, er at det kun er servicepersonalet der skal kunne tilgå denne fil, og kunne ændre kalibreringstallet. 
+Det kan diskuteres om brugeren skal have lov til at kalibrer på startskærmen, da kalibrering skal fortages af en servicemedarbejder. Herved skulle der kun have været log ind på startskærmen, og være lavet et servicevindue, som kun kan betjenes af servicemedarbejderen. Der er taget højde for denne problemstilling i koden, ved at have lavet en config fil, hvor kalibreringstallet kan ændres. Det betyder, at hvis det sundhedsfagligt personale springer over at kalibrere på startskærmen kalibrerer systemet automatisk efter kalibreringstallet i config filen. Meningen med config filen, er at det kun er servicepersonalet der skal kunne tilgå denne fil, og kunne ændre kalibreringstallet.
+\subsection{Hardware}
+De vigtigste resultater på hardware delen inkluderer signal forstærkning og signal filtrering. Til simulering af transduceren blev der generet et signal på 20mV fra Analog Discovery og det forventet resultat var at filtret dæmper frekvenser over 50Hz. De målte målinger fra hhv. forstærkeren og filtret ser således ud: \\\\
+\begin{tabular}{| l | l |} \hline
+\textbf{Frekvens [Hz]} & \textbf{Gain. [V] Peak to peak}\\\hline
+1 & 16,308 \\\hline 
+10 & 17,512 \\\hline
+25 & 17,558 \\\hline 
+49 & 17,512\\\hline
+70 & 17,258\\\hline 
+100 & 17,308 \\\hline
+250 & 16,278\\\hline
+500 & 15.051\\\hline
+\end{tabular}\\\\
+Som det ses på tabellen har operationsforstærkeren levet op til det forudsete udfald. De 20mV bliver forstærket. Den gainKilde, som er beregnet i teorien var 800 og det vi har målt er i fint tråd med det teoretisk gain. 
+\begin{align}
+output_{INA114}=20\cdot 10^{-3}\cdot 800=16
+\end{align}
+Den anden måling som skulle foretages var at se om filtret lever op til det krav der er opstillet, nemlig en båndbredde på 50Hz der minimum giver 20 dB dæmpning på en dekade. Resultatet af denne måling er som følgende:  \\\\
+\begin{tabular}{| l | l |} \hline
+\textbf{Frekvens [Hz]} & \textbf{Peak to peak [V]}\\\hline
+1 & 13,504 \\\hline 
+10 & 13,220 \\\hline
+25 & 12,412 \\\hline 
+49 & 10,644\\\hline
+70 & 6,658 \\\hline 
+100 & 3,662 \\\hline
+250 & 0,666\\\hline
+500 & 0,220\\\hline
+\end{tabular}\\\\
+Om filtret har levet op til det forventet resultat kan tjekkes som følgende:
+\begin{align}
+G_{dB}=20\cdot log\left(\dfrac{V}{V_{out}}\right)=20\cdot \left(\dfrac{16,308}{0,220V}\right)=-37,234dB
+\end{align}
+Kravet til filtret var at ved frekvens 500Hz skal signalet dæmpes med 40dB på en dekade. Overstående beregning giver en dæmpning på -37,234 dB, hvilket ikke er helt ved siden af. Afvigelsen kan skyldes anvendelsen af ikke-ideelle komponenter. \\
+Ved knækfrekvensen skal dæmpning være 3dB og det kan regnes som følgende: 
+\begin{align}
+G_{dB}=20\cdot log\left(\dfrac{V}{V_{out}}\right) = 20\cdot log\left(\dfrac{10,664V}{15,051V}\right)=-3,009dB
+\end{align}
+Ud fra de overstående beregninger, kan det ses  at både operationsforstærkeren og filtret levet op til kravene tilnærmelsesvis. 
 \section{Udviklingsværktøjer}
 Til udviklingen af produktet, og dermed igennem hele projektarbejdet, er der blevet brugt en række udviklingsværktøjer. I dette afsnit er disse udviklingsværktøjer beskrevet yderligere.
 \subsection{Microsoft Visio 2010}
