@@ -1,5 +1,5 @@
 \chapter{Indledning}
-Gennem dette projekt ønskes der at skabe et produkt, som kan måle blodtrykket for en patient. Produktet skal vise blodtrykskurven og herudfra bestemme systole og diastole og visuelt præsentere pågældende værdier. Dette ønskes vist i en brugervenlig blodtryksmåler, som følger de standarder vi har fået oplyst, gennem samtale med anæstesi sygeplejerske Charlotte Høj fra Herning Sygehus. 
+Gennem dette projekt ønskes der at skabe et produkt, som kan måle blodtrykket for en patient. Produktet skal vise blodtrykskurven og herudfra bestemme systole og diastole og visuelt præsentere pågældende værdier. Dette ønskes vist i en brugervenlig blodtryksmåler, som følger de standarder vi har fået oplyst, gennem samtale med anæstesisygeplejerske Charlotte Høj fra Herning Sygehus. 
 \\\\
 Blodtrykket er det tryk, som blodet udøver på karvæggen i arterierne, når det pumpes rundt i kroppen. Systolen måles når venstre hjertekammer trækker sig sammen og som resultat herfra pumpes blodet rundt i kroppen. Diastolen er hvilefasen, og denne indtræder når hjertet hviler mellem slagene. I klinisk praksis måles dette blodtryk invasivt, og blodtryksmåleren er koblet til patientens arterier gennem et væskefyldt kateter. I dette projekt er der ikke brugt en patient, men der udviklet et elektronisk kredsløb, hvor en In vitro maskine simulerer en patient.
 \\\\
@@ -35,13 +35,12 @@ Kundens underskrift &&&&&&&&&&Leverandørens underskrift\\
 Denne kravspecifikation er blevet udarbejdet på baggrund af krav fra kunden, samt hvad leverandøren finder muligt. Kravspecifikationens formål er at specificere de krav, der er til produktet. 
 \newpage
 \section{Systembeskrivelse}
-Det er blevet besluttet ud fra projektformuleringen at udvikle et blodtryksmålesystem som en prototype med perspektivering til fremtidigt arbejde. Blodtryksmålesystemet ønskes ideelt at kunne måle blodtryk, EKG og iltmætning for en patient. Ud fra blodtrykket findes systolisk, diastolisk og middeltryks værdier, dette gøres ved at finde den maksimale værdi (systole) og den minimale værdi (diastole) for blodtrykskurven. Ud fra disse to værdier bestemmes middeltrykket, dette gøres ved formlen: $middeltryk = 1/3 \cdot systole + 2/3 \cdot diastole$. \cite{blodtrykwiki}
-\\ 
-Ud fra EKG-signalet kan pulsen bestemmes, dette gøres ved at bestemme antallet af R-takker på et minut. Desuden kan pulsen bestemmes ud fra blodtrykket, da pulsen her er antallet af systoliske værdier på et minut. Iltmætningen er mængden af ilt i blodet. For at kunne bestemme denne værdi skal et eksternt produkt benyttes. Dette produkt skal ved hjælp en infrarød sensor bestemme iltmætningen i blodet, dette bliver ikke implementeret i denne prototype.\\\\
-Forudsætninger for brug af systemet er, at det skal køres på en computer, samt overholde de opstillede krav. Systemet er opbygget af en hardwaredel og en softwaredel. \\\\
-Hardwaredelen består af et aktivt 2. Ordens Butterworth Sallen-Key lavpasfilter, samt en forstærker. Forstærkeren modtager et signal fra den udleverede tryktransducer, dette signal forstærkes op. Signalet sendes videre til lavpasfilteret, hvor alle frekvenser over 50Hz bliver dæmpet. Her fra sendes signalet ind i dataopsamlingsenheden NI-DAQ.\\\\
-Softwaredelen består af et windows forms program udviklet i C\# .net, programmet skal kunne præsentere data indhentet fra DAQ’en. Ligeledes skal programmet kunne analysere og filtrere data fra DAQ’en, samt gemme disse i en "EPJ"-database. Programmet skal også kunne hente login-oplysninger fra en "personale"-database. \\
-Man har valgt at have to databaser for at simulere, at der er en adskillelse af medarbejderdata og patientdata.
+Det er blevet besluttet ud fra projektformuleringen at udvikle et blodtryksmålesystem som en prototype med perspektivering til fremtidigt arbejde. Blodtryksmålesystemet ønskes ideelt at kunne måle blodtryk, EKG og iltmætning for en patient. Ud fra blodtrykket findes systolisk og diastolisk blodtryk, baseret på disse værdier kan middeltrykket bestemmes. Systole og diastole bestemmes ved at finde den maksimale værdi (systole) og den minimale værdi (diastole) for blodtrykskurven. Middeltrykket kan herefter bestemmes med formlen: $Middeltryk = \dfrac{1}{3} \cdot Systole + \dfrac{2}{3} \cdot Diastole$. \cite{blodtrykwiki}
+\\ Ud fra EKG-signalet kan pulsen bestemmes, dette gøres ved at bestemme antallet af R-takker på et minut. Desuden kan pulsen bestemmes ud fra blodtrykket, da pulsen her er antallet af systoliske værdier på et minut. Iltmætningen er mængden af ilt i blodet. For at kunne bestemme denne værdi skal et eksternt produkt benyttes. Dette produkt skal ved hjælp af en infrarød sensor bestemme iltmætningen i blodet, dette bliver ikke implementeret i denne prototype.\\\\
+Forudsætningerne for brug af systemet er, at det skal køres på en computer, samt overholde de opstillede krav. Systemet er opbygget af en hardwaredel og en softwaredel. \\
+Hardwaredelen består af et aktivt 2. Ordens Butterworth Sallen-Key lavpasfilter, samt en forstærker. Forstærkeren modtager et signal fra den udleverede transducer, dette signal forstærkes op. Signalet sendes videre til lavpasfilteret, hvor alle frekvenser over 50 Hz bliver dæmpet. Herfra sendes signalet ind i dataopsamlingsenheden NI-DAQ.\\\\
+Softwaredelen består af et windows forms program udviklet i C\# .NET, programmet skal kunne præsentere data indhentet fra DAQ’en. Ligeledes skal programmet kunne analysere og filtrere data fra DAQ’en, samt gemme disse i en "EPJ"-database. Programmet skal også kunne hente login-oplysninger fra en "personale"-database. \\
+Det er valgt at have to databaser for at simulere, at der er en adskillelse af personaledata og patientdata.
 \begin{figure}[H]
 \includegraphics[width =0.8\textwidth , center]{billeder/system}
 \caption{\textbf{Skitse af opbygning af systemet.}}
@@ -258,13 +257,11 @@ De ikke-funktionelle krav er opsat efter FURPS+ metoden. De er herefter priorite
 \begin{enumerate}
 \item \textbf{Functionality}
 \begin{enumerate}
-\item (\textbf{M}) Programmet skal have et digitalt filter til udglatning af blodtrykssignal.
-\item (\textbf{S})Programmet skal give alarm, når grænseværdier for blodtrykket overskrides, med lyd og "Udsæt alarm" knappen blinker skiftevis mellem rød og hvid.
 \item (\textbf{M}) Programmet skal kunne gemme blodtrykssignalet i en database.
 \end{enumerate}
 \item \textbf{Usability}
 \begin{enumerate}
-\item (\textbf{S}) Programmet skal have to window forms: startskærm, der fungerer som  EPJ systemet og hovedskærm, der fungerer som selve blodtryksmålerens grænseflade.
+\item (\textbf{S}) Programmet skal have to windows forms: startskærm, der fungerer som  EPJ systemet og hovedskærm, der fungerer som selve blodtryksmålerens grænseflade.
 \item (\textbf{M}) Programmet skal have en "Log ind" knap på startskærmen.
 \item (\textbf{M}) Programmet skal have en "Kalibrering" knap på startskærmen.
 \item (\textbf{M}) Sundhedsfagligt personale skal kunne ændre "devicename/enhedsnavn" i dropdown på startskærmen.
@@ -304,7 +301,7 @@ De ikke-funktionelle krav er opsat efter FURPS+ metoden. De er herefter priorite
 \end{enumerate}
 \item \textbf{Reliability}
 \begin{enumerate}
-\item (\textbf{S}) Igen reliability krav endnu.
+\item (\textbf{S}) Ingen reliability krav endnu.
 \end{enumerate}
 \item \textbf{Performance}
 \begin{enumerate}
@@ -320,7 +317,7 @@ De ikke-funktionelle krav er opsat efter FURPS+ metoden. De er herefter priorite
 \end{enumerate}
 \item \textbf{+ Test conditions}
 \begin{enumerate}
-\item (\textbf{M}) Der skal være adgang til en computer med Windows 8 - computeren skal minimum have 8 GB RAM.
+\item (\textbf{M}) Der skal være adgang til en computer med Windows 8.1 - computeren skal minimum have 8 GB RAM.
 \item (\textbf{M}) Der skal være adgang til en computer hvor National Instruments er installeret.
 \end{enumerate}
 \end{enumerate}
@@ -361,7 +358,7 @@ Den anden iteration er beskrevet udførligt i hardware delen, her blev der brugt
 \end{table}
 Filteret blev analyseret. Analysen viste, at der ikke var den nødvendige dæmpning ved 500Hz. Igen kan dette være et resultat af det ikke var et aktivt filter, der blev brugt. 
 \subsubsection{Tredje iteration - komponenter lavpasfilteret, forstærker og forsyningsspænding}
-I den tredje iteration blev der opdaget at C1 skulle være halvdelen af C2 for at give et filter, der overholdte projektets krav. Modstandene er beregnet ud fra den nye kondensatorværdi.
+I den tredje iteration blev der opdaget at C1 skulle være halvdelen af C2 \cite{wikifilter} for at give et filter, der overholdte projektets krav. Modstandene er beregnet ud fra den nye kondensatorværdi.
 \begin{table}[H]
 \begin{tabular}{| l | l |}
    \hline
@@ -377,78 +374,78 @@ Der blev besluttet at benytte en INA-114 forstærker, efter anbefaling fra vejle
 Den fjerde iteration benytter samme komponentværdier som tredje iteration, men der var blevet overset at filteret skulle været et aktivt filter. Derfor blev kredsløb opbygget forfra på et fumlebræt, hvor der var tilsluttet spænding på filteret. Dermed kunne et aktivt Butterworth Sallen-key filter designes.
 \subsubsection{Femte iteration - veroboard og spændingsregulator}
 Den sidste iteration blev bygget op på veroboard, denne iteration blev ligeledes lavet med en 5V spændingsregulator for at sikre at spændingsforsyningen til transduceren ikke overstiger 5V. Transduceren er meget sensitiv så ændringer i spændingsforsyning kan give usikkerhed i resultaterne, derfor valgte man at indføre en 7805T-spændingsregulator. Beslutningen om at bygge kredsløbet op på veroboardet blev truffet for bedre at kunne teste, samt gøre opsætningen af accepttesten nemmere og mere overskuelig.
-\subsubsection{Design af lavpasfilteret}
-Frekvenserne der skal arbejdes med i blodtryksmåleren, ligger op til 50Hz, derfor skal der realiseres et 2. ordens lavpasfilter med følgende dimensioner:\\
-Cut-off Frequency: 50Hz\\
-Ligeledes skal der dæmpes med 40 dB/decade ved 500Hz.\\
-C2 er givet til at være på 680nF, ligeledes er operationsforstærkeren givet til at være OP27.
-\begin{figure}[H]
-\includegraphics[width =0.5\textwidth , center]{billeder/lavpas}
-\caption{\textbf{Butterworth Sallen-key filter.}}
-\end{figure}
-Overføringsfunktionen for ovenstående filter:
+\subsection{Design}
+Fra projektets start var der mange informationer og krav til hardwaren i projektet. Det betød at det ret tidligt blev tydeligt, hvilke delkomponenter hardwaren skulle bestå af. Hardwaren skulle bestå af et lavpasfilter og en forstærker del, samt en spændingsforsyning. Udviklingsprocessen og design af hardwaren skete igennem en række iterationer, disse er nærmere beskrevet i Projektdokumentationen. Dette afsnit vil fokusere på den endelige dimensionering og det endelige design af hardwaredelen.\\\\
+\textbf{Lavpasfilter}\\
+Det var givet, at det var et aktivt 2. Ordens Butterworth Sallen-key filter, der skulle være lavpasfilter delen i projektet. Det var fra start givet, at der skulle benyttes en OP27 operationsforstærker, ligeledes var en af kondensatorerne givet: C2 = 680nF og R1 = R2. Filteret skulle dimensioneres til en cut-off frekvens på 50Hz, med minimum 20dB dæmpning ved 500Hz. Ud fra disse informationer, samt en kredsløbstegning af filteret kunne der opstilles en overføringsfunktion for kredsløbet:
 \begin{align}
-\dfrac{V_{out}(s)}{V_{in}(s)}=\dfrac{\dfrac{1}{R1\cdot R2\cdot C1\cdot C2}}{s^2+\dfrac{R1 + R2}{R1\cdot R2\cdot C2}\cdot s+\dfrac{1}{R1\cdot R2\cdot C1\cdot C2}}
+T_{v}(s)=\dfrac{V_{out}(s)}{V_{in}(s)}=\dfrac{\dfrac{1}{R1\cdot R2\cdot C1\cdot C2}}{s^2+\dfrac{R1 + R2}{R1\cdot R2\cdot C2}\cdot s+\dfrac{1}{R1\cdot R2\cdot C1\cdot C2}}
 \end{align}
-Omskrevet til standardformel:
+Denne overføringsfunktion omskrives til standardformel:
 \begin{align}
-\dfrac{V_{out}(s)}{V_{in}(s)}=\dfrac{\omega^2}{s^2+2\zeta\omega+\omega^2}
+\dfrac{V_{out}(s)}{V_{in}(s)}=\dfrac{\omega^2}{s^2+2\zeta\omega\cdot s+\omega^2}
 \end{align}
 Her isoleres cut-off frekvensen ($\omega$) i overføringsfunktionen for lavpasfilteret:
 \begin{align}
 \omega = 2\pi\sqrt{\dfrac{1}{R1\cdot R2\cdot C1\cdot C2}}
 \end{align}
-I formlen for cut-off frekvensen indsættes komponentværdierne. Der er valgt en værdi for $C1$ til at være 330nF, dette er et gæt. Cut-off frekvensen er sat til 50Hz, da dette er blevet givet som et krav til projektet.\\
-$C1 = 330nF, C2=680nF og R1=R2$
-\begin{figure}[H]
-\includegraphics[width =0.5\textwidth , center]{billeder/mathcad}
-\caption{\textbf{Mathcad beregninger.}}
-\end{figure}
-Ud fra disse beregninger skal modstanden altså bestemmes til at have en værdi på ca. $6.7k\Omega$. Da der er blevet brugt et Butterworth Sallen-key filter vides det, at C1 skal være halvdelen af C2. Derfor er der lavet nye beregninger hvor $C1=340nF$, hvilket svarer til halvdelen af $C2$.
-\begin{figure}[H]
-\includegraphics[width =0.5\textwidth , center]{billeder/mathcad2}
-\caption{\textbf{Mathcad beregninger.}}
-\end{figure}
-Der er efterfølgende lavet en analyse i matlab for at sikre at dæmpningen er min. 20 dB pr. decade ved 500Hz. Dette er gjort med modstande på $6.6k\Omega$.
-\begin{figure}[H]
-\includegraphics[width =1.0\textwidth , center]{billeder/bodeplot}
-\caption{\textbf{Matlab bodeplot med 6.6k$\Omega$ modstande.}}
-\end{figure}
-Ud fra dette kan det konkluderes at dæmpningen ved 550Hz er tilstrækkelig.
-\subsubsection{Design af operationsforstærkeren}
-Det elektriske signal der skal bruges i systemet, kommer fra tryktransduceren TruWave\texttrademark og ind i dataopsamlingsmodel (NI-DAQ6009). Signalet fra TruWave\texttrademark skal forstærkes op, så bedre målesignaler kan sendes ind i DAQ’en. I databladet for NI-DAQ6009 kan den maksimale spænding for indgangsportene ses til at være +/-10V, det vil sige at signalet ikke må forstærkes mere op end til 10V. Der er valgt at forstærke op til +/-8V, for at give lidt buffer, så der ikke overstiges de 10V og derved mister data. Ligeledes er hardware produktet hæmmet af valget af spændingsforsyning som er to 9-volts batterier, som praktisk leverer omkring +/- 8V.\\ 
-Fra TruWave\texttrademark er der valgt at fokuserer på et måleområde der ligger inden for 0-250mmHg. \\\\
-\textbf{Maksimalt output for transducer}\\
+I denne ligning indsættes de kendte værdier. Det er beskrevet at filteret er af typen 2. ordens Sallen-key filter, derfor ved vi at C1 er halvdelen af C2.\cite{wikifilter}
 \begin{align}
-V_{max}=250mmHg\cdot 16V\cdot 5\mu V 
+50Hz\cdot 2\cdot \pi = \sqrt{\dfrac{1}{R\cdot R\cdot 680\cdot 10^{-9}F\cdot 340\cdot 10^{-9}F}}
 \end{align}
-Ud fra dette kan der bestemmes, hvor meget gain (forstærkning), der skal bruges fra forstærkeren:
 \begin{align}
-16V = 20\cdot 10^{-3}V\cdot gain\\
-gain = \dfrac{16V}{20\cdot 10^{-3}V}=800
+R=6,62\cdot 10^3 \Omega
 \end{align}
-\textbf{Båndbredde og valg af forstærker}\\
-Produktet af gain og båndbredde, $BW$, er konstant, derfor er det vigtigt at båndbredden ligger over knækfrekvensen på 50Hz. Det er valgte at benytte en INA-114 forstærker, da denne opfylder behovene. Ved $gain=1$ kan INA-114 levere 1MHz båndbredde, det vil sige, at der kan opstilles følgende ligning for beregning af båndbredden.
-\begin{align}
-1000000 = 800\cdot BW\\
-BW = \dfrac{1000000Hz}{800}=1250Hz
-\end{align}
-Da 1250 Hz er over knækfrekvensen på 50Hz har forstærkeren tilstrækkelig båndbredde til at leve op til kravene til projektet.\\\\
-\textbf{Beregning af modstand til forstærker}\\
+Ud fra dette ses det at modstanden er ca. 6.6k$\Omega$, realiseret med to 3.3k$\Omega$ modstande i serie i det endelige produkt.\\\\
+\textbf{Forstærker INA-114 og valg af spændingsforsyning}\\
+Udviklingen af forstærkerdelen til hardwaredelen blev bestemt ved hjælp af databladet for DAQ (NI-DAQ6009), samt databladet for tryk-transduceren (TruWave\texttrademark). DAQ kan maksimalt modtage op til +/-10V, det vil sige signalet ikke må overstige peak-to-peak spænding på 20V. Før forstærkningen kunne beregnes, skulle spændingsforsyningen til kredsløbet vælges. Det blev valgt at benytte to 9V-batterier. Disse blev sat op som følger:
 \begin{figure}[H]
-\includegraphics[width =1.0\textwidth , center]{billeder/forstarker}
-\caption{\textbf{Denne viser opbygningen og delene i operationsforstærkeren INA114}}
+\includegraphics[width =0.2\textwidth , center]{billeder/spandingsforsyning}
+\caption{\textbf{Spændingforsyning.}}
 \end{figure}
-Forstærkerens gain er bestemt ved modstanden, der sidder på port 1 og 8. Denne modstand kan beregnes med følgende formel, hvor $R_G$ er modstanden og gain = 800.
+Denne opsætning ville i teorien sikre en 18V peak-to-peak spænding. Det blev valgt at benytte en INA-114 forstærker til at forstærke signalet fra tryktransduceren. I teorien ville man kunne forstærke op til 18V peak-to-peak, men i praksis ville det være urealistisk, da batterierne med tiden bliver afladet. Det blev besluttet at forstærke op til 16V peak-to-peak. Undersøgelser for hvorvidt INA-114 havde tilstrækkelige båndbredde blev udregnet som følger. Først bestemte man det maksimale output for tryktransduceren i området 0-250mmHg.
+\begin{align}
+V_{max}=250mmHg\cdot 5V\cdot 5\mu V/V/mmHg =6.25 mV
+\end{align}
+Ud fra dette kan man bestemme hvor meget gain der skal bruges fra forstærkeren.
+\begin{align}
+16V = 20\cdot 10^{-3}V\cdot gain
+\end{align}
+\begin{align}
+gain = 800
+\end{align}
+Man sikrede sig at forstærkeren kunne håndtere forstærkningen, denne del er nærmere beskrevet i dokumentationen. Herefter skulle man beregne hvor stor modstanden på INA-114 skulle dimensioneres til for at få den valgte gain.
 \begin{align}
 G=1+\dfrac{50k\Omega}{R_G}\\
-800 = 1+\dfrac{50k\Omega}{R_G}\\
-R_G=62.5\Omega
+R_G\approx 62.5\Omega
+\end{align}
+Det blev besluttet at bruge et potentiometer i stedet for en fast modstand til $R_G$. Så man kunne regulere denne hvis spændingsforsyningen var mere potent end 16V peak-to-peak.\\\\
+\textbf{Spændingsregulator}\\
+Det blev i den sidste iteration besluttet at benytte en spændingsregulator for at sikre at transduceren fik en stabil spændingsforsyning. Tryktransduceren er meget følsom så derfor var det vigtigt at denne får en konstant spændingsforsyning. Det betyder også at den oprindelige skalering ikke er korrekt.
+\begin{align}
+V_{max}=250mmHg\cdot 16V\cdot5\mu V/V/mmHg =20 mV
+\end{align}
+Gain beregning
+\begin{align}
+16V = 6,25\cdot 10^{-3}V\cdot gain
+\end{align}
+\begin{align}
+gain=2560
+\end{align}
+Produktet af gain og båndbredden er konstant, derfor er det vigtigt båndbredden ligger over knækfrekvensen på 50Hz. Ved gain=1 kan INA-114 levere 1Mhz båndbredde. Følgende ligning for beregning af båndbredden kan opstilling:
+\begin{align}
+1000000=2560\cdot BW\\
+BW\approx 390Hz
+\end{align}
+Da 390 Hz er over knækfrekvensen på 50Hz har forstærkeren tilstrækkelig båndbredde. Den nye $R_G$ kan beregnes til at skulle være.
+\begin{align}
+2560=1+\dfrac{50k\Omega}{R_G}\\
+R_G\approx 19,5\Omega
 \end{align}
 Et potentiometer er blevet valgt at benytte som denne modstand, da der helst skulle kunne reguleres på systemet, og den ovenstående værdi er beregnet med ideelle komponenter, i praksis vil komponenterne ikke kunne være helt ideelle.
 \subsection{Implementering}
 \subsubsection{Block definition diagram}
-På nedenstående figur bliver systemets hardware illustreret i et BDD. Heraf ses det at systemet har seks hardware blokke: Computer, transducer, NI-DAQ, lavpas filter, forstærker og en spænsindforsyning. Disse blokke udgør tilsammen blodtryksmålesystemet.
+På nedenstående figur bliver systemets hardware illustreret i et BDD. Heraf ses det at systemet har seks hardware blokke: Computer, transducer, NI-DAQ, lavpas filter, forstærker og en spændingsforsyning. Disse blokke udgør tilsammen blodtryksmålesystemet.
 \begin{figure}[H]
 \includegraphics[width =1.0\textwidth , center]{billeder/BDD}
 \caption{\textbf{Block definition diagram. Dette diagram viser hardware delene i systemet, samt sammenhængen mellem disse.}}
@@ -457,9 +454,9 @@ På nedenstående figur bliver systemets hardware illustreret i et BDD. Heraf se
 Ud fra BDD kan et IBD diagram udarbejdes. IBD diagrammet viser koblingen mellem blokkene:
 \begin{itemize}
 \item Strømforsyningen, denne er to 9V batterier som forsyner forstærkeren og transduceren med $\pm$ 9V
-\item Transduceren omdanner tryksignalet fra kateteret til et strømsignal i ZZ mV tilbage til forstærkeren.
+\item Transduceren omdanner tryksignalet fra kateteret til et strømsignal i 6.26 mV tilbage til forstærkeren.
 \item Forstærkeren forstærker signalet til lavpas filteret.
-\item Lavpas filteret dæmper de høje frekvenser og sender signalet til NI-DAQ
+\item Lavpasfilteret dæmper de høje frekvenser og sender signalet til NI-DAQ
 \item NI-DAQs formål er, at omdanne signalet fra et analogt signal til et digitalt signal.
 \item Computerens funktion er at få analyseret og vist blodtryksignalet på en brugergrænseflade, vha. Visual Studio. 
 \end{itemize}
@@ -468,7 +465,7 @@ Ud fra BDD kan et IBD diagram udarbejdes. IBD diagrammet viser koblingen mellem 
 \caption{\textbf{Internal block diagram. Dette diagram viser signalerne imellem blokkene.}}
 \end{figure}
 \subsection{Modultest}
-Modultesten omfatter kun test af en forstærker. De resterende komponenter, som er anvendt i det samlede hardwaresystem, medtages ikke i modultesten, da de er udleveret af vejlederen. De udleverede dele af systemet består af et filter, en transducer, et kateter og en dataopsamler i form af NI-DAQ-6009. Selvom filtret er udleveret, indgår den i modultesten, da man skal sikre at det dæmper de høje frekvenser. Modultesten foretages enkeltvis dvs. de enkelte blokke testes hver for sig. Til sidst testes systemet med en væskesøjle for at identificere om operationsforstærkeren og filteret kommunikere med hinanden. Rækkefølgen som blokkene skal testes er som følgende:
+Modultesten omfatter en forstærkerdel og en filterdel. De udleverede dele af systemet består af en transducer, et kateter og en dataopsamler i form af NI-DAQ-6009. Ved test af filteret sikrer man at de høje frekvenser dæmpes.  Modultesten foretages enkeltvis dvs. de enkelte blokke testes hver for sig. Til sidst testes systemet med en vandsøjle for at identificere om forstærkeren og filteret kommunikere med hinanden. Rækkefølgen som blokkene skal testes er som følgende:
 \begin{itemize}
 \item Test af operationsforstærker.
 \item Test af filter.
@@ -509,7 +506,7 @@ Vha. Analog Discovery er der påført INA-114 et differentielt signal dvs. to si
 \end{tabular}
 \end{table}
 \subsubsection{Test af filter}
-Systemets filtre er et 2. ordens lavpasfilter af typen Sallen-Key og designes som et Butterworth med cut off frekvens på 50Hz. Om filtret lever op til de opstillet krav kan testes ved at sende signaler med høje frekvenser igennem. De høje frekvenser skal blive dæmpet. Der er brugt Analog Discovery til at generer et signal med forskellige frekvenser. Da cut off frekvensen ligger på 50Hz, forventes der at alt over 50 bliver dæmpet og ved 500 skal der dæmpes minimum 40 dB pr. dekade.
+Systemets filtre er et aktivt 2. ordens lavpasfilter af typen Sallen-Key og designes som et Butterworth med cut-off frekvens på 50Hz. Om filtret lever op til de opstillet krav kan testes ved at sende signaler med høje frekvenser igennem. De høje frekvenser skal blive dæmpet. Der er brugt Analog Discovery til at generer et signal med forskellige frekvenser. Da cut-off frekvensen ligger på 50Hz, forventes der at alt over 50 bliver dæmpet og ved 500 skal der dæmpes minimum 20 dB.
 \begin{table}[H]
 \label{tab:tabel2}
 \begin{tabular}{| l | l |}
@@ -551,7 +548,7 @@ Den endelig måling er foretaget vha. væskesøjlen som signalgenerator i form a
 \section{Software design}
 I dette afsnit beskrives softwaredesign på baggrund af systembeskrivelsen og kravspecifikationen. Denne beskrivelse opnås ved, at der benyttes relevante diagrammer og modeller, hvilke kan bruges til at beskrive softwaren. Overvejelser og valg, der er blevet gjort i forbindelse med design og implementering af softwaren, vil i dette afsnit blive præsenteret.
 \subsection{Problemidentifikation}
-Ved identifikationen af produktet, og herunder hvad dette skal kunne, er der opstået nogle vanskeligheder, som der har skullet tages hensyn til. I første omgang blev der udarbejdet en idé, om at have en startskærm, hvor det kam vælges hvor på patienten målingen skal foretages. På startskærmen skulle det desuden være muligt at kalibrere systemet og foretage nulpunkts justeringen. Stederne hvor målingerne skulle foretages blev identificeret til at skulle være tre målesteder; hjertet, armen og benet. Efter målestedet var valgt, skulle man komme videre til en anden skærm, hvor selve målingen skulle foretages. Idéen med denne startskærm viste sig dog ikke at være brugbart i praksis, hvilket fik os til at gå væk fra denne. Grunden til at denne idé ikke ville kunne bruges i praksis, ved en invasiv blodtryksmåling, var at denne idé var tænkt som et produkt til måling af blodtrykket på diabetes patienternes underekstremiteter. Herefter ville værdierne kunne sammenlignes, og situationen vurderes for patienten. Men ved denne patientgruppe er det dog ikke hensigtsmæssigt at lave invasiv blodtryksmåling på underekstremiteterne, da blodtrykket her vil være lavt. Ved invasiv blodtryksmålingen laves der hul på karrene og helingen af dette hul vil ikke kunne foregå optimalt og der vil være risiko for infektioner. \\
+Ved identifikationen af produktet, og herunder hvad dette skal kunne, er der opstået nogle vanskeligheder, som der har skullet tages hensyn til. I første omgang blev der udarbejdet en idé, om at have en startskærm, hvor det kan vælges hvor på patienten målingen skal foretages. På startskærmen skulle det desuden være muligt at kalibrere systemet og foretage nulpunkts justeringen. Stederne hvor målingerne skulle foretages blev identificeret til at skulle være tre målesteder; hjertet, armen og benet. Efter målestedet var valgt, skulle man komme videre til en anden skærm, hvor selve målingen skulle foretages. Idéen med denne startskærm viste sig dog ikke at være brugbart i praksis, hvilket fik os til at gå væk fra denne. Grunden til at denne idé ikke ville kunne bruges i praksis, ved en invasiv blodtryksmåling, var at denne idé var tænkt som et produkt til måling af blodtrykket på diabetes patienternes underekstremiteter. Herefter ville værdierne kunne sammenlignes, og situationen vurderes for patienten. Men ved denne patientgruppe er det dog ikke hensigtsmæssigt at lave invasiv blodtryksmåling på underekstremiteterne, da blodtrykket her vil være lavt. Ved invasiv blodtryksmålingen laves der hul på karrene og helingen af dette hul vil ikke kunne foregå optimalt og der vil være risiko for infektioner. \\
 \begin{figure}[H]
 \includegraphics[width =0.5\textwidth , center]{billeder/SkitseStartGammel}
 \caption{\textbf{Idé til projekt. Startskærmen hvor det vil være muligt at vælge målested.}}
@@ -568,7 +565,7 @@ Ud fra alle disse faktorer kan grundstrukturen, til hvordan startskærmen og hov
 \caption{\textbf{Hovedskærmen, hvilken fungerer som blodtryksmålerens grænseflade}}
 \end{figure}
 \subsubsection{Domænemodel}
-Først skal der klarlægges hvilke klasser som systemet skal bestå af, hvilket er det første skridt i processen. For at kunne identificere disse klasse udarbejdes en domænemodel, hvilken har sit udgangspunkt i Use cases. Det er i de konceptuelle klasser fra Use cases som indeholder den information som systemet skal holde styr på. Derfor findes de konceptuelle klasser i Use cases og disse indføres i domænemodellen som klasser. Domænemodellen opstilles derfor for at finde frem til hvad problemstillingen i forhold til softwaren er med henhold til, hvad der skal holdes styr på.
+Først skal der klarlægges, hvilke klasser som systemet skal bestå af, hvilket er det første skridt i processen. For at kunne identificere disse klasse udarbejdes en domænemodel, hvilken har sit udgangspunkt i Use cases. Det er i de konceptuelle klasser fra Use cases som indeholder den information som systemet skal holde styr på. Derfor findes de konceptuelle klasser i Use cases og disse indføres i domænemodellen som klasser. Domænemodellen opstilles derfor for at finde frem til hvad problemstillingen i forhold til softwaren er med henhold til, hvad der skal holdes styr på.
 \begin{figure}[H]
 \includegraphics[width =1.0\textwidth , center]{billeder/DM}
 \caption{\textbf{Domænemodel for blodtryksmålesystemet.}}
@@ -600,11 +597,11 @@ I dette projekt er trelagsmodellen blevet opfyldt ved at der er oprettet en solu
 Det første projekt PulsMaalerSystem fungerer som præsentationslaget og består af to Windows forms, StartGUI og HovedGUI. Begge forms sender informationer ned til logiklaget og henter data, som blodtryksværdier, og viser det på en graf. \\\\
 Det andet projekt PulsMaalerSystem.Logiklag er logiklaget i projektet. I dette logiklag, er der implementeret seks klasser: Blodtryk, Kalibrering, Digitaltfilter, Nulpunkts$_{-}$justering og EKG, Logiklag.\\
 Klassen Blodtryk tager sig af at udregne systolen, diastolen og middeltrykket med algoritmer ud fra blodtrykket. \\
-Kalibrerings klassen sørger for at beregne kalibreringsværdien ud fra de indtastede værdier for tryk og spænding og sender denne værdi over i Logiklag klassen, hvilken kalibrér blodtrykssignalet ved at gange kalibreringsværdien på signalet.\\
+Kalibreringsklassen sørger for at beregne kalibreringsværdien ud fra de indtastede værdier for tryk og spænding og sender denne værdi over i Logiklag klassen, hvilken kalibrér blodtrykssignalet ved at gange kalibreringsværdien på signalet.\\
 Digitaltfilter klassen implementer et glidende middelværdisfilter, der sørger for at udglatte blodtrykssignalet.\\
 Nulpunkts$_{-}$justering klassen sørger for at sætte signalets baseline ved 0 V. 
 EKG klassen skulle have sørget for at finde R-takker og udregne pulsen. Grundet tidspres har det ikke været muligt at implementer EKG i projektet. Der er dog gjort klar til det med denne klasse. \\\\
-Logiklags klassen binder alle de andre klasser sammen, ved at hente data nede fra datalaget til klasserne og sende metoderne med videre til præsentationslaget.\\
+Logiklagsklassen binder alle de andre klasser sammen, ved at hente data nede fra datalaget til klasserne og sende metoderne med videre til præsentationslaget.\\
 \\
 Det tredje projekt PulsMaalerSystem.Datalag består af to klasser: DAQ og datalag. 
 DAQ klassen sørger for at hente data op fra DAQ’en. Datalag klassen sørger for at hente informationer om patienten og personalet i databaserne; Personale database og EPJ database. Datalag klassen sørger også for at gemme blodtrykket for patienten løbende i EPJ databasen. \\
@@ -653,7 +650,7 @@ Ud fra informationerne fra domænemodellen, applikationsmodellen og sekvensdiagr
 \caption{\textbf{Heraf ses klasserne med de tilhørende attributter og metoder.}}
 \end{figure}
 \subsubsection{Metodebeskrivelse}
-Metoderne der identificeres i klassediagrammet vil her beskrives, hvor det beskrives, hvilken parameter metoden tager imod, hvilken returværdi metoden sender videre og en kort beskrivelse af metodens funktion. Event metoderne fra præsentationslaget, vil blive beskrevet her med, hvilke parametre og returværdi disse metoder har. \\\\
+Metoderne der identificeres i klassediagrammet vil her beskrives, hvor det beskrives, hvilken parameter metoden tager imod, hvilken returværdi metoden sender videre og en kort beskrivelse af metodens funktion. Event metoderne fra præsentationslaget, vil ligeledes blive beskrevet her med hvilke parametre og returværdi disse metoder har. \\\\
 \textbf{StartGUI}
 \begin{figure}[H]
 \includegraphics[width =0.4\textwidth , center]{billeder/klassediagramStart}
@@ -706,7 +703,7 @@ Metoderne der identificeres i klassediagrammet vil her beskrives, hvor det beskr
    \multicolumn{2}{|l|}{private void loginKnap\_ Click(object, EventArgs)} \\ \hline
    Parameter: & object, EventArgs\\ \hline
    Returværdi: & Ingen \\ \hline
-   Beskrivelse: & Metoden kalder metoden tjekBruger(), hvor det indtastede brugernavn og password sendes med. Ryder PatientComboBoxens liste. Kalder metoden tjekPatient(), som sender brugernavnet med.\\ \hline
+   Beskrivelse: & Metoden kalder metoden tjekBruger(), hvor det indtastede brugernavn og password sendes med. Rydder PatientComboBoxens liste. Kalder metoden tjekPatient(), som sender brugernavnet med.\\ \hline
 \end{tabular}
 \end{table}
 \begin{table}[H]
@@ -726,7 +723,7 @@ Metoderne der identificeres i klassediagrammet vil her beskrives, hvor det beskr
    \multicolumn{2}{|l|}{private void kalibreringKnap\_ Click(object, EventArgs)} \\ \hline
    Parameter: & object, EventArgs\\ \hline
    Returværdi: & Ingen \\ \hline
-   Beskrivelse: & Denne metode kalder KalibreringDTO og henter syntaksen for værdierne indtastet i Volttextbox og mmHgTextBox. Kalder metoden BeregnKalibreringsTal() i Kalibrering klassen, hvilken bruger de indtastede værdier og kalder metoden setKalibreringstal() fra LogikLag klassen, hvilken bruger den beregnede værdi. Værdien udskrives herefter på startskærmen.\\ \hline
+   Beskrivelse: & Denne metode kalder KalibreringDTO og henter syntaksen for værdierne indtastet i Volttextbox og mmHgTextBox. Kalder metoden BeregnKalibreringsTal() i Kalibrering-klassen, hvilken bruger de indtastede værdier og kalder metoden setKalibreringstal() fra LogikLag klassen, hvilken bruger den beregnede værdi. Værdien udskrives herefter på startskærmen.\\ \hline
 \end{tabular}
 \end{table}
 \begin{table}[H]
@@ -761,7 +758,7 @@ Metoderne der identificeres i klassediagrammet vil her beskrives, hvor det beskr
    \multicolumn{2}{|l|}{void tidsTæller\_ Elapsed(object, System.Timers.ElapsedEventArgs)} \\ \hline
    Parameter: & object, System.Timers.ElapsedEventArgs\\ \hline
    Returværdi: & Ingen \\ \hline
-   Beskrivelse: & Metoden henter tidTæller tråden og tæller den én værdi op hvert sekund og viser værdien på HovedGUI.\\ \hline
+   Beskrivelse: & Metoden tæller en timespan op med ét sekund og viser værdien på HovedGUI.\\ \hline
 \end{tabular}
 \end{table}
 \begin{table}[H]
@@ -791,7 +788,7 @@ Metoderne der identificeres i klassediagrammet vil her beskrives, hvor det beskr
    \multicolumn{2}{|l|}{private void updateChart()} \\ \hline
    Parameter: & Ingen\\ \hline
    Returværdi: & Ingen \\ \hline
-   Beskrivelse: & Metoden er en tråd, hvilken går ind og ser om chart Blodtryk ligger i en anden tråd og starter tråden. Metoden går ind og sender værdier fra blodtrykslisten ind i Blodtryk chart. Henter systoliske, diastolisk og middeltryks værdier, og sender disse værdier til labels på startskærmen.\\ \hline
+   Beskrivelse: & Metoden er en tråd, hvilken går ind og ser om chart Blodtryk ligger i en anden tråd. Metoden går ind og sender værdier fra blodtrykslisten ind i Blodtryk chart. Henter systoliske, diastolisk og middeltryks værdier fra LogikLag klassen, og sender disse værdier til labels på startskærmen.\\ \hline
 \end{tabular}
 \end{table}
 \begin{table}[H]
@@ -841,7 +838,7 @@ Metoderne der identificeres i klassediagrammet vil her beskrives, hvor det beskr
    \multicolumn{2}{|l|}{private void alarmKnap\_ Click(object, EventArgs)} \\ \hline
    Parameter: & object, EventArgs\\ \hline
    Returværdi: & Ingen \\ \hline
-   Beskrivelse: & Denne metode udsætter alarmens lyd ved at kalde postPoneSoundAlarm og udsættelsens varighed sættes.\\ \hline
+   Beskrivelse: & Denne metode udsætter alarmens lyd ved at sætte postPoneSoundAlarm til true og udsættelsens varighed sættes.\\ \hline
 \end{tabular}
 \end{table}
 \begin{table}[H]
@@ -901,7 +898,7 @@ Metoderne der identificeres i klassediagrammet vil her beskrives, hvor det beskr
    \multicolumn{2}{|l|}{private void HovedGUI\_ Load(object, EventArgs)} \\ \hline
    Parameter: & object, EventArgs\\ \hline
    Returværdi: & Ingen \\ \hline
-   Beskrivelse: & Metoden sætter navn og cpr på HovedGUI ved at kalde PatientDTO, hvilken indeholder denne information.\\ \hline
+   Beskrivelse: & Metoden sætter navn og cpr på HovedGUI ved at kalde PatientDTO, hvilken indeholder disse informationer.\\ \hline
 \end{tabular}
 \end{table}
 \textbf{PatientDTO}
@@ -966,7 +963,7 @@ Metoderne der identificeres i klassediagrammet vil her beskrives, hvor det beskr
    \multicolumn{2}{|l|}{void Notify(double[])} \\ \hline
    Parameter: & double[]\\ \hline
    Returværdi: & Ingen \\ \hline
-   Beskrivelse: & Denne metode modtager et array med grafmålinger.\\ \hline
+   Beskrivelse: & Denne metode modtager et array med grafmålinger. Kalder de tilknyttede observers Update() metode.\\ \hline
 \end{tabular}
 \end{table}
 \textbf{IObserver}
@@ -981,7 +978,7 @@ Metoderne der identificeres i klassediagrammet vil her beskrives, hvor det beskr
    \multicolumn{2}{|l|}{void Update(double[])} \\ \hline
    Parameter: & double[]\\ \hline
    Returværdi: & Ingen \\ \hline
-   Beskrivelse: & Denne metode modtager et array, hvori data der skal vises på grafen ligger.\\ \hline
+   Beskrivelse: & Denne metode modtager et array, som bliver behandlet i observeren.\\ \hline
 \end{tabular}
 \end{table}
 \textbf{GrænseVærdiDTO}
@@ -1011,7 +1008,7 @@ Metoderne der identificeres i klassediagrammet vil her beskrives, hvor det beskr
    \multicolumn{2}{|l|}{public double BeregnKalibreringsTal(KalibreringDTO)} \\ \hline
    Parameter: & KalibreringDTO\\ \hline
    Returværdi: & double \\ \hline
-   Beskrivelse: & Denne metode beregner kalibrerings værdien ved at modtage syntaksen fra KalibreringsDTO: tryk divideret med spænding. Og returnerer denne som en double værdi.\\ \hline
+   Beskrivelse: & Denne metode beregner kalibreringsværdien ved at modtage syntaksen fra KalibreringsDTO: tryk divideret med spænding. Og returnerer denne som en double værdi.\\ \hline
 \end{tabular}
 \end{table}
 \textbf{Nulpunkts\_ justering}
@@ -1181,7 +1178,7 @@ Metoderne der identificeres i klassediagrammet vil her beskrives, hvor det beskr
    \multicolumn{2}{|l|}{Private void StartHentData()} \\ \hline
    Parameter: & Ingen\\ \hline
    Returværdi: & Ingen\\ \hline
-   Beskrivelse: & Metoden laver en kø-metode med 500 pladser. Kalder Attach() metoden fra ST3DAQ. Så længde metoden isRunning gælder, og der kommer værdier ind, sendes der værdier ind i køen indtil der er 500 objekter i denne, hvor efter der sendes et objekt ud inden der sendes et nyt ind. Inden objekterne tilføjes til køen, bliver nulpunktværdien lagt til, og kalibreringsværdien bliver ganget på hvert tal i Blodtryksværdilisten. Herefter kaldes tælleren sådan at der kun tages hvert tiende tal i Blodtryksværdilisten. Digitalt\_ filter metoden IsFilterOn() kaldes, hvilket tjekker om filteret er slået til, hvis filteret er det kaldes metoden Digitalt\_ filter FilterMovingAverage() hvilket gør at værdierne i kømetoden bliver filtreret. Notify metoden kalds til sidst for at sende arrayet med den behandlede data op til HovedGUI\\ \hline
+   Beskrivelse: & Metoden laver en kø-metode med 500 pladser. Kalder Attach() metoden fra ST3DAQ. Så længe metoden isRunning gælder, og der kommer værdier ind, sendes der værdier ind i køen indtil der er 500 objekter i denne, hvorefter der sendes et objekt ud inden der sendes et nyt ind. Inden objekterne tilføjes til køen, bliver nulpunktværdien lagt til, og kalibreringsværdien bliver ganget på hvert tal i Blodtryksværdilisten. Herefter kaldes tælleren sådan at der kun tages hvert tiende tal i Blodtryksværdilisten. Digitalt\_ filter metoden IsFilterOn() kaldes, hvilket tjekker om filteret er slået til, hvis filteret er det kaldes metoden Digitalt\_ filter FilterMovingAverage() hvilket gør at værdierne i kømetoden bliver filtreret. Notify metoden kaldes til sidst for at sende arrayet med den behandlede data op til HovedGUI\\ \hline
 \end{tabular}
 \end{table}
 \begin{table}[H]
@@ -1361,7 +1358,7 @@ Metoderne der identificeres i klassediagrammet vil her beskrives, hvor det beskr
    \multicolumn{2}{|l|}{public void Attach(IObserver)} \\ \hline
    Parameter: & IObserver \\ \hline
    Returværdi: & Ingen\\ \hline
-   Beskrivelse: & Metoden tilføjer en observer til IObserver.\\ \hline
+   Beskrivelse: & Metoden tilføjer en observer til ISubject.\\ \hline
 \end{tabular}
 \end{table}
 \begin{table}[H]
@@ -1371,7 +1368,7 @@ Metoderne der identificeres i klassediagrammet vil her beskrives, hvor det beskr
    \multicolumn{2}{|l|}{public void Detach(IObserver)} \\ \hline
    Parameter: & IObserver \\ \hline
    Returværdi: & Ingen\\ \hline
-   Beskrivelse: & Metoden fjerner en observer fra IObserver.\\ \hline
+   Beskrivelse: & Metoden fjerner en observer fra ISubject.\\ \hline
 \end{tabular}
 \end{table}
 \begin{table}[H]
@@ -1381,7 +1378,7 @@ Metoderne der identificeres i klassediagrammet vil her beskrives, hvor det beskr
    \multicolumn{2}{|l|}{public void Notify(double[])} \\ \hline
    Parameter: & double[] \\ \hline
    Returværdi: & Ingen\\ \hline
-   Beskrivelse: & Metoden kigger på hver observer i IObserver og kalder her metoden Update().\\ \hline
+   Beskrivelse: & Metoden kigger på hver observer i ISubject og kalder her metoden Update().\\ \hline
 \end{tabular}
 \end{table}
 \begin{table}[H]
@@ -1391,7 +1388,7 @@ Metoderne der identificeres i klassediagrammet vil her beskrives, hvor det beskr
    \multicolumn{2}{|l|}{public void Update(double[])} \\ \hline
    Parameter: & double[] \\ \hline
    Returværdi: & Ingen\\ \hline
-   Beskrivelse: & Metoden tilføjer et double array til blodtryksværdiliste og BTDataTilDB der bruges til at gemme data. Denne metode kalder metoden GemBTData() fra DataLag og gemmer når BTDataTilDB listen indeholder 1000 elementer og ryder derefter listen for denne kan tage 1000 nye elementer. \\ \hline
+   Beskrivelse: & Metoden tilføjer et double array til blodtryksværdiliste og BTDataTilDB der bruges til at gemme data. Denne metode kalder metoden GemBTData() fra DataLag og gemmer når BTDataTilDB listen indeholder 1000 elementer og rydder derefter listen for denne kan tage 1000 nye elementer. \\ \hline
 \end{tabular}
 \end{table}
 \textbf{DataLag}
@@ -1446,7 +1443,7 @@ Metoderne der identificeres i klassediagrammet vil her beskrives, hvor det beskr
    \multicolumn{2}{|l|}{public int getKode(string)} \\ \hline
    Parameter: & string \\ \hline
    Returværdi: & int\\ \hline
-   Beskrivelse: & Metoden kalder en metode der åbner Patient databasen, og oprettet en SQL kommando, hvor Adgangskode hentes fra Personale tabellen hvor Brugernavn er lig med brugernavn parameteren. En metode til at udføre kommandoen kaldes. Metoden henter koden for den sundhedsfaglige, lukker databasen og returnerer koden. \\ \hline
+   Beskrivelse: & Metoden kalder en metode der åbner Personale databasen, og oprettet en SQL kommando, hvor Adgangskode hentes fra Personale tabellen hvor Brugernavn er lig med brugernavn parameteren. En metode til at udføre kommandoen kaldes. Metoden henter koden for den sundhedsfaglige, lukker databasen og returnerer koden. \\ \hline
 \end{tabular}
 \end{table}
 \begin{table}[H]
@@ -1482,7 +1479,7 @@ Metoderne der identificeres i klassediagrammet vil her beskrives, hvor det beskr
    \multicolumn{2}{|l|}{public ST3DAQ()} \\ \hline
    Parameter: & Ingen \\ \hline
    Returværdi: & Ingen\\ \hline
-   Beskrivelse: &  Metoden henter en liste af observers fra IObservers.\\ \hline
+   Beskrivelse: &  Metoden instantierer en liste af observers.\\ \hline
 \end{tabular}
 \end{table}
 \begin{table}[H]
@@ -1502,7 +1499,7 @@ Metoderne der identificeres i klassediagrammet vil her beskrives, hvor det beskr
    \multicolumn{2}{|l|}{public void startReadData(string, double, double, double, int)} \\ \hline
    Parameter: & string, double, double, double, int \\ \hline
    Returværdi: & Ingen\\ \hline
-   Beskrivelse: & Denne metode starter for en ny opgave, hvilken henter data fra NI-DAQ. Data hentes ved at bruge metoderne koblet til National Instruments ved at kalde Task(). \\ \hline
+   Beskrivelse: & Denne metode starter for en ny opgave, hvilken henter data fra NI-DAQ. Data hentes ved at bruge metoderne koblet til National Instruments ved at lave en ny Task(). \\ \hline
 \end{tabular}
 \end{table}
 \begin{table}[H]
@@ -1512,7 +1509,7 @@ Metoderne der identificeres i klassediagrammet vil her beskrives, hvor det beskr
    \multicolumn{2}{|l|}{private void AnalogInCallback(IAsyncResult)} \\ \hline
    Parameter: & IAsyncResult \\ \hline
    Returværdi: & Ingen\\ \hline
-   Beskrivelse: & Metoden er en delegate, der tjekker om NI-DAQ henter data og laver et asynkront kald. Tilføjer alle data fra NI-DAQ i et array. Dette array bliver notificeret med metoden Notify(). Efter stoppes opgaven startet i startReadData().\\ \hline
+   Beskrivelse: & Metoden er en delegate, der bliver kaldt når DAQ'en har hentet data. Tilføjer alle data fra NI-DAQ i et array. Dette array bliver notificeret med metoden Notify(). Efter stoppes opgaven startet i startReadData().\\ \hline
 \end{tabular}
 \end{table}
 \begin{table}[H]
@@ -1522,7 +1519,7 @@ Metoderne der identificeres i klassediagrammet vil her beskrives, hvor det beskr
    \multicolumn{2}{|l|}{public void Attach(IObserver)} \\ \hline
    Parameter: & IObserver \\ \hline
    Returværdi: & Ingen\\ \hline
-   Beskrivelse: & Metoden tilføjer en observer til IObserver.\\ \hline
+   Beskrivelse: & Metoden tilføjer en observer til ISubject.\\ \hline
 \end{tabular}
 \end{table}
 \begin{table}[H]
@@ -1532,7 +1529,7 @@ Metoderne der identificeres i klassediagrammet vil her beskrives, hvor det beskr
    \multicolumn{2}{|l|}{public void Detach(IObserver)} \\ \hline
    Parameter: & IObserver \\ \hline
    Returværdi: & Ingen\\ \hline
-   Beskrivelse: & Metoden fjerner en observer fra IObserver.\\ \hline
+   Beskrivelse: & Metoden fjerner en observer fra ISubject.\\ \hline
 \end{tabular}
 \end{table}
 \begin{table}[H]
@@ -1542,7 +1539,7 @@ Metoderne der identificeres i klassediagrammet vil her beskrives, hvor det beskr
    \multicolumn{2}{|l|}{public void Notify(double[])} \\ \hline
    Parameter: & double[] \\ \hline
    Returværdi: & Ingen\\ \hline
-   Beskrivelse: & Metoden kigger på hver observer i IObserver og kalder her metoden Update().\\ \hline
+   Beskrivelse: & Metoden kigger på hver observer i ISubject og kalder her metoden Update().\\ \hline
 \end{tabular}
 \end{table}
 
@@ -1598,7 +1595,7 @@ Implementeringen af EKG-signalet er i dette projekt ikke sket. Dette er ikke imp
 \subsubsection{Iltmætning}
 Desuden blev iltsaturation ikke implementeret. Dermed bliver iltmætningen ikke vist for patienten. Dette er ikke blevet implementeret på grund af flere faktorer: Der er ikke nok tid, der er ikke den fornødne viden til at få implementeret dette og der haves ikke de nødvendige materialer.
 \subsubsection{Observer mønster med PUSH}
-Observer møsteret benyttes i dette projekt for at sørge for at data bliver sendt igennem alle lagene på en fornuftig og kontinuerlig måde.\\
+Observer mønsteret benyttes i dette projekt for at sørge for at data bliver sendt igennem alle lagene på en fornuftig og kontinuerlig måde.\\
 Subject kan være en abstrakt klasse eller et interface, der har tre metoder; en metode der tilknytter en observer, som gerne vil modtage opdateringer, en metode til at fjerne observeren og en notify metode. Notify metoden giver informationen til observeren om ændringer.\\
 Observer er et interface, som skal implementeres af alle de klasser, som skal have besked, når der sker en ændring. Der bruges en observer, når der skal ændres i et objekt og det ikke vides hvor mange objekter der skal ændres i. Observer modtager besked om ændringer fra subjectet, dette kan ske enten ved PUSH eller PULL mønsteret. \\\\
 PULL fungerer ved at subjectet giver besked til observeren om at der er ændringer. Observeren sender besked til subjectet om at modtage ændringerne. Subjectet sender herefter ændringen til observeren.
@@ -1639,7 +1636,7 @@ Et eksempel på sådan en trigger vil se sådan her ud;
 \end{figure}
 \subsection{Unittest}
 Det er blevet besluttet at lave unittest på softwaren. Ved unit-test forstås at man tester hver enkelt komponent i koden, i objektorienteret kode vil det sige metoderne. Man sikrer sig at metoderne returnerer det man forventer. En unit test bør foregå løbende lige så frit som koden bliver udviklet, så kan man fokusere på de del-elementer som ikke virker efter hensigten. \\\\
-I dette projekt valgte man at lave unit test efter sidste iteration af koden, da de sidste versioner af softwaren ændrede sig meget, så alle unittests skulle laves forfra. Grundlaget for mange metoder ændrede sig løbende. Disse unit-tests blev lavet i koden ved at sætte breakpoints og følge metoden til ende og evaluere på hvorvidt metoden opførte sig efter hensigten. Unit-tests er blevet foretaget i koden, man har skrevet kommentarer til de metoder der er blevet testet.
+I dette projekt valgte man at lave unit test efter sidste iteration af koden, da de sidste versioner af softwaren ændrede sig meget, så alle unittests skulle laves forfra. Grundlaget for mange metoder ændrede sig løbende. Disse unit-tests blev lavet i koden ved at sætte breakpoints og følge metoden til ende og evaluere på hvorvidt metoden opførte sig efter hensigten. Unit-tests er blevet foretaget i koden, man har skrevet kommentarer til de metoder, der er blevet testet.
 \subsubsection{Code review}
 Desuden er der blevet foretaget omfattende code-review, som en er en gennemgang af koden og de metodikker og formatering der er benyttet. Code-review er blevet foretaget af en person fra hardware-holdet. Gennemgangen har resulteret i nogle formateringsændringer i koden, ligeledes er kodesegmenter der ikke bliver brugt kommenteret ud.
 \subsubsection{Databaser og test}
@@ -1648,35 +1645,35 @@ Databasetest er blevet foretaget i det tilgængelige testmiljø, det vil sige se
 Bliver brugt til at tilgå data for personalet. Her er der tale om brugernavn og password. Disse data er lagt i databasen på forhånd.\\
 Database-adresse: webhotel10.F15ST2ITS2201404669.db\_ owner
 \begin{figure}[H]
-\includegraphics[width =0.2\textwidth , center]{billeder/database_p_tabel}
+\includegraphics[width =0.3\textwidth , center]{billeder/database_p_tabel}
 \caption{\textbf{Personale database med kolonner}}
 \end{figure}
 \textbf{EPJ database}\\
 Bliver brugt til at tilgå data for patienten. Her tænkes på CPR/Navn. Ligeledes gemmes der i denne database målinger, samt metadata for at kvalificere disse data. Der kunne udvides med mange flere metadata, specielt i forhold til afsnittet om fremtidigt arbejde "Datawarehouse". Det bør bemærkes der i databasen er gjort klar til EKG-data, selvom det ikke er implementeret.\\
 Database-adresse: webhotel10.F15ST2ITS2201405838.db\_ owner
 \begin{figure}[H]
-\includegraphics[width =0.2\textwidth , center]{billeder/database_e_tabel}
+\includegraphics[width =0.3\textwidth , center]{billeder/database_e_tabel}
 \caption{\textbf{EPJ database med kolonner.}}
 \end{figure}
 \textbf{Test}\\
 Testen af databaser er foregået løbende. Da softwareløsningen gemmer data kontinuert, så kan man altså tjekke om data bliver gemt ved at tjekke tabellernes indhold løbende. 
 \begin{figure}[H]
-\includegraphics[width =0.5\textwidth , center]{billeder/database_data_gem}
+\includegraphics[width =0.6\textwidth , center]{billeder/database_data_gem}
 \caption{\textbf{Udsnit af data gemt i Målinger.}}
 \end{figure}
 \begin{figure}[H]
-\includegraphics[width =0.3\textwidth , center]{billeder/database_bt_gem}
+\includegraphics[width =0.4\textwidth , center]{billeder/database_bt_gem}
 \caption{\textbf{Udsnit af data gemt i BTData.}}
 \end{figure}
 \section{Integrationstest}
-I integrationstesten er hardwaren i form af et fumlebræt opbygget med en operationsforstærker og et lavpasfilter, sat sammen med softwaren igennem DAQ’en. For at simulerer et blodtrykssignal, bruges analog discovery til at sende et simuleret blodtryks signal igennem med en frekvens på 20mHz, en amplitude på 2mV og et offset på 9mV. 
+I integrationstesten er hardwaren i form af et fumlebræt opbygget med en forstærker og et lavpasfilter, sat sammen med softwaren igennem DAQ’en. For at simulerer et blodtrykssignal, bruges Analog Discovery til at sende et simuleret blodtryks signal igennem med en frekvens på 20mHz, en amplitude på 2mV og et offset på 9mV. 
 \\\\
-Softwaren og hardware integrationen kan vurderes ud fra screendumps af hovedskærmen. Ud fra disse screendumps kan det konkluderes at hardware og software kan integrere med hinanden, idet der bliver vist et blodtrykssignal på brugergrænsefladen. På figuren neden for, ses opstillingen af hardwaren med et veroboard, der består af operationsforstærkeren og lavpasfilteret. Veroboardet er tilkoblet Analog Discovery, for at modtage blodtrykssignalet. Veroboardet modtager forsyningsspænding fra to 9 V batterier. DAQ’en er tilkoblet veroboardet, da den modtager blodtrykssignalet efter dette har været igennem operationsforstærkeren og lavpasfilteret. DAQ’en sender herefter blodtrykssignalet ind i softwaren for blodtryksmålesystemet.
+Softwaren og hardware integrationen kan vurderes ud fra screendumps af hovedskærmen. Ud fra disse screendumps kan det konkluderes at hardware og software kan integrere med hinanden, idet der bliver vist et blodtrykssignal på brugergrænsefladen. På figuren nedenfor, ses opstillingen af hardwaren med et veroboard, der består af forstærkeren og lavpasfilteret. Veroboardet er tilkoblet Analog Discovery, for at modtage blodtrykssignalet. Veroboardet modtager forsyningsspænding fra to 9 V batterier. DAQ’en er tilkoblet veroboardet, da den modtager blodtrykssignalet efter dette har været igennem forstærkeren og lavpasfilteret. DAQ’en sender herefter blodtrykssignalet ind i softwaren for blodtryksmålesystemet.
 \begin{figure}[H]
 \includegraphics[width =1.0\textwidth , center]{billeder/opstilling_vero}
 \caption{\textbf{Opstilling af hardware med Analog Discovery, NI-DAQ, veroboard og spændingsforsyning.}}
 \end{figure}
-På figuren neden for, ses det at signalet der vises på brugergrænsefladen, minder om et blodtrykssignal. Et blodtrykssignal for en rask person, skal nemlig ligne det signal der ses på billedet neden for, hvor signalet har en top og derefter flader ud. Det kan derfor konkluderes at der bliver præsenteret et udglattet blodtrykssignal på brugergrænsefladen, da det har en top, og derefter ligeså stille flader ud. Blodtrykssignalet er udglattet, da det er påtrykt det digitale filter. 
+På figuren nedenfor, ses det at signalet der vises på brugergrænsefladen, minder om et blodtrykssignal. Et blodtrykssignal for en rask person, skal nemlig ligne det signal der ses på billedet nedenfor, hvor signalet har en top og derefter flader ud. Det kan derfor konkluderes at der bliver præsenteret et udglattet blodtrykssignal på brugergrænsefladen, da det har en top, og derefter ligeså stille flader ud. Blodtrykssignalet er udglattet, da det er påtrykt det digitale filter. 
 \begin{figure}[htb]
   \begin{minipage}{0.45\textwidth}
     \centering
@@ -1731,8 +1728,8 @@ Hele opstillingen af software og hardware til accepttesten skal være som følge
 \begin{tabular}{|>{\raggedright\arraybackslash}p{2.5cm}| >{\raggedright\arraybackslash}p{2.9cm} | >{\raggedright\arraybackslash}p{2.9cm} | >{\raggedright\arraybackslash}p{2.9cm} | >{\raggedright\arraybackslash}p{2.8cm} |}
    \hline
    \textbf{Use case 1: Kalibrer apparat} &\textbf{Test}& \textbf{Prækondition} & \textbf{Forventet resultat} & \textbf{Godkendt/ kommentar}\\ \hline
-   Normalforløb: & Vælg et målepunkt på vandsøjlen. Indtast den aflæste værdi for spændingen, og aflæs trykket fra vandsøjlens skema for målepunktet. & Blodtryksmåler-systemet er tændt, tilsluttet og startet, og tilsluttet kalibreringsudstyret. & Service-medarbejder foretager kalibrering. Værdierne indtastes korrekt. & \\\hline
-   & Tryk på "Kalibrering" & Blodtryksmåler-systemet er tændt og tilsluttet, og tilsluttet kalibreringsudstyret og værdierne indtastet. & Systemet beregner kalibreringsværdien og kalibrerer systemet, resultatet af beregningen vises på startskærmen & \\\hline
+   Normalforløb: & Vælg et målepunkt på vandsøjlen. Indtast den aflæste værdi for spændingen, og aflæs trykket fra vandsøjlens skema for målepunktet. & Blodtryksmåler-systemet er tændt, tilsluttet og startet, og tilsluttet kalibreringsudstyret. & Service-medarbejder foretager kalibrering. Værdierne indtastes korrekt. & SAT 14/12 2015\\\hline
+   & Tryk på "Kalibrering" & Blodtryksmåler-systemet er tændt og tilsluttet, og tilsluttet kalibreringsudstyret og værdierne indtastet. & Systemet beregner kalibreringsværdien og kalibrerer systemet, resultatet af beregningen vises på startskærmen & SAT 14/12 2015 \\\hline
 \end{tabular}
 \end{table}
 
@@ -1741,7 +1738,7 @@ Hele opstillingen af software og hardware til accepttesten skal være som følge
 \begin{tabular}{|>{\raggedright\arraybackslash}p{2.5cm}| >{\raggedright\arraybackslash}p{2.9cm} | >{\raggedright\arraybackslash}p{2.9cm} | >{\raggedright\arraybackslash}p{2.9cm} | >{\raggedright\arraybackslash}p{2.8cm} |}
    \hline
    \textbf{Use case 1: Kalibrer apparat} &\textbf{Test}& \textbf{Prækondition} & \textbf{Forventet resultat} & \textbf{Godkendt/ kommentar}\\ \hline
- Undtagelse 1:Undlad kalibrering & Undlad kalibrering og fortsæt til Use case 2. & Blodtryksmåler-systemet er tilsluttet og tændt & Kalibrerings-værdien hentes, fra den forrige måling, fra EPJ databasen. & \\\hline
+ Undtagelse 1:Undlad kalibrering & Undlad kalibrering og fortsæt til Use case 2. & Blodtryksmåler-systemet er tilsluttet og tændt & Kalibrerings-værdien hentes, fra den forrige måling, fra EPJ databasen. & SAT 14/12 2015\\\hline
 \end{tabular}
 \end{table}
 Det forudsættes for de følgende Use cases (Use case 2, 3 og 4) at systemet er tilsluttet korrekt, porten til NI-DAQ er bestemt, at der er en VPN-forbindelse til "ASE IHA VPN", desuden skal der være en forbindelse til $"webhotel10.F15ST2ITS2201404669.db_{-}owner"$(Personaledatabasen) og $"webhotel10.F15ST2ITS2201405838.db_{-}owner"$ (EPJ database). Desuden skal blodtryksmålesystemet være tilsluttet In vitro maskinen.
@@ -1750,13 +1747,13 @@ Det forudsættes for de følgende Use cases (Use case 2, 3 og 4) at systemet er 
 \begin{tabular}{|>{\raggedright\arraybackslash}p{2.5cm}| >{\raggedright\arraybackslash}p{2.9cm} | >{\raggedright\arraybackslash}p{2.9cm} | >{\raggedright\arraybackslash}p{2.9cm} | >{\raggedright\arraybackslash}p{2.8cm} |}
    \hline
    \textbf{Use case 2: Foretag måling} &\textbf{Test}& \textbf{Prækondition} & \textbf{Forventet resultat} & \textbf{Godkendt/ kommentar}\\ \hline
-   Normalforløb:& Indtast brugernavn "anpe" og kode "1234" & Port valgt. Der er VPN-forbindelse. & Korrekt indtastning fuldendt & \\\hline
-   &Tryk "Log ind" & Port valgt. VPN, Personale database. & Besked: "Logget på" og den sundhedsfaglige er dermed logget på &\\\hline
-   &Tryk på patient dropdown på startskærm & En sundhedsfaglig er logget på & Liste med patienter kommer frem  & \\\hline
-   & Vælg patienten "Arne Jensen" & Den sundhedsfaglige er logget på & Nyt vindue kommer frem: Hovedskærmen &\\\hline
-   & Indsend atmosfærisk tryk igennem transduceren, indstil værdien efter grafen. & Patient valgt og blodtryksmålesystemet (transduceren) er tilsluttet & Nulpunkts-justerings værdien indtastes &\\\hline
-   & Tryk på "Nulpunkts justering" & Værdien er indtastet & Systemet starter nulpunkts justeringen og tilpasser grafen. &\\\hline
-   & Tryk på "Tænd"& Systemet er nulpunktjusteret & Data fra In vitro maskingen hentes igennem hardwaren. Timer startes hovedskærm. EKG og arterietryk præsenteres kontinuert på hver sin graf. Puls, systole, diastole og middeltryk vises som talværdier på hovedskærmen. Data gemmes automatisk løbende i EPJ database & \\\hline
+   Normalforløb:& Indtast brugernavn "anpe" og kode "1234" & Port valgt. Der er VPN-forbindelse. & Korrekt indtastning fuldendt & SAT 14/12 2015 \\\hline
+   &Tryk "Log ind" & Port valgt. VPN, Personale database. & Besked: "Logget på" og den sundhedsfaglige er dermed logget på & SAT 14/12 2015\\\hline
+   &Tryk på patient dropdown på startskærm & En sundhedsfaglig er logget på & Liste med patienter kommer frem  & SAT 14/12 2015\\\hline
+   & Vælg patienten "Arne Jensen" & Den sundhedsfaglige er logget på & Nyt vindue kommer frem: Hovedskærmen & SAT 14/12 2015\\\hline
+   & Indsend atmosfærisk tryk igennem transduceren, indstil værdien efter grafen. & Patient valgt og blodtryksmålesystemet (transduceren) er tilsluttet & Nulpunkts-justerings værdien indtastes & SAT 14/12 2015\\\hline
+   & Tryk på "Nulpunkts justering" & Værdien er indtastet & Systemet starter nulpunkts justeringen og tilpasser grafen. & SAT 14/12 2015\\\hline
+   & Tryk på "Tænd"& Systemet er nulpunktjusteret & Data fra In vitro maskingen hentes igennem hardwaren. Timer startes hovedskærm. EKG og blodtryk præsenteres kontinuert på hver sin graf. Puls, systole, diastole og middeltryk vises som talværdier på hovedskærmen. Data gemmes automatisk løbende i EPJ database & EKG-signal ikke indsendt. SAT 14/12 2015\\\hline
 \end{tabular}
 \end{table}
 
@@ -1765,8 +1762,8 @@ Det forudsættes for de følgende Use cases (Use case 2, 3 og 4) at systemet er 
 \begin{tabular}{|>{\raggedright\arraybackslash}p{2.5cm}| >{\raggedright\arraybackslash}p{2.9cm} | >{\raggedright\arraybackslash}p{2.9cm} | >{\raggedright\arraybackslash}p{2.9cm} | >{\raggedright\arraybackslash}p{2.8cm} |}
    \hline
    \textbf{Use case 2: Foretag måling} &\textbf{Test}& \textbf{Prækondition} & \textbf{Forventet resultat} & \textbf{Godkendt/ kommentar}\\ \hline
-   Undtagelse 1: Brugernavn og/eller kode indtastet forkert & Indtast brugernavn "efgh" og kode "1234"& Port valgt. VPN, Personale database og EPJ database er tilsluttet korrekt & Forkert kombination indtastet &  \\\hline
-   &Tryk "Log ind" & Port valgt. Der er VPN-forbindelse. & Besked: "Brugernavn og/eller kode indtastet forkert" &\\\hline
+   Undtagelse 1: Brugernavn og/eller kode indtastet forkert & Indtast brugernavn "efgh" og kode "1234"& Port valgt. VPN, Personale database og EPJ database er tilsluttet korrekt & Forkert kombination indtastet &  SAT 14/12 2015\\\hline
+   &Tryk "Log ind" & Port valgt. Der er VPN-forbindelse. & Besked: "Brugernavn og/eller kode indtastet forkert" & SAT 14/12 2015\\\hline
 \end{tabular}
 \end{table}
 
@@ -1775,8 +1772,8 @@ Det forudsættes for de følgende Use cases (Use case 2, 3 og 4) at systemet er 
 \begin{tabular}{|>{\raggedright\arraybackslash}p{2.5cm}| >{\raggedright\arraybackslash}p{2.9cm} | >{\raggedright\arraybackslash}p{2.9cm} | >{\raggedright\arraybackslash}p{2.9cm} | >{\raggedright\arraybackslash}p{2.8cm} |}
    \hline
    \textbf{Use case 2: Foretag måling} &\textbf{Test}& \textbf{Prækondition} & \textbf{Forventet resultat} & \textbf{Godkendt/ kommentar}\\ \hline
-   Udvidelse 1: Slå digitalt filter til/fra:& Tryk på "Digitalt filter OFF" radiobutton & Signalet er startet og filteret er sat til pr. default & Systemet slår det digitale filter fra. Det ses at grafen bliver ufiltreret. &\\\hline
-   &Tryk på "Digitalt filter ON" radiobutton & Signalet er startet og "Digitalt filter OFF" radiobutton er valgt & Systemet slår det digitale filter til. Signalet ses udglattet. &\\\hline
+   Udvidelse 1: Slå digitalt filter til/fra:& Tryk på "Digitalt filter OFF" radiobutton & Signalet er startet og filteret er sat til pr. default & Systemet slår det digitale filter fra. Det ses at grafen bliver ufiltreret. & SAT 14/12 2015\\\hline
+   &Tryk på "Digitalt filter ON" radiobutton & Signalet er startet og "Digitalt filter OFF" radiobutton er valgt & Systemet slår det digitale filter til. Signalet ses udglattet. & SAT 14/12 2015\\\hline
 \end{tabular}
 \end{table}
 
@@ -1785,8 +1782,8 @@ Det forudsættes for de følgende Use cases (Use case 2, 3 og 4) at systemet er 
 \begin{tabular}{|>{\raggedright\arraybackslash}p{2.5cm}| >{\raggedright\arraybackslash}p{2.9cm} | >{\raggedright\arraybackslash}p{2.9cm} | >{\raggedright\arraybackslash}p{2.9cm} | >{\raggedright\arraybackslash}p{2.8cm} |}
    \hline
    \textbf{Use case 2: Foretag måling } &\textbf{Test}& \textbf{Prækondition} & \textbf{Forventet resultat} & \textbf{Godkendt/ kommentar}\\ \hline
-   Udvidelse 2: Juster systolens/diastolens grænseværdi& Tryk på "Systole op"/"Diastole op"& Signalet er startet & Grænseværdien ændres 1 mmHg op og intervallet vises på hovedskærmen &\\\hline
-   &Tryk på "Systole ned"/"Diastole ned" & Signalet er startet & Grænseværdien ændres 1 mmHg ned og intervallet vises på hovedskærmen & \\\hline
+   Udvidelse 2: Juster systolens/diastolens grænseværdi& Tryk på "Systole op"/"Diastole op"& Signalet er startet & Grænseværdien ændres 1 mmHg op og intervallet vises på hovedskærmen & SAT 14/12 2015\\\hline
+   &Tryk på "Systole ned"/"Diastole ned" & Signalet er startet & Grænseværdien ændres 1 mmHg ned og intervallet vises på hovedskærmen & SAT 14/12 2015\\\hline
 \end{tabular}
 \end{table}
 
@@ -1795,8 +1792,8 @@ Det forudsættes for de følgende Use cases (Use case 2, 3 og 4) at systemet er 
 \begin{tabular}{|>{\raggedright\arraybackslash}p{2.5cm}| >{\raggedright\arraybackslash}p{2.9cm} | >{\raggedright\arraybackslash}p{2.9cm} | >{\raggedright\arraybackslash}p{2.9cm} | >{\raggedright\arraybackslash}p{2.8cm} |}
    \hline
    \textbf{Use case 3: Alarmér } &\textbf{Test}& \textbf{Prækondition} & \textbf{Forventet resultat} & \textbf{Godkendt/ kommentar}\\ \hline
-   Normalforløb:& Grænseværdi overskrides ved at justere grænseværdierne. & Signalet er startet & Alarm starter med lyd og "Udsæt alarm" knappen blinker skiftevis mellem rød og hvid baggrund &\\\hline
-   & Grænseværdien er ikke overskredet mere. Grænseværdierne rykkes sådan at værdierne for systole og diastole ligger indenfor intervallerne. & Alarmen igangsat & Alarm lyden stopper og tallet skifter farve tilbage til hvid. & \\\hline
+   Normalforløb:& Grænseværdi overskrides ved at justere grænseværdierne. & Signalet er startet & Alarm starter med lyd og "Udsæt alarm" knappen blinker skiftevis mellem rød og hvid baggrund &SAT 14/12 2015\\\hline
+   & Grænseværdien er ikke overskredet mere. Grænseværdierne rykkes sådan at værdierne for systole og diastole ligger indenfor intervallerne. & Alarmen igangsat & Alarm lyden stopper og tallet skifter farve tilbage til hvid. & SAT 14/12 2015\\\hline
 \end{tabular}
 \end{table}
 
@@ -1805,7 +1802,7 @@ Det forudsættes for de følgende Use cases (Use case 2, 3 og 4) at systemet er 
 \begin{tabular}{|>{\raggedright\arraybackslash}p{2.5cm}| >{\raggedright\arraybackslash}p{2.9cm} | >{\raggedright\arraybackslash}p{2.9cm} | >{\raggedright\arraybackslash}p{2.9cm} | >{\raggedright\arraybackslash}p{2.8cm} |}
    \hline
    \textbf{Use case 3: Alarmér } &\textbf{Test}& \textbf{Prækondition} & \textbf{Forventet resultat} & \textbf{Godkendt/ kommentar}\\ \hline
-   Udvidelse 1: Anden grænseværdi overskrides & Endnu en grænseværdi overskrides & Signalet er er startet og en alarm er startet & Ingen ændring. Alarmlyden fra den forrige alarm fortsætter og knappen blinker fortsat &\\\hline
+   Udvidelse 1: Anden grænseværdi overskrides & Endnu en grænseværdi overskrides & Signalet er er startet og en alarm er startet & Ingen ændring. Alarmlyden fra den forrige alarm fortsætter og knappen blinker fortsat & SAT 14/12 2015\\\hline
 \end{tabular}
 \end{table}
 
@@ -1814,7 +1811,7 @@ Det forudsættes for de følgende Use cases (Use case 2, 3 og 4) at systemet er 
 \begin{tabular}{|>{\raggedright\arraybackslash}p{2.5cm}| >{\raggedright\arraybackslash}p{2.9cm} | >{\raggedright\arraybackslash}p{2.9cm} | >{\raggedright\arraybackslash}p{2.9cm} | >{\raggedright\arraybackslash}p{2.8cm} |}
    \hline
    \textbf{Use case 3: Alarmér } &\textbf{Test}& \textbf{Prækondition} & \textbf{Forventet resultat} & \textbf{Godkendt/ kommentar}\\ \hline
-   Udvidelse 2: Udsæt alarm & Tryk på "Udsæt alarm" knappen og mål tiden.& Alarmering er startet & Systemet stopper alarmens lyd i et minut, Udsæt alarm knappen fortsætter med at blinke skiftevis med rød og hvid baggrund indtil alarmen ikke længere er overskredet.  &\\\hline
+   Udvidelse 2: Udsæt alarm & Tryk på "Udsæt alarm" knappen og mål tiden.& Alarmering er startet & Systemet stopper alarmens lyd i et minut, Udsæt alarm knappen fortsætter med at blinke skiftevis med rød og hvid baggrund indtil alarmen ikke længere er overskredet.  & SAT 14/12 2015\\\hline
 \end{tabular}
 \end{table}
 
@@ -1823,9 +1820,9 @@ Det forudsættes for de følgende Use cases (Use case 2, 3 og 4) at systemet er 
 \begin{tabular}{|>{\raggedright\arraybackslash}p{2.5cm}| >{\raggedright\arraybackslash}p{2.9cm} | >{\raggedright\arraybackslash}p{2.9cm} | >{\raggedright\arraybackslash}p{2.9cm} | >{\raggedright\arraybackslash}p{2.8cm} |}
    \hline
    \textbf{Use case 4: Stop måling } &\textbf{Test}& \textbf{Prækondition} & \textbf{Forventet resultat} & \textbf{Godkendt/ kommentar}\\ \hline
-   Normalforløb:& Tryk på "Sluk" & Målingen er foretaget & Målingen, signalet og timer på hovedskærmen stopper &\\\hline
-   & Tryk på "Log ud" & Signalet er stoppet & Pop-up vindue kommer op: "Er du sikker?" &\\\hline
-   &Tryk "Ja"&Signalet og målingen er stoppet& Startskærmen kommer frem og det sundhedsfaglig personale kan logge på igen sådan at ny måling kan foretages &\\\hline
+   Normalforløb:& Tryk på "Sluk" & Målingen er foretaget & Målingen, signalet og timer på hovedskærmen stopper & SAT 14/12 2015\\\hline
+   & Tryk på "Log ud" & Signalet er stoppet & Pop-up vindue kommer op: "Er du sikker?" & SAT 14/12 2015\\\hline
+   &Tryk "Ja"&Signalet og målingen er stoppet& Startskærmen kommer frem og det sundhedsfaglig personale kan logge på igen sådan at ny måling kan foretages & SAT 14/12 2015\\\hline
 \end{tabular}
 \end{table}
 
@@ -1834,7 +1831,7 @@ Det forudsættes for de følgende Use cases (Use case 2, 3 og 4) at systemet er 
 \begin{tabular}{|>{\raggedright\arraybackslash}p{2.5cm}| >{\raggedright\arraybackslash}p{2.9cm} | >{\raggedright\arraybackslash}p{2.9cm} | >{\raggedright\arraybackslash}p{2.9cm} | >{\raggedright\arraybackslash}p{2.8cm} |}
    \hline
    \textbf{Use case 4: Stop måling } &\textbf{Test}& \textbf{Prækondition} & \textbf{Forventet resultat} & \textbf{Godkendt/ kommentar}\\ \hline
-Undtagelse 1: Tryk på "Nej" &Tryk "Nej" & Signalet og målingen er stoppet & Kommer tilbage til hovedskærmen &\\\hline
+Undtagelse 1: Tryk på "Nej" &Tryk "Nej" & Signalet og målingen er stoppet & Kommer tilbage til hovedskærmen & SAT 14/12 2015\\\hline
 \end{tabular}
 \end{table}
 \newpage
@@ -1845,34 +1842,34 @@ Undtagelse 1: Tryk på "Nej" &Tryk "Nej" & Signalet og målingen er stoppet & Ko
    \caption{Accepttest for ikke-funktionelle krav}\label{tab:label18}
 \\ \hline   
 \textbf{Krav nr.}&\textbf{Krav} &\textbf{Test}& \textbf{Forventet resultat} & \textbf{Resultat} & \textbf{Godkendt/ kommentar}\\ \hline
-  1.1 & Programmet skal kunne gemme blodtrykssignalet i en database & Indsend signal og gå ind i databasen og se værdier & Der ligger værdier i databasen & & \\\hline\hline
-  2.1 & Programmet skal have to window form: startskærm, der fungerer som EPJ systemet, og hovedskærm, som fungerer som selve blodtryksmåleren & Start program og tjek dette & Der er to window forms & & \\\hline
-  2.2 & Programmet skal have en "Log ind" knap på startskærmen & Start program og tjek startskærm & Startskærmen har en "Log ind" knap & & \\\hline
-  2.3 & Programmet skal have en "Kalibrering" knap på startskærmen & Start program og tjek startskærm & Startskærmen har en "Kalibrering" knap & & \\\hline
-  2.4 &Sundhedsfaglig personale skal kunne ændre "device/enhedsnavn" i dropdown på startskærm & Start program og tjek startskærm & Der er en opsætnings dropdown på startskærmen, hvor device/enhedsnavn kan ændres. & & \\\hline
-  2.5 & Programmet skal indeholde en dropdown, hvor patienten kan vælges på startskærmen & Start program, log på og tjek startskærm & Startskærmen har en dropdown med patienter & & \\\hline
-  2.6 & Programmet skal have en "Nulpunkts indstilling" knap på hovedskærmen & Start program og tjek hovedskærm & Der er en "Nulpunkts indstilling" knap på hovedskærmen & & \\\hline
-  2.7 & Programmet skal have to radiobuttons, til hhv. at slå det digitale filter fra og til, på hovedskærmen & Start program og tjek hovedskærm & Der er to "Digital filter" radiobuttons på hovedskærmen & & \\\hline
-  2.8 & Programmet skal have knapper, til at justere systolisk og diastolisk grænseværdiintervaller op og ned, på hovedskærmen & Start program og tjek hovedskærm & Der er ialt fire knapper, som justerer grænseværdierne på hovedskærmen & & \\\hline
-  2.9 & Programmet skal have en "Udsæt alarm" knap på hovedskærmen & Start program og tjek hovedskærm & Der er en "Udsæt alarm" på hovedskærmen & & \\\hline
-  2.10 & Programmet skal have en "Tænd" knap på hovedskærmen & Start program og tjek hovedskærm & Hovedskærmen har en "Tænd" kanp& & \\\hline
-  2.11 & Programmet skal have en "Sluk" knap på hovedskærmen & Tjek hovedskærm & Hovedskærmen har en "Sluk" knap & & \\\hline
-  2.12 & Programmet skal have en "Log ud" knap på hovedskærmen & Start program og tjek hovedskærm & Der er en "Log ud" knap på hovedskærmen & & \\\hline
-  2.13 & Teksten på startskærmen skal kunne aflæs fra 2 meters afstand med en synsstyrke i intervallet +/-1 & 10 personer med synsstyrke i intervallet +/-1 skal teste startskærmen  & Alle 10 personer kan læse teksten tydeligt & & \\\hline
-  2.14 & Teksten og graferne på hovedskærmen skal kunne læses fra 2 meters afstand ved synsstyrke i intervellet på +/-1 & 10 personer med synsstyrke i intervallet +/-1 skal teste hovedskærmen & Alle 10 personer kan læse grafer og teksten på hovedskærmen & & \\\hline
- 2.15 & Programmet skal præsentere arterietryk kontinuert, herudover vise systolisk værdi, diastolisk værdi og middeltryk som talværdier. & Start program og start målingen & Grafen vises kontinuert og talværdierne vises på hovedskærmen. & & \\\hline
-  2.16 & Programmet skal præsentere EKG og puls & Start program og start målingen. & EKG vises kontinuert og pulsen vises som talværdi på hovedskærmen. & & \\\hline
+  1.1 & Programmet skal kunne gemme blodtrykssignalet i en database & Indsend signal og gå ind i databasen og se værdier & Der ligger værdier i databasen & Der er værdier i database &  SAT 14/12 2015\\\hline\hline
+  2.1 & Programmet skal have to window form: startskærm, der fungerer som EPJ systemet, og hovedskærm, som fungerer som selve blodtryksmåleren & Start program og tjek dette & Der er to window forms & Der er to windows forms & SAT 14/12 2015\\\hline
+  2.2 & Programmet skal have en "Log ind" knap på startskærmen & Start program og tjek startskærm & Startskærmen har en "Log ind" knap & Der er en login knap & SAT 14/12 2015 \\\hline
+  2.3 & Programmet skal have en "Kalibrering" knap på startskærmen & Start program og tjek startskærm & Startskærmen har en "Kalibrering" knap & Der er en Kalibreringsknap & SAT 14/12 2015 \\\hline
+  2.4 &Sundhedsfaglig personale skal kunne ændre "device/enhedsnavn" i dropdown på startskærm & Start program og tjek startskærm & Der er en opsætnings dropdown på startskærmen, hvor device/enhedsnavn kan ændres. & Der er en dropdown hvor port kan vælges. &SAT 14/12 2015 \\\hline
+  2.5 & Programmet skal indeholde en dropdown, hvor patienten kan vælges på startskærmen & Start program, log på og tjek startskærm & Startskærmen har en dropdown med patienter & Der er en dropdown der indeholder patienter & SAT 14/12 2015 \\\hline
+  2.6 & Programmet skal have en "Nulpunkts indstilling" knap på hovedskærmen & Start program og tjek hovedskærm & Der er en "Nulpunkts indstilling" knap på hovedskærmen & Der er en Nulpunktsjusterings knap & SAT 14/12 2015 \\\hline
+  2.7 & Programmet skal have to radiobuttons, til hhv. at slå det digitale filter fra og til, på hovedskærmen & Start program og tjek hovedskærm & Der er to "Digital filter" radiobuttons på hovedskærmen & Der er to Radiobutton til at slå det digitale filter til og fra & SAT 14/12 2015 \\\hline
+  2.8 & Programmet skal have knapper, til at justere systolisk og diastolisk grænseværdiintervaller op og ned, på hovedskærmen & Start program og tjek hovedskærm & Der er ialt fire knapper, som justerer grænseværdierne på hovedskærmen & Der er fire knapper til at justere grænseværdierne & SAT 14/12 2015 \\\hline
+  2.9 & Programmet skal have en "Udsæt alarm" knap på hovedskærmen & Start program og tjek hovedskærm & Der er en "Udsæt alarm" på hovedskærmen & Der er en Udsæt alarm knap. & SAT 14/12 2015 \\\hline
+  2.10 & Programmet skal have en "Tænd" knap på hovedskærmen & Start program og tjek hovedskærm & Hovedskærmen har en "Tænd" knap& Der er en Tænd knap & SAT 14/12 2015 \\\hline
+  2.11 & Programmet skal have en "Sluk" knap på hovedskærmen & Tjek hovedskærm & Hovedskærmen har en "Sluk" knap &  Der er en Sluk knap & SAT 14/12 2015 \\\hline
+  2.12 & Programmet skal have en "Log ud" knap på hovedskærmen & Start program og tjek hovedskærm & Der er en "Log ud" knap på hovedskærmen & Der er en Log ud knap & SAT 14/12 2015 \\\hline
+  2.13 & Teksten på startskærmen skal kunne aflæs fra 2 meters afstand med en synsstyrke i intervallet +/-1 & 10 personer med synsstyrke i intervallet +/-1 skal teste startskærmen  & Alle 10 personer kan læse teksten tydeligt & Værdierne kan læses. Dog kun testet med 3 personer & SAT 14/12 2015 \\\hline
+  2.14 & Teksten og graferne på hovedskærmen skal kunne læses fra 2 meters afstand ved synsstyrke i intervellet på +/-1 & 10 personer med synsstyrke i intervallet +/-1 skal teste hovedskærmen & Alle 10 personer kan læse grafer og teksten på hovedskærmen & Graferne kan ses. Dog kun testet med 3 personer & SAT 14/12 2015 \\\hline
+ 2.15 & Programmet skal præsentere blodtryk kontinuert, herudover vise systolisk værdi, diastolisk værdi og middeltryk som talværdier. & Start program og start målingen & Grafen vises kontinuert og talværdierne vises på hovedskærmen. & Blodtrykket præsenteres løbende. & SAT 14/12 2015 \\\hline
+  2.16 & Programmet skal præsentere EKG og puls & Start program og start målingen. & EKG vises kontinuert og pulsen vises som talværdi på hovedskærmen. & IKKE IMPLEMENTERET & \\\hline
   2.17 & Programmet skal præsentere iltmætning som graf og talværdi. & Start program og start måling & Iltmætningens grafen vises kontinuert og iltmætning vises som talværdi på hovedskærm. & IKKE IMPLEMENTERET & \\\hline
-  2.18 & Programmet skal præsentere grafer efter standard & Start program og tjek farver & EKG vises i lysegrøn, arterietryk vises i rød og iltmætning vises i lyseblå & & \\\hline
-  2.19 & Programmet skal præsentere data i tal efter standard & Start program og tjek at talværdiernes farve er efter standard & Pulsværdien vises i lysegrøn, systolisk værdi, diastolisk værdi og middeltryk vises i rød og iltmætning vises i lyseblå.& & \\\hline\hline
+  2.18 & Programmet skal præsentere blodtryk i rød, EKG i lysegrøn og iltmætning i lyseblå. & Start program og tjek farver & EKG vises i lysegrøn, arterietryk vises i rød og iltmætning vises i lyseblå & EKG: lysegrøn\newline Blodtryk: rød\newline Iltmætning: lyseblå. & 14/12 2015 SAT\\\hline
+  2.19 & Programmet skal præsentere pulsværdien i lysegrøn, systolisk værdi, diastolisk værdi og middeltryk i rød og iltmætning i lyseblå & Start program og tjek at talværdiernes farve er efter standard & Pulsværdien vises i lysegrøn, systolisk værdi, diastolisk værdi og middeltryk vises i rød og iltmætning vises i lyseblå.& Puls: lysegrøn\newline Systolisk, diastolisk og middeltryk: rød\newline iltmætning: lyseblå & 14/12 2015 SAT \\\hline\hline
   3.1 & Ingen krav endnu & & & & \\\hline\hline
-  4.1 & Tiden der går før målingen af data påbegynder/vises i grafer må maksimalt være 2.0 sek. & Stopur igangsættes samtidig med at signalet tændes & Stopuret viser 2 sek. eller mindre & & \\\hline
-  4.2 & Tiden der går fra at data er analyseret til at data er gemt i database må være 2.0 sek. med en tolerance på +/- 15\% & - & - & & \\\hline\hline
-  5.1 & Programmet skrives i C\# kode. & Tjek programmet & Programmet er skrevet i C\# & & \\\hline
-  5.2 & Softwaren skal være opbygget efter trelagsmodellen & Tjek referencer i programkoden. Datalaget må ikke kunne tilgås fra præsentationslaget og omvendt. & Softwaren er opbygget efter trelagsmodellen & & \\\hline
-  5.3 & I softwaren benyttes Observer mønsteret med PUSH & Se programkode og tjek referencerne til interfacene IObserver og ISubject. & Observer og subject klasser/mønsteret benyttes & & \\\hline \hline
-  6.1 & Der skal være adgang til en computer med Windows 8 - computeren skal minimum have 8 GB RAM & & & & \\\hline
-  6.2 & Der skal være adgang til en computer hvor National Instruments er installeret & & & & \\\hline
+  4.1 & Tiden der går før målingen af data påbegynder/vises i grafer må maksimalt være 2.0 sek. & Stopur igangsættes samtidig med at signalet tændes & Stopuret viser 2 sek. eller mindre & Tiden måles til: 0,85 sek. & 14/12 2015 SAT \\\hline
+  4.2 & Tiden der går fra at data er analyseret til at data er gemt i database må være 2.0 sek. med en tolerance på +/- 15\% & - & - & - & - \\\hline\hline
+  5.1 & Programmet skrives i C\# kode. & Tjek programmet & Programmet er skrevet i C\# & Programmet skrevet i C\# & 14/12 2015 SAT \\\hline
+  5.2 & Softwaren skal være opbygget efter trelagsmodellen & Tjek referencer i programkoden. Datalaget må ikke kunne tilgås fra præsentationslaget og omvendt. & Softwaren er opbygget efter trelagsmodellen & Programmet er opbygget efter trelagsmodellen & 14/12 2015 SAT \\\hline
+  5.3 & I softwaren benyttes Observer mønsteret med PUSH & Se programkode og tjek referencerne til interfacene IObserver og ISubject. & Observer og subject klasser/mønsteret benyttes & Observer mønsteret med PUSH er benyttet & 14/12 2015 SAT \\\hline \hline
+  6.1 & Der skal være adgang til en computer med Windows 8.1 - computeren skal minimum have 8 GB RAM & Gå ind i oplysninger om computeren og tjek styresystemet & Computeren har styresystemet windows 8.1 og 8 GB RAM. & 8.1 er på computeren og der er 8 GB RAM & 14/12 2015 SAT \\\hline
+  6.2 & Der skal være adgang til en computer hvor National Instruments er installeret & Se om programmet findes & Programmet findes & National Instruments er installeret på computeren & 14/12 2015 SAT \\\hline
 \end{longtable}
 \section{Godkendelses formular}
 \begin{table}[h!]

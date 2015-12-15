@@ -6,58 +6,56 @@
 \contentsline {section}{\numberline {2.2}Indledning}{2}{section.2.2}
 \contentsline {section}{\numberline {2.3}Systembeskrivelse}{3}{section.2.3}
 \contentsline {section}{\numberline {2.4}Akt\IeC {\o }r-kontekst diagram}{4}{section.2.4}
-\contentsline {section}{\numberline {2.5}Use cases}{5}{section.2.5}
-\contentsline {section}{\numberline {2.6}Ikke-funktionelle krav}{9}{section.2.6}
-\contentsline {subsection}{FURPS+ med MoSCoW}{9}{subsection*.2}
-\contentsline {chapter}{\chapternumberline {3}Arkitektur og design}{12}{chapter.3}
-\contentsline {section}{\numberline {3.1}Hardware design}{12}{section.3.1}
-\contentsline {subsection}{Udviklingsfase og iterationer}{12}{subsection*.3}
-\contentsline {subsubsection}{F\IeC {\o }rste iteration - komponenter i lavpasfilteret version 1}{12}{subsubsection*.4}
-\contentsline {subsubsection}{Anden iteration - komponenter i lavpasfilteret version 2}{13}{subsubsection*.5}
-\contentsline {subsubsection}{Tredje iteration - komponenter lavpasfilteret, forst\IeC {\ae }rker og forsyningssp\IeC {\ae }nding}{13}{subsubsection*.6}
-\contentsline {subsubsection}{Fjerde iteration - aktivt filter}{14}{subsubsection*.7}
-\contentsline {subsubsection}{Femte iteration - veroboard og sp\IeC {\ae }ndingsregulator}{14}{subsubsection*.8}
-\contentsline {subsubsection}{Design af lavpasfilteret}{14}{subsubsection*.9}
-\contentsline {subsubsection}{Design af operationsforst\IeC {\ae }rkeren}{16}{subsubsection*.10}
-\contentsline {subsection}{Implementering}{17}{subsection*.11}
-\contentsline {subsubsection}{Block definition diagram}{17}{subsubsection*.12}
-\contentsline {subsubsection}{Internal block definition}{18}{subsubsection*.13}
-\contentsline {subsection}{Modultest}{19}{subsection*.14}
-\contentsline {subsubsection}{Test af operationsforst\IeC {\ae }rker}{20}{subsubsection*.15}
-\contentsline {subsubsection}{Test af filter}{21}{subsubsection*.16}
-\contentsline {subsubsection}{Test med vands\IeC {\o }jle}{22}{subsubsection*.17}
-\contentsline {section}{\numberline {3.2}Software design}{24}{section.3.2}
-\contentsline {subsection}{Problemidentifikation}{24}{subsection*.18}
-\contentsline {subsubsection}{Dom\IeC {\ae }nemodel}{25}{subsubsection*.19}
-\contentsline {subsection}{Klasseidentifikation}{27}{subsection*.20}
-\contentsline {subsubsection}{Applikationsmodel}{27}{subsubsection*.21}
-\contentsline {subsection}{Metodeidentifikation}{29}{subsection*.22}
-\contentsline {subsubsection}{Sekvensdiagrammer}{29}{subsubsection*.23}
-\contentsline {subsubsection}{Klassediagram}{37}{subsubsection*.24}
-\contentsline {subsubsection}{Metodebeskrivelse}{39}{subsubsection*.25}
-\contentsline {subsection}{Implementering}{57}{subsection*.26}
-\contentsline {subsubsection}{Kalibrering}{57}{subsubsection*.27}
-\contentsline {subsubsection}{Nulpunktsjustering}{57}{subsubsection*.28}
-\contentsline {subsubsection}{Digitalt filter}{58}{subsubsection*.29}
-\contentsline {subsubsection}{Beregning af systolisk, diastolisk og middeltryks v\IeC {\ae }rdi}{58}{subsubsection*.30}
-\contentsline {subsubsection}{EKG-signal}{59}{subsubsection*.31}
-\contentsline {subsubsection}{Iltm\IeC {\ae }tning}{60}{subsubsection*.32}
-\contentsline {subsubsection}{Observer m\IeC {\o }nster med PUSH}{60}{subsubsection*.33}
-\contentsline {subsubsection}{Queue}{60}{subsubsection*.34}
-\contentsline {subsubsection}{Konfiguration}{61}{subsubsection*.35}
-\contentsline {subsubsection}{Databaser}{61}{subsubsection*.36}
-\contentsline {subsection}{Unittest}{62}{subsection*.37}
-\contentsline {subsubsection}{Code review}{62}{subsubsection*.38}
-\contentsline {subsubsection}{Databaser og test}{63}{subsubsection*.39}
-\contentsline {section}{\numberline {3.3}Integrationstest}{64}{section.3.3}
-\contentsline {chapter}{\chapternumberline {4}Accepttest}{67}{chapter.4}
-\contentsline {section}{\numberline {4.1}Indledning}{67}{section.4.1}
-\contentsline {section}{\numberline {4.2}Accepttest for funktionelle krav}{67}{section.4.2}
-\contentsline {subsection}{Opstilling}{67}{subsection*.40}
-\contentsline {section}{\numberline {4.3}Accepttest for ikke-funktionelle krav}{74}{section.4.3}
-\contentsline {section}{\numberline {4.4}Godkendelses formular}{78}{section.4.4}
-\contentsline {chapter}{Litteratur}{79}{section*.42}
-\contentsline {section}{\numberline {4.5}Referencer}{79}{section.4.5}
-\contentsline {subsubsection}{B\IeC {\o }ger}{79}{subsubsection*.43}
-\contentsline {subsubsection}{Internetsider}{79}{subsubsection*.44}
-\contentsline {subsubsection}{Dokumenter}{79}{subsubsection*.45}
+\contentsline {section}{\numberline {2.5}Use cases}{6}{section.2.5}
+\contentsline {section}{\numberline {2.6}Ikke-funktionelle krav}{10}{section.2.6}
+\contentsline {subsection}{FURPS+ med MoSCoW}{10}{subsection*.2}
+\contentsline {chapter}{\chapternumberline {3}Arkitektur og design}{13}{chapter.3}
+\contentsline {section}{\numberline {3.1}Hardware design}{13}{section.3.1}
+\contentsline {subsection}{Udviklingsfase og iterationer}{13}{subsection*.3}
+\contentsline {subsubsection}{F\IeC {\o }rste iteration - komponenter i lavpasfilteret version 1}{13}{subsubsection*.4}
+\contentsline {subsubsection}{Anden iteration - komponenter i lavpasfilteret version 2}{14}{subsubsection*.5}
+\contentsline {subsubsection}{Tredje iteration - komponenter lavpasfilteret, forst\IeC {\ae }rker og forsyningssp\IeC {\ae }nding}{14}{subsubsection*.6}
+\contentsline {subsubsection}{Fjerde iteration - aktivt filter}{15}{subsubsection*.7}
+\contentsline {subsubsection}{Femte iteration - veroboard og sp\IeC {\ae }ndingsregulator}{15}{subsubsection*.8}
+\contentsline {subsection}{Design}{15}{subsection*.9}
+\contentsline {subsection}{Implementering}{17}{subsection*.10}
+\contentsline {subsubsection}{Block definition diagram}{17}{subsubsection*.11}
+\contentsline {subsubsection}{Internal block definition}{18}{subsubsection*.12}
+\contentsline {subsection}{Modultest}{18}{subsection*.13}
+\contentsline {subsubsection}{Test af forst\IeC {\ae }rker}{19}{subsubsection*.14}
+\contentsline {subsubsection}{Test af filter}{20}{subsubsection*.15}
+\contentsline {subsubsection}{Test med vands\IeC {\o }jle}{21}{subsubsection*.16}
+\contentsline {section}{\numberline {3.2}Software design}{23}{section.3.2}
+\contentsline {subsection}{Problemidentifikation}{23}{subsection*.17}
+\contentsline {subsubsection}{Dom\IeC {\ae }nemodel}{24}{subsubsection*.18}
+\contentsline {subsection}{Klasseidentifikation}{26}{subsection*.19}
+\contentsline {subsubsection}{Applikationsmodel}{26}{subsubsection*.20}
+\contentsline {subsection}{Metodeidentifikation}{28}{subsection*.21}
+\contentsline {subsubsection}{Sekvensdiagrammer}{28}{subsubsection*.22}
+\contentsline {subsubsection}{Klassediagram}{36}{subsubsection*.23}
+\contentsline {subsubsection}{Metodebeskrivelse}{38}{subsubsection*.24}
+\contentsline {subsection}{Implementering}{56}{subsection*.25}
+\contentsline {subsubsection}{Kalibrering}{56}{subsubsection*.26}
+\contentsline {subsubsection}{Nulpunktsjustering}{56}{subsubsection*.27}
+\contentsline {subsubsection}{Digitalt filter}{57}{subsubsection*.28}
+\contentsline {subsubsection}{Beregning af systolisk, diastolisk og middeltryks v\IeC {\ae }rdi}{57}{subsubsection*.29}
+\contentsline {subsubsection}{EKG-signal}{58}{subsubsection*.30}
+\contentsline {subsubsection}{Iltm\IeC {\ae }tning}{59}{subsubsection*.31}
+\contentsline {subsubsection}{Observer m\IeC {\o }nster med PUSH}{59}{subsubsection*.32}
+\contentsline {subsubsection}{Queue}{59}{subsubsection*.33}
+\contentsline {subsubsection}{Konfiguration}{60}{subsubsection*.34}
+\contentsline {subsubsection}{Databaser}{60}{subsubsection*.35}
+\contentsline {subsection}{Unittest}{61}{subsection*.36}
+\contentsline {subsubsection}{Code review}{61}{subsubsection*.37}
+\contentsline {subsubsection}{Databaser og test}{62}{subsubsection*.38}
+\contentsline {section}{\numberline {3.3}Integrationstest}{63}{section.3.3}
+\contentsline {chapter}{\chapternumberline {4}Accepttest}{66}{chapter.4}
+\contentsline {section}{\numberline {4.1}Indledning}{66}{section.4.1}
+\contentsline {section}{\numberline {4.2}Accepttest for funktionelle krav}{66}{section.4.2}
+\contentsline {subsection}{Opstilling}{66}{subsection*.39}
+\contentsline {section}{\numberline {4.3}Accepttest for ikke-funktionelle krav}{73}{section.4.3}
+\contentsline {section}{\numberline {4.4}Godkendelses formular}{77}{section.4.4}
+\contentsline {chapter}{Litteratur}{78}{section*.41}
+\contentsline {section}{\numberline {4.5}Referencer}{78}{section.4.5}
+\contentsline {subsubsection}{Internetsider}{78}{subsubsection*.42}
+\contentsline {subsubsection}{Dokumenter}{78}{subsubsection*.43}
