@@ -3,80 +3,86 @@
 \contentsline {chapter}{\chapternumberline {1}Indledning}{1}{chapter.1}
 \contentsline {chapter}{\chapternumberline {2}Projektformulering og afgr\IeC {\ae }nsning}{2}{chapter.2}
 \contentsline {section}{\numberline {2.1}Oversigt over projektdeltagere og hovedansvarsomr\IeC {\r a}der}{3}{section.2.1}
-\contentsline {chapter}{\chapternumberline {3}Hjertet - en muskel}{5}{chapter.3}
-\contentsline {section}{\numberline {3.1}Blodtryk}{5}{section.3.1}
-\contentsline {section}{\numberline {3.2}Direkte invasiv m\IeC {\r a}ling af blodtryk}{7}{section.3.2}
-\contentsline {chapter}{\chapternumberline {4}Systembeskrivelse}{9}{chapter.4}
-\contentsline {chapter}{\chapternumberline {5}Krav}{11}{chapter.5}
-\contentsline {section}{\numberline {5.1}Akt\IeC {\o }rbeskrivelse}{12}{section.5.1}
-\contentsline {subsection}{Sundhedsfaglig personale}{12}{subsection*.2}
-\contentsline {subsection}{Transducer}{12}{subsection*.3}
-\contentsline {subsection}{EKG-patient}{12}{subsection*.4}
-\contentsline {subsection}{Servicemedarbejder}{13}{subsection*.5}
-\contentsline {subsection}{EPJ database}{13}{subsection*.6}
-\contentsline {subsection}{Personale database}{13}{subsection*.7}
-\contentsline {section}{\numberline {5.2}Use case beskrivelse}{13}{section.5.2}
-\contentsline {subsection}{Use case 1: Kalibr\IeC {\'e}r apparat}{13}{subsection*.8}
-\contentsline {subsection}{Use case 2: Foretag m\IeC {\r a}ling}{13}{subsection*.9}
-\contentsline {subsection}{Use case 3: Alarm\IeC {\'e}r}{14}{subsection*.10}
-\contentsline {subsection}{Use case 4: Stop m\IeC {\r a}ling}{14}{subsection*.11}
-\contentsline {section}{\numberline {5.3}Ikke-funktionelle krav beskrivelse}{14}{section.5.3}
-\contentsline {subsection}{FURPS+}{14}{subsection*.12}
-\contentsline {subsection}{MoSCoW}{15}{subsection*.13}
-\contentsline {chapter}{\chapternumberline {6}Projektbeskrivelse}{16}{chapter.6}
-\contentsline {section}{\numberline {6.1}Projektgennemf\IeC {\o }relse}{16}{section.6.1}
-\contentsline {subsection}{ASE-modellen}{16}{subsection*.14}
-\contentsline {subsection}{V-modellen}{17}{subsection*.15}
-\contentsline {subsection}{Vandfaldsmodellen}{17}{subsection*.16}
-\contentsline {subsection}{Projektstyring}{18}{subsection*.17}
-\contentsline {subsubsection}{Arbejdsfordeling}{18}{subsubsection*.18}
-\contentsline {subsubsection}{\IeC {\AE }ndringer i projektstyring}{18}{subsubsection*.19}
-\contentsline {subsubsection}{Scrum}{18}{subsubsection*.20}
-\contentsline {subsubsection}{GitHub}{19}{subsubsection*.21}
-\contentsline {subsubsection}{Iterativ udviklingsproces}{19}{subsubsection*.22}
-\contentsline {section}{\numberline {6.2}Metode}{19}{section.6.2}
-\contentsline {section}{\numberline {6.3}Specifikation og analyse}{20}{section.6.3}
-\contentsline {subsection}{Hardware}{20}{subsection*.23}
-\contentsline {subsection}{Software}{22}{subsection*.24}
-\contentsline {section}{\numberline {6.4}Arkitektur}{23}{section.6.4}
-\contentsline {subsection}{Hardware}{23}{subsection*.25}
-\contentsline {subsubsection}{Problem identifikation}{23}{subsubsection*.26}
-\contentsline {subsubsection}{BDD - block definition diagram}{23}{subsubsection*.27}
-\contentsline {subsubsection}{IBD - internal block definition diagram}{24}{subsubsection*.28}
-\contentsline {subsection}{Software}{25}{subsection*.29}
-\contentsline {subsubsection}{Problemidentifikation}{25}{subsubsection*.30}
-\contentsline {subsubsection}{Dom\IeC {\ae }nemodel}{25}{subsubsection*.31}
-\contentsline {subsubsection}{Klasseidentifikation}{26}{subsubsection*.32}
-\contentsline {subsubsection}{Metodeidentifikation}{27}{subsubsection*.33}
-\contentsline {section}{\numberline {6.5}Design, implementering og test}{27}{section.6.5}
-\contentsline {subsection}{Hardware}{27}{subsection*.34}
-\contentsline {subsubsection}{Design}{27}{subsubsection*.35}
-\contentsline {subsubsection}{Implementering}{29}{subsubsection*.36}
-\contentsline {subsection}{Software}{29}{subsection*.37}
-\contentsline {subsubsection}{Observer m\IeC {\o }nsteret}{30}{subsubsection*.38}
-\contentsline {subsubsection}{PUSH/PULL}{30}{subsubsection*.39}
-\contentsline {subsubsection}{Queue}{30}{subsubsection*.40}
-\contentsline {subsubsection}{Trelagsmodel}{30}{subsubsection*.41}
-\contentsline {subsubsection}{Unittest}{31}{subsubsection*.42}
-\contentsline {section}{\numberline {6.6}Resultater og diskussion}{31}{section.6.6}
-\contentsline {subsection}{Software}{31}{subsection*.43}
-\contentsline {subsection}{Hardware}{35}{subsection*.44}
-\contentsline {section}{\numberline {6.7}Udviklingsv\IeC {\ae }rkt\IeC {\o }jer}{36}{section.6.7}
-\contentsline {subsection}{Microsoft Visio 2010}{36}{subsection*.45}
-\contentsline {subsection}{Visual Studio 2013}{36}{subsection*.46}
-\contentsline {subsection}{NI Multisim 13.0 med Ultiboard 13.0}{36}{subsection*.47}
-\contentsline {subsection}{NI-DAQmx}{37}{subsection*.48}
-\contentsline {subsection}{Analog Discovery fra Digilent and Analog Devices}{37}{subsection*.49}
-\contentsline {section}{\numberline {6.8}Opn\IeC {\r a}ede erfaringer}{37}{section.6.8}
-\contentsline {section}{\numberline {6.9}Fremtidigt arbejde}{38}{section.6.9}
-\contentsline {subsection}{EKG-signal}{38}{subsection*.50}
-\contentsline {subsection}{Iltm\IeC {\ae }tning}{38}{subsection*.51}
-\contentsline {subsection}{EPJ}{38}{subsection*.52}
-\contentsline {subsection}{Datawarehouse}{39}{subsection*.53}
-\contentsline {chapter}{\chapternumberline {7}Konklusion}{40}{chapter.7}
-\contentsline {chapter}{Litteratur}{41}{section*.55}
-\contentsline {section}{\numberline {7.1}Referencer}{41}{section.7.1}
-\contentsline {subsubsection}{Billeder}{41}{subsubsection*.56}
-\contentsline {subsubsection}{B\IeC {\o }ger}{41}{subsubsection*.57}
-\contentsline {subsubsection}{Internetsider}{41}{subsubsection*.58}
-\contentsline {subsubsection}{Dokumenter}{42}{subsubsection*.59}
+\contentsline {chapter}{\chapternumberline {3}Hjertet}{4}{chapter.3}
+\contentsline {section}{\numberline {3.1}Blodtryk}{4}{section.3.1}
+\contentsline {section}{\numberline {3.2}Direkte invasiv m\IeC {\r a}ling af blodtryk}{6}{section.3.2}
+\contentsline {chapter}{\chapternumberline {4}Systembeskrivelse}{8}{chapter.4}
+\contentsline {chapter}{\chapternumberline {5}Krav}{10}{chapter.5}
+\contentsline {section}{\numberline {5.1}Akt\IeC {\o }rbeskrivelse}{11}{section.5.1}
+\contentsline {subsection}{Sundhedsfaglig personale}{11}{subsection*.2}
+\contentsline {subsection}{Transducer}{11}{subsection*.3}
+\contentsline {subsection}{EKG-patient}{11}{subsection*.4}
+\contentsline {subsection}{Servicemedarbejder}{12}{subsection*.5}
+\contentsline {subsection}{EPJ database}{12}{subsection*.6}
+\contentsline {subsection}{Personale database}{12}{subsection*.7}
+\contentsline {section}{\numberline {5.2}Use case beskrivelse}{12}{section.5.2}
+\contentsline {subsection}{Use case 1: Kalibr\IeC {\'e}r apparat}{12}{subsection*.8}
+\contentsline {subsection}{Use case 2: Foretag m\IeC {\r a}ling}{12}{subsection*.9}
+\contentsline {subsection}{Use case 3: Alarm\IeC {\'e}r}{13}{subsection*.10}
+\contentsline {subsection}{Use case 4: Stop m\IeC {\r a}ling}{13}{subsection*.11}
+\contentsline {section}{\numberline {5.3}Ikke-funktionelle krav}{13}{section.5.3}
+\contentsline {subsection}{FURPS+}{13}{subsection*.12}
+\contentsline {subsection}{MoSCoW}{14}{subsection*.13}
+\contentsline {chapter}{\chapternumberline {6}Projektbeskrivelse}{15}{chapter.6}
+\contentsline {section}{\numberline {6.1}Projektgennemf\IeC {\o }relse}{15}{section.6.1}
+\contentsline {subsection}{ASE-modellen}{15}{subsection*.14}
+\contentsline {subsection}{V-modellen}{16}{subsection*.15}
+\contentsline {subsection}{Vandfaldsmodellen}{16}{subsection*.16}
+\contentsline {subsection}{Projektstyring}{17}{subsection*.17}
+\contentsline {subsubsection}{Arbejdsfordeling}{17}{subsubsection*.18}
+\contentsline {subsubsection}{\IeC {\AE }ndringer i projektstyring}{17}{subsubsection*.19}
+\contentsline {subsubsection}{Scrum}{17}{subsubsection*.20}
+\contentsline {subsubsection}{GitHub}{18}{subsubsection*.21}
+\contentsline {subsubsection}{Iterativ udviklingsproces}{18}{subsubsection*.22}
+\contentsline {section}{\numberline {6.2}Metode}{18}{section.6.2}
+\contentsline {section}{\numberline {6.3}Specifikation og analyse}{19}{section.6.3}
+\contentsline {subsection}{Software}{19}{subsection*.23}
+\contentsline {section}{\numberline {6.4}Arkitektur}{20}{section.6.4}
+\contentsline {subsection}{Hardware}{20}{subsection*.24}
+\contentsline {subsubsection}{Problem identifikation}{20}{subsubsection*.25}
+\contentsline {subsubsection}{BDD - block definition diagram}{21}{subsubsection*.26}
+\contentsline {subsubsection}{IBD - internal block definition diagram}{21}{subsubsection*.27}
+\contentsline {subsection}{Software}{22}{subsection*.28}
+\contentsline {subsubsection}{Problemidentifikation}{22}{subsubsection*.29}
+\contentsline {subsubsection}{Dom\IeC {\ae }nemodel}{23}{subsubsection*.30}
+\contentsline {subsubsection}{Klasseidentifikation}{24}{subsubsection*.31}
+\contentsline {subsubsection}{Metodeidentifikation}{25}{subsubsection*.32}
+\contentsline {section}{\numberline {6.5}Design, implementering og test}{25}{section.6.5}
+\contentsline {subsection}{Hardware}{25}{subsection*.33}
+\contentsline {subsubsection}{Design}{25}{subsubsection*.34}
+\contentsline {subsubsection}{Implementering}{27}{subsubsection*.35}
+\contentsline {subsection}{Software}{28}{subsection*.36}
+\contentsline {subsubsection}{Kalibrering}{28}{subsubsection*.37}
+\contentsline {subsubsection}{Nulpunktsjustering}{28}{subsubsection*.38}
+\contentsline {subsubsection}{Digitalt filter}{28}{subsubsection*.39}
+\contentsline {subsubsection}{Beregning af systolisk, diastolisk og middeltryks v\IeC {\ae }rdi}{29}{subsubsection*.40}
+\contentsline {subsubsection}{EKG-signal}{30}{subsubsection*.41}
+\contentsline {subsubsection}{Iltm\IeC {\ae }tning}{30}{subsubsection*.42}
+\contentsline {subsubsection}{Observer m\IeC {\o }nsteret}{30}{subsubsection*.43}
+\contentsline {subsubsection}{PUSH/PULL}{31}{subsubsection*.44}
+\contentsline {subsubsection}{Queue}{31}{subsubsection*.45}
+\contentsline {subsubsection}{Trelagsmodel}{31}{subsubsection*.46}
+\contentsline {subsubsection}{Databaser}{32}{subsubsection*.47}
+\contentsline {subsubsection}{Unittest}{32}{subsubsection*.48}
+\contentsline {section}{\numberline {6.6}Resultater og diskussion}{33}{section.6.6}
+\contentsline {subsection}{Software}{33}{subsection*.49}
+\contentsline {subsection}{Hardware}{37}{subsection*.50}
+\contentsline {section}{\numberline {6.7}Udviklingsv\IeC {\ae }rkt\IeC {\o }jer}{38}{section.6.7}
+\contentsline {subsection}{Microsoft Visio 2010}{38}{subsection*.51}
+\contentsline {subsection}{Visual Studio 2013}{38}{subsection*.52}
+\contentsline {subsection}{NI Multisim 13.0 med Ultiboard 13.0}{38}{subsection*.53}
+\contentsline {subsection}{NI-DAQmx}{38}{subsection*.54}
+\contentsline {subsection}{Analog Discovery fra Digilent and Analog Devices}{38}{subsection*.55}
+\contentsline {section}{\numberline {6.8}Opn\IeC {\r a}ede erfaringer}{38}{section.6.8}
+\contentsline {section}{\numberline {6.9}Fremtidigt arbejde}{39}{section.6.9}
+\contentsline {subsection}{EKG-signal}{40}{subsection*.56}
+\contentsline {subsection}{Iltm\IeC {\ae }tning}{40}{subsection*.57}
+\contentsline {subsection}{EPJ}{40}{subsection*.58}
+\contentsline {subsection}{Datawarehouse}{40}{subsection*.59}
+\contentsline {chapter}{\chapternumberline {7}Konklusion}{41}{chapter.7}
+\contentsline {chapter}{Litteratur}{42}{section*.61}
+\contentsline {section}{\numberline {7.1}Referencer}{42}{section.7.1}
+\contentsline {subsubsection}{Billeder}{42}{subsubsection*.62}
+\contentsline {subsubsection}{B\IeC {\o }ger}{42}{subsubsection*.63}
+\contentsline {subsubsection}{Internetsider}{42}{subsubsection*.64}
+\contentsline {subsubsection}{Dokumenter}{43}{subsubsection*.65}
