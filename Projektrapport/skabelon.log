@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.15 (MiKTeX 2.9) (preloaded format=pdflatex 2015.4.2)  15 DEC 2015 18:27
+This is pdfTeX, Version 3.14159265-2.6-1.40.15 (MiKTeX 2.9) (preloaded format=pdflatex 2015.4.2)  15 DEC 2015 19:04
 entering extended mode
 **skabelon.tex
 (skabelon.tex
@@ -1607,11 +1607,7 @@ Package babel Info: Redefining danish shorthand "|
 (babel)             in language  on input line 339.
 Package babel Info: Redefining danish shorthand "~
 (babel)             in language  on input line 339.
- [26]
-
-LaTeX Warning: Citation `digifilter' on page 27 undefined on input line 346.
-
-<billeder/RammeDigi.jpg, id=341, 268.00125pt x 186.6975pt>
+ [26] <billeder/RammeDigi.jpg, id=342, 268.00125pt x 186.6975pt>
 File: billeder/RammeDigi.jpg Graphic file (type jpg)
 
 <use billeder/RammeDigi.jpg>
@@ -1645,7 +1641,7 @@ Package babel Info: Redefining danish shorthand "|
 (babel)             in language  on input line 377.
 Package babel Info: Redefining danish shorthand "~
 (babel)             in language  on input line 377.
-[28] <billeder/databaser.jpg, id=359, 1183.42125pt x 406.51875pt>
+[28] <billeder/databaser.jpg, id=361, 1183.42125pt x 406.51875pt>
 File: billeder/databaser.jpg Graphic file (type jpg)
 
 <use billeder/databaser.jpg>
@@ -1704,7 +1700,7 @@ Package babel Info: Redefining danish shorthand "|
 (babel)             in language  on input line 428.
 Package babel Info: Redefining danish shorthand "~
 (babel)             in language  on input line 428.
-[30] <billeder/ITstartGUI.jpg, id=371, 505.89pt x 335.00156pt>
+[30] <billeder/ITstartGUI.jpg, id=373, 505.89pt x 335.00156pt>
 File: billeder/ITstartGUI.jpg Graphic file (type jpg)
 
 <use billeder/ITstartGUI.jpg>
@@ -1715,7 +1711,7 @@ Underfull \hbox (badness 10000) in paragraph at lines 437--442
 
  []
 
-<billeder/ITstartGUIlogKali.jpg, id=372, 508.14844pt x 331.2375pt>
+<billeder/ITstartGUIlogKali.jpg, id=374, 508.14844pt x 331.2375pt>
 File: billeder/ITstartGUIlogKali.jpg Graphic file (type jpg)
 
 <use billeder/ITstartGUIlogKali.jpg>
@@ -1727,14 +1723,14 @@ Package babel Info: Redefining danish shorthand "|
 Package babel Info: Redefining danish shorthand "~
 (babel)             in language  on input line 448.
  [31 <./billeder/ITstartGUI.jpg>]
-<billeder/IThovedGUIkorer.jpg, id=380, 1028.34187pt x 523.9575pt>
+<billeder/IThovedGUIkorer.jpg, id=382, 1028.34187pt x 523.9575pt>
 File: billeder/IThovedGUIkorer.jpg Graphic file (type jpg)
 
 <use billeder/IThovedGUIkorer.jpg>
 Package pdftex.def Info: billeder/IThovedGUIkorer.jpg used on input line 450.
 (pdftex.def)             Requested size: 271.7835pt x 138.4803pt.
 
-<billeder/ITstartGUIforkert.jpg, id=381, 491.58656pt x 328.22626pt>
+<billeder/ITstartGUIforkert.jpg, id=383, 491.58656pt x 328.22626pt>
 File: billeder/ITstartGUIforkert.jpg Graphic file (type jpg)
 
 <use billeder/ITstartGUIforkert.jpg>
@@ -1746,7 +1742,7 @@ Package babel Info: Redefining danish shorthand "|
 Package babel Info: Redefining danish shorthand "~
 (babel)             in language  on input line 458.
  [32 <./billeder/ITstartGUIlogKali.jpg> <./billeder/IThovedGUIkorer.jpg>]
-<billeder/IThovedGUIkorerufiltreret.jpg, id=387, 1028.34187pt x 523.9575pt>
+<billeder/IThovedGUIkorerufiltreret.jpg, id=389, 1028.34187pt x 523.9575pt>
 File: billeder/IThovedGUIkorerufiltreret.jpg Graphic file (type jpg)
 
 <use billeder/IThovedGUIkorerufiltreret.jpg>
@@ -1754,7 +1750,7 @@ Package pdftex.def Info: billeder/IThovedGUIkorerufiltreret.jpg used on input l
 ine 460.
 (pdftex.def)             Requested size: 271.7835pt x 138.4803pt.
 
-<billeder/IThovedGUIAlarm.jpg, id=388, 1028.34187pt x 524.71031pt>
+<billeder/IThovedGUIAlarm.jpg, id=390, 1028.34187pt x 524.71031pt>
 File: billeder/IThovedGUIAlarm.jpg Graphic file (type jpg)
 
 <use billeder/IThovedGUIAlarm.jpg>
@@ -1766,7 +1762,7 @@ Package babel Info: Redefining danish shorthand "~
 (babel)             in language  on input line 468.
  [33 <./billeder/ITstartGUIforkert.jpg> <./billeder/IThovedGUIkorerufiltreret.j
 pg>]
-<billeder/IThovedGUILogUd.jpg, id=394, 1028.34187pt x 525.46312pt>
+<billeder/IThovedGUILogUd.jpg, id=396, 1028.34187pt x 525.46312pt>
 File: billeder/IThovedGUILogUd.jpg Graphic file (type jpg)
 
 <use billeder/IThovedGUILogUd.jpg>
@@ -1962,55 +1958,39 @@ Package atveryend Info: Empty hook `AfterLastShipout' on input line 71.
 (bibliotek.aux))
 Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 71.
 Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 71.
-
-
-Package rerunfilecheck Warning: File `skabelon.out' has changed.
-(rerunfilecheck)                Rerun to get outlines right
-(rerunfilecheck)                or use package `bookmark'.
-
-Package rerunfilecheck Info: Checksums for `skabelon.out':
-(rerunfilecheck)             Before: 4F99C2E03F27BB1C42EABF8520ADDA43;1497
-(rerunfilecheck)             After:  9E96C79CBD882F993C0DEDAAEEE739DF;1497.
-
-LaTeX Warning: There were undefined references.
-
-
-LaTeX Warning: Label(s) may have changed. Rerun to get cross-references right.
-
+Package rerunfilecheck Info: File `skabelon.out' has not changed.
+(rerunfilecheck)             Checksum: 9E96C79CBD882F993C0DEDAAEEE739DF;1497.
 Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 71.
  ) 
 Here is how much of TeX's memory you used:
- 12604 strings out of 493698
- 180909 string characters out of 3141969
- 317601 words of memory out of 3000000
- 15523 multiletter control sequences out of 15000+200000
+ 12601 strings out of 493698
+ 180870 string characters out of 3141969
+ 317634 words of memory out of 3000000
+ 15521 multiletter control sequences out of 15000+200000
  71866 words of font info for 59 fonts, out of 3000000 for 9000
  1025 hyphenation exceptions out of 8191
  46i,11n,37p,1111b,523s stack positions out of 5000i,500n,10000p,200000b,50000s
-pdfTeX warning (dest): name{section*.60} has been referenced but does not exi
-st, replaced by a fixed one
-
-{C:/Program Files (x86)/MiKTeX 2.9/fonts/enc/dvips/lm/lm-ec.enc}{C:/Program Fil
-es (x86)/MiKTeX 2.9/fonts/enc/dvips/lm/lm-mathsy.enc}{C:/Program Files (x86)/Mi
-KTeX 2.9/fonts/enc/dvips/lm/lm-mathex.enc}{C:/Program Files (x86)/MiKTeX 2.9/fo
-nts/enc/dvips/lm/lm-mathit.enc}{C:/Program Files (x86)/MiKTeX 2.9/fonts/enc/dvi
-ps/lm/lm-rm.enc}<C:/Program Files (x86)/MiKTeX 2.9/fonts/type1/public/lm/lmbx10
-.pfb><C:/Program Files (x86)/MiKTeX 2.9/fonts/type1/public/lm/lmbx12.pfb><C:/Pr
-ogram Files (x86)/MiKTeX 2.9/fonts/type1/public/lm/lmex10.pfb><C:/Program Files
- (x86)/MiKTeX 2.9/fonts/type1/public/lm/lmmi10.pfb><C:/Program Files (x86)/MiKT
-eX 2.9/fonts/type1/public/lm/lmmi8.pfb><C:/Program Files (x86)/MiKTeX 2.9/fonts
-/type1/public/lm/lmr10.pfb><C:/Program Files (x86)/MiKTeX 2.9/fonts/type1/publi
-c/lm/lmr12.pfb><C:/Program Files (x86)/MiKTeX 2.9/fonts/type1/public/lm/lmr17.p
-fb><C:/Program Files (x86)/MiKTeX 2.9/fonts/type1/public/lm/lmr6.pfb><C:/Progra
-m Files (x86)/MiKTeX 2.9/fonts/type1/public/lm/lmr8.pfb><C:/Program Files (x86)
-/MiKTeX 2.9/fonts/type1/public/lm/lmr9.pfb><C:/Program Files (x86)/MiKTeX 2.9/f
-onts/type1/public/lm/lmri10.pfb><C:/Program Files (x86)/MiKTeX 2.9/fonts/type1/
-public/lm/lmro10.pfb><C:/Program Files (x86)/MiKTeX 2.9/fonts/type1/public/lm/l
-msy10.pfb><C:/Program Files (x86)/MiKTeX 2.9/fonts/type1/public/lm/lmsy8.pfb><C
-:/Program Files (x86)/MiKTeX 2.9/fonts/type1/public/lm/lmtt10.pfb>
-Output written on skabelon.pdf (44 pages, 3125830 bytes).
+{C:/Program Files (x86)/MiKTeX 2.9/fonts/enc/dvips/lm/lm-ec.enc}{C:/Program F
+iles (x86)/MiKTeX 2.9/fonts/enc/dvips/lm/lm-mathsy.enc}{C:/Program Files (x86)/
+MiKTeX 2.9/fonts/enc/dvips/lm/lm-mathex.enc}{C:/Program Files (x86)/MiKTeX 2.9/
+fonts/enc/dvips/lm/lm-mathit.enc}{C:/Program Files (x86)/MiKTeX 2.9/fonts/enc/d
+vips/lm/lm-rm.enc}<C:/Program Files (x86)/MiKTeX 2.9/fonts/type1/public/lm/lmbx
+10.pfb><C:/Program Files (x86)/MiKTeX 2.9/fonts/type1/public/lm/lmbx12.pfb><C:/
+Program Files (x86)/MiKTeX 2.9/fonts/type1/public/lm/lmex10.pfb><C:/Program Fil
+es (x86)/MiKTeX 2.9/fonts/type1/public/lm/lmmi10.pfb><C:/Program Files (x86)/Mi
+KTeX 2.9/fonts/type1/public/lm/lmmi8.pfb><C:/Program Files (x86)/MiKTeX 2.9/fon
+ts/type1/public/lm/lmr10.pfb><C:/Program Files (x86)/MiKTeX 2.9/fonts/type1/pub
+lic/lm/lmr12.pfb><C:/Program Files (x86)/MiKTeX 2.9/fonts/type1/public/lm/lmr17
+.pfb><C:/Program Files (x86)/MiKTeX 2.9/fonts/type1/public/lm/lmr6.pfb><C:/Prog
+ram Files (x86)/MiKTeX 2.9/fonts/type1/public/lm/lmr8.pfb><C:/Program Files (x8
+6)/MiKTeX 2.9/fonts/type1/public/lm/lmr9.pfb><C:/Program Files (x86)/MiKTeX 2.9
+/fonts/type1/public/lm/lmri10.pfb><C:/Program Files (x86)/MiKTeX 2.9/fonts/type
+1/public/lm/lmro10.pfb><C:/Program Files (x86)/MiKTeX 2.9/fonts/type1/public/lm
+/lmsy10.pfb><C:/Program Files (x86)/MiKTeX 2.9/fonts/type1/public/lm/lmsy8.pfb>
+<C:/Program Files (x86)/MiKTeX 2.9/fonts/type1/public/lm/lmtt10.pfb>
+Output written on skabelon.pdf (44 pages, 3125767 bytes).
 PDF statistics:
  556 PDF objects out of 1000 (max. 8388607)
- 146 named destinations out of 1000 (max. 500000)
+ 145 named destinations out of 1000 (max. 500000)
  308 words of extra memory for PDF output out of 10000 (max. 10000000)
 
