@@ -5,8 +5,8 @@ Blodtrykket er det tryk, som blodet udøver på karvæggen i arterierne, når de
 \\\\
 I starten af projektet blev der gjort nogle tanker og ideer om produktet, som vi ønskede implementeret i det færdigudviklede system. Gennem arbejdsprocessen er der løbende kommet ny viden og gennem en innovativ proces, er der blevet udarbejdet et produkt, som lever op til de forventninger der har været til produktet. I denne dokumentation kommenteres der på de valg og fravalg der har måttet være gennem procesforløbet.  
 \\\\
-Ud fra viden omkring digital og analog signalbehandling, samt sundhedsfaglig viden omkring blodtryk og programmeringsmæssige færdigheder er protypen af produktet blevet til. Protypen består af en hardware del, der er baseret på et anden ordens butterworth sallen-key filter og operationsforstærker, og en software del, der er baseret på algoritmer til at udregne systole, diastole og middeltryk. Produktet kan præsentere blodtrykket i en graf på brugergrænsefladen sammen med værdierne for systole, diastole og middeltryk.\\
-Denne dokumentation vil præsentere vores kravspecifikation for produktet. Efterfølgende beskrives arkitektur, herunder SysML og UML diagrammer, samt design af henholdsvis software og hardware. I denne dokumentation fremgår test af hardware og software, i form af modultest og unittest. Der vil i dokumentationen også fremgå en accepttest, som er lavet på bagrund af kravspecifikationen. Til sidst i denne dokumentation vil der fremgå bilag. 
+Ud fra viden omkring digital og analog signalbehandling, samt sundhedsfaglig viden omkring blodtryk og programmeringsmæssige færdigheder er protypen af produktet blevet til. Protypen består af en hardware del, der er baseret på et anden ordens Butterworth Sallen-key filter og operationsforstærker, og en software del, der er baseret på algoritmer til at udregne systole, diastole og middeltryk. Produktet kan præsentere blodtrykket i en graf på brugergrænsefladen sammen med værdierne for systole, diastole og middeltryk.\\
+Denne dokumentation vil præsentere vores kravspecifikation for produktet. Efterfølgende beskrives arkitektur, herunder SysML og UML diagrammer, samt design af henholdsvis software og hardware. I denne dokumentation fremgår test af hardware og software, i form af modultest og unittest. Der vil i dokumentationen også fremgå en accepttest, som er lavet på baggrund af kravspecifikationen. Til sidst i denne dokumentation vil der fremgå bilag. 
 \chapter{Kravspecifikation}
 \section{Godkendelsesformular}
 \begin{table}[h!]
@@ -145,12 +145,12 @@ Udvidelse/undtagelser: & \textit{$[$Undtagelse 1:Undlad kalibrering$]$ }\newline
 \begin{tabular}{| l | >{\raggedright\arraybackslash}p{11cm} |}
    \hline
    \textbf{Use case 2} & \textbf{Foretag måling}\\ \hline
-   Mål: & Den valgte patients målinger foretages og værdierne gemmes i EPJ database\\ \hline
+   Mål: & Den valgte patients blodtryksmåling foretages og værdierne gemmes i EPJ database\\ \hline
    Initiering: & Startes af Sundhedsfaglig personale\\ \hline
    Aktører:& Sundhedsfaglig personale (primær), Personale database (sekundær), EPJ database(sekundær), Transducer (sekundær), EKG patient (sekundær)\\ \hline
    Referencer: & Use case 2 \\ \hline
    Samtidige forekomster: & Én sundhedsfaglig person og én transducer pr. system \\\hline
-   Forudsætninger: & VPN, Personale database og EPJ databasen er tilsluttet korrekt\\ \hline
+   Forudsætninger: & VPN-forbindelse\\ \hline
    Resultat:& Målingerne for den valgte patient er foretaget\\ \hline
    Hovedscenarie:& 
 1. Sundhedsfaglig personale logger på ved at indtaste brugernavn og kode. \newline
@@ -161,7 +161,7 @@ Udvidelse/undtagelser: & \textit{$[$Undtagelse 1:Undlad kalibrering$]$ }\newline
 5. Sundhedsfaglig personale indtaster nulpunktjusterings værdien og starter nulpunktsjusteringen. \newline
 6. Systemet foretager nulpunktsjusteringen. \newline
 7. Sundhedsfaglig personale starter målingen \newline
-8. Systemet indhenter data fra transduceren og måler, hvor lang tid målingen foretages\newline
+8. Systemet indhenter data fra transduceren via NI-DAQ og måler, hvor lang tid målingen foretages\newline
 9. EKG og arterietryk præsenteres kontinuert på hver sin graf. Puls, systole, diastole og middeltryk vises som talværdier. Data gemmes automatisk løbende i EPJ database. \newline
 \textit{$[$Udvidelse 1: Slå digitalt filter til/fra$]$}\newline
 \textit{$[$Udvidelse 2: Juster systolens/diastolens grænseværdi$]$}
@@ -235,23 +235,23 @@ Udvidelse/undtagelser: & -\\\hline
 \newpage
 \newpage
 \section{Ikke-funktionelle krav}
-De ikke-funktionelle krav er opsat efter FURPS+ metoden. De er prioriteret efter MoSCoW metoden:
+De ikke-funktionelle krav er opsat efter FURPS+ metoden. De er herefter prioriteret efter MoSCoW metoden:
 \begin{itemize}
 \item \textbf{M}ust (skal være med)
 \begin{itemize}
-\item De krav der dermed bliver markeret med et \textbf{(M)}, er altså de krav til funktioner der skal være til produktet.
+\item De krav der dermed bliver markeret med et \textbf{(M)}, er altså de krav til funktioner der \textit{skal} være til produktet.
 \end{itemize}
 \item \textbf{S}hould (bør være med, hvis muligt)
 \begin{itemize}
-\item Kravene kan også markeres med et \textbf{(S)}. Disse krav er funktioner produktet bør have.
+\item Kravene kan også markeres med et \textbf{(S)}. Disse krav er funktioner produktet \textit{bør} have.
 \end{itemize}
 \item \textbf{C}ould (kunne have med, hvis det ikke går i vejen for noget andet)
 \begin{itemize}
-\item Markeres et krav med \textbf{(C)}, behøver produktet ikke at have funktionen, men det kunne være en funktion der kunne være god at have til produktet.
+\item Markeres et krav med \textbf{(C)}, behøver produktet ikke at have funktionen, men det \textit{kunne} være en funktion der kunne være god at have til produktet.
 \end{itemize}
 \item \textbf{W}on't/\textbf{W}ould (tager det ikke med nu, men kan komme med i fremtidige opdateringer)
 \begin{itemize}
-\item Dermed er de krav der bliver markeret med et \textbf{(W)}, altså de krav til funktioner der ville være gode til produktet, men ikke bliver implementeret i produktet. Grunden til dette kan være at der ikke er tid, eller at funktionen ikke er vigtig for produktet.
+\item Dermed er de krav der bliver markeret med et \textbf{(W)}, altså de krav til funktioner der \textit{ville} være gode til produktet, men ikke bliver implementeret i produktet. Grunden til dette kan være at der ikke er tid, eller at funktionen ikke er vigtig for produktet.
 \end{itemize}
 \end{itemize}
 \subsection{FURPS+ med MoSCoW}
@@ -304,7 +304,7 @@ De ikke-funktionelle krav er opsat efter FURPS+ metoden. De er prioriteret efter
 \end{enumerate}
 \item \textbf{Reliability}
 \begin{enumerate}
-\item (\textbf{S}) INGEN RELIABILITY KRAV ENDNU
+\item (\textbf{S}) Igen reliability krav endnu.
 \end{enumerate}
 \item \textbf{Performance}
 \begin{enumerate}
@@ -321,18 +321,18 @@ De ikke-funktionelle krav er opsat efter FURPS+ metoden. De er prioriteret efter
 \end{enumerate}
 \item \textbf{+ Test conditions}
 \begin{enumerate}
-\item (\textbf{M}) Der skal være adgang til en computer med Windows 7, 8 eller 10 - computeren skal minimum have 4 GB RAM.
+\item (\textbf{M}) Der skal være adgang til en computer med Windows 8 - computeren skal minimum have 8 GB RAM.
 \item (\textbf{M}) Der skal være adgang til en computer hvor National Instruments er installeret.
 \end{enumerate}
 \end{enumerate}
 \chapter{Arkitektur og design}
-Følgende beskriver arkitekturen for systemet, herunder for både hardware og software. \\
-Systemarkitektur er udviklingsrammen for den videre udvikling af design og implementering. Der vil igennem dette afsnit startes med at se systemet overordnet og hvorefter der arbejdes ned gennem systemet i mindre brudstykker. Der benyttes diagrammer for at kunne specificere og klarlægge systemkravene. Disse diagrammer beskrives desuden i tekst. Igennem dette afsnit bliver designet af produktet dermed bestemt.
+Følgende beskriver arkitekturen for systemet, herunder arkitekturen for både hardware og software. \\
+Systemarkitektur er udviklingsrammen for den videre udvikling af design og implementering. I starten af dette afsnit ses systemet overordnet, herefter arbejdes der ned igennem systemet i mindre brudstykker. Der benyttes diagrammer for at kunne specificere og klarlægge systemkravene. Disse diagrammer beskrives desuden i tekst. Igennem dette afsnit bliver designet af produktet dermed bestemt.
 \section{Hardware design}
 \subsection{Udviklingsfase og iterationer}
 I dette afsnit redegøres der for udviklingsprocessen på hardware-teamet, som har bestået af tre mand. Der redegøres for de løsnings-iterationer gruppen har været igennem, samt gruppens tankeproces mens der er arbejdet på projektet. Udviklingen af hardwaren til projektet har foregået som et teknologistudie baseret på krav til projektet og tidligere viden fra Analog Signal Behandling. Processen har været en iterativ og agil udviklingsproces, som er præget af en generel mangelfuld viden på området.
-\subsubsection{Første iteration - komponenter i lavpasfilteret}
-Der blev besluttet, at tage udgangspunkt i beregningsværktøjer på nettet \cite{filter}  til den første iteration. Dette gav nogle værdier der lå meget tæt på det ønskede resultat. Kredsløbet blev derefter bygget op på et fumlebræt og fastsatte komponent værdierne ud fra beregningerne fra nettet. Udregningen fra nettet var baseret på en cut-off frekvens på 50Hz og C1 $=$ C2.
+\subsubsection{Første iteration - komponenter i lavpasfilteret version 1}
+Der blev besluttet, at tage udgangspunkt i beregningsværktøjer på nettet \cite{filter}  til den første iteration. Dette gav nogle værdier, som lå meget tæt på det ønskede resultat. Kredsløbet blev derefter bygget op på et fumlebræt og fastsatte komponent værdierne ud fra beregningerne fra nettet. Udregningen fra nettet var baseret på en cut-off frekvens på 50Hz og C1 $=$ C2.
 \begin{figure}[H]
 \includegraphics[width =0.5\textwidth , center]{billeder/butterworth}
 \caption{\textbf{Butterworth Sallen-key filter.}}
@@ -347,9 +347,9 @@ Der blev besluttet, at tage udgangspunkt i beregningsværktøjer på nettet \cit
    C2 & 680 nF\\\hline
 \end{tabular}
 \end{table}
-Det viste sig at det ikke levede op til kravene omkring den nødvendige dæmpning ved 500Hz, ligeledes opførte filteret sig ikke som ønsket. I starten var der blandt andet arbejdet med filteret som passivt, noget som der først blev rettet op på til sidste iteration. Desuden fik hjælpen fra en ASB-underviser, vist at ovenstående filter ikke overholdte kravene til et 2. ordens Butterworth Sallen-key filter. 
-\subsubsection{Anden iteration - komponenter i lavpasfilteret}
-Den anden iteration er beskrevet udførligt i hardware delen, her blev der brugt en mere matematisk proces til at designe filteret. Der blev gættet på en C1 værdi på 330nF, og herefter blev de resterende komponentværdier skaleret ud fra dette. Neden for ses de udregnede komponentværdier for lavpasfilteret version 2.
+Det viste sig at filteret ikke levede op til kravene omkring den nødvendige dæmpning ved 500Hz, ligeledes opførte filteret sig ikke som ønsket. I starten var der blandt andet arbejdet med filteret som passivt, noget som først blev rettet op på til fjerde iteration. Desuden fik hjælpen fra en ASB-underviser, vist at ovenstående filter ikke overholdte kravene til et 2. ordens Butterworth Sallen-key filter. 
+\subsubsection{Anden iteration - komponenter i lavpasfilteret version 2}
+Den anden iteration er beskrevet udførligt i hardware delen, her blev der brugt en mere matematisk proces til at designe filteret. Der blev gættet på en C1 værdi på 330nF, og herefter blev de resterende komponentværdier skaleret ud fra dette. Nedenfor ses de udregnede komponentværdier for lavpasfilteret version 2.
 \begin{table}[H]
 \begin{tabular}{| l | l |}
    \hline
@@ -360,9 +360,9 @@ Den anden iteration er beskrevet udførligt i hardware delen, her blev der brugt
    C2 & 680 nF\\\hline
 \end{tabular}
 \end{table}
-Filteret blev analyseret. Analysen viste, at der ikke kom den nødvendige dæmpning ved 500Hz. Igen kan dette være et resultat af det ikke var et aktivt filter, der blev brugt. 
+Filteret blev analyseret. Analysen viste, at der ikke var den nødvendige dæmpning ved 500Hz. Igen kan dette være et resultat af det ikke var et aktivt filter, der blev brugt. 
 \subsubsection{Tredje iteration - komponenter lavpasfilteret, forstærker og forsyningsspænding}
-I den tredje iteration blev der opdaget at C1 skulle være halvdelen af C2 for at give et filter der overholdte projektets krav. Modstandene er beregnet ud fra den nye kondensatorværdi.
+I den tredje iteration blev der opdaget at C1 skulle være halvdelen af C2 for at give et filter, der overholdte projektets krav. Modstandene er beregnet ud fra den nye kondensatorværdi.
 \begin{table}[H]
 \begin{tabular}{| l | l |}
    \hline
@@ -373,9 +373,11 @@ I den tredje iteration blev der opdaget at C1 skulle være halvdelen af C2 for a
    C2 & 680 nF\\\hline
 \end{tabular}
 \end{table}
-Der blev besluttet at benytte en INA-114 forstærker, efter anbefaling fra vejleder og medstuderende. Der blev beregnet forstærkningen, samt blev der sikret at forstærkeren opfyldte projektets krav. Beslutningen om hvilken forsyningsspænding der skulle benyttes, faldt på to 9V-batterier. Det blev undersøgt hvorvidt det var muligt at bruge andre spændingsforsyninger, blandt andet USB og dedikerede spændingsforsyninger. USB som spændingsforsyning blev fravalgt da der ikke kunne opnås tilstrækkelig forstærkning I INA-114 forstærkeren, så det ville gå ud over præcisionen. De udleveret spændingsforsyninger blev fravalgt af praktiske årsager, da de var meget uhåndterbare.
+Der blev besluttet at benytte en INA-114 forstærker, efter anbefaling fra vejlederen og medstuderende. Forstærkningen blev beregnet og der blev sikret at forstærkeren opfyldte de krav, der var opsat for projektet. Beslutningen om hvilken forsyningsspænding, der skulle benyttes, faldt på to 9V-batterier. Det blev undersøgt hvorvidt det var muligt at bruge andre spændingsforsyninger, blandt andet USB og dedikerede spændingsforsyninger. USB som spændingsforsyning blev fravalgt da der ikke kunne opnås tilstrækkelig forstærkning i INA-114 forstærkeren, så det ville gå ud over præcisionen. De udleveret spændingsforsyninger blev fravalgt af praktiske årsager, da de var meget uhåndterlige.
 \subsubsection{Fjerde iteration - aktivt filter}
-Den fjerde iteration benytter samme komponentværdier som tredje iteration, men der var blevet overset af filteret skulle have været et aktivt filter. Derfor blev der bygget et kredsløb op forfra på fumlebræt, hvor der var tilsluttet spænding på filteret.
+Den fjerde iteration benytter samme komponentværdier som tredje iteration, men der var blevet overset at filteret skulle været et aktivt filter. Derfor blev kredsløb opbygget forfra på et fumlebræt, hvor der var tilsluttet spænding på filteret. Dermed kunne et aktivt Butterworth Sallen-key filter designes.
+\subsubsection{Femte iteration - veroboard og spændingsregulator}
+Den sidste iteration blev bygget op på veroboard, denne iteration blev ligeledes lavet med en 5V spændingsregulator for at sikre at spændingsforsyningen til transduceren ikke overstiger 5V. Transduceren er meget sensitiv så ændringer i spændingsforsyning kan give usikkerhed i resultaterne, derfor valgte man at indføre en 7805T-spændingsregulator. Beslutningen om at bygge kredsløbet op på veroboardet blev truffet for bedre at kunne teste, samt gøre opsætningen af accepttesten nemmere og mere overskuelig.
 \subsubsection{Design af lavpasfilteret}
 Frekvenserne der skal arbejdes med i blodtryksmåleren, ligger op til 50Hz, derfor skal der realiseres et 2. ordens lavpasfilter med følgende dimensioner:\\
 Cut-off Frequency: 50Hz\\
@@ -403,20 +405,20 @@ $C1 = 330nF, C2=680nF og R1=R2$
 \includegraphics[width =0.5\textwidth , center]{billeder/mathcad}
 \caption{\textbf{Mathcad beregninger.}}
 \end{figure}
-Ud fra disse beregninger skal modstanden altså bestemmes til at have en værdi på ca. $6.7k\Omega$. Da der er blevet brugt et Butterworth Sallen-key filter vides der, at C1 skal være halvdelen af C2. Derfor er der lavet nye beregninger hvor $C1=340nF$, hvilket svarer til halvdelen af $C2$.
+Ud fra disse beregninger skal modstanden altså bestemmes til at have en værdi på ca. $6.7k\Omega$. Da der er blevet brugt et Butterworth Sallen-key filter vides det, at C1 skal være halvdelen af C2. Derfor er der lavet nye beregninger hvor $C1=340nF$, hvilket svarer til halvdelen af $C2$.
 \begin{figure}[H]
 \includegraphics[width =0.5\textwidth , center]{billeder/mathcad2}
 \caption{\textbf{Mathcad beregninger.}}
 \end{figure}
-Der er efterfølgende lavet en analyse i matlab for at sikre at dæmpningen er min. 40 dB pr. decade ved 500Hz. Dette er gjort med modstande på $6.6k\Omega$.
+Der er efterfølgende lavet en analyse i matlab for at sikre at dæmpningen er min. 20 dB pr. decade ved 500Hz. Dette er gjort med modstande på $6.6k\Omega$.
 \begin{figure}[H]
 \includegraphics[width =1.0\textwidth , center]{billeder/bodeplot}
 \caption{\textbf{Matlab bodeplot med 6.6k$\Omega$ modstande.}}
 \end{figure}
 Ud fra dette kan det konkluderes at dæmpningen ved 550Hz er tilstrækkelig.
 \subsubsection{Design af operationsforstærkeren}
-Det elektriske signal der skal bruges i systemet, kommer fra tryktransduceren TruWave\texttrademark og ind i dataopsamlingsmodel (NI-DAQ6009). Signalet fra TruWave\texttrademark skal forstærkes op, så der kommer bedre målesignaler i DAQ’en. I databladet for NI-DAQ6009 kan der ses den maksimale spænding for indgangsportene er +/-10V, det vil sige at der ikke må forstærkes mere op end 10V. Der er valgt at forstærke op til +/-8V, for at give lidt buffer, så der ikke overstiges de 10V og derved mister data. Ligeledes er "projektet" hæmmet af valget af strømforsyning som er to 9-volts batterier, som praktisk leverer omkring +/- 8V.\\ 
-Fra TruWave\texttrademark er der valgt at fokuserer på et måleområde der hedder 0-250mmHg. \\\\
+Det elektriske signal der skal bruges i systemet, kommer fra tryktransduceren TruWave\texttrademark og ind i dataopsamlingsmodel (NI-DAQ6009). Signalet fra TruWave\texttrademark skal forstærkes op, så bedre målesignaler kan sendes ind i DAQ’en. I databladet for NI-DAQ6009 kan den maksimale spænding for indgangsportene ses til at være +/-10V, det vil sige at signalet ikke må forstærkes mere op end til 10V. Der er valgt at forstærke op til +/-8V, for at give lidt buffer, så der ikke overstiges de 10V og derved mister data. Ligeledes er hardware produktet hæmmet af valget af spændingsforsyning som er to 9-volts batterier, som praktisk leverer omkring +/- 8V.\\ 
+Fra TruWave\texttrademark er der valgt at fokuserer på et måleområde der ligger inden for 0-250mmHg. \\\\
 \textbf{Maksimalt output for transducer}\\
 \begin{align}
 V_{max}=250mmHg\cdot 16V\cdot 5\mu V 
@@ -427,7 +429,7 @@ Ud fra dette kan der bestemmes, hvor meget gain (forstærkning), der skal bruges
 gain = \dfrac{16V}{20\cdot 10^{-3}V}=800
 \end{align}
 \textbf{Båndbredde og valg af forstærker}\\
-Produktet af gain og båndbredde, $BW$, er konstant, derfor er det vigtigt at båndbredden ligger over knækfrekvensen på 50Hz. Der er valgte at benytte en INA-114 forstærker da den opfylder behovene. Ved $gain=1$ kan INA-114 levere 1MHz båndbredde, det vil sige, at der kan opstilles følgende ligning for beregning af båndbredden.
+Produktet af gain og båndbredde, $BW$, er konstant, derfor er det vigtigt at båndbredden ligger over knækfrekvensen på 50Hz. Det er valgte at benytte en INA-114 forstærker, da denne opfylder behovene. Ved $gain=1$ kan INA-114 levere 1MHz båndbredde, det vil sige, at der kan opstilles følgende ligning for beregning af båndbredden.
 \begin{align}
 1000000 = 800\cdot BW\\
 BW = \dfrac{1000000Hz}{800}=1250Hz
@@ -438,16 +440,16 @@ Da 1250 Hz er over knækfrekvensen på 50Hz har forstærkeren tilstrækkelig bå
 \includegraphics[width =1.0\textwidth , center]{billeder/forstarker}
 \caption{\textbf{Denne viser opbygningen og delene i operationsforstærkeren INA114}}
 \end{figure}
-Forstærkerens gain er bestemt ved modstanden der sidder på port 1 og 8. Denne modstand kan beregnes med følgende formel, hvor $R_G$ er modstanden og gain = 800.
+Forstærkerens gain er bestemt ved modstanden, der sidder på port 1 og 8. Denne modstand kan beregnes med følgende formel, hvor $R_G$ er modstanden og gain = 800.
 \begin{align}
 G=1+\dfrac{50k\Omega}{R_G}\\
 800 = 1+\dfrac{50k\Omega}{R_G}\\
 R_G=62.5\Omega
 \end{align}
-Et potentiometer er blevet valgt at benytte som denne modstand, da der helst skulle kunne reguleres på systemet, og den ovenstående værdi er beregnet med ideelle komponenter.
+Et potentiometer er blevet valgt at benytte som denne modstand, da der helst skulle kunne reguleres på systemet, og den ovenstående værdi er beregnet med ideelle komponenter, i praksis vil komponenterne ikke kunne være helt ideelle.
 \subsection{Implementering}
 \subsubsection{Block definition diagram}
-På nedenstående figur bliver systemets hardware illustreret i et BDD. Heraf ses det at systemet har seks hardware blokke: Computer, transducer, NI-DAQ, lavpas filter, forstærker og en strømforsyning. Disse blokke udgør tilsammen blodtryksmålesystemet.
+På nedenstående figur bliver systemets hardware illustreret i et BDD. Heraf ses det at systemet har seks hardware blokke: Computer, transducer, NI-DAQ, lavpas filter, forstærker og en spænsindforsyning. Disse blokke udgør tilsammen blodtryksmålesystemet.
 \begin{figure}[H]
 \includegraphics[width =1.0\textwidth , center]{billeder/BDD}
 \caption{\textbf{Block definition diagram. Dette diagram viser hardware delene i systemet, samt sammenhængen mellem disse.}}
@@ -1700,8 +1702,31 @@ Når der i feltet Godkendt er skrevet initialer for den der har udført testen, 
 Igennem Arkitektur og design er systemet blevet identificeret og specificeret, sadan at vides hvilke dele systemet består af og hvordan dette skal præsenteres på user interfaces.
 \section{Accepttest for funktionelle krav}
 \subsection{Opstilling}
-Billede indsættes - haves ikke endnu
-\\
+Forbindelserne mellem NI-DAQ og veroboardet fra Analog Discovery skal være som følgende:
+\begin{figure}[htb]
+  \begin{minipage}{0.35\textwidth}
+    \centering
+      \includegraphics[width=\textwidth]{billeder/ATopstilling_conn}
+      \caption{Forbindelse til NI-DAQ}
+    \label{fig:figur3}
+  \end{minipage}
+  \hspace{0.1\textwidth}
+  \begin{minipage}{0.55\textwidth}
+    \centering
+      \includegraphics[width=\textwidth]{billeder/ATopstilling_board}
+      \caption{Forbindelserne til veroboard}
+    \label{fig:figur4}
+  \end{minipage}
+\end{figure}
+Hele opstillingen af software og hardware til accepttesten skal være som følgende. Signalet indsendes fra Waveforms. 
+\begin{figure}[H]
+\includegraphics[width =1.0\textwidth , center]{billeder/waveforms}
+\caption{\textbf{Signalet der indsendes fra waveforms.}}
+\end{figure}
+\begin{figure}[H]
+\includegraphics[width =0.5\textwidth , center]{billeder/ATopstilling}
+\caption{\textbf{Samlet opstilling til accepttest.}}
+\end{figure}
 \begin{table}[H]
 \caption{Accepttest for Use case 1}\label{tab:tabel8}
 \begin{tabular}{|>{\raggedright\arraybackslash}p{2.5cm}| >{\raggedright\arraybackslash}p{2.9cm} | >{\raggedright\arraybackslash}p{2.9cm} | >{\raggedright\arraybackslash}p{2.9cm} | >{\raggedright\arraybackslash}p{2.8cm} |}
