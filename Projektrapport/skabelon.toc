@@ -43,44 +43,42 @@
 \contentsline {subsection}{Software}{21}{subsection*.27}
 \contentsline {subsubsection}{Problemidentifikation}{21}{subsubsection*.28}
 \contentsline {subsubsection}{Dom\IeC {\ae }nemodel}{22}{subsubsection*.29}
-\contentsline {subsubsection}{Klasseidentifikation}{23}{subsubsection*.30}
-\contentsline {subsubsection}{Metodeidentifikation}{24}{subsubsection*.31}
-\contentsline {section}{\numberline {6.4}Design, implementering og test}{24}{section.6.4}
-\contentsline {subsection}{Hardware}{24}{subsection*.32}
-\contentsline {subsubsection}{Design}{24}{subsubsection*.33}
-\contentsline {subsubsection}{Implementering}{26}{subsubsection*.34}
-\contentsline {subsection}{Software}{27}{subsection*.35}
-\contentsline {subsubsection}{Kalibrering}{27}{subsubsection*.36}
-\contentsline {subsubsection}{Nulpunktsjustering}{27}{subsubsection*.37}
-\contentsline {subsubsection}{Digitalt filter}{27}{subsubsection*.38}
-\contentsline {subsubsection}{Beregning af systolisk, diastolisk og middeltryks v\IeC {\ae }rdi}{28}{subsubsection*.39}
-\contentsline {subsubsection}{EKG-signal}{29}{subsubsection*.40}
-\contentsline {subsubsection}{Iltm\IeC {\ae }tning}{29}{subsubsection*.41}
-\contentsline {subsubsection}{Observer m\IeC {\o }nsteret}{29}{subsubsection*.42}
-\contentsline {subsubsection}{PUSH/PULL}{30}{subsubsection*.43}
-\contentsline {subsubsection}{Queue}{30}{subsubsection*.44}
-\contentsline {subsubsection}{Trelagsmodel}{30}{subsubsection*.45}
-\contentsline {subsubsection}{Databaser}{31}{subsubsection*.46}
-\contentsline {subsubsection}{Unittest}{31}{subsubsection*.47}
-\contentsline {section}{\numberline {6.5}Resultater og diskussion}{32}{section.6.5}
-\contentsline {subsection}{Software}{32}{subsection*.48}
-\contentsline {subsection}{Hardware}{36}{subsection*.49}
-\contentsline {section}{\numberline {6.6}Udviklingsv\IeC {\ae }rkt\IeC {\o }jer}{37}{section.6.6}
-\contentsline {subsection}{Microsoft Visio 2010}{37}{subsection*.50}
-\contentsline {subsection}{Visual Studio 2013}{37}{subsection*.51}
-\contentsline {subsection}{NI Multisim 13.0 med Ultiboard 13.0}{37}{subsection*.52}
-\contentsline {subsection}{NI-DAQmx}{37}{subsection*.53}
-\contentsline {subsection}{Analog Discovery fra Digilent and Analog Devices}{37}{subsection*.54}
-\contentsline {section}{\numberline {6.7}Opn\IeC {\r a}ede erfaringer}{37}{section.6.7}
-\contentsline {section}{\numberline {6.8}Fremtidigt arbejde}{38}{section.6.8}
-\contentsline {subsection}{EKG-signal}{39}{subsection*.55}
-\contentsline {subsection}{Iltm\IeC {\ae }tning}{39}{subsection*.56}
-\contentsline {subsection}{EPJ}{39}{subsection*.57}
-\contentsline {subsection}{Datawarehouse}{39}{subsection*.58}
-\contentsline {chapter}{\chapternumberline {7}Konklusion}{40}{chapter.7}
-\contentsline {chapter}{Litteratur}{41}{section*.60}
-\contentsline {section}{\numberline {7.1}Referencer}{41}{section.7.1}
-\contentsline {subsubsection}{Billeder}{41}{subsubsection*.61}
-\contentsline {subsubsection}{B\IeC {\o }ger}{41}{subsubsection*.62}
-\contentsline {subsubsection}{Internetsider}{41}{subsubsection*.63}
-\contentsline {subsubsection}{Dokumenter}{42}{subsubsection*.64}
+\contentsline {subsubsection}{Klasseidentifikation}{22}{subsubsection*.30}
+\contentsline {subsubsection}{Metodeidentifikation}{23}{subsubsection*.31}
+\contentsline {section}{\numberline {6.4}Design, implementering og test}{23}{section.6.4}
+\contentsline {subsection}{Hardware}{23}{subsection*.32}
+\contentsline {subsubsection}{Design}{23}{subsubsection*.33}
+\contentsline {subsubsection}{Implementering}{25}{subsubsection*.34}
+\contentsline {subsubsection}{Modultest}{26}{subsubsection*.35}
+\contentsline {subsection}{Software}{26}{subsection*.36}
+\contentsline {subsubsection}{Kalibrering}{26}{subsubsection*.37}
+\contentsline {subsubsection}{Nulpunktsjustering}{27}{subsubsection*.38}
+\contentsline {subsubsection}{Digitalt filter}{27}{subsubsection*.39}
+\contentsline {subsubsection}{Observer m\IeC {\o }nsteret}{28}{subsubsection*.40}
+\contentsline {subsubsection}{PUSH/PULL}{28}{subsubsection*.41}
+\contentsline {subsubsection}{Queue}{28}{subsubsection*.42}
+\contentsline {subsubsection}{Trelagsmodel}{28}{subsubsection*.43}
+\contentsline {subsubsection}{Databaser}{29}{subsubsection*.44}
+\contentsline {subsubsection}{Unittest}{30}{subsubsection*.45}
+\contentsline {section}{\numberline {6.5}Resultater og diskussion}{30}{section.6.5}
+\contentsline {subsection}{Hardware}{30}{subsection*.46}
+\contentsline {subsection}{Software}{31}{subsection*.47}
+\contentsline {section}{\numberline {6.6}Udviklingsv\IeC {\ae }rkt\IeC {\o }jer}{35}{section.6.6}
+\contentsline {subsection}{Microsoft Visio 2010}{35}{subsection*.48}
+\contentsline {subsection}{Visual Studio 2013}{35}{subsection*.49}
+\contentsline {subsection}{NI Multisim 13.0 med Ultiboard 13.0}{35}{subsection*.50}
+\contentsline {subsection}{NI-DAQmx}{35}{subsection*.51}
+\contentsline {subsection}{Analog Discovery fra Digilent and Analog Devices}{36}{subsection*.52}
+\contentsline {section}{\numberline {6.7}Opn\IeC {\r a}ede erfaringer}{36}{section.6.7}
+\contentsline {section}{\numberline {6.8}Fremtidigt arbejde}{37}{section.6.8}
+\contentsline {subsection}{EKG-signal}{37}{subsection*.53}
+\contentsline {subsection}{Iltm\IeC {\ae }tning}{37}{subsection*.54}
+\contentsline {subsection}{EPJ}{37}{subsection*.55}
+\contentsline {subsection}{Datawarehouse}{37}{subsection*.56}
+\contentsline {chapter}{\chapternumberline {7}Konklusion}{39}{chapter.7}
+\contentsline {chapter}{Litteratur}{40}{section*.58}
+\contentsline {section}{\numberline {7.1}Referencer}{40}{section.7.1}
+\contentsline {subsubsection}{Billeder}{40}{subsubsection*.59}
+\contentsline {subsubsection}{B\IeC {\o }ger}{40}{subsubsection*.60}
+\contentsline {subsubsection}{Internetsider}{40}{subsubsection*.61}
+\contentsline {subsubsection}{Dokumenter}{41}{subsubsection*.62}
